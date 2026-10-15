@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free text, hashtag and YouTube title tools by ZIWAN YATTRA.">
+<title>Daily Tools | ZIWAN YATTRA</title>
+<style>
+:root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
+body.dark{--bg:#101323;--card:#1b2035;--text:#f5f6ff;--muted:#c0c7db;--border:#343951}
+header{background:var(--card);border-bottom:1px solid var(--border)}
+nav{max-width:1150px;margin:auto;padding:14px 4%;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+a{text-decoration:none}.logo{font-size:21px;font-weight:900;color:var(--primary)}.logo span{color:var(--text)}
+.links{display:flex;gap:8px;flex-wrap:wrap}.links a{color:var(--text);font-size:13px;font-weight:bold;padding:7px}
+button,.btn{border:0;border-radius:10px;padding:11px 14px;background:var(--primary);color:white;font-weight:bold;cursor:pointer;display:inline-block;margin:4px 2px}
+.theme{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.hero{width:92%;max-width:1150px;margin:24px auto;padding:35px 28px;border-radius:24px;background:linear-gradient(125deg,#087ea4,#08b6d9,#6546e8);color:white}
+.hero h1{font-size:clamp(30px,5vw,45px);margin:10px 0}
+main{width:92%;max-width:1150px;margin:35px auto}
+h2{font-size:25px;margin-bottom:5px}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;min-width:0}
+.card h3{margin:0 0 5px}.card p{color:var(--muted);margin:5px 0 12px}
+label{display:block;font-weight:bold;margin:12px 0 5px}
+input,textarea{width:100%;padding:11px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:inherit}
+textarea{min-height:110px;resize:vertical}
+.result{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+footer{text-align:center;padding:25px;background:var(--card);border-top:1px solid var(--border);color:var(--muted);margin-top:45px}
+footer a{color:var(--primary);margin:6px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.hero{padding:28px 20px}.links{width:100%}}
+</style>
+</head>
+<body>
+<header><nav>
+<a class="logo" href="index.html">ZIWAN <span>YATTRA</span></a>
+<button class="theme" id="theme" type="button">🌙 Dark Mode</button>
+<div class="links">
+<a href="index.html">🏠 Home</a><a href="daily-tools.html">Daily Tools</a>
+<a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a>
+<a href="creator-services.html">Creator Services</a>
+</div>
+</nav></header>
+
+<section class="hero">
+<div>🧰 FREE DIGITAL TOOLS</div>
+<h1>Make Your Daily Work Easier</h1>
+<p>Count words, create hashtag ideas, generate video titles and convert text — right in your browser.</p>
+<a class="btn" style="background:white;color:#087ea4" href="#tools">Explore Tools ↓</a>
+</section>
+
+<main id="tools">
+<h2>Choose Your Tool</h2>
+<p class="muted">Enter your text or topic and use the buttons to generate results.</p>
+<div class="grid">
+
+<div class="card">
+<h3>📝 Word Counter</h3><p>Count words, characters and spaces.</p>
+<label for="wordInput">Your text</label>
+<textarea id="wordInput" placeholder="Type or paste your text..."></textarea>
+<div class="result" id="wordResult">Words: 0 | Characters: 0 | Without spaces: 0</div>
+<button type="button" onclick="countWords()">Count Text</button>
+<button type="button" onclick="copyResult('wordResult')">Copy Results</button>
+</div>
+
+<div class="card">
+<h3>#️⃣ Hashtag Idea Generator</h3><p>Generate basic hashtag suggestions from your topic.</p>
+<label for="hashInput">Video topic</label>
+<input id="hashInput" placeholder="e.g. cute puppy rescue">
+<button type="button" onclick="generateHashtags()">Generate Hashtags</button>
+<div class="result" id="hashResult">Your hashtag ideas will appear here.</div>
+<button type="button" onclick="copyResult('hashResult')">Copy Results</button>
+</div>
+
+<div class="card">
+<h3>🎬 YouTube Title Helper</h3><p>Create title ideas from your video topic.</p>
+<label for="titleInput">Video topic</label>
+<input id="titleInput" placeholder="e.g. a puppy finds a home">
+<button type="button" onclick="generateTitles()">Generate Titles</button>
+<div class="result" id="titleResult">Your title ideas will appear here.</div>
+<button type="button" onclick="copyResult('titleResult')">Copy Results</button>
+</div>
+
+<div class="card">
+<h3>🔠 Text Case Converter</h3><p>Convert text to uppercase, lowercase or title case.</p>
+<label for="caseInput">Your text</label>
+<textarea id="caseInput" placeholder="Enter text to convert..."></textarea>
+<button type="button" onclick="convertText('upper')">UPPERCASE</button>
+<button type="button" onclick="convertText('lower')">lowercase</button>
+<button type="button" onclick="convertText('title')">Title Case</button>
+<div class="result" id="caseResult">Converted text will appear here.</div>
+<button type="button" onclick="copyResult('caseResult')">Copy Results</button>
+</div>
+</div>
+
+<div class="card" style="margin-top:20px">
+<h3>ℹ️ A quick note</h3>
+<p class="muted">Hashtag and title suggestions are basic ideas, not live trend data or a guarantee of views. Always review your content before publishing.</p>
+<a class="btn" href="index.html">← Back to Home</a>
+</div>
+</main>
+
+<footer>
+<strong>ZIWAN YATTRA</strong><p>Useful tools. Helpful guides. Digital growth.</p>
+<a href="index.html">Home</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a>
+<p>© <span id="year"></span> ZIWAN YATTRA</p>
+</footer>
+
+<script>
+document.getElementById("theme").addEventListener("click",function(){
+document.body.classList.toggle("dark");
+this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";
+});
+
+function countWords(){
+const t=document.getElementById("wordInput").value;
+const words=t.trim()?t.trim().split(/\s+/).length:0;
+document.getElementById("wordResult").textContent=
+"Words: "+words+" | Characters: "+t.length+" | Without spaces: "+t.replace(/\s/g,"").length;
+}
+document.getElementById("wordInput").addEventListener("input",countWords);
+
+function generateHashtags(){
+const topic=document.getElementById("hashInput").value.trim();
+const out=document.getElementById("hashResult");
+if(!topic){out.textContent="Please enter a topic first.";return;}
+const words=topic.toLowerCase().replace(/[^a-z0-9\s]/g," ").trim().split(/\s+/).filter(Boolean);
+const tags=[...new Set([words.join(""),...words,"shorts","youtube","creator","viralvideo"].filter(Boolean))];
+out.textContent=tags.map(x=>"#"+x).join(" ");
+}
+
+function generateTitles(){
+const topic=document.getElementById("titleInput").value.trim();
+const out=document.getElementById("titleResult");
+if(!topic){out.textContent="Please enter a video topic first.";return;}
+out.textContent=[
+"1. "+topic+" | Watch Till the End!",
+"2. The Story of "+topic,
+"3. You Won't Believe This: "+topic,
+"4. A Special Moment: "+topic,
+"5. "+topic+" — What Happens Next?"
+].join("\n");
+}
+
+function convertText(mode){
+const t=document.getElementById("caseInput").value;
+let out=t;
+if(mode==="upper")out=t.toUpperCase();
+if(mode==="lower")out=t.toLowerCase();
+if(mode==="title")out=t.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
+document.getElementById("caseResult").textContent=out||"Enter some text first.";
+}
+
+async function copyResult(id){
+const text=document.getElementById(id).textContent;
+try{await navigator.clipboard.writeText(text);alert("Results copied!");}
+catch(e){
+const area=document.createElement("textarea");
+area.value=text;document.body.appendChild(area);area.select();
+document.execCommand("copy");area.remove();alert("Results copied!");
+}
+}
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

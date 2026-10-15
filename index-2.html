@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ZIWAN YATTRA: free digital tools, mobile help, AI knowledge and creator services.">
+<meta name="theme-color" content="#6546e8">
+<title>ZIWAN YATTRA | Digital Help Center</title>
+<style>
+:root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
+body.dark{--bg:#101323;--card:#1b2035;--text:#f5f6ff;--muted:#c0c7db;--border:#343951}
+a{text-decoration:none;color:inherit}
+header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+.navbar{max-width:1200px;margin:auto;padding:13px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-size:21px;font-weight:900;color:var(--primary)}
+.logo span{color:var(--text)}
+nav{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+nav a{font-size:13px;font-weight:bold;padding:8px;color:var(--text);border-radius:8px}
+nav a:hover{background:var(--bg);color:var(--primary)}
+button,.btn{display:inline-block;padding:11px 15px;border:0;border-radius:11px;font-weight:bold;cursor:pointer;font-size:14px}
+.theme{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.btn-primary{background:white;color:#5936d8}
+.btn-green{background:#128c52;color:white}
+.hero{width:92%;max-width:1200px;margin:26px auto;padding:54px 38px;border-radius:28px;color:white;background:linear-gradient(125deg,#4323bd,#7956f0 55%,#04b6cf);position:relative;overflow:hidden}
+.pill{display:inline-block;padding:6px 12px;border:1px solid #ffffff75;background:#ffffff20;border-radius:30px;font-size:12px;letter-spacing:1px}
+.hero h1{font-size:clamp(36px,5.5vw,62px);line-height:1.12;margin:18px 0;max-width:760px}
+.hero p{max-width:640px;color:#f1edff;font-size:16px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.hero:after{content:"✦";position:absolute;right:7%;top:2%;font-size:170px;opacity:.13;pointer-events:none}
+.section{width:92%;max-width:1200px;margin:38px auto}
+h2{font-size:27px;margin:0 0 5px}
+.muted{color:var(--muted);margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:20px}
+.card{display:flex;flex-direction:column;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:19px;padding:21px;min-height:215px;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-4px);border-color:var(--primary)}
+.iconbox{display:grid;place-items:center;width:55px;height:55px;border-radius:16px;font-size:28px}
+.c1 .iconbox{background:#ddf7ff}.c2 .iconbox{background:#fff0df}.c3 .iconbox{background:#eee5ff}.c4 .iconbox{background:#ffe4f0}
+.card h3{font-size:18px;margin:13px 0 5px}
+.card p{font-size:14px;color:var(--muted);margin:0 0 16px}
+.open{margin-top:auto;color:var(--primary);font-size:13px;font-weight:800}
+.benefits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:18px}
+.benefit{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:19px}
+.benefit strong{display:block;margin:5px 0}
+.benefit p{color:var(--muted);font-size:14px;margin:0}
+.contact{background:var(--card);border:1px solid var(--border);border-radius:21px;padding:25px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.contact h2{font-size:24px}
+.contact p{margin:5px 0;color:var(--muted)}
+footer{text-align:center;background:var(--card);border-top:1px solid var(--border);padding:26px 5%;margin-top:45px;color:var(--muted);font-size:13px}
+.footerlinks{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin:14px}
+.footerlinks a{color:var(--primary)}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:42px 28px}}
+@media(max-width:560px){.navbar{padding:12px 4%}.logo{font-size:19px}nav{width:100%;gap:2px}nav a{font-size:12px;padding:6px}.hero{padding:34px 22px}.grid,.benefits{grid-template-columns:1fr}.card{min-height:180px}.section{margin:30px auto}h2{font-size:24px}}
+</style>
+</head>
+<body>
+<header>
+<div class="navbar">
+<a class="logo" href="index.html">ZIWAN <span>YATTRA</span></a>
+<button class="theme" id="themeToggle" type="button">🌙 Dark Mode</button>
+<nav>
+<a href="index.html">🏠 Home</a>
+<a href="daily-tools.html">Daily Tools</a>
+<a href="mobile-help.html">Mobile Help</a>
+<a href="ai-knowledge.html">AI Jankari</a>
+<a href="creator-services.html">Creator Services</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="hero">
+<span class="pill">✨ YOUR DIGITAL HELP CENTER</span>
+<h1>Your Digital Journey<br>Starts Here.</h1>
+<p>Find useful tools, solve mobile problems, learn AI and grow your digital presence. Choose what you need and explore its dedicated page.</p>
+<div class="actions">
+<a class="btn btn-primary" href="#categories">Explore Categories ↓</a>
+<a class="btn btn-green" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20I%20need%20help." target="_blank" rel="noopener noreferrer">💬 WhatsApp Help</a>
+</div>
+</section>
+<section class="section" id="categories">
+<h2>Explore Our Categories</h2>
+<p class="muted">Tap a card to open its own page.</p>
+<div class="grid">
+<a class="card c1" href="daily-tools.html"><div class="iconbox">🧰</div><h3>Daily Tools</h3><p>Word Counter, Hashtag Generator, YouTube Title Helper and Text Converter.</p><span class="open">Explore Tools →</span></a>
+<a class="card c2" href="mobile-help.html"><div class="iconbox">📱</div><h3>Mobile Help Center</h3><p>Battery, heating, charging, lag, storage, display lines and security guides.</p><span class="open">Solve a Problem →</span></a>
+<a class="card c3" href="ai-knowledge.html"><div class="iconbox">🤖</div><h3>AI Jankari</h3><p>AI tools, beginner guides, creator ideas and digital skills.</p><span class="open">Learn More →</span></a>
+<a class="card c4" href="creator-services.html"><div class="iconbox">🎬</div><h3>Creator & Tech Services</h3><p>Thumbnail design, video editing, SEO, graphic design, websites and apps.</p><span class="open">View Services →</span></a>
+</div>
+</section>
+<section class="section">
+<h2>Why ZIWAN YATTRA?</h2>
+<p class="muted">Simple information and practical digital help in one place.</p>
+<div class="benefits">
+<div class="benefit"><span>🆓</span><strong>Free Daily Tools</strong><p>Useful browser-based tools for everyday tasks.</p></div>
+<div class="benefit"><span>📖</span><strong>Step-by-Step Guides</strong><p>Understand common phone problems and digital topics.</p></div>
+<div class="benefit"><span>💬</span><strong>Direct Enquiries</strong><p>Ask about a service and confirm the final price before ordering.</p></div>
+</div>
+</section>
+<section class="section" id="contact">
+<div class="contact"><div><h2>Need Help With Something?</h2><p>Contact us about a problem or a digital service.</p></div><a class="btn btn-green" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20I%20need%20help." target="_blank" rel="noopener noreferrer">💬 Contact on WhatsApp</a></div>
+</section>
+</main>
+<footer>
+<strong>ZIWAN YATTRA</strong>
+<p>Useful tools. Helpful guides. Digital growth.</p>
+<div class="footerlinks"><a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a></div>
+<p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p>
+</footer>
+<script>
+const themeToggle=document.getElementById("themeToggle");
+themeToggle.addEventListener("click",function(){
+document.body.classList.toggle("dark");
+this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+
+// ZIWAN YATTRA backend connection test
+fetch("http://localhost:3000/api/health")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Backend connection failed");
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Backend connected:", data.message);
+  })
+  .catch(error => {
+    console.log("Backend not connected:", error.message);
+  });
+</script>
+</body>
+</html>

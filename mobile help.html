@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ZIWAN YATTRA Mobile Help Center - practical guides for common smartphone problems.">
+<title>Mobile Help Center | ZIWAN YATTRA</title>
+<style>
+:root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.65}
+body.dark{--bg:#101323;--card:#1b2035;--text:#f5f6ff;--muted:#c0c7db;--border:#343951}
+header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+nav{max-width:1150px;margin:auto;padding:14px 4%;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+a{text-decoration:none}
+.logo{font-size:21px;font-weight:900;color:var(--primary)}
+.logo span{color:var(--text)}
+.links{display:flex;gap:8px;flex-wrap:wrap}
+.links a{color:var(--text);font-size:13px;font-weight:bold;padding:7px}
+button,.btn{border:0;border-radius:10px;padding:11px 15px;background:var(--primary);color:white;font-weight:bold;cursor:pointer;display:inline-block}
+.theme{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.hero{width:92%;max-width:1150px;margin:24px auto;background:linear-gradient(125deg,#ee7c35,#f4b54b);padding:38px 28px;border-radius:25px;color:#fff}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.15;margin:12px 0}
+.hero p{max-width:700px}
+main{width:92%;max-width:1150px;margin:35px auto}
+h2{font-size:25px;margin-bottom:5px}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:19px;min-width:0}
+.card h3{margin:0 0 7px}
+.card p{color:var(--muted);margin:5px 0 12px}
+.icon{font-size:30px}
+details{border-top:1px solid var(--border);margin-top:12px;padding-top:10px}
+summary{cursor:pointer;font-weight:bold;color:var(--primary)}
+li{margin:7px 0}
+.notice{padding:15px;background:var(--card);border:1px solid var(--border);border-radius:15px;margin-top:20px}
+footer{text-align:center;padding:28px;background:var(--card);border-top:1px solid var(--border);color:var(--muted);margin-top:45px}
+footer a{color:var(--primary);margin:6px}
+@media(max-width:750px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){.grid{grid-template-columns:1fr}.hero{padding:30px 22px}.links{width:100%}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo" href="index.html">ZIWAN <span>YATTRA</span></a>
+<button class="theme" id="theme" type="button">🌙 Dark Mode</button>
+<div class="links">
+<a href="index.html">🏠 Home</a>
+<a href="daily-tools.html">Daily Tools</a>
+<a href="mobile-help.html">Mobile Help</a>
+<a href="ai-knowledge.html">AI Jankari</a>
+<a href="creator-services.html">Creator Services</a>
+</div>
+</nav>
+</header>
+
+<section class="hero">
+<div>📱 ZIWAN YATTRA • MOBILE SUPPORT</div>
+<h1>Mobile Help Center</h1>
+<p>Choose your phone problem, follow the troubleshooting steps and learn when professional repair may be needed.</p>
+<a class="btn" href="#problems" style="background:white;color:#9a4b14">Explore Problems ↓</a>
+</section>
+
+<main id="problems">
+<h2>Choose Your Mobile Problem</h2>
+<p class="muted">Tap any guide to open the instructions.</p>
+
+<div class="grid">
+<article class="card">
+<div class="icon">🔋</div><h3>Battery Draining Fast</h3>
+<p>Battery percentage dropping quickly or unexpected shutdowns.</p>
+<details><summary>Open troubleshooting guide</summary>
+<ol><li>Open Settings and check battery usage by app.</li><li>Reduce brightness and screen timeout.</li><li>Restrict background activity for apps you rarely use.</li><li>Update apps and system software when practical.</li><li>If the phone is old or shuts down suddenly, ask a service centre to check battery health.</li></ol>
+<p>Stop using or charging a swollen or dangerously hot battery.</p></details>
+</article>
+
+<article class="card">
+<div class="icon">🌡️</div><h3>Phone Heating</h3>
+<p>Phone becomes hot during use or charging.</p>
+<details><summary>Open troubleshooting guide</summary>
+<ol><li>Pause gaming, recording or other demanding tasks.</li><li>Move the phone away from sunlight.</li><li>Remove a thick case if safe and let the phone cool naturally.</li><li>If it gets unusually hot while charging, unplug it.</li><li>Check for system or app updates after it cools.</li></ol>
+<p>Never cool the phone in a refrigerator or freezer. Seek service if overheating continues.</p></details>
+</article>
+
+<article class="card">
+<div class="icon">🔌</div><h3>Charging Problem</h3>
+<p>Slow charging or phone not charging.</p>
+<details><summary>Open troubleshooting guide</summary>
+<ol><li>Test a known-good compatible charger, cable and socket.</li><li>Check for visible damage to the cable and plug.</li><li>If a moisture warning appears, follow the manufacturer's instructions and let the port dry naturally.</li><li>Do not insert metal objects into the charging port.</li><li>If the issue continues, request a professional inspection.</li></ol></details>
+</article>
+
+<article class="card">
+<div class="icon">🐢</div><h3>Phone Lagging</h3>
+<p>Apps freeze, phone feels slow or screen stops responding.</p>
+<details><summary>Open troubleshooting guide</summary>
+<ol><li>Restart your phone.</li><li>Check available storage and free space if nearly full.</li><li>Update apps and remove unused apps.</li><li>If one app is slow, clear its cache through Settings if available.</li><li>Back up important data before considering a factory reset.</li></ol></details>
+</article>
+
+<article class="card">
+<div class="icon">📦</div><h3>Storage Full</h3>
+<p>Not enough space for photos, apps or updates.</p>
+<details><summary>Open troubleshooting guide</summary>
+<ol><li>Review large videos, downloads and duplicate files.</li><li>Back up important photos before deleting anything.</li><li>Remove apps you no longer use.</li><li>Review messaging-app media folders.</li><li>Empty the trash only after checking its contents.</li></ol></details>
+</article>
+
+<article class="card">
+<div class="icon">🟩</div><h3>Green, Pink or White Lines</h3>
+<p>Lines on the screen, flickering or display defects.</p>
+<details><summary>Open troubleshooting guide</summary>
+<ol><li>Restart the phone and see whether the lines remain.</li><li>If possible, take a screenshot and view it on another device to help distinguish a display issue from a software issue.</li><li>Back up your important data if the screen still works.</li><li>Avoid pressing, bending or heating the display.</li><li>Ask an authorised or qualified technician to inspect the display.</li></ol>
+<p>A software update cannot repair every physical display fault.</p></details>
+</article>
+
+<article class="card">
+<div class="icon">🛡️</div><h3>Warranty Check</h3>
+<p>Find out how to check coverage for your phone.</p>
+<details><summary>Open troubleshooting guide</summary>
+<ol><li>Identify the phone model and purchase date.</li><li>Find the manufacturer's official support website or app.</li><li>Keep the invoice if available.</li><li>Ask an authorised service centre about coverage, inspection and possible charges.</li></ol>
+<p>Warranty coverage varies by model, region, purchase date, damage and manufacturer policy. A green-line fault does not automatically guarantee a free repair.</p></details>
+</article>
+
+<article class="card">
+<div class="icon">🔐</div><h3>Security & Suspicious Apps</h3>
+<p>Unfamiliar apps, pop-ups or suspicious account activity.</p>
+<details><summary>Open troubleshooting guide</summary>
+<ol><li>Uninstall apps you do not recognise or trust.</li><li>Review app permissions and accessibility access.</li><li>Update the operating system and use built-in security checks.</li><li>Never share OTPs, passwords or banking PINs.</li><li>If money is stolen or banking fraud is suspected in India, contact your bank and report it promptly through official cybercrime channels.</li></ol></details>
+</article>
+
+<article class="card">
+<div class="icon">📶</div><h3>Internet & App Problems</h3>
+<p>Wi-Fi, mobile data or apps not working properly.</p>
+<details><summary>Open troubleshooting guide</summary>
+<ol><li>Check whether the issue affects one app or every app.</li><li>Toggle Airplane Mode off and on.</li><li>Check mobile data, Wi-Fi connection and data allowance.</li><li>Restart the phone and update the affected app.</li><li>Check with your network provider if the problem continues.</li></ol></details>
+</article>
+</div>
+
+<section class="notice">
+<h2>Still Need Help?</h2>
+<p class="muted">Send your phone model and problem to ZIWAN YATTRA for an enquiry. Guidance does not guarantee that a repair or warranty claim will be free.</p>
+<a class="btn" style="background:#128c52" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20I%20need%20mobile%20help." target="_blank" rel="noopener noreferrer">💬 Ask on WhatsApp</a>
+<a class="btn" href="index.html">← Back to Home</a>
+</section>
+</main>
+
+<footer>
+<strong>ZIWAN YATTRA</strong>
+<p>Practical guides. Helpful technology.</p>
+<a href="index.html">Home</a>
+<a href="daily-tools.html">Daily Tools</a>
+<a href="ai-knowledge.html">AI Jankari</a>
+<a href="creator-services.html">Creator Services</a>
+<p>© <span id="year"></span> ZIWAN YATTRA</p>
+</footer>
+
+<script>
+document.getElementById("theme").addEventListener("click",function(){
+document.body.classList.toggle("dark");
+this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

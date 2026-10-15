@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free word counter, hashtag ideas, YouTube title helper and text case converter.">
+<meta name="theme-color" content="#6546e8">
+<title>Daily Tools | ZIWAN YATTRA</title>
+<style>
+:root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3;--green:#128c52}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
+body.dark{--bg:#101323;--card:#1b2035;--text:#f5f6ff;--muted:#c0c7db;--border:#343951}
+a{text-decoration:none;color:inherit}
+header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+.navbar{max-width:1200px;margin:auto;padding:13px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-size:21px;font-weight:900;color:var(--primary)}.logo span{color:var(--text)}
+nav{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+nav a{font-size:13px;font-weight:bold;padding:8px;color:var(--text);border-radius:8px}
+nav a:hover{background:var(--bg);color:var(--primary)}
+button,.btn{display:inline-block;padding:10px 14px;border:0;border-radius:10px;background:var(--primary);color:#fff;font-weight:bold;cursor:pointer;font-size:14px;margin:4px 2px}
+.theme{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.whatsapp{background:var(--green);color:#fff}
+.hero{width:92%;max-width:1200px;margin:24px auto;padding:42px 30px;border-radius:25px;color:white;background:linear-gradient(125deg,#4323bd,#7956f0 55%,#04b6cf)}
+.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.12;margin:15px 0}.hero p{max-width:700px;color:#f1edff}
+.section{width:92%;max-width:1200px;margin:32px auto;scroll-margin-top:100px}
+h2{font-size:26px;margin:0 0 6px}.muted,.small{color:var(--muted)}
+.grid,.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
+.card,.panel{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:18px;min-width:0}
+.card h3,.panel h3{margin:5px 0 8px}.card p{color:var(--muted);font-size:14px}
+label{display:block;font-weight:bold;margin:12px 0 5px}
+input,textarea,select{width:100%;padding:11px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:inherit}
+textarea{min-height:90px;resize:vertical}
+.result{background:var(--bg);border-radius:10px;padding:10px;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.price{font-size:21px;color:var(--primary);font-weight:bold;margin:10px 0}
+details{padding:8px 0;border-bottom:1px solid var(--border)}summary{font-weight:bold;cursor:pointer;padding:5px 0}
+.notice{padding:12px 15px;border-left:4px solid #e3a126;background:var(--bg);border-radius:8px}
+.backrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+footer{text-align:center;margin-top:45px;padding:25px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+footer a{color:var(--primary);margin:5px}
+@media(max-width:900px){.grid,.tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.navbar{padding:12px 4%}.logo{font-size:18px}nav{width:100%}nav a{font-size:12px;padding:6px}.grid,.tools{grid-template-columns:1fr}.hero{padding:32px 21px}.section{margin:26px auto}}
+</style>
+</head>
+<body>
+<header><div class="navbar">
+<a class="logo" href="index.html">ZIWAN <span>YATTRA</span></a>
+<button class="theme" id="themeToggle" type="button">🌙 Dark Mode</button>
+<nav aria-label="Main navigation">
+<a href="index.html">🏠 Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a>
+</nav></div></header>
+<main>
+<section class="hero"><span>🧰 FREE BROWSER TOOLS</span><h1>Daily Tools</h1><p>Simple tools that work directly in your browser. Enter your text or topic and generate results.</p><a class="btn" style="background:white;color:#5936d8" href="index.html">← Back to Home</a></section>
+<section class="section"><div class="tools">
+<div class="panel"><h3>Word Counter</h3><p class="muted">Count words and characters as you type.</p><label for="wordInput">Your text</label><textarea id="wordInput" placeholder="Type or paste text..."></textarea><div class="result" id="wordResult">Words: 0 | Characters: 0 | Without spaces: 0</div><button onclick="countText()">Count Text</button><button onclick="copyText('wordResult')">Copy Results</button></div>
+<div class="panel"><h3>Hashtag Idea Generator</h3><p class="muted">Basic topic-based hashtag ideas.</p><label for="hashInput">Video topic</label><input id="hashInput" placeholder="e.g. cute puppy rescue"><button onclick="makeHashtags()">Generate Hashtags</button><div class="result" id="hashResult">Hashtag ideas will appear here.</div><button onclick="copyText('hashResult')">Copy Results</button></div>
+<div class="panel"><h3>YouTube Title Helper</h3><p class="muted">Generate starter title ideas.</p><label for="titleInput">Video topic</label><input id="titleInput" placeholder="e.g. puppy rescue"><button onclick="makeTitles()">Generate Titles</button><div class="result" id="titleResult">Title ideas will appear here.</div><button onclick="copyText('titleResult')">Copy Results</button></div>
+<div class="panel"><h3>Text Case Converter</h3><p class="muted">Change uppercase, lowercase or title case.</p><label for="caseInput">Your text</label><textarea id="caseInput" placeholder="Type your text..."></textarea><button onclick="convertCase('upper')">UPPERCASE</button><button onclick="convertCase('lower')">lowercase</button><button onclick="convertCase('title')">Title Case</button><div class="result" id="caseResult">Converted text appears here.</div><button onclick="copyText('caseResult')">Copy Results</button></div>
+</div><p class="small">Hashtag and title suggestions are basic ideas, not live trend data or a guarantee of views.</p>
+<div class="backrow"><a class="btn" href="index.html">← Back to Home</a><a class="btn" href="mobile-help.html">Next: Mobile Help →</a></div></section>
+</main>
+<footer><strong>ZIWAN YATTRA</strong><p>Useful tools. Helpful guides. Digital growth.</p>
+<a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
+<p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p></footer>
+<script>
+const themeToggle=document.getElementById("themeToggle");
+themeToggle.addEventListener("click",function(){document.body.classList.toggle("dark");this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";});
+document.getElementById("year").textContent=new Date().getFullYear();
+
+function countText(){const el=document.getElementById("wordInput");const t=el.value;const words=t.trim()?t.trim().split(/\s+/).length:0;document.getElementById("wordResult").textContent="Words: "+words+" | Characters: "+t.length+" | Without spaces: "+t.replace(/\s/g,"").length;}
+document.getElementById("wordInput").addEventListener("input",countText);
+function makeHashtags(){const topic=document.getElementById("hashInput").value.trim();const out=document.getElementById("hashResult");if(!topic){out.textContent="Please enter a topic first.";return;}const words=topic.toLowerCase().replace(/[^a-z0-9\s]/g," ").trim().split(/\s+/).filter(Boolean);const tags=[...new Set([words.join(""),...words,"shorts","youtube","creator","viralvideo"].filter(Boolean))].map(x=>"#"+x);out.textContent=tags.join(" ");}
+function makeTitles(){const topic=document.getElementById("titleInput").value.trim();const out=document.getElementById("titleResult");if(!topic){out.textContent="Please enter a video topic first.";return;}out.textContent=["1. "+topic+" | Watch Till the End!","2. The Story of "+topic,"3. You Won't Believe This: "+topic,"4. A Special Moment: "+topic,"5. "+topic+" — What Happens Next?"].join("\\n");}
+function convertCase(mode){const t=document.getElementById("caseInput").value;let out=t;if(mode==="upper")out=t.toUpperCase();if(mode==="lower")out=t.toLowerCase();if(mode==="title")out=t.toLowerCase().replace(/\\b\\w/g,c=>c.toUpperCase());document.getElementById("caseResult").textContent=out||"Enter some text first.";}
+async function copyText(id){const text=document.getElementById(id).textContent;try{await navigator.clipboard.writeText(text);alert("Results copied!");}catch(e){const a=document.createElement("textarea");a.value=text;document.body.appendChild(a);a.select();document.execCommand("copy");a.remove();alert("Results copied!");}}
+
+</script>
+</body></html>
