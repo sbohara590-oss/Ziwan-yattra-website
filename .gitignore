@@ -3,3 +3,9 @@ node_modules/
 .env.*
 !.env.example
 backend/enquiries.json
+# Log files
+*.log
+logs/
+
+# Local secrets and debug files
+.env.local

@@ -41,7 +41,7 @@ app.disable("x-powered-by");
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: "10kb" }));
 
-const allowedOrigins = new Set([
+const allowedOrigins = new Set([https://sbohara590-oss.github.io/
   "http://127.0.0.1:5500",
   "http://localhost:5500",
   "http://127.0.0.1:5501",

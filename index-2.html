@@ -116,7 +116,7 @@ this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"�
 document.getElementById("year").textContent=new Date().getFullYear();
 
 // ZIWAN YATTRA backend connection test
-fetch("http://localhost:3000/api/health")
+fetch("https://ziwan-yattra-backend.onrender.com/api/...")
   .then(response => {
     if (!response.ok) {
       throw new Error("Backend connection failed");
