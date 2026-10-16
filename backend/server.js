@@ -1,4 +1,6 @@
-require("dotenv").config();
+require("dotenv").config({
+  path: require("path").join(__dirname, ".env")
+});
 
 const express = require("express");
 const helmet = require("helmet");
@@ -8,20 +10,36 @@ const path = require("path");
 const { createClient } = require("@supabase/supabase-js");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 const enquiriesFile = path.join(__dirname, "enquiries.json");
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_PUBLISHABLE_KEY;
+const rawSupabaseUrl = process.env.SUPABASE_URL?.trim();
+const supabaseKey = process.env.SUPABASE_PUBLISHABLE_KEY?.trim();
 
-if (!supabaseUrl || !supabaseKey) {
-  console.error("Missing Supabase settings in backend/.env");
+if (!rawSupabaseUrl || !supabaseKey) {
+  console.error(
+    "Missing SUPABASE_URL or SUPABASE_PUBLISHABLE_KEY in backend/.env"
+  );
+  process.exit(1);
+}
+
+// Yeh naya code automatically base URL nikal lega, chahe tumne galti se
+// /rest/v1/ ya kuch aur extra laga diya ho.
+let supabaseUrl;
+try {
+  const parsedUrl = new URL(rawSupabaseUrl);
+  supabaseUrl = parsedUrl.origin; 
+  console.log("✅ DEBUG: Final Supabase URL is:", supabaseUrl);
+} catch (error) {
+  console.error("❌ Supabase URL configuration error:", error.message);
   process.exit(1);
 }
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+app.disable("x-powered-by");
 app.use(helmet({ contentSecurityPolicy: false }));
+app.use(express.json({ limit: "10kb" }));
 
 const allowedOrigins = new Set([
   "http://127.0.0.1:5500",
@@ -34,7 +52,14 @@ const allowedOrigins = new Set([
 app.use((req, res, next) => {
   const origin = req.headers.origin;
 
-  if (origin && allowedOrigins.has(origin)) {
+  if (origin && !allowedOrigins.has(origin)) {
+    return res.status(403).json({
+      success: false,
+      error: "Origin not allowed."
+    });
+  }
+
+  if (origin) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
 
@@ -46,19 +71,10 @@ app.use((req, res, next) => {
     return res.sendStatus(204);
   }
 
-  if (origin && !allowedOrigins.has(origin)) {
-    return res.status(403).json({
-      success: false,
-      error: "Origin not allowed."
-    });
-  }
-
   next();
 });
 
-app.use(express.json({ limit: "10kb" }));
-
-app.use(rateLimit({
+app.use("/api", rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 100,
   standardHeaders: "draft-7",
@@ -72,7 +88,7 @@ app.use(rateLimit({
 app.get("/api/health", (req, res) => {
   res.json({
     success: true,
-    message: "ZIWAN YATTRA backend is running!"
+    message: "ZIWAN YATTRA backend is running."
   });
 });
 
@@ -80,9 +96,12 @@ app.post("/api/enquiries", async (req, res) => {
   const { category, helpType, details, email = "" } = req.body || {};
 
   if (
-    typeof category !== "string" || !category.trim() ||
-    typeof helpType !== "string" || !helpType.trim() ||
-    typeof details !== "string" || !details.trim()
+    typeof category !== "string" ||
+    !category.trim() ||
+    typeof helpType !== "string" ||
+    !helpType.trim() ||
+    typeof details !== "string" ||
+    !details.trim()
   ) {
     return res.status(400).json({
       success: false,
@@ -99,35 +118,38 @@ app.post("/api/enquiries", async (req, res) => {
   ) {
     return res.status(400).json({
       success: false,
-      error: "One or more fields are too long."
+      error: "One or more fields are too long or invalid."
     });
   }
 
   const enquiry = {
-    category: category.trim(),
-    help_type: helpType.trim(),
-    details: details.trim(),
-    email: email.trim()
-  };
+  "Category": category.trim(),
+  "Help type": helpType.trim(),
+  "Details": details.trim(),
+  "Email": email.trim()
+};
 
-  // Save to Supabase first.
   try {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from("enquiries")
-      .insert(enquiry)
-      .select("id, created_at")
-      .single();
+      .insert(enquiry);
 
     if (error) {
-      console.error("Supabase save failed:", error.message);
+      console.error("SUPABASE INSERT ERROR:", {
+        code: error.code,
+        message: error.message,
+        details: error.details,
+        hint: error.hint
+      });
 
       return res.status(500).json({
         success: false,
-        error: "Database save failed. Check Supabase table permissions and server settings."
+        error: "Supabase could not save the enquiry.",
+        code: error.code || "SUPABASE_ERROR"
       });
     }
 
-    // Keep a local backup too.
+    // Local backup is best-effort; Supabase is the primary database.
     try {
       let entries = [];
 
@@ -136,13 +158,14 @@ app.post("/api/enquiries", async (req, res) => {
           fs.readFileSync(enquiriesFile, "utf8")
         );
 
-        if (Array.isArray(saved)) entries = saved;
+        if (Array.isArray(saved)) {
+          entries = saved;
+        }
       }
 
       entries.push({
         ...enquiry,
-        id: data.id,
-        created_at: data.created_at
+        saved_at: new Date().toISOString()
       });
 
       fs.writeFileSync(
@@ -156,15 +179,14 @@ app.post("/api/enquiries", async (req, res) => {
 
     return res.status(201).json({
       success: true,
-      message: "Enquiry received and saved.",
-      id: data.id
+      message: "Enquiry saved successfully."
     });
   } catch (error) {
     console.error("Unexpected enquiry error:", error.message);
 
     return res.status(500).json({
       success: false,
-      error: "Something went wrong while saving the enquiry."
+      error: "Server error while saving enquiry."
     });
   }
 });
@@ -172,10 +194,28 @@ app.post("/api/enquiries", async (req, res) => {
 app.use((req, res) => {
   res.status(404).json({
     success: false,
-    error: "Route not found"
+    error: "Route not found."
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`ZIWAN YATTRA backend running at http://localhost:${PORT}`);
+app.use((error, req, res, next) => {
+  console.error("Request error:", error.message);
+
+  if (res.headersSent) {
+    return next(error);
+  }
+
+  res.status(400).json({
+    success: false,
+    error: "Invalid request."
+  });
+});
+
+const server = app.listen(PORT, () => {
+  console.log(`🚀 ZIWAN YATTRA backend running at http://localhost:${PORT}`);
+});
+
+server.on("error", (error) => {
+  console.error("Backend startup failed:", error.message);
+  process.exitCode = 1;
 });
