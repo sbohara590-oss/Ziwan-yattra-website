@@ -1,44 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Original troubleshooting guides for common mobile phone problems.">
 <meta name="theme-color" content="#6546e8">
 <title>Mobile Help Center | ZIWAN YATTRA</title>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3;--green:#128c52}
 *{box-sizing:border-box;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
-body.dark{--bg:#101323;--card:#1b2035;--text:#f5f6ff;--muted:#c0c7db;--border:#343951}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;line-height:1.6;transition:background 0.3s,color 0.3s}
+body.dark{--bg:#0d111c;--card:#161b2e;--text:#f5f6ff;--muted:#a3aec7;--border:#2a324d}
 a{text-decoration:none;color:inherit}
-header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,0.02)}
 .navbar{max-width:1200px;margin:auto;padding:13px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.logo{font-size:21px;font-weight:900;color:var(--primary)}.logo span{color:var(--text)}
+.logo{font-size:22px;font-weight:900;color:var(--primary);letter-spacing:-0.5px}.logo span{color:var(--text)}
 nav{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
-nav a{font-size:13px;font-weight:bold;padding:8px;color:var(--text);border-radius:8px}
+nav a{font-size:13px;font-weight:600;padding:8px 12px;color:var(--text);border-radius:8px;transition:0.3s}
 nav a:hover{background:var(--bg);color:var(--primary)}
-button,.btn{display:inline-block;padding:10px 14px;border:0;border-radius:10px;background:var(--primary);color:#fff;font-weight:bold;cursor:pointer;font-size:14px;margin:4px 2px}
+button,.btn{display:inline-block;padding:12px 18px;border:0;border-radius:12px;background:var(--primary);color:#fff;font-weight:600;cursor:pointer;font-size:14px;margin:4px 2px;transition:all 0.3s ease;font-family:'Poppins',sans-serif}
+button:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(101,70,232,0.3)}
 .theme{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.theme:hover{box-shadow:none;background:var(--border)}
 .whatsapp{background:var(--green);color:#fff}
-.hero{width:92%;max-width:1200px;margin:24px auto;padding:42px 30px;border-radius:25px;color:white;background:linear-gradient(125deg,#4323bd,#7956f0 55%,#04b6cf)}
-.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.12;margin:15px 0}.hero p{max-width:700px;color:#f1edff}
-.section{width:92%;max-width:1200px;margin:32px auto;scroll-margin-top:100px}
-h2{font-size:26px;margin:0 0 6px}.muted,.small{color:var(--muted)}
-.grid,.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
-.card,.panel{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:18px;min-width:0}
-.card h3,.panel h3{margin:5px 0 8px}.card p{color:var(--muted);font-size:14px}
-label{display:block;font-weight:bold;margin:12px 0 5px}
-input,textarea,select{width:100%;padding:11px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:inherit}
-textarea{min-height:90px;resize:vertical}
-.result{background:var(--bg);border-radius:10px;padding:10px;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere}
-.price{font-size:21px;color:var(--primary);font-weight:bold;margin:10px 0}
-details{padding:8px 0;border-bottom:1px solid var(--border)}summary{font-weight:bold;cursor:pointer;padding:5px 0}
-.notice{padding:12px 15px;border-left:4px solid #e3a126;background:var(--bg);border-radius:8px}
-.backrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-footer{text-align:center;margin-top:45px;padding:25px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:13px}
-footer a{color:var(--primary);margin:5px}
-@media(max-width:900px){.grid,.tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.navbar{padding:12px 4%}.logo{font-size:18px}nav{width:100%}nav a{font-size:12px;padding:6px}.grid,.tools{grid-template-columns:1fr}.hero{padding:32px 21px}.section{margin:26px auto}}
+.whatsapp:hover{box-shadow:0 6px 15px rgba(18,140,82,0.3)}
+
+/* Premium Hero Section */
+.hero{width:92%;max-width:1200px;margin:30px auto;padding:50px 40px;border-radius:30px;color:white;background:linear-gradient(135deg,#4e00ff,#8b00ff 50%,#ff0080);position:relative;overflow:hidden;box-shadow:0 15px 30px rgba(101,70,232,0.2)}
+.hero::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 60%);transform:rotate(30deg)}
+.hero h1{font-size:clamp(32px,5vw,55px);line-height:1.1;margin:10px 0;font-weight:900;position:relative;z-index:1}
+.hero p{max-width:700px;color:#f1edff;font-size:16px;position:relative;z-index:1;margin-bottom:25px}
+
+/* Floating Icon */
+.floating-icon {
+    display: inline-block;
+    font-size: 45px;
+    animation: floatIcon 2.5s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+}
+@keyframes floatIcon {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(10deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.section{width:92%;max-width:1200px;margin:40px auto;scroll-margin-top:100px}
+h2{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-0.5px}.muted,.small{color:var(--muted)}
+
+/* Guides Grid (Desktop par 2 column, Mobile par 1) */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:22px}
+
+/* Premium Cards */
+.card,.panel{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;min-width:0;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.02)}
+.card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(101,70,232,0.1);border-color:var(--primary)}
+body.dark .card:hover{box-shadow:0 15px 30px rgba(0,0,0,0.3)}
+.card h3{margin:0 0 10px;font-weight:800;font-size:18px;color:var(--text)}
+
+/* Custom Accordion (Details/Summary) */
+details {background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:10px 15px;margin-top:10px;transition:0.3s;}
+details:hover {border-color:var(--primary);}
+summary {font-weight:600;font-size:14px;cursor:pointer;color:var(--primary);list-style:none;display:flex;justify-content:space-between;align-items:center;}
+summary::-webkit-details-marker {display:none;}
+summary::after {content:'+';font-size:18px;font-weight:bold;transition:0.3s;}
+details[open] summary::after {content:'−';}
+details[open] {background:var(--card);border-color:var(--primary);box-shadow:0 5px 15px rgba(101,70,232,0.1);}
+details ol {margin:10px 0 0; padding-left:20px; font-size:14px; color:var(--muted);}
+details li {margin-bottom:8px;}
+details p {font-size:13px; margin-top:10px; color:var(--muted); background:rgba(227,161,38,0.1); padding:8px; border-radius:6px; border-left:3px solid #e3a126;}
+
+/* CTA Panel */
+.panel-cta {text-align:center; background: linear-gradient(135deg, var(--card), var(--bg)); margin-top:30px; padding:30px; border-radius:20px; border:1px solid var(--border);}
+.panel-cta h3 {font-size:24px; margin-bottom:10px; font-weight:800;}
+.panel-cta p {margin-bottom:20px; color:var(--muted);}
+
+.backrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px; justify-content: space-between;}
+footer{text-align:center;margin-top:60px;padding:30px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:14px}
+footer a{color:var(--primary);margin:5px;font-weight:600}
+footer a:hover{text-decoration:underline}
+
+/* Mobile View */
+@media(max-width:768px){
+    .grid{grid-template-columns:1fr;}
+    .navbar{padding:12px 4%;justify-content:center;text-align:center}
+    nav{width:100%;justify-content:center;margin-top:10px}
+    .hero{padding:35px 20px;border-radius:20px}
+    .section{margin:30px auto}
+    .floating-icon{font-size:35px}
+    .backrow{flex-direction: column; align-items: stretch;}
+    .backrow .btn{width:100%; text-align:center;}
+}
 </style>
 </head>
 <body>
@@ -48,29 +103,161 @@ footer a{color:var(--primary);margin:5px}
 <nav aria-label="Main navigation">
 <a href="index.html">🏠 Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a>
 </nav></div></header>
+
 <main>
-<section class="hero"><span>📱 MOBILE HELP CENTER</span><h1>Find Your Phone Problem</h1><p>Choose a guide for common mobile issues. Try safe steps first; hardware repairs and warranty coverage depend on your device and manufacturer policy.</p><a class="btn" style="background:white;color:#5936d8" href="index.html">← Back to Home</a></section>
-<section class="section"><h2>Choose a troubleshooting guide</h2><p class="muted">Tap “Read steps” to open each guide.</p><div class="grid">
-<div class="card"><h3>🔋 Battery Draining Fast</h3><details><summary>Read steps</summary><ol><li>Check battery usage in Settings.</li><li>Reduce brightness and screen timeout.</li><li>Update apps and phone software when practical.</li><li>If the phone shuts down unexpectedly, check battery health with an authorised service provider.</li></ol><p>If the battery is swollen, stop using or charging the phone and seek professional service.</p></details></div>
-<div class="card"><h3>🌡️ Phone Heating</h3><details><summary>Read steps</summary><ol><li>Pause demanding games and apps.</li><li>Keep the phone out of direct sunlight.</li><li>Unplug it if unusually hot while charging.</li><li>Let it cool naturally; do not put it in a fridge.</li></ol></details></div>
-<div class="card"><h3>🔌 Charging Problems</h3><details><summary>Read steps</summary><ol><li>Try a compatible, undamaged charger and cable.</li><li>Check the power socket.</li><li>Follow the manufacturer's instructions if a moisture warning appears.</li><li>Never insert metal objects into the charging port.</li></ol></details></div>
-<div class="card"><h3>🐢 Phone Lagging</h3><details><summary>Read steps</summary><ol><li>Restart your phone.</li><li>Check available storage.</li><li>Update apps and remove apps you no longer need.</li><li>Clear an app's cache in Settings if it is causing problems.</li></ol></details></div>
-<div class="card"><h3>📦 Storage Full</h3><details><summary>Read steps</summary><ol><li>Review large videos and downloads.</li><li>Back up important files before deleting them.</li><li>Remove unused apps.</li><li>Check trash folders before emptying them.</li></ol></details></div>
-<div class="card"><h3>🟩 Green / Pink / White Lines</h3><details><summary>Read steps</summary><ol><li>Restart and check whether the line remains.</li><li>Back up important data if the display works.</li><li>Avoid pressing, bending or heating the screen.</li><li>Ask a technician to inspect the display and connector.</li></ol><p>Software steps cannot fix every physical display fault.</p></details></div>
-<div class="card"><h3>🛡️ Warranty Check</h3><details><summary>Read steps</summary><ol><li>Find the phone model and IMEI in Settings or on the box.</li><li>Use the manufacturer's official support service.</li><li>Keep the invoice if available.</li><li>Ask an authorised service centre about eligibility and charges.</li></ol><p>Coverage depends on region, purchase date, damage and company policy. Do not post your IMEI publicly.</p></details></div>
-<div class="card"><h3>🔐 Security & Suspicious Apps</h3><details><summary>Read steps</summary><ol><li>Remove apps you do not trust.</li><li>Review permissions and accessibility access.</li><li>Update the operating system.</li><li>Never share OTPs, passwords or banking PINs.</li><li>Contact your bank promptly if you suspect financial fraud.</li></ol></details></div>
-</div>
-<div class="panel" style="margin-top:18px"><h3>Still need help?</h3><p class="muted">Send your phone model and problem through WhatsApp.</p><a class="btn whatsapp" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20I%20need%20mobile%20help." target="_blank" rel="noopener noreferrer">Share Your Problem on WhatsApp</a></div>
-<div class="backrow"><a class="btn" href="index.html">← Back to Home</a><a class="btn" href="daily-tools.html">← Daily Tools</a><a class="btn" href="ai-knowledge.html">Next: AI Jankari →</a></div>
+<section class="hero">
+    <div class="floating-icon">📱</div>
+    <h1>Find Your Phone Problem</h1>
+    <p>Choose a guide for common mobile issues. Try safe steps first; hardware repairs and warranty coverage depend on your device and manufacturer policy.</p>
+    <div class="backrow">
+        <a class="btn" style="background:#fff;color:#8b00ff; box-shadow:0 4px 15px rgba(0,0,0,0.1);" href="index.html">← Back to Home</a>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Choose a troubleshooting guide</h2>
+    <p class="muted">Tap “Read steps” to open each guide.</p>
+    
+    <div class="grid">
+        <div class="card">
+            <h3>🔋 Battery Draining Fast</h3>
+            <details>
+                <summary>Read steps</summary>
+                <ol>
+                    <li>Check battery usage in Settings.</li>
+                    <li>Reduce brightness and screen timeout.</li>
+                    <li>Update apps and phone software when practical.</li>
+                    <li>If the phone shuts down unexpectedly, check battery health with an authorised service provider.</li>
+                </ol>
+                <p><strong>Warning:</strong> If the battery is swollen, stop using or charging the phone and seek professional service.</p>
+            </details>
+        </div>
+
+        <div class="card">
+            <h3>🌡️ Phone Heating</h3>
+            <details>
+                <summary>Read steps</summary>
+                <ol>
+                    <li>Pause demanding games and apps.</li>
+                    <li>Keep the phone out of direct sunlight.</li>
+                    <li>Unplug it if unusually hot while charging.</li>
+                    <li>Let it cool naturally; do not put it in a fridge.</li>
+                </ol>
+            </details>
+        </div>
+
+        <div class="card">
+            <h3>🔌 Charging Problems</h3>
+            <details>
+                <summary>Read steps</summary>
+                <ol>
+                    <li>Try a compatible, undamaged charger and cable.</li>
+                    <li>Check the power socket.</li>
+                    <li>Follow the manufacturer's instructions if a moisture warning appears.</li>
+                    <li>Never insert metal objects into the charging port.</li>
+                </ol>
+            </details>
+        </div>
+
+        <div class="card">
+            <h3>🐢 Phone Lagging</h3>
+            <details>
+                <summary>Read steps</summary>
+                <ol>
+                    <li>Restart your phone.</li>
+                    <li>Check available storage.</li>
+                    <li>Update apps and remove apps you no longer need.</li>
+                    <li>Clear an app's cache in Settings if it is causing problems.</li>
+                </ol>
+            </details>
+        </div>
+
+        <div class="card">
+            <h3>📦 Storage Full</h3>
+            <details>
+                <summary>Read steps</summary>
+                <ol>
+                    <li>Review large videos and downloads.</li>
+                    <li>Back up important files before deleting them.</li>
+                    <li>Remove unused apps.</li>
+                    <li>Check trash folders before emptying them.</li>
+                </ol>
+            </details>
+        </div>
+
+        <div class="card">
+            <h3>🟩 Green / Pink / White Lines</h3>
+            <details>
+                <summary>Read steps</summary>
+                <ol>
+                    <li>Restart and check whether the line remains.</li>
+                    <li>Back up important data if the display works.</li>
+                    <li>Avoid pressing, bending or heating the screen.</li>
+                    <li>Ask a technician to inspect the display and connector.</li>
+                </ol>
+                <p>Software steps cannot fix every physical display fault.</p>
+            </details>
+        </div>
+
+        <div class="card">
+            <h3>🛡️ Warranty Check</h3>
+            <details>
+                <summary>Read steps</summary>
+                <ol>
+                    <li>Find the phone model and IMEI in Settings or on the box.</li>
+                    <li>Use the manufacturer's official support service.</li>
+                    <li>Keep the invoice if available.</li>
+                    <li>Ask an authorised service centre about eligibility and charges.</li>
+                </ol>
+                <p>Coverage depends on region, purchase date, damage and company policy. Do not post your IMEI publicly.</p>
+            </details>
+        </div>
+
+        <div class="card">
+            <h3>🔐 Security & Suspicious Apps</h3>
+            <details>
+                <summary>Read steps</summary>
+                <ol>
+                    <li>Remove apps you do not trust.</li>
+                    <li>Review permissions and accessibility access.</li>
+                    <li>Update the operating system.</li>
+                    <li>Never share OTPs, passwords or banking PINs.</li>
+                    <li>Contact your bank promptly if you suspect financial fraud.</li>
+                </ol>
+            </details>
+        </div>
+    </div>
+
+    <!-- WhatsApp Help Panel -->
+    <div class="panel-cta">
+        <h3>Still need help?</h3>
+        <p class="muted">Send your phone model and problem through WhatsApp.</p>
+        <a class="btn whatsapp" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20I%20need%20mobile%20help." target="_blank" rel="noopener noreferrer">💬 Share Your Problem on WhatsApp</a>
+    </div>
+
+    <div class="backrow">
+        <a class="btn" href="daily-tools.html" style="background:var(--bg); color:var(--text); border:1px solid var(--border);">← Daily Tools</a>
+        <a class="btn" href="ai-knowledge.html" style="background:var(--primary);">Next: AI Jankari →</a>
+    </div>
 </section>
 </main>
-<footer><strong>ZIWAN YATTRA</strong><p>Useful tools. Helpful guides. Digital growth.</p>
-<a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
-<p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p></footer>
+
+<footer>
+    <strong>ZIWAN YATTRA</strong>
+    <p>Useful tools. Helpful guides. Digital growth.</p>
+    <div style="margin-bottom: 15px;">
+        <a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
+    </div>
+    <p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p>
+</footer>
+
 <script>
 const themeToggle=document.getElementById("themeToggle");
-themeToggle.addEventListener("click",function(){document.body.classList.toggle("dark");this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";});
+themeToggle.addEventListener("click",function(){
+    document.body.classList.toggle("dark");
+    this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";
+});
 document.getElementById("year").textContent=new Date().getFullYear();
-
 </script>
-</body></html>
+</body>
+</html>
