@@ -1,247 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%239b5cff'/%3E%3Cstop offset='100%25' stop-color='%23ff0844'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='23' fill='%23080418'/%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Ctext x='50' y='59' font-family='Arial,sans-serif' font-weight='900' font-size='39' fill='url(%23g)' text-anchor='middle'%3EZY%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%239b5cff'/%3E%3Cstop offset='100%25' stop-color='%23ff0844'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='23' fill='%23080418'/%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Ctext x='50' y='59' font-family='Arial,sans-serif' font-weight='900' font-size='39' fill='url(%23g)' text-anchor='middle'%3EZY%3C/text%3E%3C/svg%3E">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Free word counter, hashtag ideas, YouTube title helper and text case converter.">
+<meta name="description" content="Your Everyday Digital Toolkit by ZIWAN YATTRA. Free browser-based text tools, calculators, image utilities and creator tools.">
 <meta name="theme-color" content="#6546e8">
 <title>Daily Tools | ZIWAN YATTRA</title>
-<!-- Google Fonts for Premium Look -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3;--green:#128c52}
+:root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3;--green:#128c52;--shadow:0 8px 24px #24234a0d}
 *{box-sizing:border-box;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;line-height:1.6;transition:background 0.3s,color 0.3s}
-body.dark{--bg:#0d111c;--card:#161b2e;--text:#f5f6ff;--muted:#a3aec7;--border:#2a324d}
-a{text-decoration:none;color:inherit}
-header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,0.02)}
-.navbar{max-width:1200px;margin:auto;padding:13px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.logo{font-size:22px;font-weight:900;color:var(--primary);letter-spacing:-0.5px}.logo span{color:var(--text)}
-nav{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
-nav a{font-size:13px;font-weight:600;padding:8px 12px;color:var(--text);border-radius:8px;transition:0.3s}
-nav a:hover{background:var(--bg);color:var(--primary)}
-button,.btn{display:inline-block;padding:12px 18px;border:0;border-radius:12px;background:var(--primary);color:#fff;font-weight:600;cursor:pointer;font-size:14px;margin:4px 2px;transition:all 0.3s ease;font-family:'Poppins',sans-serif}
-button:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(101,70,232,0.3)}
-.theme{background:var(--bg);color:var(--text);border:1px solid var(--border)}
-.theme:hover{box-shadow:none;background:var(--border)}
-
-/* Premium Hero Section */
-.hero{width:92%;max-width:1200px;margin:30px auto;padding:50px 40px;border-radius:30px;color:white;background:linear-gradient(135deg,#4e00ff,#8b00ff 50%,#ff0080);position:relative;overflow:hidden;box-shadow:0 15px 30px rgba(101,70,232,0.2)}
-.hero::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 60%);transform:rotate(30deg)}
-.hero h1{font-size:clamp(32px,5vw,55px);line-height:1.1;margin:10px 0;font-weight:900;position:relative;z-index:1}
-.hero p{max-width:700px;color:#f1edff;font-size:16px;position:relative;z-index:1;margin-bottom:25px}
-
-/* Floating Tool Animation */
-.floating-icon {
-    display: inline-block;
-    font-size: 45px;
-    animation: floatIcon 2.5s ease-in-out infinite;
-    position: relative;
-    z-index: 1;
-}
-@keyframes floatIcon {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(-10deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-}
-
-.section{width:92%;max-width:1200px;margin:40px auto;scroll-margin-top:100px}
-h2{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-0.5px}.muted,.small{color:var(--muted)}
-
-/* Tools Grid Layout (Desktop par 2 column, Mobile par 1) */
-.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:22px}
-
-/* Premium Tool Cards */
-.panel{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:25px;min-width:0;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.02)}
-.panel:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(101,70,232,0.1);border-color:var(--primary)}
-body.dark .panel:hover{box-shadow:0 15px 30px rgba(0,0,0,0.3)}
-.panel h3{margin:0 0 5px;font-weight:800;font-size:20px;color:var(--primary)}
-.panel p{color:var(--muted);font-size:14px;margin-bottom:15px}
-
-label{display:block;font-weight:600;margin:12px 0 5px;font-size:14px}
-input,textarea,select{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;transition:0.3s;font-size:14px}
-input:focus,textarea:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px rgba(101,70,232,0.2)}
-textarea{min-height:100px;resize:vertical}
-
-/* Output Result Box */
-.result{background:var(--bg);border:1px dashed var(--border);border-radius:12px;padding:15px;margin:15px 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;color:var(--text);min-height: 60px;}
-.notice{padding:15px;border-left:4px solid #e3a126;background:var(--bg);border-radius:8px;font-size:14px}
-.backrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
-footer{text-align:center;margin-top:60px;padding:30px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:14px}
-footer a{color:var(--primary);margin:5px;font-weight:600}
-footer a:hover{text-decoration:underline}
-
-/* Mobile View */
-@media(max-width:900px){.tools{grid-template-columns:1fr}}
-@media(max-width:560px){
-    .navbar{padding:12px 4%;justify-content:center;text-align:center}
-    nav{width:100%;justify-content:center;margin-top:10px}
-    .hero{padding:35px 20px;border-radius:20px}
-    .section{margin:30px auto}
-    .floating-icon{font-size:35px}
-    .backrow{flex-direction: column;}
-    .backrow .btn{width:100%; text-align:center;}
-}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+body.dark{--bg:#101323;--card:#1b2035;--text:#f5f6ff;--muted:#c0c7db;--border:#343951;--shadow:0 8px 24px #0003}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--border)}
+.navbar{max-width:1200px;margin:auto;padding:12px 4%;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo{font-size:20px;font-weight:900;color:var(--primary);letter-spacing:-.5px}.logo span{color:var(--text)}
+nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+nav a,.theme{font-size:13px;font-weight:700;padding:8px 10px;border-radius:10px}
+nav a:hover,.theme{background:var(--bg);border:1px solid var(--border)}
+.theme{color:var(--text)}
+main{max-width:1200px;width:92%;margin:24px auto 50px}
+.hero{padding:clamp(24px,5vw,48px);border-radius:26px;color:#fff;background:linear-gradient(125deg,#171b3c,#35265f 58%,#48245e);box-shadow:0 18px 42px #21184425;position:relative;overflow:hidden}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.4px;color:#d8d0ff;text-transform:uppercase}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.12;margin:10px 0 8px;letter-spacing:-1px}
+.tagline{font-size:clamp(17px,2.5vw,23px);font-weight:750;margin:0 0 6px;color:#d2c7ff}
+.hero p{margin:0;color:#e2def5;max-width:700px}
+.search-wrap{margin-top:22px;display:flex;gap:10px;background:#fff;border-radius:15px;padding:7px;max-width:760px;box-shadow:0 8px 24px #0002}
+.search-wrap span{display:grid;place-items:center;padding-left:10px;color:#6852c7;font-size:22px}
+.search-wrap input{width:100%;border:0;outline:0;color:#17203a;padding:10px 8px;background:transparent;min-width:0}
+.search-wrap input:focus{outline:2px solid #cfc4ff;border-radius:8px}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:15px 0 5px;scrollbar-width:thin}
+.filter{white-space:nowrap;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:999px;padding:9px 14px;font-weight:750;font-size:13px;transition:transform .18s,background .18s}
+.filter.active{background:var(--primary);border-color:var(--primary);color:white}
+.filter:active{transform:scale(.96)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin:25px 0 13px}
+.section-head h2{margin:0;font-size:24px;letter-spacing:-.5px}
+.muted{color:var(--muted);font-size:14px;margin:4px 0 0}
+.count{color:var(--muted);font-size:13px}
+.tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:17px;min-height:145px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:flex-start;gap:9px;cursor:pointer;text-align:left;color:var(--text);transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;overflow:hidden;width:100%}
+.tool-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px #2b245b15;border-color:#bcb0ff}
+.tool-card:active{transform:scale(.97)}\n.tool-card:focus-visible{outline:3px solid var(--primary);outline-offset:3px}
+.tool-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:#eeeaff;color:#6546e8;font-size:23px;transition:transform .28s}
+.tool-card:hover .tool-icon,.tool-card:focus-visible .tool-icon{animation:iconWiggle .48s ease}
+.tool-card strong{font-size:15px;line-height:1.3}
+.tool-card small{font-size:12px;color:var(--muted);line-height:1.4}
+@keyframes iconWiggle{0%,100%{transform:rotate(0) scale(1)}25%{transform:rotate(-9deg) scale(1.06)}55%{transform:rotate(8deg) scale(1.08)}80%{transform:rotate(-3deg)}}
+.tool-card:nth-child(4n+2) .tool-icon{background:#e5f7ef;color:#14865a}
+.tool-card:nth-child(4n+3) .tool-icon{background:#fff0f6;color:#cf4389}
+.tool-card:nth-child(4n+4) .tool-icon{background:#fff4df;color:#b87814}
+.empty{display:none;text-align:center;padding:35px 15px;color:var(--muted);background:var(--card);border:1px dashed var(--border);border-radius:16px}
+.tool-panel{display:none;margin-top:22px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:clamp(16px,3vw,28px);box-shadow:var(--shadow);scroll-margin-top:100px}
+.tool-panel.open{display:block;animation:fadeUp .24s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.panel-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.panel-top h2{margin:0;font-size:23px}
+.close{border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:10px;padding:8px 12px;font-weight:700}
+.tool-ui{margin-top:18px}
+.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}
+.field label{font-size:13px;font-weight:750}
+.field input,.field textarea,.field select{width:100%;padding:12px 13px;border:1px solid var(--border);border-radius:11px;background:var(--bg);color:var(--text);outline:none}
+.field textarea{min-height:130px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--primary);box-shadow:0 0 0 3px #6546e81b}
+.row-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.btn{border:0;border-radius:11px;padding:11px 15px;background:var(--primary);color:#fff;font-weight:750}
+.btn.secondary{background:var(--bg);border:1px solid var(--border);color:var(--text)}
+.result{margin-top:12px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:13px;white-space:pre-wrap;overflow-wrap:anywhere}
+.stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px}
+.stat{background:var(--bg);border:1px solid var(--border);padding:12px;border-radius:12px}
+.stat b{display:block;font-size:22px;color:var(--primary)}
+.stat span{font-size:12px;color:var(--muted)}
+footer{text-align:center;padding:25px 4%;border-top:1px solid var(--border);background:var(--card);color:var(--muted);font-size:13px}
+.footerlinks{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:12px}
+footer a{color:var(--primary)}
+.note{font-size:12px;color:var(--muted);margin-top:12px}
+@media(max-width:850px){.tools-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.tool-card{padding:13px;min-height:138px}}
+@media(max-width:560px){.navbar{padding:10px 4%}.logo{font-size:18px}nav{width:100%;justify-content:space-between;gap:1px}nav a{font-size:11px;padding:6px 5px}.theme{font-size:12px;padding:7px}.hero{border-radius:20px;padding:24px 18px}.tools-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.tool-card{padding:10px 8px;min-height:126px;border-radius:14px;gap:7px}.tool-icon{width:36px;height:36px;font-size:20px;border-radius:11px}.tool-card strong{font-size:12px;overflow-wrap:anywhere}.tool-card small{font-size:10px}.section-head h2{font-size:21px}.row-fields{grid-template-columns:1fr}.stat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.stat{padding:9px}.stat b{font-size:18px}.search-wrap{gap:4px}.search-wrap input{font-size:14px}}
+@media(max-width:360px){.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.tool-card strong{font-size:13px}.tool-card small{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
-<header><div class="navbar">
-<a class="logo" href="index.html">ZIWAN <span>YATTRA</span></a>
-<button class="theme" id="themeToggle" type="button">🌙 Dark Mode</button>
-<nav aria-label="Main navigation">
-<a href="index.html">🏠 Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a>
-</nav></div></header>
-
+<header>
+  <div class="navbar">
+    <a class="logo" href="index.html">ZIWAN <span>YATTRA</span></a>
+    <button class="theme" id="themeToggle" type="button">🌙 Dark Mode</button>
+    <nav aria-label="Main navigation">
+      <a href="index.html">🏠 Home</a><a href="daily-tools.html" aria-current="page">Daily Tools</a>
+      <a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a>
+    </nav>
+  </div>
+</header>
 <main>
-<section class="hero">
-    <div class="floating-icon">🛠️</div>
-    <h1>Daily Tools</h1>
-    <p>Simple tools that work directly in your browser. Enter your text or topic and generate results instantly.</p>
-    <div class="backrow">
-        <a class="btn" style="background:#fff;color:#8b00ff; box-shadow:0 4px 15px rgba(0,0,0,0.1);" href="index.html">← Back to Home</a>
+  <section class="hero">
+    <div class="eyebrow">ZIWAN YATTRA • FREE ONLINE UTILITIES</div>
+    <h1>Your Everyday Digital Toolkit.</h1>
+    <p>Simple, useful tools for everyday digital needs. Choose a tool, get your result, and keep moving.</p>
+    <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="toolSearch" type="search" placeholder="Find the right tool..." aria-label="Search tools"></div>
+  </section>
+  <div class="filters" id="filters" aria-label="Filter tools">
+    <button class="filter active" data-category="All" type="button">All Tools</button>
+    <button class="filter" data-category="Text" type="button">Text</button>
+    <button class="filter" data-category="Creator" type="button">YouTube & Creator</button>
+    <button class="filter" data-category="Calculator" type="button">Calculators</button>
+    <button class="filter" data-category="Image" type="button">Image</button>
+    <button class="filter" data-category="QR" type="button">QR & Utilities</button>
+  </div>
+  <section>
+    <div class="section-head"><div><h2>Explore Daily Tools</h2><p class="muted">Tap a card to open the tool. More tools can be added here over time.</p></div><span class="count" id="toolCount">18 tools</span></div>
+    <div class="tools-grid" id="toolsGrid">
+      <button class="tool-card" data-tool="word" data-category="Text" data-search="word counter character sentence paragraph count"><span class="tool-icon">T</span><strong>Word Counter</strong><small>Count words, characters and sentences.</small></button>
+      <button class="tool-card" data-tool="case" data-category="Text" data-search="text case converter uppercase lowercase title sentence"><span class="tool-icon">Aa</span><strong>Text Case Converter</strong><small>Change text case in one tap.</small></button>
+      <button class="tool-card" data-tool="clean" data-category="Text" data-search="text cleaner remove extra spaces duplicate lines"><span class="tool-icon">✧</span><strong>Text Cleaner</strong><small>Remove extra spaces and blank lines.</small></button>
+      <button class="tool-card" data-tool="reverse" data-category="Text" data-search="reverse text letters"><span class="tool-icon">⇄</span><strong>Reverse Text</strong><small>Reverse characters in your text.</small></button>
+      <button class="tool-card" data-tool="lorem" data-category="Text" data-search="lorem ipsum placeholder text generator"><span class="tool-icon">¶</span><strong>Lorem Ipsum</strong><small>Create placeholder text.</small></button>
+      <button class="tool-card" data-tool="hashtag" data-category="Creator" data-search="hashtag generator social media instagram youtube"><span class="tool-icon">#</span><strong>Hashtag Ideas</strong><small>Build a hashtag set from keywords.</small></button>
+      <button class="tool-card" data-tool="title" data-category="Creator" data-search="youtube title helper video title generator"><span class="tool-icon">▶</span><strong>YouTube Title Helper</strong><small>Generate title ideas from a topic.</small></button>
+      <button class="tool-card" data-tool="description" data-category="Creator" data-search="youtube description builder video description"><span class="tool-icon">▤</span><strong>Description Builder</strong><small>Draft a reusable video description.</small></button>
+      <button class="tool-card" data-tool="tagformat" data-category="Creator" data-search="youtube tag formatter comma tags"><span class="tool-icon">🏷</span><strong>Tag Formatter</strong><small>Turn lines into comma-separated tags.</small></button>
+      <button class="tool-card" data-tool="gst" data-category="Calculator" data-search="gst calculator tax inclusive exclusive india"><span class="tool-icon">%</span><strong>GST Calculator</strong><small>Estimate GST and total price.</small></button>
+      <button class="tool-card" data-tool="discount" data-category="Calculator" data-search="discount sale price savings calculator"><span class="tool-icon">₹</span><strong>Discount Calculator</strong><small>Calculate savings and final price.</small></button>
+      <button class="tool-card" data-tool="percentage" data-category="Calculator" data-search="percentage calculator percent of number"><span class="tool-icon">％</span><strong>Percentage Calculator</strong><small>Find a percentage of a number.</small></button>
+      <button class="tool-card" data-tool="emi" data-category="Calculator" data-search="emi loan monthly payment calculator"><span class="tool-icon">₹</span><strong>EMI Calculator</strong><small>Estimate monthly loan payments.</small></button>
+      <button class="tool-card" data-tool="age" data-category="Calculator" data-search="age calculator date of birth"><span class="tool-icon">🎂</span><strong>Age Calculator</strong><small>Calculate age from date of birth.</small></button>
+      <button class="tool-card" data-tool="unit" data-category="Calculator" data-search="unit converter km miles kg pounds celsius fahrenheit"><span class="tool-icon">⇄</span><strong>Unit Converter</strong><small>Convert common length and weight units.</small></button>
+      <button class="tool-card" data-tool="qr" data-category="QR" data-search="qr code generator url text"><span class="tool-icon">▦</span><strong>QR Code Generator</strong><small>Create a QR for text or a link.</small></button>
+      <button class="tool-card" data-tool="password" data-category="QR" data-search="password generator secure random password"><span class="tool-icon">🔐</span><strong>Password Generator</strong><small>Generate a random password locally.</small></button>
+      <button class="tool-card" data-tool="date" data-category="Calculator" data-search="date difference days between dates calculator"><span class="tool-icon">📅</span><strong>Date Difference</strong><small>Count days between two dates.</small></button>
     </div>
-</section>
-
-<section class="section">
-<div class="tools">
-    <!-- Tool 1: Word Counter -->
-    <div class="panel">
-        <h3>Word Counter</h3>
-        <p class="muted">Count words and characters as you type.</p>
-        <label for="wordInput">Your text</label>
-        <textarea id="wordInput" placeholder="Type or paste text..."></textarea>
-        <div class="result" id="wordResult">Words: 0 | Characters: 0 | Without spaces: 0</div>
-        <button onclick="countText()">Count Text</button>
-        <button onclick="copyText('wordResult')" style="background:var(--green);">Copy</button>
-    </div>
-
-    <!-- Tool 2: Hashtag Generator -->
-    <div class="panel">
-        <h3>Hashtag Idea Generator</h3>
-        <p class="muted">Basic topic-based hashtag ideas.</p>
-        <label for="hashInput">Video topic</label>
-        <input id="hashInput" placeholder="e.g. cute puppy rescue">
-        <button onclick="makeHashtags()" style="margin-top:10px;">Generate Hashtags</button>
-        <div class="result" id="hashResult">Hashtag ideas will appear here.</div>
-        <button onclick="copyText('hashResult')" style="background:var(--green);">Copy Results</button>
-    </div>
-
-    <!-- Tool 3: YouTube Title Helper -->
-    <div class="panel">
-        <h3>YouTube Title Helper</h3>
-        <p class="muted">Generate starter title ideas.</p>
-        <label for="titleInput">Video topic</label>
-        <input id="titleInput" placeholder="e.g. puppy rescue">
-        <button onclick="makeTitles()" style="margin-top:10px;">Generate Titles</button>
-        <div class="result" id="titleResult">Title ideas will appear here.</div>
-        <button onclick="copyText('titleResult')" style="background:var(--green);">Copy Results</button>
-    </div>
-
-    <!-- Tool 4: Text Case Converter -->
-    <div class="panel">
-        <h3>Text Case Converter</h3>
-        <p class="muted">Change uppercase, lowercase or title case.</p>
-        <label for="caseInput">Your text</label>
-        <textarea id="caseInput" placeholder="Type your text..."></textarea>
-        <div style="display:flex; gap:5px; flex-wrap:wrap; margin-bottom:10px;">
-            <button onclick="convertCase('upper')">UPPERCASE</button>
-            <button onclick="convertCase('lower')">lowercase</button>
-            <button onclick="convertCase('title')">Title Case</button>
-        </div>
-        <div class="result" id="caseResult">Converted text appears here.</div>
-        <button onclick="copyText('caseResult')" style="background:var(--green);">Copy Results</button>
-    </div>
-</div>
-
-<div class="notice" style="margin-top:25px;">
-    <strong>Note:</strong> Hashtag and title suggestions are basic ideas, not live trend data or a guarantee of views.
-</div>
-
-<div class="backrow" style="justify-content: space-between;">
-    <a class="btn" href="index.html">← Back to Home</a>
-    <a class="btn" href="mobile-help.html" style="background:var(--primary);">Next: Mobile Help →</a>
-</div>
-</section>
+    <div class="empty" id="emptyState">No tools found. Try another search or choose All Tools.</div>
+  </section>
+  <section class="tool-panel" id="toolPanel" aria-live="polite">
+    <div class="panel-top"><div><div class="eyebrow" style="color:var(--primary)">ZIWAN YATTRA TOOL</div><h2 id="panelTitle">Tool</h2></div><button class="close" id="closeTool" type="button">✕ Close</button></div>
+    <div class="tool-ui" id="toolUI"></div>
+    <p class="note" id="toolNote">Your inputs are processed in this browser unless a tool clearly says otherwise.</p>
+  </section>
 </main>
-
 <footer>
-    <strong>ZIWAN YATTRA</strong>
-    <p>Useful tools. Helpful guides. Digital growth.</p>
-    <div style="margin-bottom: 15px;">
-        <a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
-    </div>
-    <p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p>
+  <strong>ZIWAN YATTRA</strong>
+  <p>Your Everyday Digital Toolkit.</p>
+  <div class="footerlinks"><a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a></div>
+  <p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p>
 </footer>
-
 <script>
-const themeToggle=document.getElementById("themeToggle");
-themeToggle.addEventListener("click",function(){
-    document.body.classList.toggle("dark");
-    this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
+const grid=$('#toolsGrid'), search=$('#toolSearch'), count=$('#toolCount'), empty=$('#emptyState');
+let activeCategory='All';
+const cards=$$('.tool-card');
+function filterTools(){
+ const q=search.value.trim().toLowerCase(); let visible=0;
+ cards.forEach(card=>{
+  const okCat=activeCategory==='All'||card.dataset.category===activeCategory;
+  const okText=(card.innerText+' '+card.dataset.search).toLowerCase().includes(q);
+  const show=okCat&&okText; card.style.display=show?'flex':'none'; if(show)visible++;
+ });
+ count.textContent=visible+' tool'+(visible===1?'':'s');
+ empty.style.display=visible?'none':'block';
+}
+search.addEventListener('input',filterTools);
+$$('.filter').forEach(btn=>btn.addEventListener('click',()=>{
+ $$('.filter').forEach(b=>b.classList.toggle('active',b===btn));
+ activeCategory=btn.dataset.category;filterTools();
+}));
+$('#themeToggle').addEventListener('click',function(){
+ document.body.classList.toggle('dark');
+ this.textContent=document.body.classList.contains('dark')?'☀️ Light Mode':'🌙 Dark Mode';
 });
-document.getElementById("year").textContent=new Date().getFullYear();
-
-// Word Counter
-function countText(){
-    const el=document.getElementById("wordInput");
-    const t=el.value;
-    const words=t.trim()?t.trim().split(/\s+/).length:0;
-    document.getElementById("wordResult").textContent="Words: "+words+" | Characters: "+t.length+" | Without spaces: "+t.replace(/\s/g,"").length;
+$('#year').textContent=new Date().getFullYear();
+const panel=$('#toolPanel'), panelTitle=$('#panelTitle'), ui=$('#toolUI'), note=$('#toolNote');
+function field(label,id,placeholder='',type='text',value=''){return `<div class="field"><label for="${id}">${label}</label><input id="${id}" type="${type}" placeholder="${placeholder}" value="${value}"></div>`}
+function area(label,id,placeholder='Paste or type here...',value=''){return `<div class="field"><label for="${id}">${label}</label><textarea id="${id}" placeholder="${placeholder}">${value}</textarea></div>`}
+function btn(label,fn='runTool()'){return `<button type="button" class="btn" onclick="${fn}">${label}</button>`}
+function secondary(label,fn){return `<button type="button" class="btn secondary" onclick="${fn}">${label}</button>`}
+function result(id='result'){return `<div class="result" id="${id}" aria-live="polite">Your result will appear here.</div>`}
+const tools={
+word:{title:'Word Counter',note:'Text stays in this browser.',html:()=>area('Your text','txt')+`<div class="stat-grid"><div class="stat"><b id="words">0</b><span>Words</span></div><div class="stat"><b id="chars">0</b><span>Characters</span></div><div class="stat"><b id="sentences">0</b><span>Sentences</span></div></div><div class="actions">${secondary('Copy text',"copyValue('txt')")}${secondary('Clear',"clearFields(['txt'])")}</div>`,init:()=>$('#txt').addEventListener('input',()=>{let t=$('#txt').value;$('#words').textContent=(t.trim().match(/\S+/g)||[]).length;$('#chars').textContent=t.length;$('#sentences').textContent=(t.match(/[.!?]+(?=\s|$)/g)||[]).length|| (t.trim()?1:0)})},
+case:{title:'Text Case Converter',html:()=>area('Your text','txt')+`<div class="actions">${btn('UPPERCASE',"caseChange('upper')")}${btn('lowercase',"caseChange('lower')")}${btn('Title Case',"caseChange('title')")}${btn('Sentence case',"caseChange('sentence')")}${secondary('Copy result',"copyResult()")}</div>`+result()},
+clean:{title:'Text Cleaner',html:()=>area('Text to clean','txt')+`<label><input type="checkbox" id="dedupe"> Remove duplicate lines</label><div class="actions">${btn('Clean text')}${secondary('Copy result',"copyResult()")}</div>`+result(),run:()=>{let lines=$('#txt').value.replace(/\r/g,'').split('\n').map(x=>x.replace(/[ \t]+/g,' ').trim()).filter(Boolean);if($('#dedupe').checked)lines=[...new Set(lines)];showResult(lines.join('\n'))}},
+reverse:{title:'Reverse Text',html:()=>area('Your text','txt')+`<div class="actions">${btn('Reverse text')}${secondary('Copy result',"copyResult()")}</div>`+result(),run:()=>showResult([...$('#txt').value].reverse().join(''))},
+lorem:{title:'Lorem Ipsum Generator',html:()=>field('Paragraphs (1–10)','amount','3','number','3')+`<div class="actions">${btn('Generate text')}${secondary('Copy result',"copyResult()")}</div>`+result(),run:()=>{let n=Math.max(1,Math.min(10,Number($('#amount').value)||1));let p='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat, sapien at aliquet consequat, lectus erat varius justo, sed blandit mauris augue non magna.';showResult(Array.from({length:n},()=>p).join('\n\n'))}},
+hashtag:{title:'Hashtag Idea Generator',html:()=>field('Topic or keywords','topic','e.g. cute puppies rescue')+`<div class="actions">${btn('Generate hashtags')}${secondary('Copy result',"copyResult()")}</div>`+result(),run:()=>{let words=$('#topic').value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').match(/[a-z0-9]+/g)||[];let tags=[...new Set([...words,...(words.length?['shorts','viral','trending','explore','creator']:[])])].slice(0,25).map(x=>'#'+x.replace(/[^a-z0-9]/g,''));showResult(tags.join(' '))}},
+title:{title:'YouTube Title Helper',html:()=>field('Video topic','topic','e.g. puppy rescue story')+`<div class="actions">${btn('Create title ideas')}${secondary('Copy result',"copyResult()")}</div>`+result(),run:()=>{let t=$('#topic').value.trim();showResult(t?[`${t} ❤️ A Story You Won't Forget`,`The Truth About ${t} 😢`,`Watch This Before You Scroll: ${t}`,`${t} | Emotional Moments`,`You Won't Believe What Happened: ${t}`].join('\n'):'Please enter a topic first.')}},
+description:{title:'YouTube Description Builder',html:()=>field('Video title','title','Enter your video title')+field('Channel name','channel','ZIWAN YATTRA YT','text','ZIWAN YATTRA YT')+field('Main keywords','keywords','keyword 1, keyword 2')+`<div class="actions">${btn('Build description')}${secondary('Copy result',"copyResult()")}</div>`+result(),run:()=>showResult(`${$('#title').value.trim()}\n\nThanks for watching! Subscribe to ${$('#channel').value.trim()} for more videos.\n\nIn this video: ${$('#keywords').value.trim()}\n\nLike, share and subscribe for more.\n\n#Shorts #YouTube`)},
+tagformat:{title:'YouTube Tag Formatter',html:()=>area('Paste tags (one per line or separated by commas)','txt')+`<div class="actions">${btn('Format tags')}${secondary('Copy result',"copyResult()")}</div>`+result(),run:()=>showResult([...new Set($('#txt').value.split(/[,\n]/).map(x=>x.trim()).filter(Boolean))].join(', '))},
+gst:{title:'GST Calculator',html:()=>`<div class="row-fields">${field('Amount (₹)','amount','1000','number','1000')}<div class="field"><label for="rate">GST rate</label><select id="rate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select></div></div><div class="field"><label for="gstmode">Amount type</label><select id="gstmode"><option value="exclusive">Add GST to amount</option><option value="inclusive">GST already included</option></select></div>${btn('Calculate GST')}`+result(),run:()=>{let a=Number($('#amount').value),r=Number($('#rate').value)/100;if(!Number.isFinite(a)||a<0)return showResult('Enter a valid non-negative amount.');let base=$('#gstmode').value==='exclusive'?a:a/(1+r),tax=$('#gstmode').value==='exclusive'?a*r:a-base;showResult(`Base amount: ₹${base.toFixed(2)}\nGST (${(r*100).toFixed(0)}%): ₹${tax.toFixed(2)}\nTotal amount: ₹${(base+tax).toFixed(2)}`)}},
+discount:{title:'Discount Calculator',html:()=>`<div class="row-fields">${field('Original price (₹)','price','1000','number','1000')}${field('Discount (%)','disc','10','number','10')}</div>${btn('Calculate discount')}`+result(),run:()=>{let p=Number($('#price').value),d=Number($('#disc').value);if(p<0||d<0||d>100||!Number.isFinite(p+d))return showResult('Enter a valid price and a discount from 0 to 100%.');showResult(`You save: ₹${(p*d/100).toFixed(2)}\nFinal price: ₹${(p*(1-d/100)).toFixed(2)}`)}},
+percentage:{title:'Percentage Calculator',html:()=>`<div class="row-fields">${field('Percentage (%)','pct','25','number','25')}${field('Number','num','200','number','200')}</div>${btn('Calculate')}`+result(),run:()=>{let p=Number($('#pct').value),n=Number($('#num').value);if(!Number.isFinite(p+n))return showResult('Enter valid numbers.');showResult(`${p}% of ${n} = ${(p*n/100).toLocaleString(undefined,{maximumFractionDigits:6})}`)}},
+emi:{title:'EMI Calculator',note:'Estimate only; lender fees, insurance and rate rules may change the actual EMI.',html:()=>`<div class="row-fields">${field('Loan amount (₹)','loan','100000','number','100000')}${field('Annual interest (%)','interest','10','number','10')}${field('Duration (months)','months','12','number','12')}</div>${btn('Calculate EMI')}`+result(),run:()=>{let P=Number($('#loan').value),annual=Number($('#interest').value),n=Number($('#months').value),r=annual/1200;if(P<=0||annual<0||n<=0||!Number.isFinite(P+annual+n))return showResult('Enter a positive loan amount and duration, and a valid interest rate.');let e=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);showResult(`Estimated monthly EMI: ₹${e.toFixed(2)}\nTotal repayment: ₹${(e*n).toFixed(2)}\nEstimated interest: ₹${(e*n-P).toFixed(2)}`)}},
+age:{title:'Age Calculator',html:()=>field('Date of birth','dob','','date')+btn('Calculate age')+result(),run:()=>{let v=$('#dob').value;if(!v)return showResult('Select your date of birth.');let d=new Date(v+'T00:00:00'),now=new Date();if(d>now)return showResult('Date of birth cannot be in the future.');let y=now.getFullYear()-d.getFullYear(),m=now.getMonth()-d.getMonth(),day=now.getDate()-d.getDate();if(day<0){m--;day+=new Date(now.getFullYear(),now.getMonth(),0).getDate()}if(m<0){y--;m+=12}showResult(`Age: ${y} years, ${m} months, ${day} days`)}},
+unit:{title:'Unit Converter',html:()=>`<div class="row-fields">${field('Value','val','1','number','1')}<div class="field"><label for="unitType">Convert</label><select id="unitType"><option value="kmmi">Kilometres → Miles</option><option value="mikm">Miles → Kilometres</option><option value="kgp">Kilograms → Pounds</option><option value="pkg">Pounds → Kilograms</option><option value="cf">Celsius → Fahrenheit</option><option value="fc">Fahrenheit → Celsius</option><option value="cm">Centimetres → Inches</option><option value="mc">Inches → Centimetres</option></select></div></div>${btn('Convert')}`+result(),run:()=>{let v=Number($('#val').value),type=$('#unitType').value;if(!Number.isFinite(v))return showResult('Enter a valid number.');let map={kmmi:[v*0.621371,'miles'],mikm:[v/0.621371,'km'],kgp:[v*2.20462,'lb'],pkg:[v/2.20462,'kg'],cf:[v*9/5+32,'°F'],fc:[(v-32)*5/9,'°C'],cm:[v/2.54,'inches'],mc:[v*2.54,'cm']};showResult(`${map[type][0].toLocaleString(undefined,{maximumFractionDigits:6})} ${map[type][1]}`)}},
+qr:{title:'QR Code Generator',note:'QR image is generated by a third-party online service; do not enter passwords, private information or confidential data.',html:()=>area('Text or URL','qrText','https://example.com')+`<div class="actions">${btn('Generate QR')}${secondary('Open QR image',"openQR()")}</div>`+result('qrResult')+`<div id="qrImage" style="margin-top:12px"></div>`,run:()=>{let v=$('#qrText').value.trim();if(!v)return showResult('Enter text or a URL first.','qrResult');$('#qrResult').textContent='QR ready below. If it does not load, use Open QR image.';$('#qrImage').innerHTML=`<img alt="Generated QR code" style="width:220px;max-width:100%;background:#fff;padding:10px;border-radius:12px" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(v)}"><p><a class="btn secondary" target="_blank" rel="noopener noreferrer" href="https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=${encodeURIComponent(v)}">Open / save large QR</a></p>`}},
+password:{title:'Password Generator',note:'Generated locally in your browser. Save it securely; never share passwords.',html:()=>`<div class="row-fields">${field('Length (8–64)','length','16','number','16')}<div class="field"><label><input type="checkbox" id="symbols" checked> Include symbols</label></div></div>${btn('Generate password')}${secondary('Copy password',"copyResult()")}`+result(),run:()=>{let n=Math.max(8,Math.min(64,Number($('#length').value)||16)),chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'+($('#symbols').checked?'!@#$%^&*()-_=+?':'');let arr=new Uint32Array(n);crypto.getRandomValues(arr);showResult([...arr].map(x=>chars[x%chars.length]).join(''))}},
+date:{title:'Date Difference Calculator',html:()=>`<div class="row-fields">${field('Start date','startDate','','date')}${field('End date','endDate','','date')}</div>${btn('Calculate days')}`+result(),run:()=>{let a=$('#startDate').value,b=$('#endDate').value;if(!a||!b)return showResult('Choose both dates.');let diff=Math.round((Date.parse(b+'T00:00:00')-Date.parse(a+'T00:00:00'))/86400000);showResult(`${Math.abs(diff).toLocaleString()} days${diff<0?' (end date is before start date)':''}`)}}
+};
+let currentTool=null;
+function openTool(key){
+ const t=tools[key];if(!t)return;currentTool=key;panelTitle.textContent=t.title;ui.innerHTML=t.html();note.textContent=t.note||'This tool works in your browser. Avoid entering confidential information into online services.';panel.classList.add('open');panel.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});if(t.init)t.init();
 }
-document.getElementById("wordInput").addEventListener("input",countText);
-
-// Hashtag Generator
-function makeHashtags(){
-    const topic=document.getElementById("hashInput").value.trim();
-    const out=document.getElementById("hashResult");
-    if(!topic){out.textContent="Please enter a topic first.";return;}
-    const words=topic.toLowerCase().replace(/[^a-z0-9\s]/g," ").trim().split(/\s+/).filter(Boolean);
-    const tags=[...new Set([words.join(""),...words,"shorts","youtube","creator","viralvideo"].filter(Boolean))].map(x=>"#"+x);
-    out.textContent=tags.join(" ");
-}
-
-// Title Helper
-function makeTitles(){
-    const topic=document.getElementById("titleInput").value.trim();
-    const out=document.getElementById("titleResult");
-    if(!topic){out.textContent="Please enter a video topic first.";return;}
-    out.textContent=["1. "+topic+" | Watch Till the End!","2. The Story of "+topic,"3. You Won't Believe This: "+topic,"4. A Special Moment: "+topic,"5. "+topic+" — What Happens Next?"].join("\n");
-}
-
-// Case Converter
-function convertCase(mode){
-    const t=document.getElementById("caseInput").value;
-    let out=t;
-    if(mode==="upper")out=t.toUpperCase();
-    if(mode==="lower")out=t.toLowerCase();
-    if(mode==="title")out=t.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
-    document.getElementById("caseResult").textContent=out||"Enter some text first.";
-}
-
-// Copy Text Function
-async function copyText(id){
-    const text=document.getElementById(id).textContent;
-    try{
-        await navigator.clipboard.writeText(text);
-        alert("Results copied!");
-    }catch(e){
-        const a=document.createElement("textarea");
-        a.value=text;
-        document.body.appendChild(a);
-        a.select();
-        document.execCommand("copy");
-        a.remove();
-        alert("Results copied!");
-    }
-}
+cards.forEach(c=>c.addEventListener('click',()=>openTool(c.dataset.tool)));
+$('#closeTool').addEventListener('click',()=>{panel.classList.remove('open');currentTool=null});
+function showResult(text,id='result'){let el=$('#'+id);if(el)el.textContent=text}
+function caseChange(mode){let s=$('#txt').value,out=s;if(mode==='upper')out=s.toUpperCase();if(mode==='lower')out=s.toLowerCase();if(mode==='title')out=s.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());if(mode==='sentence')out=s.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g,c=>c.toUpperCase());showResult(out)}
+function copyResult(){let el=$('#result');if(!el)return;copyText(el.textContent)}
+function copyValue(id){copyText($('#'+id).value)}
+function copyText(text){if(!text||text==='Your result will appear here.'){return}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(()=>alert('Copied!')).catch(()=>fallbackCopy(text))}else fallbackCopy(text)}
+function fallbackCopy(text){let ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');alert('Copied!')}catch(e){alert('Copy failed. Please select and copy manually.')}ta.remove()}
+function clearFields(ids){ids.forEach(id=>{let el=$('#'+id);if(el)el.value=''});if(currentTool==='word')tools.word.init()}
+function openQR(){let v=$('#qrText')?.value.trim();if(!v)return showResult('Enter text or a URL first.','qrResult');window.open('https://api.qrserver.com/v1/create-qr-code/?size=600x600&data='+encodeURIComponent(v),'_blank','noopener')}
+function runTool(){const t=tools[currentTool];if(t&&t.run)t.run();else if(currentTool==='word'){tools.word.init()}else showResult('Choose an action above.')}
 </script>
-
-<!-- GoatCounter Tracking Code -->
+<!-- Existing GoatCounter analytics preserved -->
 <script data-goatcounter="https://ziwanyattra.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-
 </body>
 </html>
