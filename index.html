@@ -77,24 +77,38 @@ footer{text-align:center;margin-top:60px;padding:30px 5%;background:var(--card);
 footer a{color:var(--primary);margin:5px;font-weight:600}
 footer a:hover{text-decoration:underline}
 
-/* 📱 Mobile View Fixes (Naya Update) 📱 */
-@media(max-width:900px){.grid,.tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* 📱 Mobile View Fixes (2x2 Grid) 📱 */
+@media(max-width:900px){
+    .grid,.tools{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 @media(max-width:560px){
     .navbar{padding:12px 4%;justify-content:center;text-align:center;gap: 10px;}
     nav{width:100%;justify-content:center;margin-top:5px; gap: 4px;}
     nav a{font-size:12px; padding:6px 10px; border: 1px solid var(--border); border-radius: 20px; background: var(--card);}
-    .grid,.tools{grid-template-columns:1fr; gap:15px;}
     
-    .hero{padding:35px 20px; border-radius:20px; text-align: center;}
-    .premium-greeting{justify-content: center; text-align: center; font-size: 32px; gap: 5px;}
-    .floating-gift{font-size: 40px; margin-bottom: 5px;}
-    .hero-subtitle{font-size: 18px;}
-    .hero-desc{font-size: 14px; margin-bottom: 20px;}
+    /* 🔥 Yahan 2x2 Grid ka pakka fix hai 🔥 */
+    .grid, .tools {
+        grid-template-columns: repeat(2, 1fr) !important; 
+        gap: 12px;
+    }
+    
+    /* Cards ko chhota kiya taaki 2 column me fit ho */
+    .card, .panel { padding: 15px !important; }
+    .card h3 { font-size: 16px; }
+    .card p { font-size: 12px; margin-bottom: 10px; }
+    .card div { font-size: 25px !important; } 
+    .card strong { font-size: 13px; }
+
+    /* Hero section fix */
+    .hero{padding:30px 15px; border-radius:20px; text-align: center;}
+    .premium-greeting{justify-content: center; text-align: center; font-size: 28px; gap: 5px;}
+    .floating-gift{font-size: 35px; margin-bottom: 5px; display: block;}
+    .hero-subtitle{font-size: 16px;}
+    .hero-desc{font-size: 13px; margin-bottom: 20px;}
     
     .backrow{flex-direction: column; align-items: stretch; gap: 10px;}
-    .backrow .btn{width:100%; text-align: center; padding: 12px 10px;}
-    
-    .card, .panel { padding: 18px; }
+    .backrow .btn{width:100%; text-align: center; padding: 10px;}
 }
 </style>
 </head>
