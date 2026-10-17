@@ -6,40 +6,83 @@
 <meta name="description" content="Creator services, starting prices and WhatsApp enquiries.">
 <meta name="theme-color" content="#6546e8">
 <title>Creator Services | ZIWAN YATTRA</title>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3;--green:#128c52}
 *{box-sizing:border-box;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
-body.dark{--bg:#101323;--card:#1b2035;--text:#f5f6ff;--muted:#c0c7db;--border:#343951}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;line-height:1.6;transition:background 0.3s,color 0.3s}
+body.dark{--bg:#0d111c;--card:#161b2e;--text:#f5f6ff;--muted:#a3aec7;--border:#2a324d}
 a{text-decoration:none;color:inherit}
-header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,0.02)}
 .navbar{max-width:1200px;margin:auto;padding:13px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.logo{font-size:21px;font-weight:900;color:var(--primary)}.logo span{color:var(--text)}
+.logo{font-size:22px;font-weight:900;color:var(--primary);letter-spacing:-0.5px}.logo span{color:var(--text)}
 nav{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
-nav a{font-size:13px;font-weight:bold;padding:8px;color:var(--text);border-radius:8px}
+nav a{font-size:13px;font-weight:600;padding:8px 12px;color:var(--text);border-radius:8px;transition:0.3s}
 nav a:hover{background:var(--bg);color:var(--primary)}
-button,.btn{display:inline-block;padding:10px 14px;border:0;border-radius:10px;background:var(--primary);color:#fff;font-weight:bold;cursor:pointer;font-size:14px;margin:4px 2px}
+button,.btn{display:inline-block;padding:12px 18px;border:0;border-radius:12px;background:var(--primary);color:#fff;font-weight:600;cursor:pointer;font-size:15px;margin:4px 2px;transition:all 0.3s ease;font-family:'Poppins',sans-serif}
+button:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(101,70,232,0.3)}
 .theme{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.theme:hover{box-shadow:none;background:var(--border)}
 .whatsapp{background:var(--green);color:#fff}
-.hero{width:92%;max-width:1200px;margin:24px auto;padding:42px 30px;border-radius:25px;color:white;background:linear-gradient(125deg,#4323bd,#7956f0 55%,#04b6cf)}
-.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.12;margin:15px 0}.hero p{max-width:700px;color:#f1edff}
-.section{width:92%;max-width:1200px;margin:32px auto;scroll-margin-top:100px}
-h2{font-size:26px;margin:0 0 6px}.muted,.small{color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
-.card,.panel{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:18px;min-width:0}
-.card h3,.panel h3{margin:5px 0 8px}.card p{color:var(--muted);font-size:14px}
-label{display:block;font-weight:bold;margin:12px 0 5px}
-input,textarea,select{width:100%;padding:11px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:inherit}
-textarea{min-height:90px;resize:vertical}
-.price{font-size:21px;color:var(--primary);font-weight:bold;margin:10px 0}
-.notice{padding:12px 15px;border-left:4px solid #e3a126;background:var(--bg);border-radius:8px}
-.status{padding:12px;border-radius:10px;margin:12px 0;display:none;overflow-wrap:anywhere}
-.status.show{display:block}.status.ok{background:#e2f8eb;color:#135c32}.status.err{background:#fff0df;color:#713d00}
-.backrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-footer{text-align:center;margin-top:45px;padding:25px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:13px}
-footer a{color:var(--primary);margin:5px}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.navbar{padding:12px 4%}.logo{font-size:18px}nav{width:100%}nav a{font-size:12px;padding:6px}.grid{grid-template-columns:1fr}.hero{padding:32px 21px}.section{margin:26px auto}}
+.whatsapp:hover{box-shadow:0 6px 15px rgba(18,140,82,0.3)}
+
+/* Premium Hero Section */
+.hero{width:92%;max-width:1200px;margin:30px auto;padding:60px 40px;border-radius:30px;color:white;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);position:relative;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1)}
+.hero::before{content:"";position:absolute;top:-20%;left:-10%;width:50%;height:150%;background:radial-gradient(circle,rgba(0,242,254,0.15) 0%,transparent 60%)}
+.hero::after{content:"";position:absolute;bottom:-20%;right:-10%;width:50%;height:150%;background:radial-gradient(circle,rgba(255,8,68,0.15) 0%,transparent 60%)}
+.hero h1{font-size:clamp(32px,5vw,55px);line-height:1.1;margin:10px 0;font-weight:900;position:relative;z-index:1}
+.hero p{max-width:700px;color:#cbd5e1;font-size:16px;position:relative;z-index:1;margin-bottom:25px}
+
+/* Floating Icon */
+.floating-icon{display:inline-block;font-size:45px;animation:floatIcon 2.5s ease-in-out infinite;position:relative;z-index:1}
+@keyframes floatIcon{0%{transform:translateY(0px) rotate(0deg)}50%{transform:translateY(-15px) rotate(10deg)}100%{transform:translateY(0px) rotate(0deg)}}
+
+.section{width:92%;max-width:1200px;margin:40px auto;scroll-margin-top:100px}
+h2{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-0.5px}.muted,.small{color:var(--muted)}
+
+/* Services Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:22px}
+
+/* Premium Cards */
+.card,.panel{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;min-width:0;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.02)}
+.card:hover{transform:translateY(-8px);box-shadow:0 15px 30px rgba(101,70,232,0.1);border-color:var(--primary)}
+body.dark .card:hover{box-shadow:0 15px 30px rgba(0,0,0,0.3)}
+.card h3{margin:10px 0 5px;font-weight:800;font-size:18px;color:var(--text)}
+.card p{color:var(--muted);font-size:14px;margin-bottom:15px}
+.price{font-size:20px;color:var(--primary);font-weight:800;margin:10px 0}
+
+/* Form Inputs */
+label{display:block;font-weight:600;margin:12px 0 8px;font-size:14px}
+input,textarea,select{width:100%;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;transition:0.3s;font-size:14px}
+input:focus,textarea:focus,select:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px rgba(101,70,232,0.2)}
+textarea{min-height:100px;resize:vertical}
+
+/* Status Messages */
+.status{padding:15px;border-radius:12px;margin:15px 0;display:none;overflow-wrap:anywhere;font-weight:600;text-align:center;}
+.status.show{display:block}
+.status.ok{background:#e2f8eb;color:#135c32;border:1px solid #135c32}
+.status.err{background:#fff0df;color:#713d00;border:1px solid #713d00}
+
+.notice{padding:15px;border-left:4px solid #e3a126;background:var(--bg);border-radius:8px;font-size:14px;margin-top:20px}
+.backrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px; justify-content: space-between;}
+footer{text-align:center;margin-top:60px;padding:30px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:14px}
+footer a{color:var(--primary);margin:5px;font-weight:600}
+footer a:hover{text-decoration:underline}
+
+/* Mobile Fixes */
+@media(max-width:768px){
+    .navbar{padding:12px 4%;justify-content:center;text-align:center}
+    nav{width:100%;justify-content:center;margin-top:10px;gap:2px}
+    nav a{font-size:12px;padding:6px 8px}
+    .hero{padding:40px 20px;border-radius:20px;text-align:center}
+    .floating-icon{font-size:40px}
+    .section{margin:30px auto}
+    .backrow{flex-direction:column;align-items:stretch;gap:10px}
+    .backrow .btn{width:100%;text-align:center}
+}
 </style>
 </head>
 <body>
@@ -49,54 +92,102 @@ footer a{color:var(--primary);margin:5px}
 <nav aria-label="Main navigation">
 <a href="index.html">🏠 Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a>
 </nav></div></header>
-<main>
-<section class="hero"><span>🎬 CREATOR & TECH SERVICES</span><h1>Let's Build Something Good.</h1><p>Choose a service and send your requirements on WhatsApp. Prices are starting estimates; final price, delivery time and work scope must be confirmed before payment.</p><a class="btn" style="background:white;color:#5936d8" href="index.html">← Back to Home</a></section>
-<section class="section"><h2>Our Services</h2><p class="muted">Select a service to prepare a WhatsApp enquiry.</p><div class="grid">
-<div class="card"><h3>🖼️ Thumbnail Design</h3><p>Custom YouTube thumbnail design.</p><div class="price">₹99 onwards</div><button class="whatsapp" onclick="orderService('Thumbnail Design','₹99 onwards')">Order on WhatsApp</button></div>
-<div class="card"><h3>📣 Title & SEO</h3><p>Titles, descriptions, keywords and hashtags.</p><div class="price">Ask for price</div><button class="whatsapp" onclick="orderService('Title & SEO','Ask for price')">Ask on WhatsApp</button></div>
-<div class="card"><h3>🎬 Reels / Shorts Editing</h3><p>Short-form editing and captions.</p><div class="price">₹149 onwards</div><button class="whatsapp" onclick="orderService('Reels / Shorts Editing','₹149 onwards')">Order on WhatsApp</button></div>
-<div class="card"><h3>🎥 Video Editing</h3><p>Editing for YouTube and other platforms.</p><div class="price">₹299 onwards</div><button class="whatsapp" onclick="orderService('Video Editing','₹299 onwards')">Order on WhatsApp</button></div>
-<div class="card"><h3>📱 Social Media Setup</h3><p>Profile setup and basic branding guidance.</p><div class="price">₹499 onwards</div><button class="whatsapp" onclick="orderService('Social Media Setup','₹499 onwards')">Order on WhatsApp</button></div>
-<div class="card"><h3>📦 Monthly Creator Package</h3><p>Recurring support with agreed deliverables.</p><div class="price">₹1,499 onwards</div><button class="whatsapp" onclick="orderService('Monthly Creator Package','₹1,499 onwards')">Ask on WhatsApp</button></div>
-<div class="card"><h3>🌐 Website Making</h3><p>Business websites, portfolios and landing pages.</p><div class="price">Custom quote</div><button class="whatsapp" onclick="orderService('Website Making','Custom quote')">Discuss Project</button></div>
-<div class="card"><h3>📲 App Making</h3><p>App prototypes, UI design and development enquiries.</p><div class="price">Custom quote</div><button class="whatsapp" onclick="orderService('App Making','Custom quote')">Discuss Project</button></div>
-<div class="card"><h3>🎨 Logo & Graphic Design</h3><p>Logos, banners, posters and social media graphics.</p><div class="price">Ask for price</div><button class="whatsapp" onclick="orderService('Logo & Graphic Design','Ask for price')">Ask on WhatsApp</button></div>
-</div>
-<section class="section"><div class="panel"><h2>Share Your Requirements</h2><p class="muted">Submit to the local backend to save the enquiry, or open WhatsApp to send it yourself. File selection does not upload a file.</p>
-<form id="helpForm">
-<label for="category">Category</label><select id="category" required><option value="">Choose category</option><option>Daily Tools</option><option>Mobile Problems</option><option>AI Jankari</option><option>Thumbnail Design</option><option>Title & SEO</option><option>Reels / Shorts Editing</option><option>Video Editing</option><option>Social Media Setup</option><option>Monthly Creator Package</option><option>Website Making</option><option>App Making</option><option>Logo & Graphic Design</option><option>Other</option></select>
-<label for="helpType">Type of Help</label><select id="helpType" required><option value="">Choose an option</option><option>Free Guidance</option><option>Paid Service - Ask for Price</option></select>
-<label for="details">Problem or Requirements</label><textarea id="details" required maxlength="3000" placeholder="Describe your requirements..."></textarea>
-<label for="email">Email (optional)</label><input id="email" type="email" maxlength="254" placeholder="Your email, if you want to share it">
-<label for="attachment">Reference file (optional)</label><input id="attachment" type="file" accept="image/*,.pdf,.txt,.doc,.docx">
-<p class="small">The selected file is not uploaded to the backend or attached to WhatsApp. Avoid sending sensitive documents.</p>
-<button class="whatsapp" id="submitBtn" type="submit">Save Enquiry to Backend</button>
-<button type="button" onclick="sendFormToWhatsApp()">Continue to WhatsApp Instead</button>
-</form>
-<div id="formStatus" class="status" role="status" aria-live="polite"></div>
-<div class="notice"><strong>Payment:</strong> No payment is collected by this form. Payment integration will be added only after secure backend setup.</div></div></section>
-<div class="backrow"><a class="btn" href="index.html">← Back to Home</a><a class="btn" href="ai-knowledge.html">← AI Jankari</a></div></section>
-</main>
-<footer><strong>ZIWAN YATTRA</strong><p>Useful tools. Helpful guides. Digital growth.</p>
-<a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
-<p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p></footer>
 
-<!-- Yahan se saara JavaScript shuru hota hai -->
+<main>
+<section class="hero">
+    <div class="floating-icon">🎬</div>
+    <h1>Let's Build Something Good.</h1>
+    <p>Choose a service and send your requirements on WhatsApp. Prices are starting estimates; final price, delivery time and work scope must be confirmed before payment.</p>
+    <div class="backrow">
+        <a class="btn" style="background:#fff;color:#0f0c29; box-shadow:0 4px 15px rgba(255,255,255,0.2);" href="index.html">← Back to Home</a>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Our Services</h2>
+    <p class="muted">Select a service to prepare a WhatsApp enquiry.</p>
+    <div class="grid">
+        <div class="card"><h3>🖼️ Thumbnail Design</h3><p>Custom YouTube thumbnail design.</p><div class="price">₹99 onwards</div><button class="whatsapp" style="width:100%" onclick="orderService('Thumbnail Design','₹99 onwards')">Order on WhatsApp</button></div>
+        <div class="card"><h3>📣 Title & SEO</h3><p>Titles, descriptions, keywords and hashtags.</p><div class="price">Ask for price</div><button class="whatsapp" style="width:100%" onclick="orderService('Title & SEO','Ask for price')">Ask on WhatsApp</button></div>
+        <div class="card"><h3>🎬 Reels / Shorts Editing</h3><p>Short-form editing and captions.</p><div class="price">₹149 onwards</div><button class="whatsapp" style="width:100%" onclick="orderService('Reels / Shorts Editing','₹149 onwards')">Order on WhatsApp</button></div>
+        <div class="card"><h3>🎥 Video Editing</h3><p>Editing for YouTube and other platforms.</p><div class="price">₹299 onwards</div><button class="whatsapp" style="width:100%" onclick="orderService('Video Editing','₹299 onwards')">Order on WhatsApp</button></div>
+        <div class="card"><h3>📱 Social Media Setup</h3><p>Profile setup and basic branding guidance.</p><div class="price">₹499 onwards</div><button class="whatsapp" style="width:100%" onclick="orderService('Social Media Setup','₹499 onwards')">Order on WhatsApp</button></div>
+        <div class="card"><h3>📦 Monthly Creator Package</h3><p>Recurring support with agreed deliverables.</p><div class="price">₹1,499 onwards</div><button class="whatsapp" style="width:100%" onclick="orderService('Monthly Creator Package','₹1,499 onwards')">Ask on WhatsApp</button></div>
+        <div class="card"><h3>🌐 Website Making</h3><p>Business websites, portfolios and landing pages.</p><div class="price">Custom quote</div><button class="whatsapp" style="width:100%" onclick="orderService('Website Making','Custom quote')">Discuss Project</button></div>
+        <div class="card"><h3>📲 App Making</h3><p>App prototypes, UI design and development enquiries.</p><div class="price">Custom quote</div><button class="whatsapp" style="width:100%" onclick="orderService('App Making','Custom quote')">Discuss Project</button></div>
+        <div class="card"><h3>🎨 Logo & Graphic Design</h3><p>Logos, banners, posters and social media graphics.</p><div class="price">Ask for price</div><button class="whatsapp" style="width:100%" onclick="orderService('Logo & Graphic Design','Ask for price')">Ask on WhatsApp</button></div>
+    </div>
+
+    <div class="panel" style="margin-top:40px; padding:30px;">
+        <h2>Share Your Requirements</h2>
+        <p class="muted">Submit to the local backend to save the enquiry, or open WhatsApp to send it yourself. File selection does not upload a file.</p>
+        
+        <form id="helpForm" style="margin-top:20px;">
+            <label for="category">Category</label>
+            <select id="category" required>
+                <option value="">Choose category</option>
+                <option>Daily Tools</option><option>Mobile Problems</option><option>AI Jankari</option>
+                <option>Thumbnail Design</option><option>Title & SEO</option><option>Reels / Shorts Editing</option>
+                <option>Video Editing</option><option>Social Media Setup</option><option>Monthly Creator Package</option>
+                <option>Website Making</option><option>App Making</option><option>Logo & Graphic Design</option><option>Other</option>
+            </select>
+
+            <label for="helpType">Type of Help</label>
+            <select id="helpType" required>
+                <option value="">Choose an option</option>
+                <option>Free Guidance</option>
+                <option>Paid Service - Ask for Price</option>
+            </select>
+
+            <label for="details">Problem or Requirements</label>
+            <textarea id="details" required maxlength="3000" placeholder="Describe your requirements..."></textarea>
+
+            <label for="email">Email (optional)</label>
+            <input id="email" type="email" maxlength="254" placeholder="Your email, if you want to share it">
+
+            <label for="attachment">Reference file (optional)</label>
+            <input id="attachment" type="file" accept="image/*,.pdf,.txt,.doc,.docx">
+            <p class="small" style="margin-top:5px;">The selected file is not uploaded. Avoid sending sensitive documents.</p>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
+                <button class="whatsapp" id="submitBtn" type="submit" style="flex:1; padding:15px;">Save Enquiry</button>
+                <button type="button" onclick="sendFormToWhatsApp()" style="flex:1; background:var(--border); color:var(--text); padding:15px;">WhatsApp Instead</button>
+            </div>
+        </form>
+        
+        <div id="formStatus" class="status" role="status" aria-live="polite"></div>
+        <div class="notice"><strong>Payment:</strong> No payment is collected by this form. Payment integration will be added only after secure backend setup.</div>
+    </div>
+
+    <div class="backrow" style="margin-top:30px;">
+        <a class="btn" href="index.html" style="background:var(--bg); color:var(--text); border:1px solid var(--border);">← Back to Home</a>
+        <a class="btn" href="ai-knowledge.html" style="background:var(--primary);">← AI Jankari</a>
+    </div>
+</section>
+</main>
+
+<footer>
+    <strong>ZIWAN YATTRA</strong>
+    <p>Useful tools. Helpful guides. Digital growth.</p>
+    <div style="margin-bottom: 15px;">
+        <a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
+    </div>
+    <p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p>
+</footer>
+
+<!-- Yahan se saara JavaScript shuru hota hai (Bina kisi change ke) -->
 <script>
 const WHATSAPP_NUMBER = "919148987607";
-const BACKEND_URL = "https://ziwan-yattra-backend.onrender.com"; // Aapka Render URL
+const BACKEND_URL = "https://ziwan-yattra-backend.onrender.com"; 
 
-// Dark Mode Toggle
 const themeToggle = document.getElementById("themeToggle");
 themeToggle.addEventListener("click", function() {
     document.body.classList.toggle("dark");
     this.textContent = document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
 });
 
-// Year Update
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Form Data nikalne ka function
 function getFormData() {
     return {
         category: document.getElementById("category").value,
@@ -106,14 +197,12 @@ function getFormData() {
     };
 }
 
-// Status show karne ka function
 function showStatus(message, kind) {
     const el = document.getElementById("formStatus");
     el.textContent = message;
     el.className = "status show " + kind;
 }
 
-// WhatsApp par bhejne ka function
 function orderService(name, price) {
     const message = "Hello ZIWAN YATTRA! I want to enquire about: " + name + ". Displayed price: " + price + ". Please confirm the final price, deliverables and delivery time.";
     window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener");
@@ -129,18 +218,16 @@ function sendFormToWhatsApp() {
     window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener");
 }
 
-// SABSE IMPORTANT: Form Submit Event (Backend ke liye)
 document.getElementById("helpForm").addEventListener("submit", async function(e) {
-    e.preventDefault(); // Screen top par jane se rokta hai
-    
-    if (!this.reportValidity()) return; // Agar form khali hai toh ruk jao
+    e.preventDefault(); 
+    if (!this.reportValidity()) return; 
     
     const d = getFormData();
     const btn = document.getElementById("submitBtn");
     
     btn.disabled = true; 
     btn.textContent = "Submitting...";
-    showStatus("Please wait, saving to database...", "ok"); // Thoda wait message
+    showStatus("Please wait, saving to database...", "ok"); 
 
     try {
         const response = await fetch(BACKEND_URL + "/api/enquiries", {
@@ -155,16 +242,14 @@ document.getElementById("helpForm").addEventListener("submit", async function(e)
             throw new Error(result.error || "Submission failed");
         }
         
-        // Success Message
         showStatus("Enquiry saved successfully! We will contact you soon.", "ok");
-        this.reset(); // Form clear kar do
+        this.reset(); 
         
     } catch(err) {
-        // Error Message
-        showStatus("Could not save to backend (" + err.message + "). You can use 'Continue to WhatsApp Instead'.", "err");
+        showStatus("Could not save to backend (" + err.message + "). You can use WhatsApp Instead.", "err");
     } finally {
         btn.disabled = false; 
-        btn.textContent = "Save Enquiry to Backend";
+        btn.textContent = "Save Enquiry";
     }
 });
 </script>
