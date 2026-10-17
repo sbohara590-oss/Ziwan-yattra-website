@@ -1,44 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Free digital tools, mobile help, AI knowledge and creator services.">
 <meta name="theme-color" content="#6546e8">
 <title>Home | ZIWAN YATTRA</title>
+<!-- Google Fonts for Premium Look -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3;--green:#128c52}
 *{box-sizing:border-box;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.6}
-body.dark{--bg:#101323;--card:#1b2035;--text:#f5f6ff;--muted:#c0c7db;--border:#343951}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;line-height:1.6;transition:background 0.3s,color 0.3s}
+body.dark{--bg:#0d111c;--card:#161b2e;--text:#f5f6ff;--muted:#a3aec7;--border:#2a324d}
 a{text-decoration:none;color:inherit}
-header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5}
+header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,0.02)}
 .navbar{max-width:1200px;margin:auto;padding:13px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.logo{font-size:21px;font-weight:900;color:var(--primary)}.logo span{color:var(--text)}
+.logo{font-size:22px;font-weight:900;color:var(--primary);letter-spacing:-0.5px}.logo span{color:var(--text)}
 nav{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
-nav a{font-size:13px;font-weight:bold;padding:8px;color:var(--text);border-radius:8px}
+nav a{font-size:13px;font-weight:600;padding:8px 12px;color:var(--text);border-radius:8px;transition:0.3s}
 nav a:hover{background:var(--bg);color:var(--primary)}
-button,.btn{display:inline-block;padding:10px 14px;border:0;border-radius:10px;background:var(--primary);color:#fff;font-weight:bold;cursor:pointer;font-size:14px;margin:4px 2px}
+button,.btn{display:inline-block;padding:12px 18px;border:0;border-radius:12px;background:var(--primary);color:#fff;font-weight:600;cursor:pointer;font-size:15px;margin:4px 2px;transition:all 0.3s ease;font-family:'Poppins',sans-serif}
+button:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(101,70,232,0.3)}
 .theme{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.theme:hover{box-shadow:none;background:var(--border)}
 .whatsapp{background:var(--green);color:#fff}
-.hero{width:92%;max-width:1200px;margin:24px auto;padding:42px 30px;border-radius:25px;color:white;background:linear-gradient(125deg,#4323bd,#7956f0 55%,#04b6cf)}
-.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.12;margin:15px 0}.hero p{max-width:700px;color:#f1edff}
-.section{width:92%;max-width:1200px;margin:32px auto;scroll-margin-top:100px}
-h2{font-size:26px;margin:0 0 6px}.muted,.small{color:var(--muted)}
-.grid,.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
-.card,.panel{background:var(--card);border:1px solid var(--border);border-radius:17px;padding:18px;min-width:0}
-.card h3,.panel h3{margin:5px 0 8px}.card p{color:var(--muted);font-size:14px}
-label{display:block;font-weight:bold;margin:12px 0 5px}
-input,textarea,select{width:100%;padding:11px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font:inherit}
-textarea{min-height:90px;resize:vertical}
+.whatsapp:hover{box-shadow:0 6px 15px rgba(18,140,82,0.3)}
+
+/* Naya Chhota Button CSS */
+.btn-small {
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+    border-radius: 8px !important;
+}
+
+/* Premium Hero Section */
+.hero{width:92%;max-width:1200px;margin:30px auto;padding:50px 40px;border-radius:30px;color:white;background:linear-gradient(135deg,#4e00ff,#8b00ff 50%,#ff0080);position:relative;overflow:hidden;box-shadow:0 15px 30px rgba(101,70,232,0.2)}
+.hero::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 60%);transform:rotate(30deg)}
+.hero h1{font-size:clamp(32px,5vw,55px);line-height:1.1;margin:10px 0;font-weight:900;position:relative;z-index:1}
+.hero p{max-width:700px;color:#f1edff;font-size:16px;position:relative;z-index:1;margin-bottom:25px}
+
+/* 3D Animated Greeting Text */
+.animated-greeting {
+    background: linear-gradient(45deg, #ffeb3b, #ff9800, #ffeb3b, #fff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite;
+    text-shadow: 0px 4px 15px rgba(255,255,255,0.2);
+}
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating Rocket Animation */
+.floating-gift {
+    display: inline-block;
+    font-size: 45px;
+    animation: floatGift 2.5s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+}
+@keyframes floatGift {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(10deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.section{width:92%;max-width:1200px;margin:40px auto;scroll-margin-top:100px}
+h2{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-0.5px}.muted,.small{color:var(--muted)}
+.grid,.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:22px}
+
+/* Premium Card Design with Hover */
+.card,.panel{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;min-width:0;transition:all 0.3s ease}
+.card:hover{transform:translateY(-8px);box-shadow:0 15px 25px rgba(0,0,0,0.05);border-color:var(--primary)}
+body.dark .card:hover{box-shadow:0 15px 25px rgba(0,0,0,0.3)}
+.card h3,.panel h3{margin:10px 0 8px;font-weight:800;font-size:19px}
+.card p{color:var(--muted);font-size:14px;margin-bottom:15px}
+
+label{display:block;font-weight:600;margin:12px 0 5px;font-size:14px}
+input,textarea,select{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;transition:0.3s}
+input:focus,textarea:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px rgba(101,70,232,0.2)}
 .result{background:var(--bg);border-radius:10px;padding:10px;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere}
-.price{font-size:21px;color:var(--primary);font-weight:bold;margin:10px 0}
-details{padding:8px 0;border-bottom:1px solid var(--border)}summary{font-weight:bold;cursor:pointer;padding:5px 0}
-.notice{padding:12px 15px;border-left:4px solid #e3a126;background:var(--bg);border-radius:8px}
-.backrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
-footer{text-align:center;margin-top:45px;padding:25px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:13px}
-footer a{color:var(--primary);margin:5px}
+.price{font-size:21px;color:var(--primary);font-weight:800;margin:10px 0}
+details{padding:8px 0;border-bottom:1px solid var(--border)}summary{font-weight:600;cursor:pointer;padding:5px 0}
+.notice{padding:15px;border-left:4px solid #e3a126;background:var(--bg);border-radius:8px;font-size:14px}
+.backrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px; justify-content: space-between; align-items: center;}
+footer{text-align:center;margin-top:60px;padding:30px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:14px}
+footer a{color:var(--primary);margin:5px;font-weight:600}
+footer a:hover{text-decoration:underline}
+
 @media(max-width:900px){.grid,.tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.navbar{padding:12px 4%}.logo{font-size:18px}nav{width:100%}nav a{font-size:12px;padding:6px}.grid,.tools{grid-template-columns:1fr}.hero{padding:32px 21px}.section{margin:26px auto}}
+@media(max-width:560px){
+    .navbar{padding:12px 4%;justify-content:center;text-align:center}
+    nav{width:100%;justify-content:center;margin-top:10px}
+    .grid,.tools{grid-template-columns:1fr}
+    .hero{padding:35px 20px;border-radius:20px}
+    .section{margin:30px auto}
+    .floating-gift{font-size:35px}
+    /* Mobile me buttons ek ke neeche ek aayenge */
+    .backrow{flex-direction: column; align-items: stretch;}
+    .backrow .btn{width:100%; text-align:center;}
+}
 </style>
 </head>
 <body>
@@ -48,30 +115,64 @@ footer a{color:var(--primary);margin:5px}
 <nav aria-label="Main navigation">
 <a href="index.html">🏠 Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a>
 </nav></div></header>
+
 <main>
-<section class="hero"><span>✨ YOUR DIGITAL HELP CENTER</span>
-<h1>Your Digital Journey<br>Starts Here.</h1>
-<p>Find useful tools, solve mobile problems, learn AI and grow your digital presence. Choose a category to open its own page.</p>
-<div class="backrow"><a class="btn" style="background:#fff;color:#5936d8" href="#categories">Explore Categories ↓</a>
-<a class="btn whatsapp" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20I%20need%20help." target="_blank" rel="noopener noreferrer">💬 WhatsApp Help</a></div></section>
+<!-- Naya Premium Hero Section with Rocket and Auto-Message WhatsApp -->
+<section class="hero">
+    <div class="floating-gift">🚀</div>
+    <h1 class="animated-greeting">Welcome to ZIWAN YATTRA!</h1>
+    <p style="font-size: 20px; font-weight: 600; margin-bottom: 10px; margin-top: 5px;">Your Digital Journey Starts Here.</p>
+    <p>Find useful tools, solve mobile problems, learn AI and grow your digital presence. Choose a category to open its own page.</p>
+    
+    <!-- Yahan Button Left aur Right set kiya hai -->
+    <div class="backrow">
+        <a class="btn" style="background:#fff;color:#8b00ff; box-shadow:0 4px 15px rgba(0,0,0,0.1);" href="#categories">Explore Categories ↓</a>
+        
+        <!-- Auto-Message wala WhatsApp Button (Maine text bhi theek kar diya hai) -->
+        <a class="btn whatsapp btn-small" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20mujhe%20help%20chahiye." target="_blank" rel="noopener noreferrer">💬 WhatsApp Help</a>
+    </div>
+</section>
+
 <section class="section" id="categories"><h2>Explore Our Categories</h2><p class="muted">Tap a card to open its own page.</p>
 <div class="grid">
-<a class="card" style="border-top:4px solid #08b6d9" href="daily-tools.html"><div style="font-size:32px">🧰</div><h3>Daily Tools</h3><p>Word Counter, Hashtag Generator, YouTube Title Helper and Text Converter.</p><strong style="color:var(--primary)">Explore Tools →</strong></a>
-<a class="card" style="border-top:4px solid #ff8a3d" href="mobile-help.html"><div style="font-size:32px">📱</div><h3>Mobile Help Center</h3><p>Battery, heating, charging, lag, storage, display lines and security guides.</p><strong style="color:var(--primary)">Solve a Problem →</strong></a>
-<a class="card" style="border-top:4px solid #8b5cf6" href="ai-knowledge.html"><div style="font-size:32px">🤖</div><h3>AI Jankari</h3><p>AI tools, beginner guides, creator ideas and digital skills.</p><strong style="color:var(--primary)">Learn More →</strong></a>
-<a class="card" style="border-top:4px solid #e94e9b" href="creator-services.html"><div style="font-size:32px">🎬</div><h3>Creator & Tech Services</h3><p>Thumbnail design, editing, SEO, graphic design, websites and apps.</p><strong style="color:var(--primary)">View Services →</strong></a>
+<a class="card" style="border-top:5px solid #08b6d9" href="daily-tools.html"><div style="font-size:35px">🧰</div><h3>Daily Tools</h3><p>Word Counter, Hashtag Generator, YouTube Title Helper and Text Converter.</p><strong style="color:var(--primary)">Explore Tools →</strong></a>
+<a class="card" style="border-top:5px solid #ff8a3d" href="mobile-help.html"><div style="font-size:35px">📱</div><h3>Mobile Help Center</h3><p>Battery, heating, charging, lag, storage, display lines and security guides.</p><strong style="color:var(--primary)">Solve a Problem →</strong></a>
+<a class="card" style="border-top:5px solid #8b5cf6" href="ai-knowledge.html"><div style="font-size:35px">🤖</div><h3>AI Jankari</h3><p>AI tools, beginner guides, creator ideas and digital skills.</p><strong style="color:var(--primary)">Learn More →</strong></a>
+<a class="card" style="border-top:5px solid #e94e9b" href="creator-services.html"><div style="font-size:35px">🎬</div><h3>Creator & Tech Services</h3><p>Thumbnail design, editing, SEO, graphic design, websites and apps.</p><strong style="color:var(--primary)">View Services →</strong></a>
 </div></section>
+
 <section class="section"><h2>Why ZIWAN YATTRA?</h2><p class="muted">Simple information and practical digital help in one place.</p>
-<div class="grid"><div class="card"><h3>🆓 Free Tools</h3><p>Useful browser-based tools for everyday tasks.</p></div><div class="card"><h3>📖 Helpful Guides</h3><p>Step-by-step information for common digital problems.</p></div><div class="card"><h3>💬 Direct Enquiries</h3><p>Ask about services and confirm the final price before ordering.</p></div><div class="card"><h3>🔐 Safety First</h3><p>Practical reminders to protect your phone and private information.</p></div></div></section>
-<section class="section"><div class="panel"><h2>Need Help?</h2><p class="muted">Contact ZIWAN YATTRA about a problem or digital service.</p><a class="btn whatsapp" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20I%20need%20help." target="_blank" rel="noopener noreferrer">💬 Contact on WhatsApp</a></div></section>
+<div class="grid">
+    <div class="card"><h3>🆓 Free Tools</h3><p>Useful browser-based tools for everyday tasks.</p></div>
+    <div class="card"><h3>📖 Helpful Guides</h3><p>Step-by-step information for common digital problems.</p></div>
+    <div class="card"><h3>💬 Direct Enquiries</h3><p>Ask about services and confirm the final price before ordering.</p></div>
+    <div class="card"><h3>🔐 Safety First</h3><p>Practical reminders to protect your phone and private information.</p></div>
+</div></section>
+
+<section class="section"><div class="panel" style="text-align: center; background: linear-gradient(135deg, var(--card), var(--bg));">
+    <h2>Need Help?</h2>
+    <p class="muted">Contact ZIWAN YATTRA about a problem or digital service.</p>
+    <!-- Neeche wale button me bhi auto-message laga diya hai -->
+    <a class="btn whatsapp" style="margin-top: 15px;" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20mujhe%20help%20chahiye." target="_blank" rel="noopener noreferrer">💬 Contact on WhatsApp</a>
+</div></section>
 </main>
-<footer><strong>ZIWAN YATTRA</strong><p>Useful tools. Helpful guides. Digital growth.</p>
-<a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
-<p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p></footer>
+
+<footer>
+    <strong>ZIWAN YATTRA</strong>
+    <p>Useful tools. Helpful guides. Digital growth.</p>
+    <div style="margin-bottom: 15px;">
+        <a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
+    </div>
+    <p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p>
+</footer>
+
 <script>
 const themeToggle=document.getElementById("themeToggle");
-themeToggle.addEventListener("click",function(){document.body.classList.toggle("dark");this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";});
+themeToggle.addEventListener("click",function(){
+    document.body.classList.toggle("dark");
+    this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";
+});
 document.getElementById("year").textContent=new Date().getFullYear();
-
 </script>
-</body></html>
+</body>
+</html>

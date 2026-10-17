@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Creator services, starting prices and WhatsApp enquiries.">
 <meta name="theme-color" content="#6546e8">
 <title>Creator Services | ZIWAN YATTRA</title>
@@ -79,95 +80,93 @@ footer a{color:var(--primary);margin:5px}
 <footer><strong>ZIWAN YATTRA</strong><p>Useful tools. Helpful guides. Digital growth.</p>
 <a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
 <p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p></footer>
-<document.getElementById('helpForm').addEventListener('submit', async function(e) {
-    e.preventDefault(); // Page refresh rokne ke liye
 
-    // Form se data nikalna
-    const category = document.getElementById('category').value;
-    const helpType = document.getElementById('helpType').value;
-    const details = document.getElementById('details').value;
-    const email = document.getElementById('email').value;
+<!-- Yahan se saara JavaScript shuru hota hai -->
+<script>
+const WHATSAPP_NUMBER = "919148987607";
+const BACKEND_URL = "https://ziwan-yattra-backend.onrender.com"; // Aapka Render URL
 
-    const submitBtn = document.getElementById('submitBtn');
-    const originalText = submitBtn.innerText;
-    submitBtn.innerText = "Sending..."; // Button pe loading text
+// Dark Mode Toggle
+const themeToggle = document.getElementById("themeToggle");
+themeToggle.addEventListener("click", function() {
+    document.body.classList.toggle("dark");
+    this.textContent = document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+});
+
+// Year Update
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Form Data nikalne ka function
+function getFormData() {
+    return {
+        category: document.getElementById("category").value,
+        helpType: document.getElementById("helpType").value,
+        details: document.getElementById("details").value.trim(),
+        email: document.getElementById("email").value.trim()
+    };
+}
+
+// Status show karne ka function
+function showStatus(message, kind) {
+    const el = document.getElementById("formStatus");
+    el.textContent = message;
+    el.className = "status show " + kind;
+}
+
+// WhatsApp par bhejne ka function
+function orderService(name, price) {
+    const message = "Hello ZIWAN YATTRA! I want to enquire about: " + name + ". Displayed price: " + price + ". Please confirm the final price, deliverables and delivery time.";
+    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener");
+}
+
+function sendFormToWhatsApp() {
+    const form = document.getElementById("helpForm");
+    if (!form.reportValidity()) return;
+    const d = getFormData();
+    let message = "Hello ZIWAN YATTRA!\nCategory: " + d.category + "\nType of help: " + d.helpType + "\nRequirements: " + d.details;
+    if (d.email) message += "\nEmail: " + d.email;
+    message += "\nPlease confirm next steps and any price before work begins.";
+    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener");
+}
+
+// SABSE IMPORTANT: Form Submit Event (Backend ke liye)
+document.getElementById("helpForm").addEventListener("submit", async function(e) {
+    e.preventDefault(); // Screen top par jane se rokta hai
+    
+    if (!this.reportValidity()) return; // Agar form khali hai toh ruk jao
+    
+    const d = getFormData();
+    const btn = document.getElementById("submitBtn");
+    
+    btn.disabled = true; 
+    btn.textContent = "Submitting...";
+    showStatus("Please wait, saving to database...", "ok"); // Thoda wait message
 
     try {
-        // Render wale backend pe data bhejna
-        const response = await fetch(`${BACKEND_URL}/api/enquiry`, { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ category, helpType, details, email })
+        const response = await fetch(BACKEND_URL + "/api/enquiries", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(d)
         });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert('Enquiry successfully save ho gayi!');
-            this.reset(); // Form clear karne ke liye
-        } else {
-            alert('Error: ' + (data.message || 'Kuch galat ho gaya'));
+        
+        const result = await response.json();
+        
+        if (!response.ok || !result.success) {
+            throw new Error(result.error || "Submission failed");
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Server se connect nahi ho paya. Thodi der baad try karein.');
+        
+        // Success Message
+        showStatus("Enquiry saved successfully! We will contact you soon.", "ok");
+        this.reset(); // Form clear kar do
+        
+    } catch(err) {
+        // Error Message
+        showStatus("Could not save to backend (" + err.message + "). You can use 'Continue to WhatsApp Instead'.", "err");
     } finally {
-        submitBtn.innerText = originalText; // Wapas normal text
+        btn.disabled = false; 
+        btn.textContent = "Save Enquiry to Backend";
     }
-});>
-const WHATSAPP_NUMBER="919148987607";
-const BACKEND_URL="https://ziwan-yattra-backend.onrender.com";
-const themeToggle=document.getElementById("themeToggle");
-themeToggle.addEventListener("click",function(){document.body.classList.toggle("dark");this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";});
-document.getElementById("year").textContent=new Date().getFullYear();
-
-function getFormData(){
-  return {
-    category:document.getElementById("category").value,
-    helpType:document.getElementById("helpType").value,
-    details:document.getElementById("details").value.trim(),
-    email:document.getElementById("email").value.trim()
-  };
-}
-function showStatus(message,kind){
-  const el=document.getElementById("formStatus");
-  el.textContent=message;
-  el.className="status show "+kind;
-}
-function orderService(name,price){
-  const message="Hello ZIWAN YATTRA! I want to enquire about: "+name+". Displayed price: "+price+". Please confirm the final price, deliverables and delivery time.";
-  window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message),"_blank","noopener");
-}
-function sendFormToWhatsApp(){
-  const form=document.getElementById("helpForm");
-  if(!form.reportValidity()) return;
-  const d=getFormData();
-  let message="Hello ZIWAN YATTRA!\nCategory: "+d.category+"\nType of help: "+d.helpType+"\nRequirements: "+d.details;
-  if(d.email) message+="\nEmail: "+d.email;
-  message+="\nPlease confirm next steps and any price before work begins.";
-  window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message),"_blank","noopener");
-}
-document.getElementById("helpForm").addEventListener("submit",async function(e){
-  e.preventDefault();
-  if(!this.reportValidity()) return;
-  const d=getFormData();
-  const btn=document.getElementById("submitBtn");
-  btn.disabled=true; btn.textContent="Submitting...";
-  try{
-    const response=await fetch(BACKEND_URL+"/api/enquiries",{
-      method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)
-    });
-    const result=await response.json();
-    if(!response.ok||!result.success) throw new Error(result.error||"Submission failed");
-    showStatus("Enquiry saved on this computer's backend. Reference: "+result.id+". This local test does not send an alert; use WhatsApp if you need to contact us now.","ok");
-    this.reset();
-  }catch(err){
-    showStatus("Could not save to backend ("+err.message+"). Make sure the backend is running. You can use “Continue to WhatsApp Instead” as a fallback.","err");
-  }finally{
-    btn.disabled=false; btn.textContent="Save Enquiry to Backend";
-  }
 });
 </script>
-</body></html>
+</body>
+</html>
