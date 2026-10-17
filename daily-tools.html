@@ -1,321 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%239b5cff'/%3E%3Cstop offset='100%25' stop-color='%23ff0844'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='23' fill='%23080418'/%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Ctext x='50' y='59' font-family='Arial,sans-serif' font-weight='900' font-size='39' fill='url(%23g)' text-anchor='middle'%3EZY%3C/text%3E%3C/svg%3E">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Your Everyday Digital Toolkit by ZIWAN YATTRA.">
+<meta name="description" content="Your Everyday Digital Toolkit by ZIWAN YATTRA. Free text, creator, calculator, image and PDF utilities.">
 <meta name="theme-color" content="#6546e8">
 <title>Daily Tools | ZIWAN YATTRA</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%239b5cff'/%3E%3Cstop offset='100%25' stop-color='%23ff0844'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='23' fill='%23080418'/%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Ctext x='50' y='59' font-family='Arial,sans-serif' font-weight='900' font-size='39' fill='url(%23g)' text-anchor='middle'%3EZY%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3;--green:#128c52;--shadow:0 8px 24px #24234a0d}
 *{box-sizing:border-box;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
 body.dark{--bg:#101323;--card:#1b2035;--text:#f5f6ff;--muted:#c0c7db;--border:#343951;--shadow:0 8px 24px #0003}
-a{color:inherit;text-decoration:none}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
+a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}button{cursor:pointer}
 header{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--border)}
 .navbar{max-width:1200px;margin:auto;padding:12px 4%;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .logo{font-size:20px;font-weight:900;color:var(--primary);letter-spacing:-.5px}.logo span{color:var(--text)}
-nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-nav a,.theme{font-size:13px;font-weight:700;padding:8px 10px;border-radius:10px}
-nav a:hover,.theme{background:var(--bg);border:1px solid var(--border)}
-.theme{color:var(--text)}
+nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}nav a,.theme{font-size:13px;font-weight:700;padding:8px 10px;border-radius:10px}
+nav a:hover,.theme{background:var(--bg);border:1px solid var(--border)}.theme{color:var(--text)}
 main{max-width:1200px;width:92%;margin:24px auto 50px}
-.hero{padding:clamp(24px,5vw,48px);border-radius:26px;color:#fff;background:linear-gradient(125deg,#171b3c,#35265f 58%,#48245e);box-shadow:0 18px 42px #21184425;position:relative;overflow:hidden}
+.hero{padding:clamp(24px,5vw,48px);border-radius:26px;color:#fff;background:linear-gradient(125deg,#151a40,#3e2a83 52%,#c02e87);box-shadow:0 18px 42px #21184425;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-100px;top:-140px;background:#ffffff12;pointer-events:none}
 .eyebrow{font-size:12px;font-weight:800;letter-spacing:1.4px;color:#d8d0ff;text-transform:uppercase}
 .hero h1{font-size:clamp(30px,5vw,48px);line-height:1.12;margin:10px 0 8px;letter-spacing:-1px}
-.hero p{margin:0;color:#e2def5;max-width:700px}
-
-/* Back Button Style */
-.back-btn {display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:white; padding:8px 16px; border-radius:8px; font-size:14px; font-weight:600; margin-bottom:20px; transition:0.3s;}
-.back-btn:hover {background:rgba(255,255,255,0.25);}
-
-.search-wrap{margin-top:22px;display:flex;gap:10px;background:#fff;border-radius:15px;padding:7px;max-width:760px;box-shadow:0 8px 24px #0002}
+.hero p{margin:0;color:#e9e3ff;max-width:700px}
+.back-btn{display:inline-block;background:#ffffff1f;border:1px solid #ffffff55;color:white;padding:8px 16px;border-radius:9px;font-size:13px;font-weight:700;margin-bottom:18px;transition:.2s}
+.back-btn:hover{background:#ffffff35;transform:translateX(-2px)}
+.search-wrap{margin-top:22px;display:flex;gap:10px;background:#fff;border-radius:15px;padding:7px;max-width:760px;box-shadow:0 8px 24px #0002;position:relative;z-index:1}
 .search-wrap span{display:grid;place-items:center;padding-left:10px;color:#6852c7;font-size:22px}
 .search-wrap input{width:100%;border:0;outline:0;color:#17203a;padding:10px 8px;background:transparent;min-width:0}
 .filters{display:flex;gap:8px;overflow-x:auto;padding:15px 0 5px;scrollbar-width:thin}
 .filter{white-space:nowrap;border:1px solid var(--border);background:var(--card);color:var(--text);border-radius:999px;padding:9px 14px;font-weight:750;font-size:13px;transition:transform .18s,background .18s}
 .filter.active{background:var(--primary);border-color:var(--primary);color:white}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin:25px 0 13px}
-.section-head h2{margin:0;font-size:24px;letter-spacing:-.5px}
-.muted{color:var(--muted);font-size:14px;margin:4px 0 0}
-.count{color:var(--muted);font-size:13px}
+.section-head h2{margin:0;font-size:24px;letter-spacing:-.5px}.muted{color:var(--muted);font-size:14px;margin:4px 0 0}.count{color:var(--muted);font-size:13px}
 .tools-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .tool-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:17px;min-height:145px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:flex-start;gap:9px;cursor:pointer;text-align:left;color:var(--text);transition:transform .2s,box-shadow .2s,border-color .2s;position:relative;width:100%}
 .tool-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px #2b245b15;border-color:#bcb0ff}
-.tool-card:active{transform:scale(.95)}
-.tool-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:#eeeaff;color:#6546e8;font-size:23px;transition:transform .28s}
+.tool-card:active,.filter:active,.btn:active{animation:tapBounce .32s ease}
+.tool-card:focus-visible,button:focus-visible{outline:3px solid #9b5cff;outline-offset:3px}
+.tool-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,#eeeaff,#dff7ff);color:#6546e8;font-size:23px;transition:transform .28s}
 .tool-card:hover .tool-icon{animation:iconWiggle .48s ease}
-.tool-card strong{font-size:15px;line-height:1.3}
-.tool-card small{font-size:12px;color:var(--muted);line-height:1.4}
+.tool-card strong{font-size:15px;line-height:1.3}.tool-card small{font-size:12px;color:var(--muted);line-height:1.4}
 @keyframes iconWiggle{0%,100%{transform:rotate(0) scale(1)}25%{transform:rotate(-9deg) scale(1.06)}55%{transform:rotate(8deg) scale(1.08)}80%{transform:rotate(-3deg)}}
-
-/* POPUP MODAL STYLES */
-.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,15,30,0.7);backdrop-filter:blur(4px);z-index:100;display:none;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s ease}
-.modal-overlay.show{display:flex;opacity:1}
-.modal-content{background:var(--card);border:1px solid var(--border);border-radius:20px;width:90%;max-width:600px;max-height:90vh;overflow-y:auto;padding:25px;box-shadow:0 25px 50px rgba(0,0,0,0.3);position:relative;transform:translateY(20px);transition:transform 0.3s ease}
-.modal-overlay.show .modal-content{transform:translateY(0)}
-.close-btn{position:absolute;top:15px;right:15px;background:var(--bg);border:1px solid var(--border);color:var(--text);width:35px;height:35px;border-radius:50%;display:grid;place-items:center;font-size:18px;font-weight:bold;cursor:pointer;transition:0.2s}
+@keyframes tapBounce{0%,100%{transform:scale(1)}35%{transform:scale(.95) rotate(-.5deg)}70%{transform:scale(1.02) rotate(.5deg)}}
+.modal-overlay{position:fixed;inset:0;background:#0a0f1ecc;backdrop-filter:blur(5px);z-index:100;display:none;align-items:center;justify-content:center;padding:14px}
+.modal-overlay.show{display:flex;animation:fadeIn .18s ease}
+.modal-content{background:var(--card);border:1px solid var(--border);border-radius:20px;width:min(650px,100%);max-height:90vh;overflow-y:auto;padding:26px;box-shadow:0 25px 60px #0005;position:relative;animation:modalIn .22s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.close-btn{position:sticky;float:right;top:0;background:var(--bg);border:1px solid var(--border);color:var(--text);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:18px;font-weight:bold;transition:.2s;z-index:2}
 .close-btn:hover{background:#ff4757;color:white;border-color:#ff4757}
-.modal-title{font-size:22px;font-weight:800;margin:0 0 20px 0;color:var(--primary)}
-
-.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}
-.field label{font-size:13px;font-weight:750}
+.modal-kicker{font-size:11px;font-weight:800;letter-spacing:1.4px;color:var(--muted);text-transform:uppercase;margin:0 0 4px}
+.modal-title{font-size:24px;font-weight:800;margin:0 44px 18px 0;color:var(--primary)}
+.field{display:flex;flex-direction:column;gap:6px;margin:12px 0}.field label{font-size:13px;font-weight:750}
 .field input,.field textarea,.field select{width:100%;padding:12px 13px;border:1px solid var(--border);border-radius:11px;background:var(--bg);color:var(--text);outline:none}
-.field textarea{min-height:130px;resize:vertical}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--primary);box-shadow:0 0 0 3px #6546e81b}
+.field textarea{min-height:145px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--primary);box-shadow:0 0 0 3px #6546e81b}
 .row-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.btn{border:0;border-radius:11px;padding:11px 15px;background:var(--primary);color:#fff;font-weight:750}
-.btn.secondary{background:var(--bg);border:1px solid var(--border);color:var(--text)}
-.result{margin-top:12px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:13px;white-space:pre-wrap;overflow-wrap:anywhere}
+.btn{border:0;border-radius:11px;padding:11px 15px;background:linear-gradient(120deg,#6546e8,#8b4eea);color:#fff;font-weight:750;transition:transform .18s,filter .18s}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}.btn.secondary{background:var(--bg);border:1px solid var(--border);color:var(--text)}
+.result{margin-top:12px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:13px;white-space:pre-wrap;overflow-wrap:anywhere;min-height:44px}
 .stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px}
-.stat{background:var(--bg);border:1px solid var(--border);padding:12px;border-radius:12px}
-.stat b{display:block;font-size:22px;color:var(--primary)}
-.stat span{font-size:12px;color:var(--muted)}
-
+.stat{background:var(--bg);border:1px solid var(--border);padding:12px;border-radius:12px}.stat b{display:block;font-size:22px;color:var(--primary)}.stat span{font-size:12px;color:var(--muted)}
+.note{font-size:12px;color:var(--muted);margin-top:8px}.empty{padding:24px;text-align:center;color:var(--muted);display:none}
 footer{text-align:center;padding:25px 4%;border-top:1px solid var(--border);background:var(--card);color:var(--muted);font-size:13px}
-.footerlinks{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:12px}
-footer a{color:var(--primary)}
-
+.footerlinks{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:12px}footer a{color:var(--primary)}
 @media(max-width:850px){.tools-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.tool-card{padding:13px;min-height:138px}}
-@media(max-width:560px){
-    .navbar{padding:10px 4%}.logo{font-size:18px}
-    nav{width:100%;justify-content:space-between;gap:1px}
-    nav a{font-size:11px;padding:6px 5px}.theme{font-size:12px;padding:7px}
-    .hero{border-radius:20px;padding:24px 18px}
-    .tools-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-    .tool-card{padding:10px 8px;min-height:126px;border-radius:14px;gap:7px}
-    .tool-icon{width:36px;height:36px;font-size:20px;border-radius:11px}
-    .tool-card strong{font-size:12px;overflow-wrap:anywhere}
-    .tool-card small{font-size:10px}
-    .section-head h2{font-size:21px}
-    .row-fields{grid-template-columns:1fr}
-    .modal-content{padding:20px;width:95%}
-}
-@media(max-width:360px){.tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.navbar{padding:10px 4%;justify-content:center;text-align:center}.logo{font-size:18px;margin-bottom:5px}nav{width:100%;justify-content:center;gap:4px;margin-top:5px}nav a{font-size:11px;padding:6px 8px;border:1px solid var(--border);border-radius:20px;background:var(--card)}.theme{font-size:12px;padding:7px}.hero{border-radius:20px;padding:24px 18px}.tools-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.tool-card{padding:10px 8px;min-height:126px;border-radius:14px;gap:7px}.tool-icon{width:36px;height:36px;font-size:20px;border-radius:11px}.tool-card strong{font-size:12px;overflow-wrap:anywhere}.tool-card small{font-size:10px}.section-head h2{font-size:21px}.row-fields{grid-template-columns:1fr}.modal-content{padding:20px}.modal-title{font-size:21px}.stat{padding:9px 7px}.stat b{font-size:19px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
-<header>
-  <div class="navbar">
-    <a class="logo" href="index.html">ZIWAN <span>YATTRA</span></a>
-    <button class="theme" id="themeToggle" type="button">🌙 Dark Mode</button>
-    <nav aria-label="Main navigation">
-      <a href="index.html">🏠 Home</a><a href="daily-tools.html" aria-current="page">Daily Tools</a>
-      <a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a>
-    </nav>
-  </div>
-</header>
-
+<header><div class="navbar">
+<a class="logo" href="index.html">ZIWAN <span>YATTRA</span></a>
+<button class="theme" id="themeToggle" type="button">🌙 Dark Mode</button>
+<nav aria-label="Main navigation"><a href="index.html">🏠 Home</a><a href="daily-tools.html" aria-current="page">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a></nav>
+</div></header>
 <main>
-  <section class="hero">
-    <!-- Back to Home Button Add Ho Gaya Hai -->
-    <a href="index.html" class="back-btn">← Back to Home</a>
-    <div class="eyebrow">ZIWAN YATTRA • FREE ONLINE UTILITIES</div>
-    <h1>Your Everyday Digital Toolkit.</h1>
-    <p>Simple, useful tools for everyday digital needs. Choose a tool, get your result, and keep moving.</p>
-    <div class="search-wrap"><span aria-hidden="true">⌕</span><input id="toolSearch" type="search" placeholder="Find the right tool..." aria-label="Search tools"></div>
-  </section>
-
-  <div class="filters" id="filters" aria-label="Filter tools">
-    <button class="filter active" data-category="All" type="button">All Tools</button>
-    <button class="filter" data-category="Text" type="button">Text</button>
-    <button class="filter" data-category="Calculator" type="button">Calculators</button>
-    <button class="filter" data-category="Image" type="button">Image/PDF</button>
-    <button class="filter" data-category="Creator" type="button">Creator</button>
-    <button class="filter" data-category="QR" type="button">QR & Utilities</button>
-  </div>
-
-  <section>
-    <div class="section-head">
-        <div>
-            <h2>Explore Daily Tools</h2>
-            <p class="muted">Tap a card to open the tool in a popup.</p>
-        </div>
-        <span class="count" id="toolCount">18 tools</span>
-    </div>
-    
-    <div class="tools-grid" id="toolsGrid">
-      <button class="tool-card" data-tool="word" data-category="Text"><span class="tool-icon">T</span><strong>Word Counter</strong><small>Count words.</small></button>
-      <button class="tool-card" data-tool="case" data-category="Text"><span class="tool-icon">Aa</span><strong>Text Case Converter</strong><small>Change text case.</small></button>
-      <button class="tool-card" data-tool="clean" data-category="Text"><span class="tool-icon">✧</span><strong>Text Cleaner</strong><small>Remove extra spaces.</small></button>
-      <button class="tool-card" data-tool="reverse" data-category="Text"><span class="tool-icon">⇄</span><strong>Reverse Text</strong><small>Reverse characters.</small></button>
-      <button class="tool-card" data-tool="hashtag" data-category="Creator"><span class="tool-icon">#</span><strong>Hashtag Ideas</strong><small>Build hashtags.</small></button>
-      <button class="tool-card" data-tool="title" data-category="Creator"><span class="tool-icon">▶</span><strong>YouTube Title</strong><small>Title ideas.</small></button>
-      <button class="tool-card" data-tool="gst" data-category="Calculator"><span class="tool-icon">%</span><strong>GST Calculator</strong><small>Estimate GST.</small></button>
-      <button class="tool-card" data-tool="discount" data-category="Calculator"><span class="tool-icon">₹</span><strong>Discount Calculator</strong><small>Calculate savings.</small></button>
-      <button class="tool-card" data-tool="percentage" data-category="Calculator"><span class="tool-icon">％</span><strong>Percentage Calculator</strong><small>Find percentage.</small></button>
-      <button class="tool-card" data-tool="emi" data-category="Calculator"><span class="tool-icon">₹</span><strong>EMI Calculator</strong><small>Monthly loan EMI.</small></button>
-      <button class="tool-card" data-tool="age" data-category="Calculator"><span class="tool-icon">🎂</span><strong>Age Calculator</strong><small>Calculate age.</small></button>
-      <button class="tool-card" data-tool="qr" data-category="QR"><span class="tool-icon">▦</span><strong>QR Generator</strong><small>Create QR.</small></button>
-      <button class="tool-card" data-tool="password" data-category="QR"><span class="tool-icon">🔐</span><strong>Password Generator</strong><small>Secure password.</small></button>
-      
-      <!-- PDF Tools -->
-      <button class="tool-card" data-tool="pdfmerge" data-category="Image"><span class="tool-icon">📄</span><strong>PDF Merge</strong><small>Coming soon.</small></button>
-      <button class="tool-card" data-tool="pdfsplit" data-category="Image"><span class="tool-icon">✂️</span><strong>PDF Split</strong><small>Coming soon.</small></button>
-      <button class="tool-card" data-tool="imgcompress" data-category="Image"><span class="tool-icon">🖼️</span><strong>Image Compress</strong><small>Coming soon.</small></button>
-    </div>
-  </section>
-</main>
-
-<!-- POPUP MODAL -->
-<div class="modal-overlay" id="toolModal">
-    <div class="modal-content">
-        <button class="close-btn" id="closeModal">✕</button>
-        <h2 class="modal-title" id="modalTitle">Tool Title</h2>
-        <div id="modalBody"></div>
-    </div>
+<section class="hero">
+<a href="index.html" class="back-btn">← Back to Home</a>
+<div class="eyebrow">ZIWAN YATTRA • FREE ONLINE UTILITIES</div>
+<h1>Your Everyday Digital Toolkit.</h1>
+<p>Simple, useful tools for everyday digital needs. Choose a tool, get your result, and keep moving.</p>
+<div class="search-wrap"><span aria-hidden="true">⌕</span><input id="toolSearch" type="search" placeholder="Find the right tool..." aria-label="Search tools"></div>
+</section>
+<div class="filters" id="filters" aria-label="Filter tools">
+<button class="filter active" data-category="All" type="button">All Tools</button><button class="filter" data-category="Text" type="button">Text</button><button class="filter" data-category="Calculator" type="button">Calculators</button><button class="filter" data-category="Image" type="button">Image/PDF</button><button class="filter" data-category="Creator" type="button">Creator</button><button class="filter" data-category="QR" type="button">QR & Utilities</button>
 </div>
+<section>
+<div class="section-head"><div><h2>Explore Daily Tools</h2><p class="muted">Tap a card to open the tool in a popup.</p></div><span class="count" id="toolCount">23 tools</span></div>
+<div class="tools-grid" id="toolsGrid">
+<button class="tool-card" data-tool="word" data-category="Text"><span class="tool-icon">T</span><strong>Word Counter</strong><small>Count words, characters and sentences.</small></button>
+<button class="tool-card" data-tool="case" data-category="Text"><span class="tool-icon">Aa</span><strong>Text Case Converter</strong><small>Change text case.</small></button>
+<button class="tool-card" data-tool="clean" data-category="Text"><span class="tool-icon">✧</span><strong>Text Cleaner</strong><small>Remove extra spaces and blank lines.</small></button>
+<button class="tool-card" data-tool="reverse" data-category="Text"><span class="tool-icon">⇄</span><strong>Reverse Text</strong><small>Reverse characters.</small></button>
+<button class="tool-card" data-tool="lorem" data-category="Text"><span class="tool-icon">¶</span><strong>Lorem Ipsum</strong><small>Generate placeholder text.</small></button>
+<button class="tool-card" data-tool="hashtag" data-category="Creator"><span class="tool-icon">#</span><strong>Hashtag Ideas</strong><small>Build hashtags from a topic.</small></button>
+<button class="tool-card" data-tool="title" data-category="Creator"><span class="tool-icon">▶</span><strong>YouTube Title Helper</strong><small>Generate title ideas.</small></button>
+<button class="tool-card" data-tool="description" data-category="Creator"><span class="tool-icon">▤</span><strong>Description Builder</strong><small>Draft a video description.</small></button>
+<button class="tool-card" data-tool="tags" data-category="Creator"><span class="tool-icon">🏷</span><strong>Tag Formatter</strong><small>Format tags for copying.</small></button>
+<button class="tool-card" data-tool="gst" data-category="Calculator"><span class="tool-icon">%</span><strong>GST Calculator</strong><small>Estimate GST amount and total.</small></button>
+<button class="tool-card" data-tool="discount" data-category="Calculator"><span class="tool-icon">₹</span><strong>Discount Calculator</strong><small>Calculate savings.</small></button>
+<button class="tool-card" data-tool="percentage" data-category="Calculator"><span class="tool-icon">％</span><strong>Percentage Calculator</strong><small>Find a percentage.</small></button>
+<button class="tool-card" data-tool="emi" data-category="Calculator"><span class="tool-icon">₹</span><strong>EMI Calculator</strong><small>Estimate monthly loan payment.</small></button>
+<button class="tool-card" data-tool="age" data-category="Calculator"><span class="tool-icon">🎂</span><strong>Age Calculator</strong><small>Calculate age from date of birth.</small></button>
+<button class="tool-card" data-tool="date" data-category="Calculator"><span class="tool-icon">📅</span><strong>Date Difference</strong><small>Count days between dates.</small></button>
+<button class="tool-card" data-tool="unit" data-category="Calculator"><span class="tool-icon">⇄</span><strong>Unit Converter</strong><small>Convert common units.</small></button>
+<button class="tool-card" data-tool="qr" data-category="QR"><span class="tool-icon">▦</span><strong>QR Code Generator</strong><small>Create a QR code from text or link.</small></button>
+<button class="tool-card" data-tool="password" data-category="QR"><span class="tool-icon">🔐</span><strong>Password Generator</strong><small>Generate a random password locally.</small></button>
+<button class="tool-card" data-tool="pdfmerge" data-category="Image"><span class="tool-icon">📄</span><strong>PDF Merge</strong><small>Combine PDF files.</small></button>
+<button class="tool-card" data-tool="pdfsplit" data-category="Image"><span class="tool-icon">✂️</span><strong>PDF Split</strong><small>Extract selected pages.</small></button>
+<button class="tool-card" data-tool="pdfcompress" data-category="Image"><span class="tool-icon">🗜️</span><strong>PDF Compress</strong><small>Optimize PDF by re-saving.</small></button>
+<button class="tool-card" data-tool="imgpdf" data-category="Image"><span class="tool-icon">🖼️</span><strong>Image to PDF</strong><small>Turn images into a PDF.</small></button>
+<button class="tool-card" data-tool="imgcompress" data-category="Image"><span class="tool-icon">🪄</span><strong>Image Compress</strong><small>Resize and compress images.</small></button>
+</div>
+<div class="empty" id="emptyState">No tools found. Try another search.</div>
+</section>
+</main>
+<div class="modal-overlay" id="toolModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<div class="modal-content"><button class="close-btn" id="closeTool" type="button" aria-label="Close tool">✕</button><p class="modal-kicker">ZIWAN YATTRA TOOL</p><h2 class="modal-title" id="modalTitle">Tool</h2><div id="modalBody"></div></div>
+</div>
+<footer><strong>ZIWAN YATTRA</strong><p>Your Everyday Digital Toolkit.</p><div class="footerlinks"><a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a></div><p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p></footer>
 
-<footer>
-  <strong>ZIWAN YATTRA</strong>
-  <p>Your Everyday Digital Toolkit.</p>
-  <div class="footerlinks"><a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a></div>
-  <p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p>
-</footer>
-
+<!-- PDF processing library is loaded only when internet is available. Files are processed locally in the browser. -->
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script>
-const $=s=>document.querySelector(s);
-const $$=s=>[...document.querySelectorAll(s)];
-const modal = $('#toolModal');
-const modalTitle = $('#modalTitle');
-const modalBody = $('#modalBody');
-
-$('#themeToggle').addEventListener('click',function(){
- document.body.classList.toggle('dark');
- this.textContent=document.body.classList.contains('dark')?'☀️ Light Mode':'🌙 Dark Mode';
+'use strict';
+const $ = id => document.getElementById(id);
+const modal = $('toolModal'), modalBody = $('modalBody'), modalTitle = $('modalTitle');
+let lastFocused = null;
+$('year').textContent = new Date().getFullYear();
+$('themeToggle').addEventListener('click', function(){
+  document.body.classList.toggle('dark');
+  this.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
 });
-$('#year').textContent=new Date().getFullYear();
-
-const cards = $$('.tool-card');
-const search = $('#toolSearch');
+const cards = [...document.querySelectorAll('.tool-card')];
 let activeCategory = 'All';
-
 function filterTools(){
- const q = search.value.toLowerCase();
- let visible = 0;
- cards.forEach(card=>{
-  const matchCat = activeCategory === 'All' || card.dataset.category === activeCategory;
-  const matchSearch = card.innerText.toLowerCase().includes(q);
-  if(matchCat && matchSearch) { card.style.display = 'flex'; visible++; }
-  else { card.style.display = 'none'; }
- });
- $('#toolCount').textContent = visible + ' tools';
+  const q = $('toolSearch').value.trim().toLowerCase();
+  let count = 0;
+  cards.forEach(card => {
+    const show = (activeCategory === 'All' || card.dataset.category === activeCategory) && card.innerText.toLowerCase().includes(q);
+    card.style.display = show ? 'flex' : 'none';
+    if(show) count++;
+  });
+  $('toolCount').textContent = count + (count === 1 ? ' tool' : ' tools');
+  $('emptyState').style.display = count ? 'none' : 'block';
 }
-
-search.addEventListener('input', filterTools);
-$$('.filter').forEach(btn=>btn.addEventListener('click',()=>{
- $$('.filter').forEach(b=>b.classList.remove('active'));
- btn.classList.add('active');
- activeCategory = btn.dataset.category;
- filterTools();
+$('toolSearch').addEventListener('input', filterTools);
+filterTools();
+document.querySelectorAll('.filter').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.filter').forEach(b => b.classList.toggle('active', b === btn));
+  activeCategory = btn.dataset.category; filterTools();
 }));
-
-function openModal(title, htmlContent) {
-    modalTitle.textContent = title;
-    modalBody.innerHTML = htmlContent;
-    modal.classList.add('show');
-    document.body.style.overflow = 'hidden'; 
+cards.forEach(card => card.addEventListener('click', () => openTool(card.dataset.tool)));
+$('closeTool').addEventListener('click', closeTool);
+modal.addEventListener('click', e => { if(e.target === modal) closeTool(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && modal.classList.contains('show')) closeTool(); });
+function closeTool(){ modal.classList.remove('show'); document.body.style.overflow = ''; if(lastFocused) lastFocused.focus(); }
+function openTool(name){
+  lastFocused = document.activeElement;
+  modalBody.innerHTML = '';
+  modalTitle.textContent = toolNames[name] || 'Daily Tool';
+  const builders = {
+    word: () => `<div class="field"><label for="wordTxt">Your text</label><textarea id="wordTxt" placeholder="Paste or type your text here..."></textarea></div><div class="stat-grid"><div class="stat"><b id="wCount">0</b><span>Words</span></div><div class="stat"><b id="cCount">0</b><span>Characters</span></div><div class="stat"><b id="sCount">0</b><span>No spaces</span></div></div><div class="result" id="wordExtra">Sentences: 0 · Paragraphs: 0 · Reading time: 0 min</div><div class="actions"><button class="btn secondary" onclick="copyValue('wordTxt')">Copy Text</button><button class="btn secondary" onclick="clearField('wordTxt');countWords()">Clear</button></div>`,
+    case: () => `<div class="field"><label for="caseTxt">Your text</label><textarea id="caseTxt" placeholder="Type or paste text..."></textarea></div><div class="actions"><button class="btn" onclick="convertCase('upper')">UPPERCASE</button><button class="btn" onclick="convertCase('lower')">lowercase</button><button class="btn" onclick="convertCase('title')">Title Case</button><button class="btn" onclick="convertCase('sentence')">Sentence case</button></div><div class="field"><label for="caseResult">Result</label><textarea id="caseResult" placeholder="Converted text appears here..."></textarea></div><button class="btn secondary" onclick="copyValue('caseResult')">Copy Result</button>`,
+    clean: () => `<div class="field"><label for="cleanTxt">Text to clean</label><textarea id="cleanTxt" placeholder="Paste text with extra spaces..."></textarea></div><div class="actions"><button class="btn" onclick="cleanText()">Clean Text</button><button class="btn secondary" onclick="clearField('cleanTxt');$('cleanResult').value=''">Clear</button></div><div class="field"><label for="cleanResult">Clean result</label><textarea id="cleanResult" placeholder="Clean text appears here..."></textarea></div><button class="btn secondary" onclick="copyValue('cleanResult')">Copy Result</button>`,
+    reverse: () => `<div class="field"><label for="reverseTxt">Your text</label><textarea id="reverseTxt" placeholder="Type text to reverse..."></textarea></div><button class="btn" onclick="reverseText()">Reverse Text</button><div class="field"><label for="reverseResult">Result</label><textarea id="reverseResult" readonly></textarea></div><button class="btn secondary" onclick="copyValue('reverseResult')">Copy Result</button>`,
+    lorem: () => `<div class="field"><label for="loremCount">Paragraphs</label><input id="loremCount" type="number" min="1" max="10" value="3"></div><button class="btn" onclick="makeLorem()">Generate</button><div class="field"><label for="loremResult">Result</label><textarea id="loremResult" readonly></textarea></div><button class="btn secondary" onclick="copyValue('loremResult')">Copy Result</button>`,
+    hashtag: () => `<div class="field"><label for="hashTopic">Video topic</label><input id="hashTopic" placeholder="e.g. cute puppy rescue"></div><button class="btn" onclick="makeHashtags()">Generate Hashtags</button><div class="field"><label for="hashResult">Hashtag ideas</label><textarea id="hashResult" readonly placeholder="Your hashtags appear here..."></textarea></div><button class="btn secondary" onclick="copyValue('hashResult')">Copy Results</button><p class="note">Suggestions are topic-based, not live trend data.</p>`,
+    title: () => `<div class="field"><label for="titleTopic">Video topic</label><input id="titleTopic" placeholder="e.g. puppy rescue"></div><button class="btn" onclick="makeTitles()">Generate Titles</button><div class="field"><label for="titleResult">Title ideas</label><textarea id="titleResult" readonly placeholder="Your titles appear here..."></textarea></div><button class="btn secondary" onclick="copyValue('titleResult')">Copy Results</button>`,
+    description: () => `<div class="field"><label for="descTopic">Video topic</label><input id="descTopic" placeholder="Describe your video"></div><div class="field"><label for="descKeywords">Keywords (comma-separated)</label><input id="descKeywords" placeholder="puppy rescue, cute dogs"></div><button class="btn" onclick="makeDescription()">Build Description</button><div class="field"><label for="descResult">Description</label><textarea id="descResult" readonly></textarea></div><button class="btn secondary" onclick="copyValue('descResult')">Copy Description</button>`,
+    tags: () => `<div class="field"><label for="tagsInput">Tags or keywords</label><textarea id="tagsInput" placeholder="Enter tags separated by commas, spaces or new lines"></textarea></div><button class="btn" onclick="formatTags()">Format Tags</button><div class="field"><label for="tagsResult">Formatted tags</label><textarea id="tagsResult" readonly></textarea></div><button class="btn secondary" onclick="copyValue('tagsResult')">Copy Tags</button>`,
+    gst: () => `<div class="field"><label for="gstAmt">Amount (₹)</label><input id="gstAmt" type="number" min="0" placeholder="1000"></div><div class="field"><label for="gstMode">Amount type</label><select id="gstMode"><option value="add">GST not included (add GST)</option><option value="included">GST already included (extract GST)</option></select></div><div class="field"><label for="gstRate">GST rate</label><select id="gstRate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select></div><button class="btn" onclick="calcGST()">Calculate GST</button><div class="result" id="gstResult">Enter an amount to calculate.</div>`,
+    discount: () => `<div class="row-fields"><div class="field"><label for="discPrice">Original price (₹)</label><input id="discPrice" type="number" min="0" placeholder="1000"></div><div class="field"><label for="discRate">Discount (%)</label><input id="discRate" type="number" min="0" max="100" placeholder="20"></div></div><button class="btn" onclick="calcDiscount()">Calculate</button><div class="result" id="discountResult">Enter price and discount.</div>`,
+    percentage: () => `<div class="row-fields"><div class="field"><label for="perc">Percentage (%)</label><input id="perc" type="number" placeholder="20"></div><div class="field"><label for="num">Of number</label><input id="num" type="number" placeholder="500"></div></div><button class="btn" onclick="calcPerc()">Calculate</button><div class="result" id="percResult">Enter values to calculate.</div>`,
+    emi: () => `<div class="field"><label for="loanAmt">Loan amount (₹)</label><input id="loanAmt" type="number" min="0" placeholder="500000"></div><div class="row-fields"><div class="field"><label for="loanRate">Annual interest (%)</label><input id="loanRate" type="number" min="0" step=".1" placeholder="10"></div><div class="field"><label for="loanYears">Years</label><input id="loanYears" type="number" min="1" max="50" placeholder="5"></div></div><button class="btn" onclick="calcEMI()">Calculate EMI</button><div class="result" id="emiResult">Enter loan details.</div>`,
+    age: () => `<div class="field"><label for="dob">Date of birth</label><input id="dob" type="date" max="${new Date().toISOString().slice(0,10)}"></div><button class="btn" onclick="calcAge()">Calculate Age</button><div class="result" id="ageResult">Choose your birth date.</div>`,
+    date: () => `<div class="row-fields"><div class="field"><label for="dateStart">Start date</label><input id="dateStart" type="date"></div><div class="field"><label for="dateEnd">End date</label><input id="dateEnd" type="date"></div></div><button class="btn" onclick="calcDateDiff()">Calculate Difference</button><div class="result" id="dateResult">Choose both dates.</div>`,
+    unit: () => `<div class="field"><label for="unitType">Conversion type</label><select id="unitType"><option value="kmmi">Kilometres ↔ Miles</option><option value="cmIn">Centimetres ↔ Inches</option><option value="kgLb">Kilograms ↔ Pounds</option><option value="cF">Celsius ↔ Fahrenheit</option><option value="lGal">Litres ↔ US gallons</option></select></div><div class="field"><label for="unitVal">Value</label><input id="unitVal" type="number" placeholder="Enter value"></div><div class="field"><label for="unitDir">Direction</label><select id="unitDir"><option value="forward">First unit → second unit</option><option value="reverse">Second unit → first unit</option></select></div><button class="btn" onclick="convertUnit()">Convert</button><div class="result" id="unitResult">Enter a value.</div>`,
+    qr: () => `<div class="field"><label for="qrTxt">Text or URL</label><input id="qrTxt" placeholder="https://example.com"></div><button class="btn" onclick="genQR()">Generate QR Code</button><div class="result" id="qrStatus">QR will appear below. Internet is needed to load the QR image.</div><div id="qrImgBox" style="text-align:center;margin-top:14px;display:none"><img id="qrImg" alt="Generated QR code" style="max-width:220px;width:100%;background:white;padding:10px;border-radius:12px"><div class="actions" style="justify-content:center"><a class="btn" id="qrDownload" download="ziwan-qr.png">Download QR</a></div></div>`,
+    password: () => `<div class="field"><label for="passLength">Password length (8–64)</label><input id="passLength" type="number" min="8" max="64" value="16"></div><div class="field"><label><input id="passSymbols" type="checkbox" checked style="width:auto"> Include symbols</label></div><button class="btn" onclick="makePassword()">Generate Password</button><div class="field"><label for="passResult">Generated password</label><input id="passResult" readonly></div><button class="btn secondary" onclick="copyValue('passResult')">Copy Password</button><p class="note">Generated locally in your browser. Store it safely.</p>`,
+    pdfmerge: () => `<p class="muted">Select two or more PDF files. Files are processed in your browser.</p><div class="field"><label for="mergeFiles">PDF files</label><input id="mergeFiles" type="file" accept="application/pdf,.pdf" multiple></div><button class="btn" onclick="mergePDFs()">Merge PDFs & Download</button><div class="result" id="pdfResult">Choose at least two PDF files.</div><p class="note">Requires internet to load the PDF library. Your selected files are processed locally in this browser.</p>`,
+    pdfsplit: () => `<p class="muted">Extract selected pages from a PDF. Page numbers are 1-based; ranges like 1-3,5 are supported.</p><div class="field"><label for="splitFile">PDF file</label><input id="splitFile" type="file" accept="application/pdf,.pdf"></div><div class="field"><label for="splitPages">Pages to extract</label><input id="splitPages" placeholder="e.g. 1-3,5"></div><button class="btn" onclick="splitPDF()">Extract Pages & Download</button><div class="result" id="pdfResult">Choose a PDF and enter pages.</div><p class="note">Requires internet to load the PDF library. Your file is processed locally.</p>`,
+    pdfcompress: () => `<p class="muted">Re-save a PDF without changing its page content. This may not significantly reduce every PDF file.</p><div class="field"><label for="compressPDFFile">PDF file</label><input id="compressPDFFile" type="file" accept="application/pdf,.pdf"></div><button class="btn" onclick="compressPDF()">Optimize PDF & Download</button><div class="result" id="pdfResult">Choose a PDF file.</div><p class="note">PDF re-saving is not guaranteed to shrink all files. Processing happens locally in your browser.</p>`,
+    imgpdf: () => `<div class="field"><label for="imgPDFfiles">Choose images</label><input id="imgPDFfiles" type="file" accept="image/*" multiple></div><button class="btn" onclick="imagesToPDF()">Convert Images to PDF</button><div class="result" id="pdfResult">Choose one or more images.</div><p class="note">Requires internet to load the PDF library. Files are processed locally.</p>`,
+    imgcompress: () => `<div class="field"><label for="imgFile">Choose image</label><input id="imgFile" type="file" accept="image/*"></div><div class="row-fields"><div class="field"><label for="imgQuality">Quality (JPEG/WebP)</label><select id="imgQuality"><option value=".5">50% — smaller</option><option value=".7" selected>70% — balanced</option><option value=".85">85% — higher</option><option value=".95">95% — best</option></select></div><div class="field"><label for="imgWidth">Max width (px, optional)</label><input id="imgWidth" type="number" min="100" max="10000" placeholder="Keep original"></div></div><button class="btn" onclick="compressImage()">Compress & Download</button><div class="result" id="imgResult">Choose an image to begin.</div><p class="note">Output is JPEG; transparent areas will become white.</p>`
+  };
+  if(!builders[name]) return;
+  modalTitle.textContent = toolNames[name];
+  modalBody.innerHTML = builders[name]();
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  $('closeTool').focus();
+  if(name === 'word') $('wordTxt').addEventListener('input', countWords);
 }
-
-$('#closeModal').addEventListener('click', () => {
-    modal.classList.remove('show');
-    document.body.style.overflow = 'auto';
-});
-
-modal.addEventListener('click', (e) => {
-    if(e.target === modal) {
-        modal.classList.remove('show');
-        document.body.style.overflow = 'auto';
-    }
-});
-
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        const tool = card.dataset.tool;
-        if(tool === 'age') {
-            openModal('Age Calculator', `
-                <div class="field"><label>Date of Birth</label><input type="date" id="dob"></div>
-                <button class="btn" onclick="calcAge()">Calculate Age</button>
-                <div class="result" id="ageResult">Result here...</div>
-            `);
-        } 
-        else if(tool === 'gst') {
-            openModal('GST Calculator', `
-                <div class="field"><label>Amount (₹)</label><input type="number" id="gstAmt" placeholder="1000"></div>
-                <div class="field"><label>GST Rate (%)</label><select id="gstRate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select></div>
-                <button class="btn" onclick="calcGST()">Calculate</button>
-                <div class="result" id="gstResult">Result here...</div>
-            `);
-        }
-        else if(tool === 'percentage') {
-            openModal('Percentage Calculator', `
-                <div class="row-fields">
-                    <div class="field"><label>Percentage (%)</label><input type="number" id="perc" placeholder="20"></div>
-                    <div class="field"><label>Of Number</label><input type="number" id="num" placeholder="500"></div>
-                </div>
-                <button class="btn" onclick="calcPerc()">Calculate</button>
-                <div class="result" id="percResult">Result here...</div>
-            `);
-        }
-        else if(tool === 'word') {
-            openModal('Word Counter', `
-                <div class="field"><label>Your Text</label><textarea id="wordTxt" oninput="countWords()"></textarea></div>
-                <div class="stat-grid">
-                    <div class="stat"><b id="wCount">0</b><span>Words</span></div>
-                    <div class="stat"><b id="cCount">0</b><span>Chars</span></div>
-                </div>
-            `);
-        }
-        else if(tool === 'qr') {
-            openModal('QR Code Generator', `
-                <div class="field"><label>Enter Link/Text</label><input type="text" id="qrTxt" placeholder="https://..."></div>
-                <button class="btn" onclick="genQR()">Generate</button>
-                <div id="qrImgBox" style="text-align:center; margin-top:15px; display:none;"><img id="qrImg" style="max-width:100%; border-radius:10px;"></div>
-            `);
-        }
-        else if(tool === 'pdfmerge' || tool === 'pdfsplit' || tool === 'imgcompress') {
-            openModal(card.querySelector('strong').textContent, `
-                <p style="text-align:center; color:var(--muted); padding:20px;">🚧 This tool is currently under development. It will be available soon!</p>
-            `);
-        }
-        else {
-            openModal(card.querySelector('strong').textContent, `
-                <p style="text-align:center; color:var(--muted); padding:20px;">⚙️ Loading tool...</p>
-            `);
-        }
-    });
-});
-
-function calcAge() {
-    const dob = new Date(document.getElementById('dob').value);
-    if(isNaN(dob)) return alert('Select Date');
-    const diff = Date.now() - dob.getTime();
-    const ageDate = new Date(diff);
-    document.getElementById('ageResult').innerText = `You are ${Math.abs(ageDate.getUTCFullYear() - 1970)} years old.`;
-}
-
-function calcGST() {
-    const amt = parseFloat(document.getElementById('gstAmt').value);
-    const rate = parseFloat(document.getElementById('gstRate').value);
-    if(isNaN(amt)) return alert('Enter Amount');
-    const gst = (amt * rate) / 100;
-    document.getElementById('gstResult').innerText = `GST: ₹${gst.toFixed(2)}\nTotal: ₹${(amt+gst).toFixed(2)}`;
-}
-
-function calcPerc() {
-    const p = parseFloat(document.getElementById('perc').value);
-    const n = parseFloat(document.getElementById('num').value);
-    if(isNaN(p) || isNaN(n)) return alert('Enter numbers');
-    document.getElementById('percResult').innerText = `${p}% of ${n} = ${(p/100)*n}`;
-}
-
-function countWords() {
- 
-    const txt = document.getElementById('wordTxt').value;
-    document.getElementById('wCount').innerText = txt.trim() ? txt.trim().split(/\s+/).length : 0;
-    document.getElementById('cCount').innerText = txt.length;
-}
+const toolNames = {word:'Word Counter',case:'Text Case Converter',clean:'Text Cleaner',reverse:'Reverse Text',lorem:'Lorem Ipsum Generator',hashtag:'Hashtag Idea Generator',title:'YouTube Title Helper',description:'Description Builder',tags:'Tag Formatter',gst:'GST Calculator',discount:'Discount Calculator',percentage:'Percentage Calculator',emi:'EMI Calculator',age:'Age Calculator',date:'Date Difference',unit:'Unit Converter',qr:'QR Code Generator',password:'Password Generator',pdfmerge:'PDF Merge',pdfsplit:'PDF Split',pdfcompress:'PDF Compress',imgpdf:'Image to PDF',imgcompress:'Image Compress'};
+function showResult(id, text){const el=$(id);if(el)el.textContent=text;}
+function clearField(id){if($(id))$(id).value='';}
+async function copyValue(id){const el=$(id);if(!el)return;const text=('value'in el?el.value:el.textContent)||'';if(!text.trim()){alert('Nothing to copy yet.');return;}try{await navigator.clipboard.writeText(text);alert('Copied!');}catch(e){el.focus();el.select?.();try{document.execCommand('copy');alert('Copied!');}catch(_){alert('Copy not available in this browser.');}}}
+function countWords(){const t=$('wordTxt').value;const words=t.trim()?t.trim().split(/\s+/).length:0;const sentences=t.trim()?(t.match(/[.!?]+(?=\s|$)/g)||[]).length:0;const paragraphs=t.trim()?t.trim().split(/\n\s*\n/).length:0;$('wCount').textContent=words.toLocaleString();$('cCount').textContent=t.length.toLocaleString();$('sCount').textContent=t.replace(/\s/g,'').length.toLocaleString();$('wordExtra').textContent=`Sentences: ${sentences} · Paragraphs: ${paragraphs} · Reading time: ${words?Math.max(1,Math.ceil(words/200)):0} min`;}
+function convertCase(mode){const t=$('caseTxt').value;let out=t;if(mode==='upper')out=t.toUpperCase();if(mode==='lower')out=t.toLowerCase();if(mode==='title')out=t.toLowerCase().replace(/(^|[\s([{])(\p{L})/gu,(m,a,b)=>a+b.toUpperCase());if(mode==='sentence')out=t.toLowerCase().replace(/(^\s*\p{L}|[.!?]\s+\p{L})/gu,m=>m.toUpperCase());$('caseResult').value=out;}
+function cleanText(){const t=$('cleanTxt').value;$('cleanResult').value=t.split('\n').map(line=>line.replace(/[ \t]+/g,' ').trim()).filter((line,i,arr)=>line!==''|| (i>0&&arr[i-1]!=='')).join('\n').trim();}
+function reverseText(){$('reverseResult').value=Array.from($('reverseTxt').value).reverse().join('');}
+function makeLorem(){const n=Math.max(1,Math.min(10,parseInt($('loremCount').value,10)||1));const p='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Sed posuere consectetur est at lobortis.';$('loremResult').value=Array.from({length:n},()=>p).join('\n\n');}
+function topicWords(id){return $(id).value.trim().toLowerCase().normalize('NFKD').replace(/[^\p{L}\p{N}\s]/gu,' ').split(/\s+/).filter(Boolean);}
+function makeHashtags(){const words=topicWords('hashTopic');if(!words.length)return showResult('hashResult','Please enter a topic first.');const tags=[words.join(''),...words,'shorts','youtube','creator','viralvideo'].filter(Boolean);$('hashResult').value=[...new Set(tags)].map(w=>'#'+w.replace(/[^\p{L}\p{N}_]/gu,'')).join(' ');}
+function makeTitles(){const t=$('titleTopic').value.trim();if(!t)return showResult('titleResult','Please enter a video topic first.');$('titleResult').value=[`${t} | Watch Till the End!`,`The Story of ${t}`,`A Special Moment: ${t}`,`What Happens Next? ${t}`,`${t} — An Unexpected Story`].map((x,i)=>`${i+1}. ${x}`).join('\n');}
+function makeDescription(){const t=$('descTopic').value.trim();if(!t)return showResult('descResult','Please enter a video topic first.');const k=$('descKeywords').value.trim();$('descResult').value=`${t}\n\nWatch this video till the end and share your thoughts in the comments!\n\n${k?'Related keywords: '+k+'\n\n':''}Like, share and subscribe for more videos.\n\n#Shorts #YouTube`;}
+function formatTags(){const vals=$('tagsInput').value.split(/[,\n;]+/).map(x=>x.trim()).filter(Boolean);$('tagsResult').value=[...new Set(vals)].join(', ');}
+function num(id){return Number.parseFloat($(id).value);}
+function calcGST(){const a=num('gstAmt'),r=num('gstRate');if(!Number.isFinite(a)||a<0)return showResult('gstResult','Enter a valid amount.');if($('gstMode').value==='add'){const g=a*r/100;showResult('gstResult',`Base amount: ₹${a.toFixed(2)}\nGST (${r}%): ₹${g.toFixed(2)}\nTotal: ₹${(a+g).toFixed(2)}`);}else{const base=a/(1+r/100),g=a-base;showResult('gstResult',`Amount including GST: ₹${a.toFixed(2)}\nBase amount: ₹${base.toFixed(2)}\nGST portion (${r}%): ₹${g.toFixed(2)}`);}}
+function calcDiscount(){const p=num('discPrice'),r=num('discRate');if(!Number.isFinite(p)||!Number.isFinite(r)||p<0||r<0||r>100)return showResult('discountResult','Enter a valid price and discount from 0 to 100%.');showResult('discountResult',`You save: ₹${(p*r/100).toFixed(2)}\nFinal price: ₹${(p-p*r/100).toFixed(2)}`);}
+function calcPerc(){const p=num('perc'),n=num('num');if(!Number.isFinite(p)||!Number.isFinite(n))return showResult('percResult','Enter both numbers.');showResult('percResult',`${p}% of ${n} = ${((p/100)*n).toLocaleString(undefined,{maximumFractionDigits:6})}`);}
+function calcEMI(){const P=num('loanAmt'),annual=num('loanRate'),years=num('loanYears');if(!Number.isFinite(P)||!Number.isFinite(annual)||!Number.isFinite(years)||P<=0||annual<0||years<=0||years>50)return showResult('emiResult','Enter valid loan amount, interest and years.');const n=years*12,r=annual/1200,emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);showResult('emiResult',`Monthly EMI: ₹${emi.toFixed(2)}\nTotal payment: ₹${(emi*n).toFixed(2)}\nTotal interest: ₹${(emi*n-P).toFixed(2)}`);}
+function calcAge(){const v=$('dob').value;if(!v)return showResult('ageResult','Please choose your date of birth.');const dob=new Date(v+'T00:00:00'),today=new Date();if(dob>today)return showResult('ageResult','Birth date cannot be in the future.');let y=today.getFullYear()-dob.getFullYear(),m=today.getMonth()-dob.getMonth(),d=today.getDate()-dob.getDate();if(d<0){m--;d+=new Date(today.getFullYear(),today.getMonth(),0).getDate();}if(m<0){y--;m+=12;}showResult('ageResult',`Age: ${y} years, ${m} months and ${d} days.`);}
+function calcDateDiff(){const a=$('dateStart').value,b=$('dateEnd').value;if(!a||!b)return showResult('dateResult','Choose both dates.');const d1=new Date(a+'T00:00:00Z'),d2=new Date(b+'T00:00:00Z'),days=Math.round(Math.abs(d2-d1)/86400000);showResult('dateResult',`${days} days between the dates.\nInclusive count: ${days+1} days.`);}
+function convertUnit(){const v=num('unitVal');if(!Number.isFinite(v))return showResult('unitResult','Enter a valid number.');const t=$('unitType').value,rev=$('unitDir').value==='reverse';const f={kmmi:rev?1.609344:0.621371,cmIn:rev?2.54:1/2.54,kgLb:rev?1/2.2046226218:2.2046226218,cF:rev?(v-32)*5/9:(v*9/5)+32,lGal:rev?3.785411784:1/3.785411784};let out;if(t==='cF')out=rev?(v-32)*5/9:(v*9/5)+32;else out=v*f[t];const names={kmmi:rev?'miles to km':'km to miles',cmIn:rev?'inches to cm':'cm to inches',kgLb:rev?'pounds to kg':'kg to pounds',cF:rev?'Fahrenheit to Celsius':'Celsius to Fahrenheit',lGal:rev?'gallons to litres':'litres to gallons'};showResult('unitResult',`${v} → ${out.toLocaleString(undefined,{maximumFractionDigits:6})}\nConversion: ${names[t]}`);}
+function genQR(){const t=$('qrTxt').value.trim();if(!t)return showResult('qrStatus','Enter text or a link first.');const url='https://api.qrserver.com/v1/create-qr-code/?size=300x300&data='+encodeURIComponent(t);$('qrImg').src=url;$('qrDownload').href=url;$('qrImgBox').style.display='block';showResult('qrStatus','QR code requested. Internet connection is required to generate and download it.');}
+function makePassword(){let len=Math.max(8,Math.min(64,parseInt($('passLength').value,10)||16));const chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789'+($('passSymbols').checked?'!@#$%^&*()-_=+[]{}?':'');const arr=new Uint32Array(len);if(window.crypto&&crypto.getRandomValues)crypto.getRandomValues(arr);else for(let i=0;i<len;i++)arr[i]=Math.floor(Math.random()*4294967296);$('passResult').value=Array.from(arr,n=>chars[n%chars.length]).join('');}
+async function pdfLib(){if(!window.PDFLib)throw new Error('PDF library did not load. Connect to the internet and refresh the page.');return window.PDFLib;}
+function fileSize(n){return n<1024?`${n} B`:n<1048576?`${(n/1024).toFixed(1)} KB`:`${(n/1048576).toFixed(2)} MB`;}
+async function mergePDFs(){const out=$('pdfResult'),files=[...$('mergeFiles').files];if(files.length<2)return showResult('pdfResult','Choose at least two PDF files.');try{showResult('pdfResult','Merging PDFs…');const {PDFDocument}=await pdfLib(),merged=await PDFDocument.create();for(const f of files){const src=await PDFDocument.load(await f.arrayBuffer());const pages=await merged.copyPages(src,src.getPageIndices());pages.forEach(p=>merged.addPage(p));}downloadBlob(new Blob([await merged.save()],{type:'application/pdf'}),'merged.pdf');showResult('pdfResult',`Merged ${files.length} PDF files. Download should begin shortly.`);}catch(e){showResult('pdfResult','Could not merge PDF: '+e.message);}}
+function parsePages(input,max){const set=new Set();for(const part of input.split(',').map(s=>s.trim()).filter(Boolean)){if(/^\d+$/.test(part)){const n=+part;if(n<1||n>max)throw new Error(`Page ${n} is outside the PDF range.`);set.add(n-1);}else{const m=part.match(/^(\d+)\s*-\s*(\d+)$/);if(!m)throw new Error('Use page format like 1-3,5.');let a=+m[1],b=+m[2];if(a<1||b<a||b>max)throw new Error('Check the page range.');for(let n=a;n<=b;n++)set.add(n-1);}}if(!set.size)throw new Error('Enter page numbers to extract.');return [...set].sort((a,b)=>a-b);}
+async function splitPDF(){try{const f=$('splitFile').files[0],range=$('splitPages').value.trim();if(!f)return showResult('pdfResult','Choose a PDF file.');if(!range)return showResult('pdfResult','Enter page numbers or ranges.');showResult('pdfResult','Extracting pages…');const {PDFDocument}=await pdfLib(),src=await PDFDocument.load(await f.arrayBuffer()),idx=parsePages(range,src.getPageCount()),out=await PDFDocument.create(),pages=await out.copyPages(src,idx);pages.forEach(p=>out.addPage(p));downloadBlob(new Blob([await out.save()],{type:'application/pdf'}),'extracted-pages.pdf');showResult('pdfResult',`Extracted ${idx.length} page(s). Download should begin shortly.`);}catch(e){showResult('pdfResult','Could not split PDF: '+e.message);}}
+async function compressPDF(){try{const f=$('compressPDFFile').files[0];if(!f)return showResult('pdfResult','Choose a PDF file.');showResult('pdfResult','Re-saving PDF…');const {PDFDocument}=await pdfLib(),doc=await PDFDocument.load(await f.arrayBuffer()),bytes=await doc.save({useObjectStreams:true});downloadBlob(new Blob([bytes],{type:'application/pdf'}),'optimized-'+f.name.replace(/\.pdf$/i,'')+'.pdf');showResult('pdfResult',`Original: ${fileSize(f.size)}\nRe-saved: ${fileSize(bytes.length)}\nNote: PDF re-saving may not reduce size for every file.`);}catch(e){showResult('pdfResult','Could not optimize PDF: '+e.message);}}
+async function imagesToPDF(){try{const files=[...$('imgPDFfiles').files];if(!files.length)return showResult('pdfResult','Choose at least one image.');showResult('pdfResult','Converting images…');const {PDFDocument}=await pdfLib(),pdf=await PDFDocument.create();for(const f of files){const bytes=await f.arrayBuffer();let img;if(/png/i.test(f.type))img=await pdf.embedPng(bytes);else if(/jpe?g/i.test(f.type))img=await pdf.embedJpg(bytes);else{const data=await imageFileToJpeg(f,.92);img=await pdf.embedJpg(await data.arrayBuffer());}const page=pdf.addPage([img.width,img.height]);page.drawImage(img,{x:0,y:0,width:img.width,height:img.height});}const bytes=await pdf.save();downloadBlob(new Blob([bytes],{type:'application/pdf'}),'images.pdf');showResult('pdfResult',`Converted ${files.length} image(s) to PDF.`);}catch(e){showResult('pdfResult','Could not convert images: '+e.message);}}
+function downloadBlob(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+function imageFileToJpeg(file,quality,maxWidth){return new Promise((resolve,reject)=>{const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{let w=img.naturalWidth,h=img.naturalHeight;if(maxWidth&&w>maxWidth){h=Math.round(h*maxWidth/w);w=maxWidth;}const c=document.createElement('canvas');c.width=w;c.height=h;const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.drawImage(img,0,0,w,h);c.toBlob(blob=>{URL.revokeObjectURL(url);blob?resolve(blob):reject(new Error('Could not encode this image.'));},'image/jpeg',quality);};img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('Could not open image file.'));};img.src=url;});}
+async function compressImage(){try{const f=$('imgFile').files[0];if(!f)return showResult('imgResult','Choose an image.');showResult('imgResult','Compressing image…');const q=Number($('imgQuality').value),w=parseInt($('imgWidth').value,10)||undefined,blob=await imageFileToJpeg(f,q,w);downloadBlob(blob,'compressed-'+f.name.replace(/\.[^.]+$/,'')+'.jpg');showResult('imgResult',`Original: ${fileSize(f.size)}\nCompressed: ${fileSize(blob.size)}\n${blob.size<f.size?'Reduced by '+Math.round((1-blob.size/f.size)*100)+'%.':'Output is not smaller; try a lower quality or width.'}`);}catch(e){showResult('imgResult','Could not compress image: '+e.message);}}
+/* GoatCounter analytics preserved */
+</script>
+<script data-goatcounter="https://ziwanyattra.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
