@@ -6,7 +6,7 @@
 <meta name="description" content="Free digital tools, mobile help, AI knowledge and creator services.">
 <meta name="theme-color" content="#6546e8">
 <title>Home | ZIWAN YATTRA</title>
-<!-- Google Fonts for Premium Look -->
+<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
@@ -29,41 +29,38 @@ button:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(10
 .whatsapp{background:var(--green);color:#fff}
 .whatsapp:hover{box-shadow:0 6px 15px rgba(18,140,82,0.3)}
 
-/* Naya Chhota Button CSS */
-.btn-small {
-    padding: 8px 14px !important;
-    font-size: 13px !important;
-    border-radius: 8px !important;
+/* 🔥 Naya Premium Hero Section 🔥 */
+.hero {
+    width: 92%; max-width: 1200px; margin: 30px auto; padding: 60px 40px; border-radius: 30px; color: white;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); /* Deep Space Theme */
+    position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+/* Peeche ki glowing lights */
+.hero::before {
+    content: ""; position: absolute; top: -20%; left: -10%; width: 50%; height: 150%;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 60%);
+}
+.hero::after {
+    content: ""; position: absolute; bottom: -20%; right: -10%; width: 50%; height: 150%;
+    background: radial-gradient(circle, rgba(255, 8, 68, 0.15) 0%, transparent 60%);
 }
 
-/* Premium Hero Section */
-.hero{width:92%;max-width:1200px;margin:30px auto;padding:50px 40px;border-radius:30px;color:white;background:linear-gradient(135deg,#4e00ff,#8b00ff 50%,#ff0080);position:relative;overflow:hidden;box-shadow:0 15px 30px rgba(101,70,232,0.2)}
-.hero::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 60%);transform:rotate(30deg)}
-.hero h1{font-size:clamp(32px,5vw,55px);line-height:1.1;margin:10px 0;font-weight:900;position:relative;z-index:1}
-.hero p{max-width:700px;color:#f1edff;font-size:16px;position:relative;z-index:1;margin-bottom:25px}
+/* 3D Colorful Text */
+.premium-greeting {
+    font-size: clamp(32px, 5vw, 55px); line-height: 1.2; margin: 15px 0 10px; font-weight: 900;
+    position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+}
+.word-welcome { color: #f8fafc; text-shadow: 0px 4px 10px rgba(255,255,255,0.3); }
+.word-ziwan { color: #00f2fe; text-shadow: 0px 0px 15px rgba(0, 242, 254, 0.8), 0px 5px 10px rgba(0,0,0,0.5); }
+.word-yattra { color: #ff0844; text-shadow: 0px 0px 15px rgba(255, 8, 68, 0.8), 0px 5px 10px rgba(0,0,0,0.5); }
 
-/* 3D Animated Greeting Text */
-.animated-greeting {
-    background: linear-gradient(45deg, #ffeb3b, #ff9800, #ffeb3b, #fff);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientShift 4s ease infinite;
-    text-shadow: 0px 4px 15px rgba(255,255,255,0.2);
-}
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+.hero-subtitle { font-size: 22px; font-weight: 800; margin-bottom: 15px; color: #e2e8f0; position: relative; z-index: 1; }
+.hero-desc { max-width: 700px; color: #cbd5e1; font-size: 16px; position: relative; z-index: 1; margin-bottom: 30px;}
 
 /* Floating Rocket Animation */
 .floating-gift {
-    display: inline-block;
-    font-size: 45px;
-    animation: floatGift 2.5s ease-in-out infinite;
-    position: relative;
-    z-index: 1;
+    display: inline-block; font-size: 45px; animation: floatGift 2.5s ease-in-out infinite; position: relative; z-index: 1;
 }
 @keyframes floatGift {
     0% { transform: translateY(0px) rotate(0deg); }
@@ -75,36 +72,36 @@ button:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(10
 h2{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-0.5px}.muted,.small{color:var(--muted)}
 .grid,.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:22px}
 
-/* Premium Card Design with Hover */
+/* Premium Card Design */
 .card,.panel{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;min-width:0;transition:all 0.3s ease}
 .card:hover{transform:translateY(-8px);box-shadow:0 15px 25px rgba(0,0,0,0.05);border-color:var(--primary)}
 body.dark .card:hover{box-shadow:0 15px 25px rgba(0,0,0,0.3)}
 .card h3,.panel h3{margin:10px 0 8px;font-weight:800;font-size:19px}
 .card p{color:var(--muted);font-size:14px;margin-bottom:15px}
 
-label{display:block;font-weight:600;margin:12px 0 5px;font-size:14px}
-input,textarea,select{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;transition:0.3s}
-input:focus,textarea:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px rgba(101,70,232,0.2)}
-.result{background:var(--bg);border-radius:10px;padding:10px;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere}
-.price{font-size:21px;color:var(--primary);font-weight:800;margin:10px 0}
-details{padding:8px 0;border-bottom:1px solid var(--border)}summary{font-weight:600;cursor:pointer;padding:5px 0}
-.notice{padding:15px;border-left:4px solid #e3a126;background:var(--bg);border-radius:8px;font-size:14px}
 .backrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px; justify-content: space-between; align-items: center;}
 footer{text-align:center;margin-top:60px;padding:30px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:14px}
 footer a{color:var(--primary);margin:5px;font-weight:600}
 footer a:hover{text-decoration:underline}
 
+/* 📱 Mobile View Fixes 📱 */
 @media(max-width:900px){.grid,.tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){
     .navbar{padding:12px 4%;justify-content:center;text-align:center}
-    nav{width:100%;justify-content:center;margin-top:10px}
+    nav{width:100%;justify-content:center;margin-top:10px; gap: 2px;}
+    nav a{font-size:12px; padding:6px 8px;}
     .grid,.tools{grid-template-columns:1fr}
-    .hero{padding:35px 20px;border-radius:20px}
-    .section{margin:30px auto}
-    .floating-gift{font-size:35px}
-    /* Mobile me buttons ek ke neeche ek aayenge */
-    .backrow{flex-direction: column; align-items: stretch;}
-    .backrow .btn{width:100%; text-align:center;}
+    
+    /* Mobile Hero Adjustments */
+    .hero{padding:40px 20px; border-radius:20px; text-align: center;}
+    .premium-greeting{justify-content: center; text-align: center; font-size: 34px; gap: 6px;}
+    .floating-gift{font-size: 40px; margin-bottom: 5px;}
+    .hero-subtitle{font-size: 18px;}
+    .hero-desc{font-size: 14px; margin-bottom: 25px;}
+    
+    /* Mobile Buttons */
+    .backrow{flex-direction: column; align-items: stretch; gap: 12px;}
+    .backrow .btn{width:100%; text-align:center; padding: 12px 10px;}
 }
 </style>
 </head>
@@ -117,18 +114,18 @@ footer a:hover{text-decoration:underline}
 </nav></div></header>
 
 <main>
-<!-- Naya Premium Hero Section with Rocket and Auto-Message WhatsApp -->
 <section class="hero">
     <div class="floating-gift">🚀</div>
-    <h1 class="animated-greeting">Welcome to ZIWAN YATTRA!</h1>
-    <p style="font-size: 20px; font-weight: 600; margin-bottom: 10px; margin-top: 5px;">Your Digital Journey Starts Here.</p>
-    <p>Find useful tools, solve mobile problems, learn AI and grow your digital presence. Choose a category to open its own page.</p>
+    <h1 class="premium-greeting">
+        <span class="word-welcome">Welcome to</span>
+        <span class="word-ziwan">ZIWAN</span>
+        <span class="word-yattra">YATTRA!</span>
+    </h1>
+    <p class="hero-subtitle">Your Digital Journey Starts Here.</p>
+    <p class="hero-desc">Find useful tools, solve mobile problems, learn AI and grow your digital presence. Choose a category to open its own page.</p>
     
-    <!-- Yahan Button Left aur Right set kiya hai -->
     <div class="backrow">
-        <a class="btn" style="background:#fff;color:#8b00ff; box-shadow:0 4px 15px rgba(0,0,0,0.1);" href="#categories">Explore Categories ↓</a>
-        
-        <!-- Auto-Message wala WhatsApp Button (Maine text bhi theek kar diya hai) -->
+        <a class="btn" style="background:#fff;color:#0f0c29; box-shadow:0 4px 15px rgba(255,255,255,0.2);" href="#categories">Explore Categories ↓</a>
         <a class="btn whatsapp btn-small" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20mujhe%20help%20chahiye." target="_blank" rel="noopener noreferrer">💬 WhatsApp Help</a>
     </div>
 </section>
@@ -152,7 +149,6 @@ footer a:hover{text-decoration:underline}
 <section class="section"><div class="panel" style="text-align: center; background: linear-gradient(135deg, var(--card), var(--bg));">
     <h2>Need Help?</h2>
     <p class="muted">Contact ZIWAN YATTRA about a problem or digital service.</p>
-    <!-- Neeche wale button me bhi auto-message laga diya hai -->
     <a class="btn whatsapp" style="margin-top: 15px;" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20mujhe%20help%20chahiye." target="_blank" rel="noopener noreferrer">💬 Contact on WhatsApp</a>
 </div></section>
 </main>
