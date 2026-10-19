@@ -1,264 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%239b5cff'/%3E%3Cstop offset='100%25' stop-color='%23ff0844'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='23' fill='%23080418'/%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Ctext x='50' y='59' font-family='Arial,sans-serif' font-weight='900' font-size='39' fill='url(%23g)' text-anchor='middle'%3EZY%3C/text%3E%3C/svg%3E">    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Original troubleshooting guides for common mobile phone problems.">
+<meta name="description" content="ZIWAN YATTRA Mobile Help Center: practical Android and iPhone guides for phone security, AI features, battery, camera, performance, network and common mobile repairs.">
 <meta name="theme-color" content="#6546e8">
 <title>Mobile Help Center | ZIWAN YATTRA</title>
-<!-- Google Fonts -->
+<link rel="canonical" href="https://ziwanyattra.com/mobile-help.html">
+<meta property="og:title" content="Mobile Help Center | ZIWAN YATTRA">
+<meta property="og:description" content="Step-by-step mobile troubleshooting for battery, charging, security, camera, display, network and common phone problems.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ziwanyattra.com/mobile-help.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%236546e8'/%3E%3Ctext x='50' y='67' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EZY%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3;--green:#128c52}
-*{box-sizing:border-box;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;line-height:1.6;transition:background 0.3s,color 0.3s}
-body.dark{--bg:#0d111c;--card:#161b2e;--text:#f5f6ff;--muted:#a3aec7;--border:#2a324d}
-a{text-decoration:none;color:inherit}
-header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,0.02)}
-.navbar{max-width:1200px;margin:auto;padding:13px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.logo{font-size:22px;font-weight:900;color:var(--primary);letter-spacing:-0.5px}.logo span{color:var(--text)}
-nav{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
-nav a{font-size:13px;font-weight:600;padding:8px 12px;color:var(--text);border-radius:8px;transition:0.3s}
-nav a:hover{background:var(--bg);color:var(--primary)}
-button,.btn{display:inline-block;padding:12px 18px;border:0;border-radius:12px;background:var(--primary);color:#fff;font-weight:600;cursor:pointer;font-size:14px;margin:4px 2px;transition:all 0.3s ease;font-family:'Poppins',sans-serif}
-button:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(101,70,232,0.3)}
-.theme{background:var(--bg);color:var(--text);border:1px solid var(--border)}
-.theme:hover{box-shadow:none;background:var(--border)}
-.whatsapp{background:var(--green);color:#fff}
-.whatsapp:hover{box-shadow:0 6px 15px rgba(18,140,82,0.3)}
-
-/* Premium Hero Section */
-.hero{width:92%;max-width:1200px;margin:30px auto;padding:50px 40px;border-radius:30px;color:white;background:linear-gradient(135deg,#4e00ff,#8b00ff 50%,#ff0080);position:relative;overflow:hidden;box-shadow:0 15px 30px rgba(101,70,232,0.2)}
-.hero::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 60%);transform:rotate(30deg)}
-.hero h1{font-size:clamp(32px,5vw,55px);line-height:1.1;margin:10px 0;font-weight:900;position:relative;z-index:1}
-.hero p{max-width:700px;color:#f1edff;font-size:16px;position:relative;z-index:1;margin-bottom:25px}
-
-/* Floating Icon */
-.floating-icon {
-    display: inline-block;
-    font-size: 45px;
-    animation: floatIcon 2.5s ease-in-out infinite;
-    position: relative;
-    z-index: 1;
-}
-@keyframes floatIcon {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(10deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-}
-
-.section{width:92%;max-width:1200px;margin:40px auto;scroll-margin-top:100px}
-h2{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-0.5px}.muted,.small{color:var(--muted)}
-
-/* Guides Grid (Desktop par 2 column, Mobile par 1) */
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:22px}
-
-/* Premium Cards */
-.card,.panel{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;min-width:0;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.02)}
-.card:hover{transform:translateY(-5px);box-shadow:0 15px 30px rgba(101,70,232,0.1);border-color:var(--primary)}
-body.dark .card:hover{box-shadow:0 15px 30px rgba(0,0,0,0.3)}
-.card h3{margin:0 0 10px;font-weight:800;font-size:18px;color:var(--text)}
-
-/* Custom Accordion (Details/Summary) */
-details {background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:10px 15px;margin-top:10px;transition:0.3s;}
-details:hover {border-color:var(--primary);}
-summary {font-weight:600;font-size:14px;cursor:pointer;color:var(--primary);list-style:none;display:flex;justify-content:space-between;align-items:center;}
-summary::-webkit-details-marker {display:none;}
-summary::after {content:'+';font-size:18px;font-weight:bold;transition:0.3s;}
-details[open] summary::after {content:'−';}
-details[open] {background:var(--card);border-color:var(--primary);box-shadow:0 5px 15px rgba(101,70,232,0.1);}
-details ol {margin:10px 0 0; padding-left:20px; font-size:14px; color:var(--muted);}
-details li {margin-bottom:8px;}
-details p {font-size:13px; margin-top:10px; color:var(--muted); background:rgba(227,161,38,0.1); padding:8px; border-radius:6px; border-left:3px solid #e3a126;}
-
-/* CTA Panel */
-.panel-cta {text-align:center; background: linear-gradient(135deg, var(--card), var(--bg)); margin-top:30px; padding:30px; border-radius:20px; border:1px solid var(--border);}
-.panel-cta h3 {font-size:24px; margin-bottom:10px; font-weight:800;}
-.panel-cta p {margin-bottom:20px; color:var(--muted);}
-
-.backrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px; justify-content: space-between;}
-footer{text-align:center;margin-top:60px;padding:30px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:14px}
-footer a{color:var(--primary);margin:5px;font-weight:600}
-footer a:hover{text-decoration:underline}
-
-/* Mobile View */
-@media(max-width:768px){
-    .grid{grid-template-columns:1fr;}
-    .navbar{padding:12px 4%;justify-content:center;text-align:center}
-    nav{width:100%;justify-content:center;margin-top:10px}
-    .hero{padding:35px 20px;border-radius:20px}
-    .section{margin:30px auto}
-    .floating-icon{font-size:35px}
-    .backrow{flex-direction: column; align-items: stretch;}
-    .backrow .btn{width:100%; text-align:center;}
-}
+:root{--bg:#f6f7fb;--surface:#fff;--text:#202338;--muted:#62677b;--brand:#6546e8;--brand2:#8b5cf6;--line:#e6e7ef;--yellow:#ffd84d;--shadow:0 10px 28px rgba(35,30,80,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--text);font-family:Poppins,Arial,sans-serif;line-height:1.7}a{color:inherit}button,input{font:inherit}.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{max-width:1180px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}.logo{font-size:20px;font-weight:800;text-decoration:none;letter-spacing:-.7px;color:var(--text);white-space:nowrap}.logo span{color:var(--brand)}.navright{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.navlink,.iconbtn{border:1px solid var(--line);border-radius:12px;padding:8px 12px;background:var(--surface);text-decoration:none;font-size:13px;font-weight:600;cursor:pointer}.navlink:hover,.iconbtn:hover{border-color:var(--brand);color:var(--brand)}.wrap{max-width:1180px;margin:auto;padding:0 18px 38px}.page-nav{display:flex;gap:8px;align-items:center;padding-top:12px;padding-bottom:0}.page-nav .clearbtn{font-size:12px;padding:7px 12px}.notice{background:#fff8d8;border:1px solid #f4df83;border-radius:15px;padding:13px 16px;color:#594800;font-size:13px;margin:18px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 0 14px}.section-head h2{margin:0;font-size:clamp(22px,3vw,30px);letter-spacing:-.6px}.section-head p{margin:3px 0 0;color:var(--muted);font-size:13px}.searchrow{display:flex;gap:10px;margin:18px 0;flex-wrap:wrap}.search{flex:1;min-width:210px;padding:13px 15px;border:1px solid var(--line);border-radius:13px;background:var(--surface);color:var(--text);outline:none}.search:focus{border-color:var(--brand);box-shadow:0 0 0 3px #6546e81a}.clearbtn{border:1px solid var(--line);background:var(--surface);border-radius:13px;padding:11px 14px;cursor:pointer;font-weight:600;color:var(--text)}.category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.category{border:1px solid var(--line);background:var(--surface);border-radius:17px;overflow:hidden;cursor:pointer;text-align:left;padding:0;color:var(--text);box-shadow:0 3px 12px #17172a08;transition:transform .18s,border-color .18s}.category:hover{transform:translateY(-3px);border-color:var(--brand)}.cat-photo{height:48px;display:flex;align-items:center;justify-content:center;font-size:25px;background:linear-gradient(135deg,#fff1a8,#ffd84d)}.category:nth-child(2) .cat-photo{background:linear-gradient(135deg,#d9ceff,#8e73f5)}.category:nth-child(3) .cat-photo{background:linear-gradient(135deg,#c8f7e8,#53cba9)}.category:nth-child(4) .cat-photo{background:linear-gradient(135deg,#ffd9e9,#f58bb8)}.category:nth-child(5) .cat-photo{background:linear-gradient(135deg,#cde8ff,#68b5f3)}.cat-copy{padding:8px}.cat-copy strong{display:block;font-size:11px;line-height:1.35}.cat-copy small{display:none;color:var(--muted);font-size:10px;margin-top:4px}.topic-count{display:inline-block;margin-top:5px;background:#f0ecff;color:#5d3ad9;border-radius:999px;padding:2px 6px;font-size:9px;font-weight:700}.photo-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.photo-card{padding:0;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--surface);color:var(--text);text-align:left;cursor:pointer;box-shadow:0 5px 18px #2520440b;transition:transform .18s,border-color .18s}
+.photo-card:hover{transform:translateY(-3px);border-color:var(--brand)}
+.photo-card img{display:block;width:100%;height:165px;object-fit:cover;background:#e9e5ff}
+.photo-copy{padding:12px 14px 14px}
+.photo-copy strong{display:block;font-size:14px;line-height:1.45}
+.photo-copy span{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+.photo-copy em{display:inline-block;margin-top:9px;background:var(--yellow);color:#3c3210;padding:4px 9px;border-radius:7px;font-size:11px;font-weight:700;font-style:normal}
+.group{margin-top:32px}.group-title{display:flex;align-items:center;gap:12px;margin-bottom:12px}.group-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#fff0a8;font-size:25px;flex-shrink:0}.group:nth-of-type(2) .group-icon{background:#e5dcff}.group-title h2{font-size:22px;margin:0;line-height:1.25}.group-title p{margin:3px 0 0;color:var(--muted);font-size:12px}.topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.topic{background:var(--surface);border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 4px 15px #25204407;scroll-margin-top:90px}.topic summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:88px 1fr 28px;gap:13px;align-items:stretch;padding:0}.topic summary::-webkit-details-marker{display:none}.topic summary:hover .topic-title{text-decoration:underline;text-decoration-color:#c7baff;text-underline-offset:4px}.topic-art{display:flex;align-items:center;justify-content:center;background:var(--yellow);font-size:38px;min-height:104px}.topic-head{padding:12px 0;align-self:center}.topic-number{font-size:10px;font-weight:800;color:#6d51d7;letter-spacing:.7px}.topic-title{font-size:14px;font-weight:700;line-height:1.45;display:block;margin:2px 0}.topic-teaser{font-size:11px;color:var(--muted);line-height:1.45;display:block}.chevron{align-self:center;font-size:20px;color:var(--brand);padding-right:12px;transition:transform .2s}.topic[open] .chevron{transform:rotate(180deg)}.topic-body{padding:0 17px 18px;border-top:1px solid var(--line);font-size:13px}.topic-body h3{font-size:15px;margin:15px 0 5px}.topic-body p{margin:8px 0;color:var(--text)}.topic-body ul,.topic-body ol{padding-left:21px;margin:8px 0}.topic-body li{margin:5px 0}.safety{background:#fff6dd;border-left:4px solid #eab308;border-radius:8px;padding:10px 12px;margin:12px 0;color:#594600}.related{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.related a{background:#f0ecff;color:#5434cb;border-radius:999px;text-decoration:none;padding:6px 10px;font-size:11px;font-weight:700}.empty{display:none;background:var(--surface);border:1px dashed var(--line);border-radius:14px;padding:22px;text-align:center;color:var(--muted)}.cta{margin-top:34px;background:linear-gradient(120deg,#24164e,#6546e8);color:white;border-radius:22px;padding:25px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}.cta h2{margin:0;font-size:23px}.cta p{margin:6px 0 0;color:#e4ddff;font-size:13px}.cta .bottom-nav{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.bottom-nav a{background:var(--surface);border:1px solid var(--line);padding:9px 13px;border-radius:11px;text-decoration:none;font-size:12px;font-weight:700}.footer{text-align:center;border-top:1px solid var(--line);padding:25px 18px;color:var(--muted);font-size:12px}.footer-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}.footer a{color:var(--brand);text-decoration:none}.backtop{position:fixed;right:16px;bottom:18px;border:0;border-radius:50%;width:46px;height:46px;background:var(--brand);color:#fff;font-size:20px;box-shadow:var(--shadow);cursor:pointer;z-index:10}
+body.dark{--bg:#11121a;--surface:#1b1d29;--text:#f0eff8;--muted:#b0b2c4;--line:#303244;--shadow:0 10px 28px #0004}body.dark .topbar{background:#171823ed}body.dark .notice{background:#302a14;color:#ffe89b;border-color:#62521b}body.dark .topic-art{filter:saturate(.85)}body.dark .related a,body.dark .topic-count{background:#302650;color:#d5c8ff}body.dark .safety{background:#302a14;color:#ffe89b}body.dark .search{color:var(--text)}
+@media(max-width:900px){.category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.topic-grid{grid-template-columns:1fr}.photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.photo-card img{height:145px}}
+@media(max-width:600px){.photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo-card img{height:115px}.photo-copy{padding:9px}.photo-copy strong{font-size:12px}.photo-copy span{font-size:10px}.photo-copy em{font-size:10px}.category-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.cat-photo{height:42px;font-size:22px}.cat-copy{padding:6px}.cat-copy strong{font-size:10px}.topic-count{font-size:8px;padding:2px 5px}.nav{padding:10px 12px}.logo{font-size:17px}.navlink{display:none}.wrap{padding:0 12px 28px}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.cat-photo{height:82px;font-size:39px}.cat-copy{padding:8px}.cat-copy strong{font-size:12px}.topic summary{grid-template-columns:70px 1fr 24px;gap:10px}.topic-art{font-size:30px;min-height:105px}.topic-head{padding:10px 0}.topic-title{font-size:12px}.topic-teaser{font-size:10px}.chevron{padding-right:8px}.topic-body{padding:0 13px 15px}.section-head{align-items:start;flex-direction:column}.group-title h2{font-size:19px}.cta{padding:20px}.cta h2{font-size:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
 </style>
 </head>
 <body>
-<header><div class="navbar">
-<a class="logo" href="index.html">ZIWAN <span>YATTRA</span></a>
-<button class="theme" id="themeToggle" type="button">🌙 Dark Mode</button>
-<nav aria-label="Main navigation">
-<a href="index.html">🏠 Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a>
-</nav></div></header>
-
-<main>
-<section class="hero">
-    <div class="floating-icon">📱</div>
-    <h1>Find Your Phone Problem</h1>
-    <p>Choose a guide for common mobile issues. Try safe steps first; hardware repairs and warranty coverage depend on your device and manufacturer policy.</p>
-    <div class="backrow">
-        <a class="btn" style="background:#fff;color:#8b00ff; box-shadow:0 4px 15px rgba(0,0,0,0.1);" href="index.html">← Back to Home</a>
+<header class="topbar">
+  <nav class="nav" aria-label="Main navigation">
+    <a class="logo" href="index.html" aria-label="ZIWAN YATTRA Home">ZIWAN <span>YATTRA</span></a>
+    <div class="navright">
+      <a class="navlink" href="index.html">⌂ Home</a>
+      <a class="navlink" href="daily-tools.html">Daily Tools</a>
+      <a class="navlink" href="ai-knowledge.html">AI Jankari</a>
+      <button class="iconbtn" id="themeToggle" type="button" aria-label="Toggle dark mode">🌙 Dark</button>
     </div>
-</section>
+  </nav>
+</header>
+<div class="page-nav wrap" aria-label="Page navigation">
+  <button class="clearbtn" id="backButton" type="button">← Back</button>
+  <a class="clearbtn" href="index.html" style="text-decoration:none;display:inline-flex;align-items:center">⌂ Home</a>
+</div>
 
-<section class="section">
-    <h2>Choose a troubleshooting guide</h2>
-    <p class="muted">Tap “Read steps” to open each guide.</p>
-    
-    <div class="grid">
-        <div class="card">
-            <h3>🔋 Battery Draining Fast</h3>
-            <details>
-                <summary>Read steps</summary>
-                <ol>
-                    <li>Check battery usage in Settings.</li>
-                    <li>Reduce brightness and screen timeout.</li>
-                    <li>Update apps and phone software when practical.</li>
-                    <li>If the phone shuts down unexpectedly, check battery health with an authorised service provider.</li>
-                </ol>
-                <p><strong>Warning:</strong> If the battery is swollen, stop using or charging the phone and seek professional service.</p>
-            </details>
-        </div>
-
-        <div class="card">
-            <h3>🌡️ Phone Heating</h3>
-            <details>
-                <summary>Read steps</summary>
-                <ol>
-                    <li>Pause demanding games and apps.</li>
-                    <li>Keep the phone out of direct sunlight.</li>
-                    <li>Unplug it if unusually hot while charging.</li>
-                    <li>Let it cool naturally; do not put it in a fridge.</li>
-                </ol>
-            </details>
-        </div>
-
-        <div class="card">
-            <h3>🔌 Charging Problems</h3>
-            <details>
-                <summary>Read steps</summary>
-                <ol>
-                    <li>Try a compatible, undamaged charger and cable.</li>
-                    <li>Check the power socket.</li>
-                    <li>Follow the manufacturer's instructions if a moisture warning appears.</li>
-                    <li>Never insert metal objects into the charging port.</li>
-                </ol>
-            </details>
-        </div>
-
-        <div class="card">
-            <h3>🐢 Phone Lagging</h3>
-            <details>
-                <summary>Read steps</summary>
-                <ol>
-                    <li>Restart your phone.</li>
-                    <li>Check available storage.</li>
-                    <li>Update apps and remove apps you no longer need.</li>
-                    <li>Clear an app's cache in Settings if it is causing problems.</li>
-                </ol>
-            </details>
-        </div>
-
-        <div class="card">
-            <h3>📦 Storage Full</h3>
-            <details>
-                <summary>Read steps</summary>
-                <ol>
-                    <li>Review large videos and downloads.</li>
-                    <li>Back up important files before deleting them.</li>
-                    <li>Remove unused apps.</li>
-                    <li>Check trash folders before emptying them.</li>
-                </ol>
-            </details>
-        </div>
-
-        <div class="card">
-            <h3>🟩 Green / Pink / White Lines</h3>
-            <details>
-                <summary>Read steps</summary>
-                <ol>
-                    <li>Restart and check whether the line remains.</li>
-                    <li>Back up important data if the display works.</li>
-                    <li>Avoid pressing, bending or heating the screen.</li>
-                    <li>Ask a technician to inspect the display and connector.</li>
-                </ol>
-                <p>Software steps cannot fix every physical display fault.</p>
-            </details>
-        </div>
-
-        <div class="card">
-            <h3>🛡️ Warranty Check</h3>
-            <details>
-                <summary>Read steps</summary>
-                <ol>
-                    <li>Find the phone model and IMEI in Settings or on the box.</li>
-                    <li>Use the manufacturer's official support service.</li>
-                    <li>Keep the invoice if available.</li>
-                    <li>Ask an authorised service centre about eligibility and charges.</li>
-                </ol>
-                <p>Coverage depends on region, purchase date, damage and company policy. Do not post your IMEI publicly.</p>
-            </details>
-        </div>
-
-        <div class="card">
-            <h3>🔐 Security & Suspicious Apps</h3>
-            <details>
-                <summary>Read steps</summary>
-                <ol>
-                    <li>Remove apps you do not trust.</li>
-                    <li>Review permissions and accessibility access.</li>
-                    <li>Update the operating system.</li>
-                    <li>Never share OTPs, passwords or banking PINs.</li>
-                    <li>Contact your bank promptly if you suspect financial fraud.</li>
-                </ol>
-            </details>
-        </div>
+<main class="wrap">
+  <section aria-labelledby="popular-title">
+    <div class="section-head"><div><h2 id="popular-title">Explore the Photo Gallery</h2><p>Choose a problem from these photo cards to open its step-by-step solution.</p></div></div>
+    <div class="photo-gallery" id="photoGallery">
+      <button class="photo-card" type="button" data-guide="33"><img loading="lazy" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80" alt="Smartphone in hand" /><span class="photo-copy"><strong>Phone Slow or Hanging</strong><span>Free storage and improve performance.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="21"><img loading="lazy" src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=700&q=80" alt="Phone battery and charging" /><span class="photo-copy"><strong>Battery Draining Fast</strong><span>Find what is using your battery.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="23"><img loading="lazy" src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=700&q=80" alt="Mobile phone and charging cable" /><span class="photo-copy"><strong>Charging Problem</strong><span>Check cable, adapter and port safely.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="1"><img loading="lazy" src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=700&q=80" alt="Digital security on a device" /><span class="photo-copy"><strong>Phone Security Check</strong><span>Review suspicious apps and account activity.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="31"><img loading="lazy" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=80" alt="Camera equipment" /><span class="photo-copy"><strong>Camera Photo Is Blurry</strong><span>Improve focus and clean the lens.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="36"><img loading="lazy" src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=700&q=80" alt="Smartphone screen" /><span class="photo-copy"><strong>Touchscreen Not Working</strong><span>Try safe touch troubleshooting.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="38"><img loading="lazy" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80" alt="Technology and electronics" /><span class="photo-copy"><strong>Wi-Fi or Network Slow</strong><span>Test your connection step by step.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="41"><img loading="lazy" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80" alt="Smartphone display" /><span class="photo-copy"><strong>Display Line or Damage</strong><span>Check symptoms before repair.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="48"><img loading="lazy" src="https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=700&q=80" alt="Mobile apps on a phone" /><span class="photo-copy"><strong>Play Store Not Opening</strong><span>Fix common app-store issues.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="44"><img loading="lazy" src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=700&q=80" alt="Phone accessories" /><span class="photo-copy"><strong>Charging Port Check</strong><span>Learn what is safe to clean.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="20"><img loading="lazy" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=700&q=80" alt="Photo editing camera" /><span class="photo-copy"><strong>Improve Old Photos with AI</strong><span>Enhance photos while keeping originals.</span><em>View solution →</em></span></button>
+      <button class="photo-card" type="button" data-guide="50"><img loading="lazy" src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=700&q=80" alt="Modern smartphone" /><span class="photo-copy"><strong>Make an Old Phone Faster</strong><span>Five practical performance steps.</span><em>View solution →</em></span></button>
     </div>
-
-    <!-- WhatsApp Help Panel -->
-    <div class="panel-cta">
-        <h3>Still need help?</h3>
-        <p class="muted">Send your phone model and problem through WhatsApp.</p>
-        <a class="btn whatsapp" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20I%20need%20mobile%20help." target="_blank" rel="noopener noreferrer">💬 Share Your Problem on WhatsApp</a>
+  </section>
+  <section aria-labelledby="choose-title">
+    <div class="section-head"><div><h2 id="choose-title">Choose Your Problem</h2><p>Category par tap karo ya neeche search karke direct guide kholo.</p></div></div>
+    <div class="category-grid" id="categoryGrid">
+      <button class="category" type="button" data-target="security"><span class="cat-photo">🔐</span><span class="cat-copy"><strong>Hacking & Security</strong><small>Phone and account safety</small><span class="topic-count">10 guides</span></span></button>
+      <button class="category" type="button" data-target="ai"><span class="cat-photo">🤖</span><span class="cat-copy"><strong>AI & Smart Features</strong><small>AI tools and smart features</small><span class="topic-count">10 guides</span></span></button>
+      <button class="category" type="button" data-target="battery"><span class="cat-photo">🔋</span><span class="cat-copy"><strong>Battery & Charging</strong><small>Battery life and charging</small><span class="topic-count">10 guides</span></span></button>
+      <button class="category" type="button" data-target="camera"><span class="cat-photo">📸</span><span class="cat-copy"><strong>Camera, Display & Performance</strong><small>Speed, display and network</small><span class="topic-count">10 guides</span></span></button>
+      <button class="category" type="button" data-target="repair"><span class="cat-photo">🛠️</span><span class="cat-copy"><strong>Common Problems & Repair</strong><small>Everyday phone fixes</small><span class="topic-count">10 guides</span></span></button>
     </div>
-
-    <div class="backrow">
-        <a class="btn" href="daily-tools.html" style="background:var(--bg); color:var(--text); border:1px solid var(--border);">← Daily Tools</a>
-        <a class="btn" href="ai-knowledge.html" style="background:var(--primary);">Next: AI Jankari →</a>
+  </section>
+  <div class="notice"><strong>Safety first:</strong> Menu names phone brand aur Android/iOS version ke hisaab se alag ho sakte hain. Banking, hacking aur repair wale steps dhyan se padhein. Unknown apps install na karein aur kisi ko OTP/PIN na dein.</div>
+  <section id="all-guides">
+    <div class="section-head"><div><h2>50 Step-by-Step Guides</h2><p>Har card kholne ke liye us par tap karein. Related guides ke links bhi diye gaye hain.</p></div></div>
+    <div class="searchrow">
+      <input class="search" id="guideSearch" type="search" placeholder="Search: battery, hack, touch, network..." aria-label="Search mobile help guides">
+      <button class="clearbtn" id="clearSearch" type="button">Clear search</button>
     </div>
-</section>
+    <p id="resultCount" aria-live="polite" style="font-size:12px;color:var(--muted);margin:0 0 12px">Showing all 50 guides</p>
+    <div class="empty" id="emptyState">Is search ke liye guide nahi mila. Dusra keyword try karein.</div>
+    <div id="guideGroups"></div>
+  </section>
+  <section class="cta">
+    <div><h2>Abhi bhi problem solve nahi hui?</h2><p>Phone ka model aur problem ka short detail likh kar WhatsApp par pooch sakte hain. Password, OTP ya bank PIN kabhi share na karein.</p></div>
+    <a class="btn" href="https://wa.me/919148987607?text=Hello%20ZIWAN%20YATTRA%2C%20I%20need%20mobile%20help." target="_blank" rel="noopener noreferrer">💬 Ask on WhatsApp</a>
+  </section>
+  <nav class="bottom-nav" aria-label="Helpful pages">
+    <a href="index.html">⌂ Home</a><a href="daily-tools.html">Daily Tools →</a><a href="ai-knowledge.html">AI Jankari →</a><a href="creator-services.html">Creator Services →</a>
+  </nav>
 </main>
-
-<footer>
-    <strong>ZIWAN YATTRA</strong>
-    <p>Useful tools. Helpful guides. Digital growth.</p>
-    <div style="margin-bottom: 15px;">
-        <a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
-    </div>
-    <p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p>
+<footer class="footer">
+  <div class="footer-links"><a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a></div>
+  <div>© <span id="year"></span> ZIWAN YATTRA. Practical help, one step at a time.</div>
 </footer>
-
+<button class="backtop" id="backTop" type="button" aria-label="Back to top" title="Back to top">↑</button>
 <script>
-const themeToggle=document.getElementById("themeToggle");
-themeToggle.addEventListener("click",function(){
-    document.body.classList.toggle("dark");
-    this.textContent=document.body.classList.contains("dark")?"☀️ Light Mode":"🌙 Dark Mode";
+const guideData = [
+{group:"security",groupName:"Hacking & Security",groupIcon:"🔐",items:[
+["Phone Hack Hone Ke 7 Signs (Turant Check Karein)","🔍","Battery drain, unusual data use ya unknown apps ko kaise check karein.",["Battery/data achanak bahut zyada use hona","Unknown apps ya settings changes dikhna","Login alerts ya messages jo aapne nahi bheje","Phone garam hona akela hacking ka proof nahi hai."],["Settings → Apps mein unfamiliar apps dekhein; sirf woh remove karein jinko pehchante nahi aur jo trusted system apps nahi hain.","Google/Apple account ke Security section mein recent devices aur sign-in activity check karein.","OS aur apps update karein; Play Protect ya built-in security scan chalayein.","Doubt strong ho to trusted device se account password badlein aur unknown sessions sign out karein."],"Sirf ek sign jaise battery drain se confirm nahi hota ki phone hack hua hai. Pehle battery health, weak signal aur background apps bhi check karein."],
+["Phone Hack Hone Par Kya Notification Aata Hai?","🔔","Security alerts aur fake pop-ups mein farq samjhein.",["Google/Apple ka unknown sign-in alert","Password reset email jo aapne request nahi ki","Account se messages ya purchases jo aapne nahi kiye","Browser ka “your phone is infected” pop-up aksar scam ad hota hai."],["Notification ke link par tap na karein. Official Settings ya official app khud open karein.","Google Account → Security ya Apple Account device list mein activity check karein.","Unknown sessions sign out karein aur password trusted device se badlein.","Banking concern ho to bank ke official number/app se contact karein."],"Koi bhi real support agent aapse OTP, UPI PIN ya password nahi maangta."],
+["Hacked Phone Ko Safe Kaise Karein (Step-by-Step)","🛡️","Suspicious access ko rokne ke practical steps.",["1. Agar financial fraud chal raha ho to bank ko turant official channel se call karein.","2. Trusted device se email, Google/Apple aur social account passwords badlein.","3. Account security mein unknown devices aur third-party app access remove karein.","4. Phone OS, browser aur apps update karein; unknown apps uninstall karein.","5. Backup ke baad bhi problem rahe to factory reset consider karein."],["Pehle email account secure karein, kyunki password reset links wahan aate hain.","2-step verification enable karein; recovery phone/email updated rakhein.","Agar phone mein stalkerware ya personal safety ka concern ho, suspected person ko alert karne se pehle trusted help lein."],"Factory reset se local data delete ho sakta hai. Reset se pehle important photos/documents ka safe backup lein."],
+["Phone Mein Spyware/Virus Kaise Check Karein?","🧪","Android aur iPhone par basic security check.",["Unknown apps, strange permissions, browser redirects ya repeated security warnings check karein.","Android: Play Store → profile → Play Protect → Scan.","Settings → Privacy/Security mein camera, mic, location aur accessibility permissions review karein.","iPhone: Settings mein VPN & Device Management aur installed profiles check karein; unknown profile ko samajh kar hi remove karein."],["OS aur apps ko official update se latest rakhein.","Apps sirf Play Store/App Store ya official developer source se install karein.","Unknown APK, cracked app aur “cleaner/booster” apps se bachein."],"Battery drain, heat ya pop-up akela spyware ka proof nahi hai. Company/school-managed phone par profiles remove karne se pehle administrator se poochhein."],
+["Hacking Se Bachne Ke 5 Golden Rules","🔑","Roz ki 5 habits jo accounts ko zyada safe banati hain.",["Har important account ka alag, strong password/passphrase use karein.","Jahan possible ho, passkey ya two-step verification on karein.","OTP, UPI PIN, screen-share code aur recovery code kisi ko na dein.","Unknown APK, mod app, suspicious link aur fake customer-care number avoid karein.","Phone aur apps ko update karein; lock screen par strong PIN rakhein."],["Password manager unique passwords yaad rakhne mein help kar sakta hai.","Public Wi-Fi par sensitive kaam karte waqt official app/website use karein; fake login pages se savdhaan rahein.","Account recovery details current rakhein."],"Koi security app 100% protection guarantee nahi karta. Safe habits sabse important hain."],
+["Bank Account Hack Hone Se Kaise Bachein?","🏦","UPI, bank app aur SMS ke liye essential safety.",["UPI PIN sirf payment authorize karne ke liye enter karein; paise receive karne ke liye PIN nahi chahiye.","Screen-sharing/remote-control app kisi unknown caller ke kehne par install na karein.","SMS/WhatsApp mein aaye unknown KYC, refund ya reward links par bank details na bharein.","Bank alerts on rakhein aur transaction messages check karein."],["Suspicious transaction ho to bank ke official app/website/card par diye number se turant report karein.","India mein cyber financial fraud report karne ke liye 1930 par jaldi call karein aur cybercrime.gov.in par complaint file karein.","Card/UPI/account block karne ke liye bank ke official process follow karein."],"Bank kabhi OTP, PIN ya full password phone par maang kar “refund” nahi karta."],
+["Public Wi-Fi Hacking Se Kaise Bachein?","📶","Airport, cafe aur public Wi-Fi par safer browsing.",["Network ka exact naam staff se confirm karein; milte-julte fake network names ho sakte hain.","Sensitive banking ke liye apna mobile data use karna behtar hai.","HTTPS wali official website/app use karein; certificate warnings ignore na karein.","File sharing/AirDrop nearby sharing ko zarurat na ho to off rakhein."],["Auto-connect/auto-join public networks off karein.","Kaam khatam hone par network ko Forget karein.","Public charging port use karte waqt data prompt aaye to deny karein; apna charger/power bank safer hai."],"Public Wi-Fi par hone ka matlab automatically hack hona nahi, lekin fake hotspots aur phishing ka risk hota hai."],
+["Hacked WhatsApp Account Wapas Kaise Payein?","💬","WhatsApp account par control wapas lene ke steps.",["Apne number se official WhatsApp app mein dobara register karke SMS/call verification code enter karein.","Verification code kisi ko na batayein—even friend ya support bolne wale ko bhi nahi.","Two-step verification PIN set karein aur recovery email add karein.","Linked devices list check karein aur unknown devices log out karein."],["Agar attacker two-step PIN set kar chuka hai, WhatsApp ke official in-app recovery instructions follow karein; waiting period apply ho sakta hai.","Mobile operator se SIM-swap ka doubt ho to turant contact karein.","Contacts ko doosre channel se warn karein ki paise ya code maangne wale messages ignore karein."],"WhatsApp support ko OTP ya two-step PIN mat bhejein. Sirf official app/help center use karein."],
+["AI Phishing Scam Se Kaise Bachein? (2026 Alert)","🎭","AI se banaye fake voice, message aur video ko pehchanein.",["Urgent money request, secret rakhne ka pressure ya unusual payment method red flag hai.","Caller ki awaaz pehchani lage tab bhi doosre known number par call karke verify karein.","Message ke link ko kholne ke bajay official app khud open karein.","Spelling sahi hona ya profile photo real lagna proof nahi hai."],["Family ke saath ek private verification phrase/code decide kar sakte hain—use public post na karein.","Payment se pehle beneficiary name aur amount dobara check karein.","Scam hua ho to bank ko immediately report karein aur 1930/cybercrime.gov.in ka use karein."],"AI voice/video convincing ho sakta hai. Awaaz par bharosa karne ke bajay independent verification karein."],
+["Kya Aapka Phone Hack Hai? Aise Karein Check","🕵️","Guess karne ke bajay account aur device evidence check karein.",["Google/Apple account ke signed-in devices dekhein.","App list, Accessibility access, VPN/profile aur special permissions review karein.","Mobile data usage aur battery usage mein unknown app identify karein.","Unknown login alert, sent messages ya unauthorized transactions ko seriously lein."],["Phone update karein aur built-in security scan chalayein.","Email aur primary account trusted device se secure karein.","Evidence save karein, phir trusted technician/support se help lein if issue continues."],"Kisi random website ko phone number daal kar “hack check” karne ke liye payment, OTP ya access mat dein."]]},
+{group:"ai",groupName:"AI & Smart Features",groupIcon:"🤖",items:[
+["Best AI Phone Features 2026: Kaunsa Sabse Best Hai?","✨","AI features ko apne actual use ke hisaab se choose karein.",["Useful features: call/message summaries, live translation, photo cleanup, voice transcription aur smart search.","On-device AI kuch tasks internet ke bina aur zyada private tareeke se kar sakta hai; cloud AI ko internet ki zarurat ho sakti hai.","Har phone mein har feature available nahi hota; brand, region, language aur software version matter karte hain."],["Settings aur official phone support page mein AI features ki availability check karein.","Purchase se pehle battery, updates, storage, camera aur service support ko bhi compare karein.","AI output ko important facts, medical advice ya financial decisions ke liye verify karein."],"“AI phone” label se hi phone best nahi ho jata. Apni daily need aur budget ke hisaab se choose karein."],
+["Contextual Assistance Kya Hai? Phone Mein Kaise Use Karein?","🧠","Context ke hisaab se suggestions dene wale features.",["Contextual assistance current screen, time, location ya app activity ke basis par useful suggestion de sakti hai.","Examples: calendar reminder, selected text ka translation, route suggestion ya message ka summary.","Feature ka naam phone aur assistant ke hisaab se alag ho sakta hai."],["Settings → Apps/Assistant ya system settings mein assistant aur permissions check karein.","Sirf zaroori permissions allow karein; location/mic access ko “while using” tak limit karna possible ho sakta hai.","Private messages aur sensitive information AI tools mein share karne se pehle privacy settings samjhein."],"Contextual features ko off kiya ja sakta hai ya unki permissions badli ja sakti hain. Exact menu model par depend karta hai."],
+["AI Photo Editing: Bina App Ke Photo Kaise Edit Karein?","🖼️","Built-in Gallery/Photos editor se basic editing.",["Gallery/Google Photos/Apple Photos mein photo kholein aur Edit option dekhein.","Crop, rotate, brightness, colour aur portrait adjustments se start karein.","Supported phones par object eraser, generative fill ya background tools mil sakte hain."],["Original photo ki copy save karein, especially jab AI object remove ya add kare.","Cloud editing feature ho to internet aur account sign-in ki zarurat ho sakti hai.","Edited photo ko real event ka proof bana kar share na karein agar usme important cheez badli gayi ho."],"AI editing tools har phone par available nahi hote. App ko official store se update karein."],
+["Visual Search Kaise Use Karein? (Camera Se Search)","🔎","Photo ya camera se cheez identify/search karna.",["Supported phone par Google Lens, camera search ya photo app ka Lens icon kholein.","Object, plant, product ya text ko frame mein rakhein; light achhi rakhein.","Text ho to select/copy/translate option use karein; product result ko seller ke official page par verify karein."],["Camera permission sirf trusted app ko dein.","Private document, ID card ya bank paper ko visual search mein upload karne se bachein.","Result galat ho sakta hai—medicine, plant safety ya electrical parts ke liye expert se verify karein."],"Visual search suggestions deta hai, guaranteed identification nahi."],
+["15,000 - 20,000 Budget Mein Best AI Phones","📱","Budget mein AI phone choose karne ka checklist.",["Is price range mein current models aur offers jaldi change hote hain, isliye buying day par price check karein.","At least 6–8 GB RAM, enough storage, reliable battery, decent display aur software update policy compare karein.","AI feature list ke bajay actual demo dekhein: photo editing, voice typing, translation aur call features."],["Official brand website aur trusted retailer par exact variant, warranty aur update policy check karein.","Camera reviews mein daylight aur low-light samples dekhein.","Service centre availability aur repair cost bhi consider karein."],"Yeh guide fixed model ranking nahi hai—prices/stock change hote rehte hain. Kisi unknown seller ko advance payment na karein."],
+["AI Voice Assistant: Kaise Kaam Karta Hai?","🎙️","Voice se search, reminder aur phone control.",["Phone ke built-in assistant ko Settings mein enable karein ya official assistant app kholein.","Mic permission check karein; wake word aur language settings apne hisaab se set karein.","Simple tasks try karein: alarm, timer, weather, call contact ya message dictation."],["Private jagah mein voice history aur recording settings review karein.","Assistant galat naam/contact select kare to command confirm karein before sending/calling.","Offline commands limited ho sakte hain; many AI features internet use karte hain."],"Voice assistant ko password, UPI PIN ya one-time code bol kar share na karein."],
+["Phone Mein AI Call Recording Kaise Use Karein?","☎️","Call recording ki availability aur privacy samjhein.",["Phone app settings mein call recording option check karein; kai phones/regions mein feature available nahi hota.","Agar built-in feature hai, app ke notice aur local law/consent rules follow karein.","Recording start karne se pehle participants ko inform karna zaroori ho sakta hai."],["Third-party recorder apps ko SMS, contacts, accessibility jaise unnecessary permissions na dein.","Recording files ko secure rakhein aur zarurat na ho to delete karein.","Important call record na ho to written confirmation/message ka alternative use karein."],"AI transcription ya recording sabhi devices par supported nahi hai. Hidden recording se legal/privacy trouble ho sakta hai."],
+["AI Battery Optimization Kya Hai? (Sach ya Jhooth)","🔋","Phone usage seekh kar background battery manage karna.",["Adaptive Battery ya battery optimization background apps ki activity limit kar sakta hai.","Settings → Battery mein usage by app aur adaptive battery options check karein.","Battery saver on karne se background sync, performance ya notifications par effect pad sakta hai."],["Frequently used messaging apps ki background restrictions check karein if notifications late aati hain.","Phone update ke baad kuch din usage pattern settle hone dein.","Battery health poor ho to software optimization se puri problem solve nahi hogi."],"AI/adaptive optimization battery life improve kar sakti hai, lekin damaged battery ko repair nahi karti."],
+["Gemini vs Siri vs Bixby: Kaunsa AI Best Hai?","🗣️","Assistant ko phone aur use case ke hisaab se compare karein.",["Gemini Google services aur general questions ke saath useful ho sakta hai.","Siri Apple devices aur Apple ecosystem controls ke liye integrated hai.","Bixby Samsung device settings aur Samsung ecosystem tasks mein useful ho sakta hai."],["Apne phone par available language support, offline controls, privacy settings aur integrations test karein.","Important facts ko independent reliable source se verify karein.","Assistant features plan, region, phone model aur software version se change ho sakte hain."],"Koi ek assistant har kaam mein best nahi. Jo aapke phone aur daily tasks mein achha chale, wahi practical choice hai."],
+["AI Se Purani Photos Ko HD Kaise Banayein?","🌄","Old photo restore karte waqt original safe rakhein.",["Built-in Photos editor ya trusted photo restoration app use karein.","Original scan/photo ko duplicate karke enhance karein; sharpness ko dheere badhayein.","Face restoration tools missing details ko estimate kar sakte hain, exact original details recover nahi karte."],["High-resolution export select karein agar available ho.","Private family photos upload karne se pehle app ki privacy policy aur cloud upload settings check karein.","Printed photo ke liye high-quality scan se start karna best hai."],"AI-enhanced face mein invented details aa sakti hain; important family/history images ke original ko preserve karein."]]},
+{group:"battery",groupName:"Battery & Charging",groupIcon:"🔋",items:[
+["Phone Battery Jaldi Khatam? 5 Settings Turant Off Karein","⚡","Battery drain ke common reasons check karein.",["Screen brightness aur screen timeout reduce karein.","Unused hotspot, Bluetooth, GPS/location aur mobile data ko zarurat na ho to off karein.","Settings → Battery mein top battery-using apps check karein.","Background refresh/sync ko unnecessary apps ke liye limit karein.","Weak signal mein phone zyada power use kar sakta hai."],["Phone restart karein aur apps/OS update karein.","Agar drain update ke turant baad start hua hai, 1–2 din normal use ke baad dobara check karein.","Battery health/service status available ho to inspect karein."],"Har setting off karna zaroori nahi. Notifications ya location chahiye to us feature ko on rehne dein."],
+["Battery Health Check Kaise Karein (Android & iPhone)","🩺","Battery ageing aur capacity ka basic check.",["iPhone: Settings → Battery → Battery Health (ya Battery Health & Charging) dekhein.","Android: Settings → Battery mein battery diagnostics/health option ho sakta hai; availability brand ke hisaab se vary karti hai.","Samsung par Samsung Members app mein Diagnostics option available ho sakta hai."],["Battery percentage health app estimate ho sakti hai; unknown apps ko sensitive permissions na dein.","Phone sudden shutdown, swelling, extreme heat ya very short runtime dikhaye to authorised service centre se check karayein.","Battery replacement ka estimate lene se pehle warranty aur service cost poochhein."],"Menu names model aur OS version par depend karte hain. Swollen battery ko press, puncture ya ghar par open na karein."],
+["Slow Charging Problem: Cable Aur Port Ka Solution","🔌","Slow charge ke liye safe checks.",["Original/compatible adapter aur achhi condition wali cable try karein.","Dusre wall socket se check karein; laptop USB port se charging slow ho sakti hai.","Phone ka charging port torch se dekhein, lekin metal pin/needle andar na daalein.","Phone restart karein aur charging ke waqt heavy games/video editing band karein."],["Port mein liquid, corrosion ya bent pin ho to charge karna band karein aur service centre le jayein.","Wireless charging ho to case hata kar compatible charger align karein.","Fast charging ke liye phone, cable aur adapter—teeno ka compatible hona zaroori hai."],"Port mein liquid ya debris ho to compressed air, liquid cleaner ya metal tool use na karein."],
+["Charging Ke Waqt Phone Garam Hota Hai? Ye Galti Na Karein","🌡️","Normal warmth aur dangerous overheating mein farq.",["Fast charging, gaming, video calls aur hot room se phone warm ho sakta hai.","Charging ke waqt heavy gaming aur direct sunlight avoid karein.","Phone ko bed/blanket ke neeche charge na karein; hard, ventilated surface par rakhein."],["Case temporarily remove karein if heat high hai.","Agar temperature warning aaye, charging disconnect karein aur phone ko naturally cool hone dein.","Swelling, burning smell, smoke ya extreme heat ho to phone use/charge na karein; safe distance rakhein aur service help lein."],"Phone ko fridge/freezer mein rakh kar cool na karein—condensation damage kar sakta hai."],
+["10,000mAh Battery Wale Phones: Kya Wait Karein?","🔋","Large battery phone ka real-world trade-off.",["10,000mAh battery wale phones rare ho sakte hain; capacity claim aur actual model availability verify karein.","Large battery phone ko heavy bana sakti hai aur charging time badha sakti hai.","Real battery tests, standby drain, charging wattage, weight aur warranty compare karein."],["Official brand listing aur trusted reviews check karein.","Battery capacity mAh se compare karte waqt screen size, chipset aur software optimization bhi dekhein.","Unknown marketplace listing par model number aur seller authenticity verify karein."],"Sirf high mAh number se best battery life guarantee nahi hoti. Current models/stock market mein change hote rehte hain."],
+["Phone Raat Bhar Charging Par Lagana Chahiye Ya Nahi?","🌙","Modern phones mein charging safety.",["Modern phones charging control use karte hain, lekin phone ko heat se bachana important hai.","Optimized/Adaptive Charging option available ho to enable karein.","Phone ko pillow ya blanket ke neeche charge na karein; damaged cable/adapter use na karein."],["Agar battery swell ho, smell aaye ya charging abnormal ho to use turant band karein.","Compatible certified charger use karein.","Long-term battery health ke liye heat kam rakhna aur daily use mein convenient charging habit rakhna helpful hai."],"Raat bhar charge karne ka risk device aur charger condition par depend karta hai; overheating ko ignore na karein."],
+["Battery Percentage 100% Tak Karna Sahi Hai?","💯","Daily charging aur battery ageing.",["Kabhi-kabhi 100% charge karna normal use hai.","Lithium-ion batteries ko heat aur bahut der tak high charge par rehna long term mein age kar sakta hai.","Agar phone mein 80% limit ya optimized charging option hai, apni routine ke hisaab se use kar sakte hain."],["Daily long battery life chahiye to 100% charge karna theek hai; har kisi ko strict percentage follow karna zaroori nahi.","Phone ko garam jagah par charge na karein.","Battery health ko real-world runtime aur diagnostics se judge karein."],"Battery percentage ke liye stress mat lein—safe charging, low heat aur good charger zyada important hain."],
+["Fast Charging Adapter Kharidte Waqt Ye Dhyan Rakhein","⚡","Compatible adapter choose karne ki checklist.",["Phone ka supported charging standard aur maximum wattage official specs mein dekhein.","Trusted brand ka certified adapter aur proper cable choose karein.","USB-C connector hona akela fast charging guarantee nahi karta; protocol compatibility bhi matter karti hai."],["Bargain mein fake branded charger se bachein.","Adapter damaged, buzzing, burning smell ya unusual heat dikhaye to use band karein.","Travel adapter ke voltage/input rating ko check karein."],"Higher wattage adapter tabhi full speed dega jab phone supported protocol accept kare. Safe compatibility ko priority dein."],
+["Phone Bina Wajah Battery Drain Kar Raha Hai? (Fix)","📉","Battery usage se culprit app identify karein.",["Settings → Battery → Battery usage mein recent drain dekhein.","Recently installed/update hue apps ko check karein.","Phone restart karein aur system/app updates check karein.","Location, hotspot, weak network aur background sync ko inspect karein."],["App ka cache clear karna kuch cases mein help kar sakta hai; app data clear karne se login/local files delete ho sakti hain.","Agar phone idle par bhi bahut drain karta hai, safe mode/brand diagnostics ya service check consider karein.","Backup ke bina factory reset na karein."],"Battery drain ek single cause se nahi hota. Pehle battery usage screen ka evidence dekhein."],
+["Original vs Local Battery: Kaunsi Best Hai?","🔧","Replacement battery ke quality aur safety checks.",["Phone brand ya authorised service centre ki genuine battery usually best traceability/warranty deti hai.","Trusted repairer se written warranty, part source aur final cost poochhein.","Bahut cheap battery, missing label ya no-warranty offer risky ho sakta hai."],["Battery replacement trained technician se karayein; phone khud open karna puncture/fire risk la sakta hai.","Old battery ko household trash mein na phenkein; authorised e-waste/battery collection point par dein.","Repair ke baad charging, heating aur battery percentage behaviour check karein."],"Genuine part bhi faulty ho sakta hai, isliye service invoice aur warranty sambhal kar rakhein."]]},
+{group:"camera",groupName:"Camera, Display & Performance",groupIcon:"📸",items:[
+["Phone Camera Blur? Ye 3 Steps Turant Karein","📷","Blur photos ke basic fixes.",["Lens ko clean, soft microfiber cloth se gently wipe karein.","Camera lens protector/case frame ko cover ya reflect to nahi kar raha, check karein.","Tap-to-focus karein, phone steady rakhein aur achhi light mein test karein."],["Camera app close karke dobara kholein; phone restart karein.","Camera app ka cache clear karna Android par help kar sakta hai.","Lens scratched, cracked ya camera shaking sound ho to technician se check karayein."],"Lens par rough cloth, sanitizer ya abrasive cleaner use na karein."],
+["200MP Camera: Kya Sach Mein Zaroori Hai?","🖼️","Megapixel se zyada cheezein photo quality decide karti hain.",["Sensor size, lens quality, image processing, stabilization aur lighting bahut important hain.","High megapixel mode files ko bada bana sakta hai aur low light mein result model par depend karta hai.","Sample photos daylight aur night dono mein compare karein."],["Camera app ke normal mode ko default rakhein; full-resolution mode tab use karein jab detail crop karni ho.","Storage aur processing speed bhi consider karein.","Trusted reviews ke original sample images dekhein."],"200MP label alone best camera ki guarantee nahi."],
+["Phone Hang Hota Hai? Storage Full Ka Solution","🧹","Storage free karke performance improve karein.",["Settings → Storage mein dekhein kis category ne space liya hai.","Photos/videos ka backup verify karne ke baad hi unwanted copies delete karein.","Downloads, offline videos aur large chat media review karein.","Unused apps uninstall karein aur phone restart karein."],["Android par app cache clear kar sakte hain; Clear Storage/Data se app data delete ho sakta hai.","System ke liye kuch free space rakhein; exact amount phone par depend karta hai.","Storage cleaner apps ke badle built-in storage tools use karein."],"Backup complete confirm kiye bina photos ya WhatsApp media bulk delete na karein."],
+["Night Mode Photography: Raat Mein Best Photo Kaise Lein","🌃","Low-light photo ko clear banane ke tips.",["Night mode select karein aur phone ko steady surface ya tripod par rakhein.","Subject ko kuch seconds still rehne dein jab camera exposure le raha ho.","Digital zoom se bachein; frame ke kareeb ja sakte hain to safe distance se move karein."],["Lens clean rakhein aur light source ko subject ke paas rakhein.","Flash ko har shot mein use na karein; portraits mein harsh shadows aa sakte hain.","Night mode ki processing complete hone tak phone move na karein."],"Moving subject night mode mein blur ho sakta hai—normal photo mode try karein."],
+["Phone Slow Hai? Cache Clear Karne Ka Sahi Tarika","🚀","Cache aur app data ka difference samjhein.",["Settings → Apps → select app → Storage → Clear cache (Android phones par menu vary karta hai).","Phone restart karein aur storage space check karein.","Unused apps aur unnecessary background tasks ko limit karein."],["Clear data/storage button carefully use karein—isse sign-in, settings ya local files remove ho sakti hain.","iPhone par har app ka separate cache button nahi hota; app ke apne settings ya reinstall option ho sakta hai.","OS updates aur available storage check karein."],"Random “RAM booster” apps aksar zaroori nahi hote aur ads/permissions badha sakte hain."],
+["Display Touch Kaam Nahi Kar Raha? (Screen Fix)","👆","Touch issue ke safe troubleshooting steps.",["Screen ko dry soft cloth se clean karein; wet fingers/gloves remove karein.","Charger unplug karke test karein—faulty charger touch response affect kar sakta hai.","Phone restart karein; case/screen protector edge par pressure to nahi daal raha check karein."],["Screen cracked, liquid damaged ya dead zones hain to service centre par digitizer/display check karayein.","Important data ka backup lein if touch intermittently works; external mouse/keyboard support model par depend karta hai.","Phone ko press, bend ya heat na karein."],"Touch totally dead ho to repeated forceful tapping se damage badh sakta hai."],
+["Phone Overheating (Garam Hone) Ka Asli Reason","🌡️","Heat ke common causes aur warning signs.",["Gaming, camera recording, hotspot, navigation aur charging se heat badh sakti hai.","Direct sunlight aur hot car mein phone chhodna avoid karein.","Battery usage aur recent apps check karein; phone ko ventilated place par rest dein."],["Heat warning aaye to charging/use stop karein aur phone ko naturally cool hone dein.","Repeated overheating, swelling, smell ya sudden shutdown ho to service centre se check karayein.","Phone ko fridge, ice ya water se cool na karein."],"Agar phone touch karna mushkil ho raha ho ya smoke/smell aaye, safety ko priority dein aur use charge na karein."],
+["Network / Wi-Fi Slow Chal Raha Hai? Ye Karein","📶","Mobile data aur Wi-Fi ko alag-alag test karein.",["Airplane mode 10 seconds on karke off karein; phir signal check karein.","Phone restart karein aur dekhein issue ek network par hai ya sab par.","Wi-Fi router ke paas speed test karein; router restart karna help kar sakta hai.","Background downloads aur data saver/VPN settings check karein."],["SIM ko doosre compatible phone mein test karein if safe and possible.","Network settings reset last option rakhein; saved Wi-Fi/Bluetooth connections remove ho sakte hain.","Area outage ya data limit ke liye carrier ki official app check karein."],"Unknown “network booster” apps install na karein. Slow speed provider, signal, congestion ya router se ho sakti hai."],
+["Phone Speaker Se Aawaz Nahi Aa Rahi? Fix Guide","🔊","Speaker sound ke basic checks.",["Volume buttons aur Settings → Sound mein media/call volume check karein.","Bluetooth off karein; audio earbuds ya connected device par route to nahi ho raha.","Doosri app/audio file se test karein aur phone restart karein."],["Speaker grille ko soft dry brush se gently clean karein; pin ya liquid use na karein.","Recent water exposure, crackling sound ya complete silence ho to technician se check karayein.","Call speaker aur media speaker alag behaviour dikha sakte hain—dono test karein."],"Speaker mein liquid ho to heat/hair dryer use na karein."],
+["Software Update Ke Baad Phone Slow? Ye Karein","🔄","Update ke baad performance settle karne ke steps.",["Update ke baad phone ko restart karein aur charging par heavy use se bachein.","App updates complete karein; storage space check karein.","Battery aur data usage mein unusually active app identify karein."],["Kuch phones update ke baad background indexing karte hain; kuch waqt normal use karke dobara check karein.","Agar issue persist kare, official support instructions aur known update issues check karein.","Factory reset last resort hai—pehle complete backup aur account passwords confirm karein."],"Unknown firmware ya downgrade files install na karein; wrong firmware phone ko unusable bana sakta hai."]]},
+{group:"repair",groupName:"Common Problems & Repair",groupIcon:"🛠️",items:[
+["Phone Mein Yellow Line Aa Gayi Hai? (Display Issue)","🟨","Vertical line hardware ya display connection issue ho sakti hai.",["Phone restart karein aur screenshot kisi doosre device par dekhein—screenshot mein line na aaye to display hardware issue ka chance hota hai.","Line boot logo ya all apps mein dikhe to display/panel connection suspect ho sakta hai.","Data ka backup karein if phone abhi usable hai."],["Screen ko press, bend ya heat na karein.","Warranty/insurance check karein aur authorised service centre se diagnosis aur written estimate lein.","Repair quote ko phone ki current value ke saath compare karein."],"Yellow/green/pink line ke liye universal home fix nahi hai; DIY opening se damage aur warranty risk ho sakta hai."],
+["Phone Baar-Baar Restart Ho Raha Hai? (Boot Loop Fix)","🔁","Repeated restart ke safe checks.",["Agar phone on hota hai, important data ka backup jaldi lein.","Case remove karke power button stuck to nahi hai check karein.","Battery charge aur cable/adapter condition check karein; phone ko cool hone dein."],["Recent app/update ke baad issue start hua ho to brand ki official safe-mode/recovery guide follow karein.","Factory reset se data erase ho sakta hai—backup ke bina select na karein.","Phone bahut heat karta hai, swollen hai ya liquid damage hua hai to charge na karein; service lein."],"Recovery menu mein unfamiliar options select na karein. “Wipe data” local files delete kar sakta hai."],
+["Phone Ki Memory (Storage) Full Ho Gayi? Space Kaise Banayein","🗂️","Safe storage cleanup checklist.",["Settings → Storage se large categories identify karein.","Downloads, duplicate files aur offline movies review karein.","WhatsApp/Telegram media mein large files dekh kar unwanted items delete karein.","Photos/videos ko backup karein aur backup verify karne ke baad hi local copies remove karein."],["Unused apps uninstall karein; app data clear karne se login/local data delete ho sakta hai.","SD card sirf supported phone mein use karein; damaged/unknown card par sole copy store na karein.","Phone restart karke storage status dobara check karein."],"“Free up space” prompt mein selected items dhyan se dekhein. Permanent deletion se pehle backup confirm karein."],
+["Phone Charging Port Kharab Ho Gaya? Ghar Par Kaise Clean Karein","🧼","Port ko damage kiye bina basic inspection.",["Phone power off karein aur charger unplug karein.","Bright light mein port ko bahar se inspect karein; cable ko forcefully wiggle na karein.","Port wet/corroded ho to cable insert na karein; phone ko dry place mein rakhein aur service advice lein."],["Port ke andar pin, needle, toothpick, liquid cleaner ya metal tool mat daalein.","Lint jam ho ya connector loose ho to trained technician se clean/repair karayein.","Known-good compatible cable se gentle test sirf tab karein jab port dry aur undamaged ho."],"Charging port delicate hota hai. Ghar par andar khurachna pins ko bend kar sakta hai."],
+["Phone Mein Network (SIM) Nahi Aa Raha? Ye Settings Try Karein","📡","SIM, coverage aur network settings check karein.",["Airplane mode on/off karein aur phone restart karein.","Coverage area mein test karein; carrier outage ya recharge/plan status check karein.","SIM tray ko phone power off karke manufacturer instructions ke mutabik inspect karein.","Settings mein automatic network selection aur preferred network type check karein."],["SIM ko doosre compatible phone mein test karein if possible.","Network settings reset karne se saved Wi-Fi/Bluetooth settings remove ho sakti hain.","SIM damaged ho ya “No SIM” repeatedly aaye to carrier store se replacement/diagnosis lein."],"Emergency call availability guaranteed nahi hoti; urgent situation mein local emergency options use karein."],
+["Phone Ki Screen Tut Gayi Hai? Repair Karwayein Ya Naya Lein?","📱","Repair decision cost, safety aur phone value se karein.",["Agar screen glass toot gaya hai, sharp edges se haath bachayein; cracked screen ko press na karein.","Touch, display, battery aur frame damage ka technician se estimate lein.","Repair cost ko same-condition replacement phone ke price aur software support se compare karein."],["Repair se pehle backup karein if possible aur service privacy mode/maintenance mode available ho to use karein.","Written quote, part type, repair warranty aur data policy poochhein.","Phone swollen/overheating ho ya screen se battery expose ho to use/charge na karein."],"Sirf sasta quote nahi—part quality, warranty aur technician reliability bhi matter karte hain."],
+["Mobile Phone Mein Virus Aaya Hai? Bina Data Delete Kiye Kaise Hatayein","🦠","Pehle safe scan aur suspicious app removal try karein.",["Android: Play Store → profile → Play Protect → Scan chalayein.","Recently installed unknown apps uninstall karein; special Accessibility/Device Admin permissions bhi review karein.","Browser notifications mein suspicious websites ko block/remove karein.","OS aur apps official source se update karein."],["Unknown antivirus/cleaner APK download na karein.","Agar account compromise ka doubt ho to passwords trusted device se badlein aur unknown sessions sign out karein.","Problem persist kare ya malware remove na ho to backup ke baad professional help/factory reset consider karein."],"Koi scan har threat detect nahi karta. Factory reset se data delete ho sakta hai; backup carefully karein."],
+["Phone Mein Play Store Nahi Chal Raha? (Quick Fix)","▶️","Google Play Store ki common troubleshooting.",["Internet connection aur automatic date/time check karein.","Phone restart karein; Play Store ko force stop karke dobara kholein.","Settings → Apps → Google Play Store → Storage → Clear cache try karein.","Google Play Services aur Play Store ke updates/status check karein."],["Clear storage/data se settings reset ho sakti hain; pehle cache option try karein.","Phone storage free rakhein aur system update check karein.","Work/school-managed device ya unsupported device par administrator/manufacturer se help lein."],"Random websites se Play Store APK download karne se bachein; official update path use karein."],
+["Phone Se Aawaz Nahi Aa Rahi (Mic Problem Guide)","🎤","Microphone issue ko speaker issue se alag test karein.",["Voice Recorder app mein short recording banayein aur playback check karein.","Call par speakerphone on/off karke aur trusted headset se test karein.","Case ya dust microphone hole ko cover to nahi kar raha check karein; holes mein pin na daalein."],["Settings → Privacy → Microphone permissions mein affected app ko permission dein.","App update/restart karein aur phone reboot karein.","Water exposure, muffled audio in all apps ya physical damage ho to technician se check karayein."],"Mic opening mein liquid, needle ya compressed air forcefully na use karein."],
+["Purane Phone Ki Speed Kaise Badhayein? (5 Easy Steps)","🚀","Old phone ko safer tareeke se responsive banayein.",["1. Storage free karein aur large unused downloads remove karein.","2. Unused apps uninstall karein aur background activity review karein.","3. OS/app updates check karein—sirf official update install karein.","4. Phone restart karein; Android par problematic app ka cache clear karein.","5. Battery health aur available software support check karein."],["Animations reduce karna supported settings mein optional hai; Developer Options mein unknown settings change na karein.","Factory reset last resort hai—complete backup aur account sign-in details ready rakhein.","Agar phone updates nahi leta ya battery weak hai, repair/replacement cost compare karein."],"RAM booster apps ya random “one tap speed” apps se miracle expect na karein; kuch extra ads aur battery use badha sakte hain."]]}
+];
+
+const groupContainer = document.getElementById('guideGroups');
+const allTopics = [];
+guideData.forEach(group => group.items.forEach((item, index) => allTopics.push({group, item, number: allTopics.length + 1, index})));
+
+function esc(value){return String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+function renderGuides(){
+  groupContainer.innerHTML = '';
+  guideData.forEach(group => {
+    const section = document.createElement('section');
+    section.className = 'group';
+    section.id = group.group;
+    section.dataset.group = group.group;
+    section.innerHTML = `<div class="group-title"><span class="group-icon" aria-hidden="true">${group.groupIcon}</span><div><h2>${esc(group.groupName)}</h2><p>10 practical guides · Tap any card to open the full solution</p></div></div><div class="topic-grid"></div>`;
+    const grid = section.querySelector('.topic-grid');
+    group.items.forEach((item, localIndex) => {
+      const number = allTopics.find(t => t.group === group && t.index === localIndex).number;
+      const details = document.createElement('details');
+      details.className = 'topic';
+      details.id = `guide-${number}`;
+      details.dataset.search = (item[0] + ' ' + item[1] + ' ' + item[2] + ' ' + group.groupName).toLowerCase();
+      const list = arr => arr.map(text => `<li>${esc(text)}</li>`).join('');
+      const related = allTopics.filter(t => t.group.group !== group.group).slice(0,0);
+      const links = [];
+      const relatedGroups = guideData.filter(g => g.group !== group.group);
+      relatedGroups.slice(0,2).forEach(g => links.push(`<a href="#${g.group}" data-related="${g.group}">${g.groupIcon} ${esc(g.groupName)}</a>`));
+      details.innerHTML = `<summary><span class="topic-art" aria-hidden="true">${item[1]}</span><span class="topic-head"><span class="topic-number">GUIDE ${String(number).padStart(2,'0')}</span><span class="topic-title">${esc(item[0])}</span><span class="topic-teaser">${esc(item[2])}</span></span><span class="chevron" aria-hidden="true">⌄</span></summary><div class="topic-body"><p>${esc(item[2])}</p><h3>🔎 Pehle ye signs / baatein check karein</h3><ul>${list(item[3])}</ul><h3>✅ Step-by-step solution</h3><ol>${list(item[4])}</ol><div class="safety"><strong>⚠️ Important:</strong> ${esc(item[5])}</div><h3>🔗 More help on this website</h3><div class="related">${links.join('')}</div></div>`;
+      grid.appendChild(details);
+    });
+    groupContainer.appendChild(section);
+  });
+}
+renderGuides();
+
+const searchInput = document.getElementById('guideSearch');
+const resultCount = document.getElementById('resultCount');
+const emptyState = document.getElementById('emptyState');
+function filterGuides(){
+  const q = searchInput.value.trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll('.topic').forEach(card => {
+    const match = !q || card.dataset.search.includes(q);
+    card.hidden = !match;
+    if(match) visible++;
+  });
+  document.querySelectorAll('.group').forEach(group => {
+    const hasVisible = [...group.querySelectorAll('.topic')].some(card => !card.hidden);
+    group.hidden = !hasVisible;
+  });
+  resultCount.textContent = q ? `Showing ${visible} of 50 guides for “${searchInput.value.trim()}”` : 'Showing all 50 guides';
+  emptyState.style.display = visible ? 'none' : 'block';
+}
+searchInput.addEventListener('input', filterGuides);
+document.getElementById('clearSearch').addEventListener('click', () => {searchInput.value='';filterGuides();searchInput.focus();});
+document.querySelectorAll('.category').forEach(button => button.addEventListener('click', () => {
+  searchInput.value = '';
+  filterGuides();
+  const section = document.getElementById(button.dataset.target);
+  if(section){section.scrollIntoView({behavior:'smooth',block:'start'});section.querySelector('details')?.setAttribute('open','');}
+}));
+document.querySelectorAll('.photo-card').forEach(button => button.addEventListener('click', () => {
+  searchInput.value = '';
+  filterGuides();
+  const card = document.getElementById(`guide-${button.dataset.guide}`);
+  if(card){card.open = true;card.scrollIntoView({behavior:'smooth',block:'center'});}
+}));
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const isDark = document.body.classList.toggle('dark');
+  const button = document.getElementById('themeToggle');
+  button.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+  button.setAttribute('aria-pressed', String(isDark));
 });
-document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById('backButton').addEventListener('click', () => { if (window.history.length > 1) window.history.back(); else window.location.href = 'index.html'; });
+document.getElementById('backTop').addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
