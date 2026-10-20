@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="manifest" href="/manifest.json">
 <style>
 :root{--bg:#f4f1ff;--card:#fff;--text:#29213f;--muted:#77718a;--primary:#6546e8;--border:#e2d9f8;--header:#17152f;--soft:#ede8ff}
 *{box-sizing:border-box}
@@ -250,6 +251,56 @@ search.addEventListener("input",()=>{
 
 <!-- Adsterra SocialBar -->
 <script src="https://pl31895538.profitableratecpmnetwork.com/15/e3/e6/15e3e60587bd4aa650074ccbe1ff2e17.js"></script>
+<!-- ZIWAN YATTRA Install Button -->
+<button id="installAppBtn" hidden style="position:fixed;right:16px;bottom:20px;z-index:9999;border:0;border-radius:30px;padding:13px 20px;background:#173b78;color:#fff;font-size:15px;font-weight:600;box-shadow:0 5px 18px #0003;cursor:pointer;">
+  📲 Install ZIWAN YATTRA
+</button>
 
+<script>
+(() => {
+  const btn = document.getElementById("installAppBtn");
+  if (!btn) return;
+
+  let installPrompt = null;
+  let timerStarted = false;
+
+  window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    installPrompt = event;
+
+    if (!timerStarted) {
+      timerStarted = true;
+      setTimeout(() => {
+        if (installPrompt) btn.hidden = false;
+      }, 35000);
+    }
+  });
+
+  btn.addEventListener("click", async () => {
+    if (!installPrompt) {
+      alert("Chrome menu (⋮) kholo aur Install app ya Add to Home screen chuno.");
+      return;
+    }
+
+    installPrompt.prompt();
+    await installPrompt.userChoice;
+    installPrompt = null;
+    btn.hidden = true;
+  });
+
+  window.addEventListener("appinstalled", () => {
+    btn.hidden = true;
+  });
+})();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/service-worker.js")
+      .then(() => console.log("ZIWAN YATTRA service worker ready"))
+      .catch((error) => console.error("Service worker error:", error));
+  });
+}
+</script>
 </body>
 </html>
