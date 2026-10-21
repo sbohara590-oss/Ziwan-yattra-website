@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZIWAN YATTRA - Admin Panel</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f3f4f8;font-family:Arial,sans-serif;color:#222}
+header{background:#35216b;color:white;padding:20px}
+header h2{margin:0 0 6px}
+main{max-width:760px;margin:22px auto;padding:16px}
+.card{background:white;padding:20px;border-radius:14px;box-shadow:0 3px 15px #0001}
+label{display:block;font-weight:bold;margin:15px 0 7px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;font:inherit}
+textarea{min-height:110px;resize:vertical}
+button{border:0;border-radius:8px;padding:12px 18px;font-weight:bold;cursor:pointer;margin:12px 6px 0 0}
+.draft{background:#e8e8ef;color:#222}
+.publish{background:#35216b;color:white}
+.note{background:#fff7df;padding:12px;border-radius:8px;font-size:14px;line-height:1.5}
+#status{margin-top:15px;line-height:1.5;overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+<header>
+  <h2>ZIWAN YATTRA</h2>
+  <div>Daily Updates — Admin Panel</div>
+</header>
+<main>
+<div class="card">
+  <h2>Create New Post</h2>
+  <div class="note">
+    Fill in your post details below. The save and publish actions need
+    the secure backend API to be connected before they can work.
+  </div>
+
+  <form id="postForm">
+    <label for="title">Post Title *</label>
+    <input id="title" required maxlength="180" placeholder="Enter post title">
+
+    <label for="category">Category *</label>
+    <select id="category" required>
+      <option value="News">News</option>
+      <option value="Gaming">Gaming</option>
+      <option value="Sports">Sports</option>
+      <option value="General Knowledge">General Knowledge</option>
+    </select>
+
+    <label for="image">Image URL</label>
+    <input id="image" type="url" placeholder="https://example.com/photo.jpg">
+
+    <label for="description">Short Description *</label>
+    <textarea id="description" required maxlength="500"
+      placeholder="Short summary for the post"></textarea>
+
+    <label for="content">Full Content *</label>
+    <textarea id="content" required
+      placeholder="Write the complete article here"></textarea>
+
+    <label for="links">Internal Links (one URL per line)</label>
+    <textarea id="links" placeholder="daily-updates.html&#10;technician.html"></textarea>
+
+    <button class="draft" type="button" data-status="draft">Save Draft</button>
+    <button class="publish" type="button" data-status="published">Publish Post</button>
+    <div id="status" role="status" aria-live="polite"></div>
+  </form>
+</div>
+</main>
+<script>
+const form = document.getElementById("postForm");
+const statusBox = document.getElementById("status");
+
+document.querySelectorAll("button[data-status]").forEach(button => {
+  button.addEventListener("click", async () => {
+    if (!form.reportValidity()) return;
+
+    statusBox.textContent =
+      "Form ready. Secure backend save/publish API abhi connect karna baaki hai.";
+
+    // No post is sent or published until the authenticated backend
+    // endpoint is implemented and connected.
+  });
+});
+</script>
+</body>
+</html>

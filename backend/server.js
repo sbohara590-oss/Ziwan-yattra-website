@@ -8,7 +8,7 @@ const rateLimit = require("express-rate-limit");
 const fs = require("fs");
 const path = require("path");
 const { createClient } = require("@supabase/supabase-js");
-
+const crypto = require("crypto");
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 const enquiriesFile = path.join(__dirname, "enquiries.json");
@@ -36,7 +36,14 @@ try {
 }
 
 const supabase = createClient(supabaseUrl, supabaseKey);
+const adminSecretKey = process.env.SUPABASE_SECRET_KEY?.trim();
 
+if (!adminSecretKey) {
+  console.error("Missing SUPABASE_SECRET_KEY in backend/.env");
+  process.exit(1);
+}
+
+const adminSupabase = createClient(supabaseUrl, adminSecretKey);
 app.disable("x-powered-by");
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: "10kb" }));
@@ -66,7 +73,7 @@ app.use((req, res, next) => {
 
   res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   if (req.method === "OPTIONS") {
     return res.sendStatus(204);
@@ -191,7 +198,217 @@ app.post("/api/enquiries", async (req, res) => {
     });
   }
 });
+function safeEqual(a, b) {
+  if (typeof a !== "string" || typeof b !== "string") return false;
+  const aa = Buffer.from(a);
+  const bb = Buffer.from(b);
+  return aa.length === bb.length && crypto.timingSafeEqual(aa, bb);
+}
 
+function createAdminToken() {
+  const payload = Buffer.from(JSON.stringify({
+    exp: Date.now() + 2 * 60 * 60 * 1000
+  })).toString("base64url");
+
+  const signature = crypto
+    .createHmac("sha256", process.env.ADMIN_SESSION_SECRET)
+    .update(payload)
+    .digest("base64url");
+
+  return `${payload}.${signature}`;
+}
+
+function requireAdmin(req, res, next) {
+  const header = req.headers.authorization || "";
+  const token = header.startsWith("Bearer ") ? header.slice(7) : "";
+  const parts = token.split(".");
+
+  if (parts.length !== 2) {
+    return res.status(401).json({
+      success: false,
+      error: "Please log in."
+    });
+  }
+
+  const [payload, signature] = parts;
+  const expected = crypto
+    .createHmac("sha256", process.env.ADMIN_SESSION_SECRET)
+    .update(payload)
+    .digest("base64url");
+
+  if (!safeEqual(signature, expected)) {
+    return res.status(401).json({
+      success: false,
+      error: "Invalid session."
+    });
+  }
+
+  try {
+    const data = JSON.parse(
+      Buffer.from(payload, "base64url").toString()
+    );
+
+    if (!Number.isFinite(data.exp) || data.exp < Date.now()) {
+      return res.status(401).json({
+        success: false,
+        error: "Session expired."
+      });
+    }
+  } catch {
+    return res.status(401).json({
+      success: false,
+      error: "Invalid session."
+    });
+  }
+
+  next();
+}
+
+app.post("/api/admin/login", (req, res) => {
+  const password = req.body?.password;
+
+  if (!safeEqual(password, process.env.ADMIN_PASSWORD)) {
+    return res.status(401).json({
+      success: false,
+      error: "Incorrect password."
+    });
+  }
+
+  return res.json({
+    success: true,
+    token: createAdminToken()
+  });
+});
+
+app.post("/api/admin/posts", requireAdmin, async (req, res) => {
+  const {
+    title,
+    category,
+    description,
+    content,
+    image_url = "",
+    internal_links = [],
+    status = "draft"
+  } = req.body || {};
+
+  const categories = [
+    "News",
+    "Gaming",
+    "Sports",
+    "General Knowledge"
+  ];
+
+  if (
+    typeof title !== "string" || !title.trim() || title.length > 180 ||
+    !categories.includes(category) ||
+    typeof description !== "string" || !description.trim() ||
+    description.length > 500 ||
+    typeof content !== "string" || !content.trim() ||
+    typeof image_url !== "string" || image_url.length > 2000 ||
+    !Array.isArray(internal_links) ||
+    !internal_links.every(
+      x => typeof x === "string" && x.length <= 500
+    ) ||
+    !["draft", "published"].includes(status)
+  ) {
+    return res.status(400).json({
+      success: false,
+      error: "Please check all post fields."
+    });
+  }
+
+  const slug = title.trim()
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 150);
+
+  if (!slug) {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid title."
+    });
+  }
+
+  try {
+    const now = new Date().toISOString();
+
+    const { data, error } = await adminSupabase
+      .from("daily_posts")
+      .insert({
+        title: title.trim(),
+        slug,
+        category,
+        description: description.trim(),
+        content: content.trim(),
+        image_url: image_url.trim(),
+        internal_links,
+        status,
+        updated_at: now,
+        published_at: status === "published" ? now : null
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error(
+        "Admin post insert error:",
+        error.code,
+        error.message
+      );
+
+      return res.status(500).json({
+        success: false,
+        error: error.code === "23505"
+          ? "This title already exists. Change the title."
+          : "Could not save the post. Check server logs and database settings."
+      });
+    }
+
+    return res.status(201).json({
+      success: true,
+      post: data
+    });
+  } catch (error) {
+    console.error("Admin post error:", error.message);
+
+    return res.status(500).json({
+      success: false,
+      error: "Server error."
+    });
+  }
+});
+// Daily Updates: fetch published posts
+app.get("/api/daily-posts", async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from("daily_posts")
+      .select("*")
+      .eq("status", "published")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      console.error("Daily posts fetch error:", error.message);
+      return res.status(500).json({
+        success: false,
+        error: "Could not load daily posts."
+      });
+    }
+
+    return res.json({
+      success: true,
+      posts: data || []
+    });
+  } catch (error) {
+    console.error("Daily posts server error:", error.message);
+    return res.status(500).json({
+      success: false,
+      error: "Server error while loading posts."
+    });
+  }
+});
 app.use((req, res) => {
   res.status(404).json({
     success: false,
