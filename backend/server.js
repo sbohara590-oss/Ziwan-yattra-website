@@ -10,6 +10,7 @@ const path = require("path");
 const { createClient } = require("@supabase/supabase-js");
 const crypto = require("crypto");
 const app = express();
+app.set('trust proxy', 1);
 const PORT = Number(process.env.PORT) || 3000;
 const enquiriesFile = path.join(__dirname, "enquiries.json");
 
