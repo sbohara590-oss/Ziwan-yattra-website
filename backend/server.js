@@ -411,12 +411,8 @@ app.get("/api/daily-posts", async (req, res) => {
     });
   }
 });
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    error: "Route not found."
-  });
-});
+
+
 
 app.use((error, req, res, next) => {
   console.error("Request error:", error.message);
@@ -542,6 +538,7 @@ app.post("/api/daily-polls/:id/vote", async (req, res) => {
     return res.status(500).json({ success: false, error: "Could not save vote." });
   }
 });
+
 /* ===== ZIWAN YATTRA NEWS VIEWS & LIKES API ===== */
 
 // Get views and likes for a published article
