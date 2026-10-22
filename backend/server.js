@@ -542,3 +542,206 @@ app.post("/api/daily-polls/:id/vote", async (req, res) => {
     return res.status(500).json({ success: false, error: "Could not save vote." });
   }
 });
+/* ===== ZIWAN YATTRA NEWS VIEWS & LIKES API ===== */
+
+// Get views and likes for a published article
+app.get("/api/daily-posts/:id/stats", async (req, res) => {
+  const postId = Number(req.params.id);
+
+  if (!Number.isSafeInteger(postId) || postId <= 0) {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid article ID."
+    });
+  }
+
+  try {
+    const { data: post, error: postError } = await supabase
+      .from("daily_posts")
+      .select("id")
+      .eq("id", postId)
+      .eq("status", "published")
+      .maybeSingle();
+
+    if (postError) throw postError;
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        error: "Article not found."
+      });
+    }
+
+    const { data: stats, error: statsError } = await supabase
+      .from("daily_post_stats")
+      .select("views, likes")
+      .eq("post_id", postId)
+      .maybeSingle();
+
+    if (statsError) throw statsError;
+
+    const { count, error: likesError } = await supabase
+      .from("daily_post_likes")
+      .select("*", { count: "exact", head: true })
+      .eq("post_id", postId);
+
+    if (likesError) throw likesError;
+
+    return res.json({
+      success: true,
+      views: stats?.views || 0,
+      likes: count || 0
+    });
+  } catch (error) {
+    console.error("Article stats error:", error.message);
+    return res.status(500).json({
+      success: false,
+      error: "Could not load article stats."
+    });
+  }
+});
+
+// Count a view when a published article is opened
+app.post("/api/daily-posts/:id/view", async (req, res) => {
+  const postId = Number(req.params.id);
+
+  if (!Number.isSafeInteger(postId) || postId <= 0) {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid article ID."
+    });
+  }
+
+  try {
+    const { data: post, error: postError } = await supabase
+      .from("daily_posts")
+      .select("id")
+      .eq("id", postId)
+      .eq("status", "published")
+      .maybeSingle();
+
+    if (postError) throw postError;
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        error: "Article not found."
+      });
+    }
+
+    const { data, error } = await adminSupabase.rpc(
+      "increment_daily_post_view",
+      { p_post_id: postId }
+    );
+
+    if (error) throw error;
+
+    return res.json({
+      success: true,
+      views: data
+    });
+  } catch (error) {
+    console.error("Article view error:", error.message);
+    return res.status(500).json({
+      success: false,
+      error: "Could not record article view."
+    });
+  }
+});
+
+// Like or unlike an article
+app.post("/api/daily-posts/:id/like", async (req, res) => {
+  const postId = Number(req.params.id);
+  const voterToken = req.body?.voter_token;
+
+  if (
+    !Number.isSafeInteger(postId) ||
+    postId <= 0 ||
+    typeof voterToken !== "string" ||
+    voterToken.length < 16 ||
+    voterToken.length > 200
+  ) {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid article ID or voter token."
+    });
+  }
+
+  try {
+    const { data: post, error: postError } = await supabase
+      .from("daily_posts")
+      .select("id")
+      .eq("id", postId)
+      .eq("status", "published")
+      .maybeSingle();
+
+    if (postError) throw postError;
+    if (!post) {
+      return res.status(404).json({
+        success: false,
+        error: "Article not found."
+      });
+    }
+
+    const voterHash = crypto
+      .createHmac("sha256", process.env.ADMIN_SESSION_SECRET)
+      .update("like:" + postId + ":" + voterToken)
+      .digest("hex");
+
+    const { data: existing, error: findError } = await adminSupabase
+      .from("daily_post_likes")
+      .select("post_id")
+      .eq("post_id", postId)
+      .eq("voter_hash", voterHash)
+      .maybeSingle();
+
+    if (findError) throw findError;
+
+    let liked;
+
+    if (existing) {
+      const { error } = await adminSupabase
+        .from("daily_post_likes")
+        .delete()
+        .eq("post_id", postId)
+        .eq("voter_hash", voterHash);
+
+      if (error) throw error;
+      liked = false;
+    } else {
+      const { error } = await adminSupabase
+        .from("daily_post_likes")
+        .insert({ post_id: postId, voter_hash: voterHash });
+
+      if (error) throw error;
+      liked = true;
+    }
+
+    const { count, error: countError } = await adminSupabase
+      .from("daily_post_likes")
+      .select("*", { count: "exact", head: true })
+      .eq("post_id", postId);
+
+    if (countError) throw countError;
+
+    const { error: statsError } = await adminSupabase
+      .from("daily_post_stats")
+      .upsert({
+        post_id: postId,
+        likes: count || 0,
+        updated_at: new Date().toISOString()
+      }, { onConflict: "post_id" });
+
+    if (statsError) throw statsError;
+
+    return res.json({
+      success: true,
+      liked,
+      likes: count || 0
+    });
+  } catch (error) {
+    console.error("Article like error:", error.message);
+    return res.status(500).json({
+      success: false,
+      error: "Could not update like."
+    });
+  }
+});
