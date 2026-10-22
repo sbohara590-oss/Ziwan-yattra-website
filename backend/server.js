@@ -412,8 +412,6 @@ app.get("/api/daily-posts", async (req, res) => {
   }
 });
 
-
-
 app.use((error, req, res, next) => {
   console.error("Request error:", error.message);
 
@@ -568,7 +566,7 @@ app.get("/api/daily-posts/:id/stats", async (req, res) => {
       });
     }
 
-    const { data: stats, error: statsError } = await supabase
+    const { data: stats, error: statsError } = await adminsupabase
       .from("daily_post_stats")
       .select("views, likes")
       .eq("post_id", postId)
