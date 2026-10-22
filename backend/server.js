@@ -439,3 +439,106 @@ server.on("error", (error) => {
   console.error("Backend startup failed:", error.message);
   process.exitCode = 1;
 });
+/* ===== ZIWAN YATTRA POLL API ===== */
+
+// Public: Get active poll
+app.get("/api/daily-polls", async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from("daily_polls")
+      .select("id, question, options, status, created_at")
+      .eq("status", "active")
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+
+    const polls = await Promise.all((data || []).map(async (poll) => {
+      const { data: votes, error: voteError } = await supabase
+        .from("daily_poll_votes")
+        .select("option_index")
+        .eq("poll_id", poll.id);
+
+      if (voteError) throw voteError;
+
+      const counts = (Array.isArray(poll.options) ? poll.options : []).map(
+        (_, index) => (votes || []).filter(v => v.option_index === index).length
+      );
+
+      const totalVotes = counts.reduce((sum, count) => sum + count, 0);
+
+      return {
+        ...poll,
+        results: counts.map((count, index) => ({
+          option_index: index,
+          votes: count,
+          percentage: totalVotes ? Math.round(count * 100 / totalVotes) : 0
+        })),
+        total_votes: totalVotes
+      };
+    }));
+
+    res.json({ success: true, polls });
+  } catch (error) {
+    console.error("Poll fetch error:", error.message);
+    res.status(500).json({ success: false, error: "Could not load polls." });
+  }
+});
+
+// Public: Submit a vote
+app.post("/api/daily-polls/:id/vote", async (req, res) => {
+  const pollId = req.params.id;
+  const optionIndex = req.body?.option_index;
+
+  if (
+    !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(pollId) ||
+    !Number.isInteger(optionIndex) ||
+    optionIndex < 0
+  ) {
+    return res.status(400).json({ success: false, error: "Invalid poll or option." });
+  }
+
+  try {
+    const { data: poll, error: pollError } = await supabase
+      .from("daily_polls")
+      .select("id, options, status")
+      .eq("id", pollId)
+      .maybeSingle();
+
+    if (pollError || !poll || poll.status !== "active") {
+      return res.status(404).json({ success: false, error: "Poll not found or closed." });
+    }
+
+    if (!Array.isArray(poll.options) || optionIndex >= poll.options.length) {
+      return res.status(400).json({ success: false, error: "Invalid option." });
+    }
+
+    const voterToken = req.body?.voter_token;
+    if (typeof voterToken !== "string" || voterToken.length < 16 || voterToken.length > 200) {
+      return res.status(400).json({ success: false, error: "Missing voter token." });
+    }
+
+    const voterHash = crypto
+      .createHmac("sha256", process.env.ADMIN_SESSION_SECRET)
+      .update(pollId + ":" + voterToken)
+      .digest("hex");
+
+    const { error: insertError } = await adminSupabase
+      .from("daily_poll_votes")
+      .insert({
+        poll_id: pollId,
+        option_index: optionIndex,
+        voter_hash: voterHash
+      });
+
+    if (insertError?.code === "23505") {
+      return res.status(409).json({ success: false, error: "You have already voted in this poll." });
+    }
+
+    if (insertError) throw insertError;
+
+    return res.status(201).json({ success: true, message: "Vote saved." });
+  } catch (error) {
+    console.error("Poll vote error:", error.message);
+    return res.status(500).json({ success: false, error: "Could not save vote." });
+  }
+});
