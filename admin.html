@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,17 +18,19 @@ button:disabled{opacity:.5;cursor:wait}
 .primary{background:#35216b;color:white}
 .secondary{background:#e8e8ef;color:#222}
 .note{background:#fff7df;padding:12px;border-radius:8px;font-size:14px;line-height:1.5}
-#status{margin-top:15px;line-height:1.5;overflow-wrap:anywhere}
+#status,#pollStatus,#loginStatus{margin-top:15px;line-height:1.5;overflow-wrap:anywhere}
 .hidden{display:none}
+.poll-option{margin-bottom:8px}
+.poll-item{padding:12px;border:1px solid #ddd;border-radius:8px;margin:10px 0;overflow-wrap:anywhere}
+.poll-item h3{margin:0 0 8px;font-size:17px}
+.small{font-size:13px;color:#555}
 </style>
 </head>
 <body>
 <header>
   <h2>ZIWAN YATTRA</h2>
   <div>Daily Updates — Admin Panel</div>
-</header>
-
-<main>
+</header><main>
   <section class="card" id="loginCard">
     <h2>Admin Login</h2>
     <div class="note">Login sirf website administrator ke liye hai.</div>
@@ -39,64 +40,105 @@ button:disabled{opacity:.5;cursor:wait}
       <button class="primary" type="submit">Login</button>
     </form>
     <div id="loginStatus" role="status" aria-live="polite"></div>
-  </section>
-
-  <section class="card hidden" id="editorCard">
+  </section>  <section class="card hidden" id="editorCard">
     <h2>Create New Post</h2>
-    <div class="note">Post save karne ke liye backend login zaroori hai. Image ke liye filhaal public image URL use karo.</div>
+    <div class="note">Post save karne ke liye backend login zaroori hai. Image ke liye filhaal public image URL use karo.</div><form id="postForm">
+  <label for="title">Post Title *</label>
+  <input id="title" required maxlength="180" placeholder="Enter post title">
 
-    <form id="postForm">
-      <label for="title">Post Title *</label>
-      <input id="title" required maxlength="180" placeholder="Enter post title">
+  <label for="category">Category *</label>
+  <select id="category" required>
+    <option value="News">News</option>
+    <option value="Gaming">Gaming</option>
+    <option value="Sports">Sports</option>
+    <option value="General Knowledge">General Knowledge</option>
+  </select>
 
-      <label for="category">Category *</label>
-      <select id="category" required>
-        <option value="News">News</option>
-        <option value="Gaming">Gaming</option>
-        <option value="Sports">Sports</option>
-        <option value="General Knowledge">General Knowledge</option>
-      </select>
+  <label for="image">Image URL</label>
+  <input id="image" type="url" maxlength="2000" placeholder="https://example.com/photo.jpg">
 
-      <label for="image">Image URL</label>
-      <input id="image" type="url" maxlength="2000" placeholder="https://example.com/photo.jpg">
+  <label for="description">Short Description *</label>
+  <textarea id="description" required maxlength="500" placeholder="Short summary"></textarea>
 
-      <label for="description">Short Description *</label>
-      <textarea id="description" required maxlength="500" placeholder="Short summary"></textarea>
+  <label for="content">Full Content *</label>
+  <textarea id="content" required placeholder="Write the complete article"></textarea>
 
-      <label for="content">Full Content *</label>
-      <textarea id="content" required placeholder="Write the complete article"></textarea>
+  <label for="links">Internal Links (one per line)</label>
+  <textarea id="links" placeholder="/daily-updates.html&#10;/technician.html"></textarea>
 
-      <label for="links">Internal Links (one per line)</label>
-      <textarea id="links" placeholder="/daily-updates.html&#10;/technician.html"></textarea>
+  <button class="secondary" type="button" data-status="draft">Save Draft</button>
+  <button class="primary" type="button" data-status="published">Publish Post</button>
+  <button class="secondary" type="button" id="logoutButton">Logout</button>
+</form>
+<div id="status" role="status" aria-live="polite"></div>
 
-      <button class="secondary" type="button" data-status="draft">Save Draft</button>
-      <button class="primary" type="button" data-status="published">Publish Post</button>
-      <button class="secondary" type="button" id="logoutButton">Logout</button>
-    </form>
-    <div id="status" role="status" aria-live="polite"></div>
+  </section>  <!-- POLL MANAGEMENT: added without changing the existing post section -->  <section class="card hidden" id="pollCard">
+    <h2>Poll Management</h2>
+    <div class="note">
+      Naya poll banane ke liye question aur kam se kam 2 options bharo.
+      Poll create karne ke liye backend mein admin create-poll API bhi zaroori hai.
+    </div><form id="pollForm">
+  <label for="pollQuestion">Poll Question *</label>
+  <input id="pollQuestion" maxlength="300" required
+         placeholder="Example: Aapko kaunsi category pasand hai?">
+
+  <label>Poll Options *</label>
+  <div id="pollOptions">
+    <div class="poll-option">
+      <input class="pollOption" maxlength="150" required
+             placeholder="Option 1">
+    </div>
+    <div class="poll-option">
+      <input class="pollOption" maxlength="150" required
+             placeholder="Option 2">
+    </div>
+  </div>
+
+  <button class="secondary" type="button" id="addOptionButton">
+    + Add Option
+  </button>
+  <button class="primary" type="submit" id="createPollButton">
+    Create Poll
+  </button>
+  <button class="secondary" type="button" id="loadPollsButton">
+    Refresh Polls
+  </button>
+</form>
+
+<div id="pollStatus" role="status" aria-live="polite"></div>
+
+<h3>Existing Polls</h3>
+<div id="pollList"><p class="small">Login karke Refresh Polls dabao.</p></div>
+
   </section>
-</main>
-
-<script>
-/*
-  IMPORTANT:
-  Replace this with the EXACT public URL shown for your
-  Ziwan-yattra-backend service in Render.
-*/
+</main><script>
 const API_BASE = "https://ziwan-yattra-backend.onrender.com";
 
 const loginCard = document.getElementById("loginCard");
 const editorCard = document.getElementById("editorCard");
+const pollCard = document.getElementById("pollCard");
 const loginForm = document.getElementById("loginForm");
 const loginStatus = document.getElementById("loginStatus");
 const form = document.getElementById("postForm");
 const statusBox = document.getElementById("status");
+const pollForm = document.getElementById("pollForm");
+const pollStatus = document.getElementById("pollStatus");
+const pollList = document.getElementById("pollList");
 
 let adminToken = "";
 
 function showStatus(element, message, isError = false) {
   element.textContent = message;
   element.style.color = isError ? "#b00020" : "#176b36";
+}
+
+async function readResponse(response) {
+  const text = await response.text();
+  try {
+    return text ? JSON.parse(text) : {};
+  } catch {
+    throw new Error("Server ne valid JSON response nahi diya.");
+  }
 }
 
 loginForm.addEventListener("submit", async event => {
@@ -114,19 +156,21 @@ loginForm.addEventListener("submit", async event => {
       })
     });
 
-    const result = await response.json();
+    const result = await readResponse(response);
 
     if (!response.ok || !result.success || !result.token) {
-      throw new Error(result.error || "Login failed. Password or API route check karo.");
+      throw new Error(result.error || "Login failed. Password ya API route check karo.");
     }
 
     adminToken = result.token;
     loginForm.reset();
     loginCard.classList.add("hidden");
     editorCard.classList.remove("hidden");
-    showStatus(statusBox, "Login successful. Ab post create kar sakte ho.");
+    pollCard.classList.remove("hidden");
+    showStatus(statusBox, "Login successful.");
+    loadPolls();
   } catch (error) {
-    showStatus(loginStatus, error.message || "Backend se connection nahi hua.", true);
+    showStatus(loginStatus, error.message || "Backend connection nahi hua.", true);
   } finally {
     button.disabled = false;
   }
@@ -152,8 +196,7 @@ document.querySelectorAll("button[data-status]").forEach(button => {
     };
 
     if (payload.internal_links.some(link =>
-      link.length > 500 ||
-      /^(javascript:|data:)/i.test(link)
+      link.length > 500 || /^(javascript:|data:)/i.test(link)
     )) {
       showStatus(statusBox, "Internal links check karo.", true);
       return;
@@ -171,42 +214,192 @@ document.querySelectorAll("button[data-status]").forEach(button => {
         },
         body: JSON.stringify(payload)
       });
-
-      const result = await response.json();
+      const result = await readResponse(response);
 
       if (response.status === 401 || response.status === 403) {
-        adminToken = "";
-        editorCard.classList.add("hidden");
-        loginCard.classList.remove("hidden");
         throw new Error("Login expire hua. Dobara login karo.");
       }
-
       if (!response.ok || !result.success) {
         throw new Error(result.error || "Post save nahi hua.");
       }
 
-      showStatus(statusBox,
-        payload.status === "published"
-          ? "Post publish ho gaya! Daily Updates page refresh karke check karo."
-          : "Draft save ho gaya."
-      );
-
+      showStatus(statusBox, payload.status === "published"
+        ? "Post publish ho gaya! Daily Updates page refresh karke check karo."
+        : "Draft save ho gaya.");
       form.reset();
     } catch (error) {
       showStatus(statusBox, error.message || "Backend error. Render logs check karo.", true);
+      if (/Login expire/i.test(error.message)) logout();
     } finally {
       button.disabled = false;
     }
   });
 });
 
-document.getElementById("logoutButton").addEventListener("click", () => {
+document.getElementById("addOptionButton").addEventListener("click", () => {
+  const optionsBox = document.getElementById("pollOptions");
+  if (optionsBox.querySelectorAll(".pollOption").length >= 8) {
+    showStatus(pollStatus, "Maximum 8 options allowed.", true);
+    return;
+  }
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "poll-option";
+
+  const input = document.createElement("input");
+  input.className = "pollOption";
+  input.maxLength = 150;
+  input.required = true;
+  input.placeholder = `Option ${optionsBox.querySelectorAll(".pollOption").length + 1}`;
+
+  wrapper.appendChild(input);
+  optionsBox.appendChild(wrapper);
+  input.focus();
+});
+
+pollForm.addEventListener("submit", async event => {
+  event.preventDefault();
+
+  if (!adminToken) {
+    showStatus(pollStatus, "Pehle admin login karo.", true);
+    return;
+  }
+
+  const question = document.getElementById("pollQuestion").value.trim();
+  const options = [...document.querySelectorAll(".pollOption")]
+    .map(input => input.value.trim());
+
+  if (!question || options.length < 2 || options.some(option => !option)) {
+    showStatus(pollStatus, "Question aur kam se kam 2 complete options bharo.", true);
+    return;
+  }
+
+  const button = document.getElementById("createPollButton");
+  button.disabled = true;
+  showStatus(pollStatus, "Poll create request bhej rahe hain...");
+
+  try {
+    /*
+      Expected endpoint. If the backend has no matching route,
+      the request will fail and the backend must be updated next.
+    */
+    const response = await fetch(`${API_BASE}/api/admin/polls`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${adminToken}`
+      },
+      body: JSON.stringify({ question, options })
+    });
+
+    const result = await readResponse(response);
+
+    if (response.status === 401 || response.status === 403) {
+      throw new Error("Admin login expire hua. Dobara login karo.");
+    }
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || `Poll create nahi hua (HTTP ${response.status}). Backend route check karna hoga.`);
+    }
+
+    showStatus(pollStatus, "Poll create ho gaya!");
+    pollForm.reset();
+
+    const optionsBox = document.getElementById("pollOptions");
+    optionsBox.innerHTML = `
+      <div class="poll-option"><input class="pollOption" maxlength="150" required placeholder="Option 1"></div>
+      <div class="poll-option"><input class="pollOption" maxlength="150" required placeholder="Option 2"></div>
+    `;
+
+    await loadPolls();
+  } catch (error) {
+    showStatus(pollStatus,
+      error.message || "Poll API request fail hua. Backend route aur Render logs check karo.",
+      true
+    );
+    if (/login expire/i.test(error.message)) logout();
+  } finally {
+    button.disabled = false;
+  }
+});
+
+async function loadPolls() {
+  if (!adminToken) {
+    showStatus(pollStatus, "Pehle admin login karo.", true);
+    return;
+  }
+
+  const button = document.getElementById("loadPollsButton");
+  button.disabled = true;
+  pollList.textContent = "Polls load ho rahe hain...";
+
+  try {
+    const response = await fetch(`${API_BASE}/api/daily-polls`, {
+      headers: { "Authorization": `Bearer ${adminToken}` }
+    });
+    const result = await readResponse(response);
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || `Polls load nahi hue (HTTP ${response.status}).`);
+    }
+
+    const polls = Array.isArray(result.polls) ? result.polls
+      : Array.isArray(result.data) ? result.data
+      : Array.isArray(result) ? result : [];
+
+    pollList.replaceChildren();
+
+    if (!polls.length) {
+      pollList.textContent = "Abhi koi active poll return nahi hua.";
+      return;
+    }
+
+    polls.forEach(poll => {
+      const item = document.createElement("div");
+      item.className = "poll-item";
+
+      const heading = document.createElement("h3");
+      heading.textContent = poll.question || poll.title || "Untitled poll";
+      item.appendChild(heading);
+
+      const rawOptions = poll.options;
+      let options = [];
+      if (Array.isArray(rawOptions)) options = rawOptions;
+      else if (typeof rawOptions === "string") {
+        try {
+          const parsed = JSON.parse(rawOptions);
+          if (Array.isArray(parsed)) options = parsed;
+        } catch {}
+      }
+
+      options.forEach(option => {
+        const line = document.createElement("p");
+        line.textContent = typeof option === "string"
+          ? option
+          : (option.text || option.label || option.option_text || "Option");
+        item.appendChild(line);
+      });
+
+      pollList.appendChild(item);
+    });
+  } catch (error) {
+    pollList.textContent = error.message || "Poll list load nahi hui.";
+  } finally {
+    button.disabled = false;
+  }
+}
+
+document.getElementById("loadPollsButton").addEventListener("click", loadPolls);
+
+function logout() {
   adminToken = "";
   form.reset();
+  pollForm.reset();
   editorCard.classList.add("hidden");
+  pollCard.classList.add("hidden");
   loginCard.classList.remove("hidden");
   showStatus(loginStatus, "Logged out.");
-});
-</script>
-</body>
+}
+
+document.getElementById("logoutButton").addEventListener("click", logout);
+</script></body>
 </html>
