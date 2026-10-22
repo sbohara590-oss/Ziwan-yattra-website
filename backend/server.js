@@ -566,7 +566,7 @@ app.get("/api/daily-posts/:id/stats", async (req, res) => {
       });
     }
 
-    const { data: stats, error: statsError } = await adminupabase
+    const { data: stats, error: statsError } = await supabase
       .from("daily_post_stats")
       .select("views, likes")
       .eq("post_id", postId)
