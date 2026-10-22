@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b78">
+  <title>Article | ZIWAN YATTRA</title>
+  <style>
+    :root{--navy:#173b78;--ink:#172033;--muted:#667085;--line:#e5eaf1;--paper:#fff}
+    *{box-sizing:border-box}body{margin:0;background:#f4f6fa;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.7}
+    .page{width:min(100%,820px);min-height:100vh;margin:auto;background:var(--paper)}header{padding:17px 18px;border-bottom:1px solid var(--line)}.brand{color:var(--navy);font-weight:850;letter-spacing:.04em}.back{display:inline-block;margin-top:8px;color:var(--navy);font-size:13px;font-weight:750;text-decoration:none}
+    main{padding:20px 18px 40px}.meta{color:var(--muted);font-size:12px;margin-bottom:9px}.category{display:inline-block;padding:3px 8px;border-radius:6px;background:#edf3ff;color:var(--navy);font-weight:800;margin-right:8px}.hero{display:block;width:100%;max-height:440px;aspect-ratio:16/9;object-fit:cover;border-radius:14px;background:#eef2f7;margin:14px 0 20px}.title{font-size:clamp(25px,5vw,38px);line-height:1.2;letter-spacing:-.03em;margin:0 0 12px}.summary{font-size:17px;color:#475467;margin:0 0 20px}.content{font-size:16px;overflow-wrap:anywhere}.content p{margin:0 0 1em}.content img{max-width:100%;height:auto}.state{padding:30px 12px;text-align:center;color:var(--muted)}footer{padding:17px 18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header><div class="brand">ZIWAN YATTRA</div><a class="back" href="/daily-updates.html">← Back to Daily Updates</a></header>
+    <main id="article"><div class="state">Loading article...</div></main>
+    <footer>© <span id="year"></span> ZIWAN YATTRA</footer>
+  </div>
+  <script>
+    "use strict";
+    const API_BASE = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "http://localhost:3000" : "https://ziwan-yattra-backend.onrender.com";
+    const target = document.getElementById("article");
+    document.getElementById("year").textContent = new Date().getFullYear();
+    function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+    function categoryName(value){const c=String(value||"").trim().toLowerCase();if(["gk","general knowledge","general_knowledge"].includes(c))return "General Knowledge";if(["gaming","sports","sport"].includes(c))return c==="gaming"?"Gaming":"Sports";return "News"}
+    function formatDate(value){if(!value)return "";const d=new Date(value);return Number.isNaN(d.getTime())?"":d.toLocaleDateString("en-IN",{year:"numeric",month:"short",day:"numeric"})}
+    function contentHtml(value){return escapeHtml(value||"").replace(/\r\n?/g,"\n").split(/\n{2,}/).map(part=>`<p>${part.replace(/\n/g,"<br>")}</p>`).join("")}
+    async function loadArticle(){
+      const params=new URLSearchParams(location.search);const slug=params.get("slug");const id=params.get("id");
+      if(!slug&&!id){target.innerHTML='<div class="state">This article could not be found.</div>';return;}
+      try{
+        const response=await fetch(`${API_BASE}/api/daily-posts`,{headers:{Accept:"application/json"}});const result=await response.json();
+        const posts=Array.isArray(result.posts)?result.posts:Array.isArray(result)?result:[];
+        const post=posts.find(item=>String(item.status||"published").toLowerCase()==="published"&&(slug?String(item.slug||"")===slug:String(item.id)===id));
+        if(!response.ok||!post){target.innerHTML='<div class="state">This article is unavailable or has not been published.</div>';return;}
+        const image=post.image_url?`<img class="hero" src="${escapeHtml(post.image_url)}" alt="${escapeHtml(post.title||"Article image")}">`:"";
+        const date=formatDate(post.published_at||post.created_at);const summary=post.description||"";
+        target.innerHTML=`<div class="meta"><span class="category">${escapeHtml(categoryName(post.category))}</span>${escapeHtml(date)}</div><h1 class="title">${escapeHtml(post.title||"Untitled article")}</h1>${summary?`<p class="summary">${escapeHtml(summary)}</p>`:""}${image}<article class="content">${contentHtml(post.content||post.description||"Full article content is not available.")}</article>`;
+        document.title=`${post.title||"Article"} | ZIWAN YATTRA`;
+      }catch(error){console.error("Article loading error:",error);target.innerHTML='<div class="state">We could not load this article right now. Please try again in a moment.</div>';}
+    }
+    loadArticle();
+  </script>
+</body>
+</html>
