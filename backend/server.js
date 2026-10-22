@@ -573,7 +573,7 @@ app.get("/api/daily-posts/:id/stats", async (req, res) => {
       .maybeSingle();
 
     if (statsError) throw statsError;
-
+    console.log("ARTICLE STATS DEBUG:", { postId, stats, statsError });
     const { count, error: likesError } = await supabase
       .from("daily_post_likes")
       .select("*", { count: "exact", head: true })
