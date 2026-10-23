@@ -283,7 +283,7 @@ pollForm.addEventListener("submit", async event => {
       Expected endpoint. If the backend has no matching route,
       the request will fail and the backend must be updated next.
     */
-    const response = await fetch(`${API_BASE}/api/admin/polls`, {
+    const response = await fetch(`${API_BASE}/api/admin/daily-polls`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
