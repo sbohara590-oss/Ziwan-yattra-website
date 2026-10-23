@@ -445,7 +445,11 @@ app.get("/api/daily-polls", async (req, res) => {
       .order("created_at", { ascending: false });
 
     if (error) throw error;
-
+console.log("DAILY POLLS FETCH:", {
+  error,
+  count: data?.length,
+  polls: data
+});
     const polls = await Promise.all((data || []).map(async (poll) => {
       const { data: votes, error: voteError } = await supabase
         .from("daily_poll_votes")
