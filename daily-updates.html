@@ -355,5 +355,166 @@
     elements.search.addEventListener("input", render);
     loadPosts();
   </script>
+  <!-- ZIWAN YATTRA DAILY POLL -->
+<section id="zy-poll-section" style="max-width:760px;margin:24px auto;padding:16px;font-family:Arial,sans-serif;">
+  <h2>📊 Daily Poll</h2>
+  <p id="zy-poll-status">Loading polls...</p>
+  <div id="zy-poll-list"></div>
+</section>
+
+<script>
+(() => {
+  const API = "http://localhost:3000/api/daily-polls";
+  const list = document.getElementById("zy-poll-list");
+  const status = document.getElementById("zy-poll-status");
+
+  function showMessage(message) {
+    status.textContent = message;
+  }
+
+  function element(tag, text, parent) {
+    const node = document.createElement(tag);
+    node.textContent = text;
+    parent.appendChild(node);
+    return node;
+  }
+
+  async function loadPolls() {
+    list.replaceChildren();
+    showMessage("Loading polls...");
+
+    try {
+      const response = await fetch(API);
+      const data = await response.json();
+
+      if (!response.ok || data.success === false) {
+        throw new Error(data.error || `Server error ${response.status}`);
+      }
+
+      const polls = Array.isArray(data.polls) ? data.polls : [];
+
+      if (polls.length === 0) {
+        showMessage("No active polls found. Please create and publish a poll in Admin.");
+        return;
+      }
+
+      showMessage("Polls loaded: " + polls.length);
+
+      polls.forEach(poll => {
+        const card = element("div", "", list);
+        card.style.cssText =
+          "border:1px solid #ddd;border-radius:10px;padding:16px;margin:12px 0;";
+
+        element("h3", poll.question || poll.title || "Daily Poll", card);
+
+        const options = Array.isArray(poll.options) ? poll.options : [];
+
+        if (!options.length) {
+          element("p", "This poll has no options.", card);
+          return;
+        }
+
+        const form = element("div", "", card);
+        const groupName = "zy-poll-" + poll.id;
+
+        options.forEach((option, index) => {
+          const label = element("label", "", form);
+          label.style.cssText = "display:block;padding:8px 0;";
+
+          const radio = document.createElement("input");
+          radio.type = "radio";
+          radio.name = groupName;
+          radio.value = index;
+          radio.style.marginRight = "8px";
+          label.appendChild(radio);
+
+          label.appendChild(document.createTextNode(
+            typeof option === "string"
+              ? option
+              : option.text || option.title || option.label || option.name || `Option ${index + 1}`
+          ));
+        });
+
+        const voteButton = element("button", "Submit Vote", card);
+        voteButton.type = "button";
+        voteButton.style.cssText =
+          "padding:10px 18px;margin-top:10px;cursor:pointer;";
+
+        const results = element("div", "", card);
+        results.style.marginTop = "10px";
+
+        if (Array.isArray(poll.results)) {
+          poll.results.forEach(result => {
+            element(
+              "p",
+              `Option ${Number(result.option_index) + 1}: ${result.votes ?? 0} votes (${result.percentage ?? 0}%)`,
+              results
+            );
+          });
+        }
+
+        if (poll.total_votes != null) {
+          element("p", `Total votes: ${poll.total_votes}`, results);
+        }
+
+        voteButton.addEventListener("click", async () => {
+          const selected = form.querySelector(
+            'input[name="' + groupName + '"]:checked'
+          );
+
+          if (!selected) {
+            alert("Please select an option first.");
+            return;
+          }
+
+          voteButton.disabled = true;
+          voteButton.textContent = "Submitting...";
+
+          try {
+            let voterToken = localStorage.getItem("zy_poll_voter_token");
+
+            if (!voterToken) {
+              voterToken = Array.from(
+                crypto.getRandomValues(new Uint8Array(24))
+              ).map(n => n.toString(16).padStart(2, "0")).join("");
+
+              localStorage.setItem("zy_poll_voter_token", voterToken);
+            }
+
+            const voteResponse = await fetch(
+              API + "/" + encodeURIComponent(poll.id) + "/vote",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  option_index: Number(selected.value),
+                  voter_token: voterToken
+                })
+              }
+            );
+
+            const voteData = await voteResponse.json();
+
+            if (!voteResponse.ok || voteData.success === false) {
+              throw new Error(voteData.error || `Vote failed (${voteResponse.status})`);
+            }
+
+            alert("Vote saved successfully!");
+            await loadPolls();
+          } catch (error) {
+            alert("Vote error: " + error.message);
+            voteButton.disabled = false;
+            voteButton.textContent = "Submit Vote";
+          }
+        });
+      });
+    } catch (error) {
+      showMessage("Poll loading failed: " + error.message);
+    }
+  }
+
+  loadPolls();
+})();
+</script>
 </body>
 </html>
