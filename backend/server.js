@@ -477,7 +477,58 @@ app.get("/api/daily-polls", async (req, res) => {
     res.status(500).json({ success: false, error: "Could not load polls." });
   }
 });
+// Admin: Create a poll
+app.post("/api/admin/daily-polls", requireAdmin, async (req, res) => {
+  try {
+    const question = req.body?.question;
+    const options = req.body?.options;
 
+    if (
+      typeof question !== "string" ||
+      !question.trim() ||
+      !Array.isArray(options) ||
+      options.length < 2 ||
+      options.length > 10 ||
+      options.some(
+        (option) => typeof option !== "string" || !option.trim()
+      )
+    ) {
+      return res.status(400).json({
+        success: false,
+        error: "Question aur kam se kam 2 valid options zaroori hain."
+      });
+    }
+
+    const { data, error } = await adminSupabase
+      .from("daily_polls")
+      .insert([{
+        question: question.trim(),
+        options: options.map((option) => option.trim()),
+        status: "active"
+      }])
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Create poll error:", error.message);
+      return res.status(500).json({
+        success: false,
+        error: "Poll save nahi hua."
+      });
+    }
+
+    return res.status(201).json({
+      success: true,
+      poll: data
+    });
+  } catch (error) {
+    console.error("Create poll error:", error.message);
+    return res.status(500).json({
+      success: false,
+      error: "Poll create karte waqt server error aaya."
+    });
+  }
+});
 // Public: Submit a vote
 app.post("/api/daily-polls/:id/vote", async (req, res) => {
   const pollId = req.params.id;
@@ -574,7 +625,7 @@ app.get("/api/daily-posts/:id/stats", async (req, res) => {
 
     if (statsError) throw statsError;
     console.log("ARTICLE STATS DEBUG:", { postId, stats, statsError });
-    const { count, error: likesError } = await supabase
+    const { count, error: likesError } = await adminSupabase
       .from("daily_post_likes")
       .select("*", { count: "exact", head: true })
       .eq("post_id", postId);
