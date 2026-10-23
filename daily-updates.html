@@ -1,520 +1,61 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#173b78">
-  <meta name="description" content="Read the latest news, sports and gaming updates, and general knowledge on ZIWAN YATTRA.">
-  <title>ZIWAN YATTRA | Daily Updates</title>
-  <style>
-    :root {
-      --navy: #173b78;
-      --blue: #2459a9;
-      --ink: #172033;
-      --muted: #667085;
-      --line: #e5eaf1;
-      --paper: #ffffff;
-      --soft: #f4f6fa;
-      --radius: 15px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--soft);
-      color: var(--ink);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
-    }
-    button, input { font: inherit; }
-    a { color: inherit; }
-    .shell {
-      width: min(100%, 820px);
-      min-height: 100vh;
-      margin: 0 auto;
-      background: var(--paper);
-      box-shadow: 0 0 28px #182b4d0b;
-    }
-    .top {
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      padding: 14px 16px 13px;
-      text-align: center;
-      background: #fffffff2;
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(12px);
-    }
-    .home-link {
-      position: absolute;
-      top: 17px;
-      left: 15px;
-      color: var(--navy);
-      font-size: 12px;
-      font-weight: 750;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .brand { color: var(--navy); font-size: 18px; font-weight: 850; letter-spacing: .04em; line-height: 1.2; }
-    .subbrand { margin-top: 3px; color: var(--muted); font-size: 12px; }
-    .navrow {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      max-width: 650px;
-      margin: 14px auto 0;
-    }
-    .category-button {
-      min-width: 0;
-      min-height: 43px;
-      padding: 9px 5px;
-      border: 1px solid var(--line);
-      border-radius: 11px;
-      background: #fff;
-      color: #344054;
-      font-size: 12px;
-      font-weight: 750;
-      cursor: pointer;
-      transition: background .15s ease, color .15s ease, border-color .15s ease;
-    }
-    .category-button:hover { border-color: var(--blue); }
-    .category-button.active { background: var(--navy); border-color: var(--navy); color: #fff; }
-    .search-wrap { padding: 14px 16px 0; }
-    .search {
-      width: 100%;
-      padding: 11px 13px;
-      border: 1px solid var(--line);
-      border-radius: 11px;
-      outline: none;
-      background: #fff;
-    }
-    .search:focus { border-color: var(--blue); box-shadow: 0 0 0 3px #2459a91c; }
-    .feed { padding: 16px 16px 30px; }
-    .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 0 12px; }
-    .section-heading h1, .section-heading h2 { margin: 0; font-size: 19px; letter-spacing: -.02em; }
-    .count { color: var(--muted); font-size: 12px; white-space: nowrap; }
-    .featured { margin: 0 0 22px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
-    .featured-link, .post-link { display: block; color: inherit; text-decoration: none; }
-    .featured-image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #eef2f7; }
-    .image-placeholder { display: grid; place-items: center; min-height: 160px; background: linear-gradient(135deg, #edf2fa, #f8fafc); color: #667085; font-size: 13px; }
-    .featured-body { padding: 14px 15px 16px; }
-    .meta { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; color: var(--muted); font-size: 11px; }
-    .pill { padding: 3px 7px; border-radius: 6px; background: #edf3ff; color: var(--navy); font-size: 10px; font-weight: 800; letter-spacing: .035em; text-transform: uppercase; }
-    .featured h2 { margin: 0 0 7px; font-size: clamp(19px, 4vw, 25px); line-height: 1.25; letter-spacing: -.025em; }
-    .excerpt { margin: 0; color: #475467; font-size: 14px; white-space: pre-line; }
-    .read-more { display: inline-block; margin-top: 12px; color: var(--navy); font-size: 13px; font-weight: 800; }
-    .post-list { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    .post-card { display: grid; grid-template-columns: 112px minmax(0, 1fr); overflow: hidden; border: 1px solid var(--line); border-radius: 13px; background: #fff; }
-    .post-card-image { display: block; width: 112px; height: 100%; min-height: 110px; object-fit: cover; background: #eef2f7; }
-    .post-card-body { padding: 11px 12px; }
-    .post-card h3 { margin: 0 0 5px; font-size: 15px; line-height: 1.3; }
-    .post-card .excerpt { display: -webkit-box; overflow: hidden; font-size: 12px; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
-    .empty, .notice { padding: 25px 15px; border: 1px dashed #ccd5e3; border-radius: 12px; color: var(--muted); text-align: center; font-size: 13px; }
-    .notice { margin: 14px 16px 0; padding: 12px; border-style: solid; }
-    .footer { padding: 17px 16px; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: 12px; }
-    .footer a { color: var(--navy); font-weight: 700; text-decoration: none; }
-    [hidden] { display: none !important; }
-    @media (min-width: 620px) {
-      .top { padding: 16px 22px 14px; }
-      .home-link { left: 22px; top: 20px; }
-      .search-wrap, .feed { padding-right: 22px; padding-left: 22px; }
-      .post-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .post-card { grid-template-columns: 100px minmax(0, 1fr); }
-      .post-card-image { width: 100px; }
-    }
-    @media (max-width: 390px) {
-      .home-link { position: static; display: block; margin: 0 0 7px; text-align: left; }
-      .top { padding-top: 10px; }
-      .category-button { font-size: 11px; }
-      .post-card { grid-template-columns: 94px minmax(0, 1fr); }
-      .post-card-image { width: 94px; }
-      .post-card-body { padding: 9px; }
-      .post-card h3 { font-size: 14px; }
-    }
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173b78"><meta name="description" content="News, sports, gaming and daily polls from ZIWAN YATTRA.">
+<title>ZIWAN YATTRA | Daily Updates</title>
+<style>
+:root{--navy:#173b78;--blue:#2459a9;--ink:#172033;--muted:#667085;--line:#e5eaf1;--soft:#f4f6fa}
+*{box-sizing:border-box}body{margin:0;background:var(--soft);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}button,input{font:inherit}a{color:inherit}
+.shell{width:min(100%,820px);min-height:100vh;margin:auto;background:#fff;box-shadow:0 0 28px #182b4d0b}
+.top{position:sticky;top:0;z-index:5;padding:14px 16px;text-align:center;background:#fffffff2;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.home-link{position:absolute;top:17px;left:15px;color:var(--navy);font-size:12px;font-weight:750;text-decoration:none}.brand{color:var(--navy);font-size:18px;font-weight:850;letter-spacing:.04em}.subbrand{color:var(--muted);font-size:12px}
+.navrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:650px;margin:14px auto 0}.category-button{min-width:0;min-height:43px;padding:9px 5px;border:1px solid var(--line);border-radius:11px;background:#fff;color:#344054;font-size:12px;font-weight:750;cursor:pointer}.category-button.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.search-wrap{padding:14px 16px 0}.search{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:11px}.feed{padding:16px 16px 30px}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}.section-heading h1,.section-heading h2{margin:0;font-size:19px}.count{color:var(--muted);font-size:12px}
+.featured{margin:0 0 22px;overflow:hidden;border:1px solid var(--line);border-radius:15px;background:#fff}.featured-link,.post-link{display:block;color:inherit;text-decoration:none}.featured-image{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#eef2f7}.image-placeholder{display:grid;place-items:center;min-height:110px;background:#eef2f7;color:#667085;font-size:13px}.featured-body{padding:14px 15px}.meta{display:flex;gap:8px;margin-bottom:7px;color:var(--muted);font-size:11px}.pill{padding:3px 7px;border-radius:6px;background:#edf3ff;color:var(--navy);font-size:10px;font-weight:800;text-transform:uppercase}.featured h2{margin:0 0 7px;font-size:clamp(19px,4vw,25px);line-height:1.25}.excerpt{margin:0;color:#475467;font-size:14px;white-space:pre-line}.read-more{display:inline-block;margin-top:12px;color:var(--navy);font-size:13px;font-weight:800}
+.post-list{display:grid;grid-template-columns:1fr;gap:12px}.post-card{display:grid;grid-template-columns:112px minmax(0,1fr);overflow:hidden;border:1px solid var(--line);border-radius:13px;background:#fff}.post-card-image{display:block;width:112px;height:100%;min-height:110px;object-fit:cover;background:#eef2f7}.post-card-body{padding:11px 12px}.post-card h3{margin:0 0 5px;font-size:15px;line-height:1.3}.post-card .excerpt{display:-webkit-box;overflow:hidden;font-size:12px;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.empty,.notice{padding:25px 15px;border:1px dashed #ccd5e3;border-radius:12px;color:var(--muted);text-align:center;font-size:13px}.footer{padding:17px 16px;border-top:1px solid var(--line);color:var(--muted);text-align:center;font-size:12px}.footer a{color:var(--navy);font-weight:700;text-decoration:none}[hidden]{display:none!important}
+.poll-section{padding:26px 16px 34px;background:var(--soft);border-top:1px solid var(--line)}.poll-section h2{margin:0 0 16px;font-size:clamp(24px,5vw,34px)}.poll-status{color:#475467}.poll-card{margin:14px 0;padding:18px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 4px 18px #182b4d08}.poll-card h3{margin:0 0 12px;font-size:18px;line-height:1.35}.poll-option{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;margin:8px 0;border:1px solid var(--line);border-radius:10px;background:#fff;cursor:pointer}.poll-option input{margin-top:5px;accent-color:var(--navy)}.poll-option span{overflow-wrap:anywhere}.poll-vote{margin-top:12px;padding:10px 17px;border:0;border-radius:10px;background:var(--navy);color:#fff;font-weight:750;cursor:pointer}.poll-vote:disabled{opacity:.6}.poll-result{margin-top:16px}.result-row{margin:10px 0}.result-top{display:flex;justify-content:space-between;gap:10px;font-size:13px}.result-track{height:8px;margin-top:5px;overflow:hidden;border-radius:99px;background:#e9eef6}.result-fill{height:100%;border-radius:99px;background:var(--blue)}.poll-total{color:var(--muted);font-size:12px}
+@media(min-width:620px){.top{padding:16px 22px}.home-link{left:22px;top:20px}.search-wrap,.feed{padding-right:22px;padding-left:22px}.post-list{grid-template-columns:repeat(2,minmax(0,1fr))}.post-card{grid-template-columns:100px minmax(0,1fr)}.post-card-image{width:100px}}
+@media(max-width:390px){.home-link{position:static;display:block;margin-bottom:7px;text-align:left}.category-button{font-size:11px}.post-card{grid-template-columns:94px minmax(0,1fr)}.post-card-image{width:94px}.post-card-body{padding:9px}.post-card h3{font-size:14px}}
+</style>
 </head>
-<body>
-  <main class="shell">
-    <header class="top">
-      <a class="home-link" href="/index.html" aria-label="Go to Home">← Home</a>
-      <div class="brand">ZIWAN YATTRA</div>
-      <div class="subbrand">Daily Updates</div>
-      <nav class="navrow" aria-label="Main categories">
-        <button class="category-button active" type="button" data-category="News">News</button>
-        <button class="category-button" type="button" data-category="Sports / Gaming">Sports / Gaming</button>
-        <button class="category-button" type="button" data-category="General Knowledge">General Knowledge</button>
-      </nav>
-    </header>
-
-    <div class="search-wrap">
-      <input class="search" id="searchInput" type="search" placeholder="Search updates..." aria-label="Search updates">
-    </div>
-    <div id="pageNotice" class="notice" role="status" hidden></div>
-
-    <section class="feed" aria-live="polite">
-      <section id="latestSection" aria-label="Latest news">
-        <div class="section-heading">
-          <h1 id="feedHeading">Latest News</h1>
-          <span class="count" id="postCount">Loading...</span>
-        </div>
-        <div id="featuredNews"></div>
-      </section>
-      <section id="moreSection" aria-label="More updates">
-        <div class="section-heading"><h2 id="listHeading">More News</h2></div>
-        <div class="post-list" id="postList"><div class="empty">Loading updates...</div></div>
-      </section>
-    </section>
-
-    <footer class="footer">
-      <a href="/index.html">Home</a> · <a href="/privacy-policy.html">Privacy Policy</a>
-      <div style="margin-top:5px">© <span id="year"></span> ZIWAN YATTRA</div>
-    </footer>
-  </main>
-
-  <script>
-    "use strict";
-
-    // The public website uses the deployed backend. Local development can use localhost.
-    const API_BASE = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-      ? "http://localhost:3000"
-      : "https://ziwan-yattra-backend.onrender.com";
-
-    const state = { posts: [], category: "News" };
-    const elements = {
-      search: document.getElementById("searchInput"),
-      featured: document.getElementById("featuredNews"),
-      list: document.getElementById("postList"),
-      count: document.getElementById("postCount"),
-      heading: document.getElementById("feedHeading"),
-      listHeading: document.getElementById("listHeading"),
-      notice: document.getElementById("pageNotice"),
-      latestSection: document.getElementById("latestSection"),
-      moreSection: document.getElementById("moreSection")
-    };
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    function escapeHtml(value) {
-      return String(value ?? "").replace(/[&<>"']/g, character => ({
-        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-      })[character]);
-    }
-
-    function normaliseCategory(value) {
-      const category = String(value || "").trim().toLowerCase();
-      if (["gk", "general knowledge", "general_knowledge"].includes(category)) return "General Knowledge";
-      if (["gaming", "sports", "sport", "sports / gaming", "sports/gaming"].includes(category)) return "Sports / Gaming";
-      return "News";
-    }
-
-    function formatDate(value) {
-      if (!value) return "Recent";
-      const date = new Date(value);
-      return Number.isNaN(date.getTime())
-        ? "Recent"
-        : date.toLocaleDateString("en-IN", { year: "numeric", month: "short", day: "numeric" });
-    }
-
-    function articleUrl(post) {
-      if (post.article_url || post.url || post.link) {
-        const raw = String(post.article_url || post.url || post.link).trim();
-        try {
-          const url = new URL(raw, location.origin);
-          if (["http:", "https:"].includes(url.protocol)) return url.href;
-        } catch (_) { /* Use the local article page below. */ }
-      }
-      const identifier = post.slug ? `slug=${encodeURIComponent(post.slug)}` : `id=${encodeURIComponent(post.id)}`;
-      return `/article.html?${identifier}`;
-    }
-
-    function imageMarkup(post, className) {
-      const raw = String(post.image_url || post.image || "").trim();
-      if (raw) {
-        try {
-          const url = new URL(raw, location.origin);
-          if (["http:", "https:"].includes(url.protocol)) {
-            return `<img class="${className}" src="${escapeHtml(url.href)}" alt="${escapeHtml(post.title || "Article image")}" loading="lazy">`;
-          }
-        } catch (_) { /* Fall back to a clean placeholder. */ }
-      }
-      return `<div class="${className} image-placeholder" role="img" aria-label="No image available">ZIWAN YATTRA</div>`;
-    }
-
-    function featuredCard(post) {
-      const url = articleUrl(post);
-      const title = escapeHtml(post.title || "Untitled update");
-      const category = escapeHtml(normaliseCategory(post.category));
-      const date = escapeHtml(formatDate(post.published_at || post.created_at));
-      const summary = escapeHtml(post.description || post.excerpt || "Read the full story for details.");
-      return `
-        <article class="featured">
-          <a class="featured-link" href="${escapeHtml(url)}" aria-label="Read ${title}">
-            ${imageMarkup(post, "featured-image")}
-            <div class="featured-body">
-              <div class="meta"><span class="pill">${category}</span><span>${date}</span></div>
-              <h2>${title}</h2>
-              <p class="excerpt">${summary}</p>
-              <span class="read-more">Read Full Story →</span>
-            </div>
-          </a>
-        </article>`;
-    }
-
-    function postCard(post) {
-      const url = articleUrl(post);
-      const title = escapeHtml(post.title || "Untitled update");
-      const category = escapeHtml(normaliseCategory(post.category));
-      const date = escapeHtml(formatDate(post.published_at || post.created_at));
-      const summary = escapeHtml(post.description || post.excerpt || "Open this update to read more.");
-      return `
-        <article class="post-card">
-          <a class="post-link" href="${escapeHtml(url)}" aria-label="Read ${title}">
-            ${imageMarkup(post, "post-card-image")}
-          </a>
-          <div class="post-card-body">
-            <div class="meta"><span class="pill">${category}</span><span>${date}</span></div>
-            <h3><a class="post-link" href="${escapeHtml(url)}">${title}</a></h3>
-            <p class="excerpt">${summary}</p>
-          </div>
-        </article>`;
-    }
-
-    function render() {
-      const query = elements.search.value.trim().toLowerCase();
-      const visiblePosts = state.posts.filter(post => {
-        const isPublished = String(post.status || "published").toLowerCase() === "published";
-        const matchesCategory = normaliseCategory(post.category) === state.category;
-        const searchableText = [post.title, post.description, post.excerpt, post.content, post.category]
-          .map(value => String(value || "")).join(" ").toLowerCase();
-        return isPublished && matchesCategory && searchableText.includes(query);
-      });
-
-      elements.heading.textContent = state.category === "News"
-        ? "Latest News"
-        : state.category === "Sports / Gaming" ? "Sports & Gaming" : "General Knowledge";
-      elements.listHeading.textContent = state.category === "News"
-        ? "More News"
-        : state.category === "Sports / Gaming" ? "More Sports & Gaming" : "More General Knowledge";
-      elements.count.textContent = `${visiblePosts.length} ${visiblePosts.length === 1 ? "update" : "updates"}`;
-
-      if (state.category === "News" && visiblePosts.length) {
-        elements.featured.innerHTML = featuredCard(visiblePosts[0]);
-        elements.list.innerHTML = visiblePosts.length > 1
-          ? visiblePosts.slice(1).map(postCard).join("")
-          : "";
-        elements.moreSection.hidden = visiblePosts.length < 2;
-      } else {
-        elements.featured.innerHTML = "";
-        elements.moreSection.hidden = false;
-        elements.list.innerHTML = visiblePosts.length
-          ? visiblePosts.map(postCard).join("")
-          : `<div class="empty">${state.posts.length ? "No updates in this section yet." : "No published updates yet."}</div>`;
-      }
-      if (state.category !== "News" && visiblePosts.length === 0) elements.list.innerHTML = '<div class="empty">No updates in this section yet.</div>';
-    }
-
-    async function loadPosts() {
-      elements.featured.innerHTML = "";
-      elements.list.innerHTML = '<div class="empty">Loading updates...</div>';
-      elements.notice.hidden = true;
-      try {
-        const response = await fetch(`${API_BASE}/api/daily-posts`, { headers: { Accept: "application/json" } });
-        const result = await response.json();
-        if (!response.ok || result.success === false) {
-          throw new Error(result.error || `Unable to load updates (${response.status}).`);
-        }
-        const posts = Array.isArray(result) ? result
-          : Array.isArray(result.posts) ? result.posts
-          : Array.isArray(result.data) ? result.data
-          : Array.isArray(result.data?.posts) ? result.data.posts
-          : null;
-        if (!posts) throw new Error("Updates are temporarily unavailable. Please try again later.");
-        state.posts = posts;
-        render();
-      } catch (error) {
-        console.error("Daily Updates loading error:", error);
-        elements.count.textContent = "";
-        elements.featured.innerHTML = "";
-        elements.list.innerHTML = '<div class="empty">We could not load updates right now. Please refresh the page in a moment.</div>';
-        elements.notice.hidden = true;
-      }
-    }
-
-    document.querySelectorAll(".category-button").forEach(button => {
-      button.addEventListener("click", () => {
-        state.category = button.dataset.category;
-        document.querySelectorAll(".category-button").forEach(item => {
-          const active = item === button;
-          item.classList.toggle("active", active);
-          item.setAttribute("aria-pressed", String(active));
-        });
-        render();
-      });
-    });
-
-    elements.search.addEventListener("input", render);
-    loadPosts();
-  </script>
-  <!-- ZIWAN YATTRA DAILY POLL -->
-<section id="zy-poll-section" style="max-width:760px;margin:24px auto;padding:16px;font-family:Arial,sans-serif;">
-  <h2>📊 Daily Poll</h2>
-  <p id="zy-poll-status">Loading polls...</p>
-  <div id="zy-poll-list"></div>
-</section>
-
+<body><main class="shell">
+<header class="top"><a class="home-link" href="/index.html">← Home</a><div class="brand">ZIWAN YATTRA</div><div class="subbrand">Daily Updates</div>
+<nav class="navrow" aria-label="Main categories"><button class="category-button active" data-category="News" aria-pressed="true">News</button><button class="category-button" data-category="Sports / Gaming" aria-pressed="false">Sports / Gaming</button><button class="category-button" data-category="General Knowledge" aria-pressed="false">General Knowledge</button></nav></header>
+<div class="search-wrap" id="searchWrap"><input class="search" id="searchInput" type="search" placeholder="Search updates..." aria-label="Search updates"></div>
+<section class="feed" id="postsArea" aria-live="polite"><section><div class="section-heading"><h1 id="feedHeading">Latest News</h1><span class="count" id="postCount">Loading...</span></div><div id="featuredNews"></div></section>
+<section id="moreSection"><div class="section-heading"><h2 id="listHeading">More News</h2></div><div class="post-list" id="postList"><div class="empty">Loading updates...</div></div></section></section>
+<section id="zy-poll-section" class="poll-section" hidden aria-labelledby="pollHeading"><h2 id="pollHeading">📊 Daily Poll</h2><p id="zy-poll-status" class="poll-status" role="status">Loading polls...</p><div id="zy-poll-list"></div></section>
+<footer class="footer"><a href="/index.html">Home</a> · <a href="/privacy-policy.html">Privacy Policy</a><div style="margin-top:5px">© <span id="year"></span> ZIWAN YATTRA</div></footer></main>
 <script>
-(() => {
-  const API = "https://ziwan-yattra-backend.onrender.com/api/daily-polls";
-  const list = document.getElementById("zy-poll-list");
-  const status = document.getElementById("zy-poll-status");
-
-  function showMessage(message) {
-    status.textContent = message;
-  }
-
-  function element(tag, text, parent) {
-    const node = document.createElement(tag);
-    node.textContent = text;
-    parent.appendChild(node);
-    return node;
-  }
-
-  async function loadPolls() {
-    list.replaceChildren();
-    showMessage("Loading polls...");
-
-    try {
-      const response = await fetch(API);
-      const data = await response.json();
-
-      if (!response.ok || data.success === false) {
-        throw new Error(data.error || `Server error ${response.status}`);
-      }
-
-      const polls = Array.isArray(data.polls) ? data.polls : [];
-
-      if (polls.length === 0) {
-        showMessage("No active polls found. Please create and publish a poll in Admin.");
-        return;
-      }
-
-      showMessage("Polls loaded: " + polls.length);
-
-      polls.forEach(poll => {
-        const card = element("div", "", list);
-        card.style.cssText =
-          "border:1px solid #ddd;border-radius:10px;padding:16px;margin:12px 0;";
-
-        element("h3", poll.question || poll.title || "Daily Poll", card);
-
-        const options = Array.isArray(poll.options) ? poll.options : [];
-
-        if (!options.length) {
-          element("p", "This poll has no options.", card);
-          return;
-        }
-
-        const form = element("div", "", card);
-        const groupName = "zy-poll-" + poll.id;
-
-        options.forEach((option, index) => {
-          const label = element("label", "", form);
-          label.style.cssText = "display:block;padding:8px 0;";
-
-          const radio = document.createElement("input");
-          radio.type = "radio";
-          radio.name = groupName;
-          radio.value = index;
-          radio.style.marginRight = "8px";
-          label.appendChild(radio);
-
-          label.appendChild(document.createTextNode(
-            typeof option === "string"
-              ? option
-              : option.text || option.title || option.label || option.name || `Option ${index + 1}`
-          ));
-        });
-
-        const voteButton = element("button", "Submit Vote", card);
-        voteButton.type = "button";
-        voteButton.style.cssText =
-          "padding:10px 18px;margin-top:10px;cursor:pointer;";
-
-        const results = element("div", "", card);
-        results.style.marginTop = "10px";
-
-        if (Array.isArray(poll.results)) {
-          poll.results.forEach(result => {
-            element(
-              "p",
-              `Option ${Number(result.option_index) + 1}: ${result.votes ?? 0} votes (${result.percentage ?? 0}%)`,
-              results
-            );
-          });
-        }
-
-        if (poll.total_votes != null) {
-          element("p", `Total votes: ${poll.total_votes}`, results);
-        }
-
-        voteButton.addEventListener("click", async () => {
-          const selected = form.querySelector(
-            'input[name="' + groupName + '"]:checked'
-          );
-
-          if (!selected) {
-            alert("Please select an option first.");
-            return;
-          }
-
-          voteButton.disabled = true;
-          voteButton.textContent = "Submitting...";
-
-          try {
-            let voterToken = localStorage.getItem("zy_poll_voter_token");
-
-            if (!voterToken) {
-              voterToken = Array.from(
-                crypto.getRandomValues(new Uint8Array(24))
-              ).map(n => n.toString(16).padStart(2, "0")).join("");
-
-              localStorage.setItem("zy_poll_voter_token", voterToken);
-            }
-
-            const voteResponse = await fetch(
-              API + "/" + encodeURIComponent(poll.id) + "/vote",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  option_index: Number(selected.value),
-                  voter_token: voterToken
-                })
-              }
-            );
-
-            const voteData = await voteResponse.json();
-
-            if (!voteResponse.ok || voteData.success === false) {
-              throw new Error(voteData.error || `Vote failed (${voteResponse.status})`);
-            }
-
-            alert("Vote saved successfully!");
-            await loadPolls();
-          } catch (error) {
-            alert("Vote error: " + error.message);
-            voteButton.disabled = false;
-            voteButton.textContent = "Submit Vote";
-          }
-        });
-      });
-    } catch (error) {
-      showMessage("Poll loading failed: " + error.message);
-    }
-  }
-
-  loadPolls();
-})();
-</script>
-</body>
-</html>
+"use strict";
+const API_BASE=(location.hostname==="localhost"||location.hostname==="127.0.0.1")?"http://localhost:3000":"https://ziwan-yattra-backend.onrender.com";
+const state={posts:[],category:"News"};
+const el={search:document.getElementById("searchInput"),searchWrap:document.getElementById("searchWrap"),featured:document.getElementById("featuredNews"),list:document.getElementById("postList"),count:document.getElementById("postCount"),heading:document.getElementById("feedHeading"),listHeading:document.getElementById("listHeading"),more:document.getElementById("moreSection"),posts:document.getElementById("postsArea"),poll:document.getElementById("zy-poll-section")};
+document.getElementById("year").textContent=new Date().getFullYear();
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function cat(v){v=String(v||"").trim().toLowerCase();if(["gk","general knowledge","general_knowledge"].includes(v))return"General Knowledge";if(["gaming","sports","sport","sports / gaming","sports/gaming"].includes(v))return"Sports / Gaming";return"News";}
+function dateText(v){if(!v)return"Recent";const d=new Date(v);return isNaN(d)?"Recent":d.toLocaleDateString("en-IN",{year:"numeric",month:"short",day:"numeric"});}
+function urlFor(p){const raw=p.article_url||p.url||p.link;if(raw){try{const u=new URL(String(raw).trim(),location.origin);if(["http:","https:"].includes(u.protocol))return u.href;}catch(e){}}return"/article.html?"+(p.slug?"slug="+encodeURIComponent(p.slug):"id="+encodeURIComponent(p.id??""));}
+function img(p,cls){const raw=String(p.image_url||p.image||"").trim();if(raw){try{const u=new URL(raw,location.origin);if(["http:","https:"].includes(u.protocol))return`<img class="${cls}" src="${esc(u.href)}" alt="${esc(p.title||"Article image")}" loading="lazy">`;}catch(e){}}return`<div class="${cls} image-placeholder">ZIWAN YATTRA</div>`;}
+function featured(p){let u=urlFor(p),t=esc(p.title||"Untitled update");return`<article class="featured"><a class="featured-link" href="${esc(u)}">${img(p,"featured-image")}<div class="featured-body"><div class="meta"><span class="pill">${esc(cat(p.category))}</span><span>${esc(dateText(p.published_at||p.created_at))}</span></div><h2>${t}</h2><p class="excerpt">${esc(p.description||p.excerpt||"Read the full story for details.")}</p><span class="read-more">Read Full Story →</span></div></a></article>`;}
+function card(p){let u=urlFor(p),t=esc(p.title||"Untitled update");return`<article class="post-card"><a class="post-link" href="${esc(u)}">${img(p,"post-card-image")}</a><div class="post-card-body"><div class="meta"><span class="pill">${esc(cat(p.category))}</span><span>${esc(dateText(p.published_at||p.created_at))}</span></div><h3><a class="post-link" href="${esc(u)}">${t}</a></h3><p class="excerpt">${esc(p.description||p.excerpt||"Open this update to read more.")}</p></div></article>`;}
+function render(){const q=el.search.value.trim().toLowerCase();const posts=state.posts.filter(p=>String(p.status||"published").toLowerCase()==="published"&&cat(p.category)===state.category&&[p.title,p.description,p.excerpt,p.content,p.category].map(v=>String(v||"")).join(" ").toLowerCase().includes(q));
+el.heading.textContent=state.category==="News"?"Latest News":state.category==="Sports / Gaming"?"Sports & Gaming":"General Knowledge";el.listHeading.textContent=state.category==="Sports / Gaming"?"More Sports & Gaming":"More News";el.count.textContent=`${posts.length} ${posts.length===1?"update":"updates"}`;
+if(state.category==="News"&&posts.length){el.featured.innerHTML=featured(posts[0]);el.list.innerHTML=posts.length>1?posts.slice(1).map(card).join(""):"";el.more.hidden=posts.length<2;}else{el.featured.innerHTML="";el.more.hidden=false;el.list.innerHTML=posts.length?posts.map(card).join(""):`<div class="empty">No updates in this section yet.</div>`;}
+const isGK=state.category==="General Knowledge";el.posts.hidden=isGK;el.searchWrap.hidden=isGK;el.poll.hidden=!isGK;}
+async function loadPosts(){el.list.innerHTML='<div class="empty">Loading updates...</div>';try{const r=await fetch(`${API_BASE}/api/daily-posts`,{headers:{Accept:"application/json"}});const d=await r.json();if(!r.ok||d.success===false)throw Error(d.error||`Unable to load updates (${r.status})`);const p=Array.isArray(d)?d:Array.isArray(d.posts)?d.posts:Array.isArray(d.data)?d.data:Array.isArray(d.data?.posts)?d.data.posts:null;if(!p)throw Error("Updates temporarily unavailable");state.posts=p;render();}catch(e){console.error(e);el.count.textContent="";el.list.innerHTML='<div class="empty">We could not load updates right now. Please refresh the page in a moment.</div>';}}
+document.querySelectorAll(".category-button").forEach(b=>b.addEventListener("click",()=>{state.category=b.dataset.category;document.querySelectorAll(".category-button").forEach(x=>{x.classList.toggle("active",x===b);x.setAttribute("aria-pressed",String(x===b));});render();if(state.category==="General Knowledge")loadPolls();}));
+el.search.addEventListener("input",render);
+const POLL_API=`${API_BASE}/api/daily-polls`,pollList=document.getElementById("zy-poll-list"),pollStatus=document.getElementById("zy-poll-status");
+function msg(t){pollStatus.textContent=t;}function make(tag,cls,text,parent){const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;parent.appendChild(n);return n;}
+function optText(o,i){return typeof o==="string"?o:(o?.text||o?.title||o?.label||o?.name||`Option ${i+1}`);}
+function drawPoll(p){const box=make("article","poll-card",undefined,pollList);make("h3","",p.question||p.title||"Daily Poll",box);const opts=Array.isArray(p.options)?p.options:[];if(!opts.length){make("p","","This poll has no options.",box);return;}const form=make("div","",undefined,box),group="poll-"+p.id;
+opts.forEach((o,i)=>{const label=make("label","poll-option",undefined,form),radio=document.createElement("input");radio.type="radio";radio.name=group;radio.value=String(i);label.appendChild(radio);make("span","",optText(o,i),label);});
+const vote=make("button","poll-vote","Submit Vote",box);vote.type="button";const results=make("div","poll-result",undefined,box);const counts=Array(opts.length).fill(0);if(Array.isArray(p.results))p.results.forEach(r=>{const i=Number(r.option_index);if(Number.isInteger(i)&&i>=0&&i<counts.length)counts[i]=Number(r.votes)||0;});else if(Array.isArray(p.vote_counts))p.vote_counts.forEach((v,i)=>{if(i<counts.length)counts[i]=Number(typeof v==="object"?v.votes:v)||0;});const total=Number(p.total_votes)||counts.reduce((a,b)=>a+b,0);
+if(total>0){opts.forEach((o,i)=>{const row=make("div","result-row",undefined,results),top=make("div","result-top",undefined,row),pct=Math.round(counts[i]/total*100);make("span","",optText(o,i),top);make("span","",`${counts[i]} (${pct}%)`,top);const track=make("div","result-track",undefined,row),fill=make("div","result-fill",undefined,track);fill.style.width=pct+"%";});make("p","poll-total",`Total votes: ${total}`,results);}
+vote.addEventListener("click",async()=>{const selected=form.querySelector('input[name="'+group.replace(/"/g,'\\"')+'"]:checked');if(!selected){alert("Please select an option first.");return;}vote.disabled=true;vote.textContent="Submitting...";try{let token=localStorage.getItem("zy_poll_voter_token");if(!token){const bytes=new Uint8Array(24);crypto.getRandomValues(bytes);token=Array.from(bytes,n=>n.toString(16).padStart(2,"0")).join("");localStorage.setItem("zy_poll_voter_token",token);}const r=await fetch(`${POLL_API}/${encodeURIComponent(p.id)}/vote`,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify({option_index:Number(selected.value),voter_token:token})});const d=await r.json();if(!r.ok||d.success===false)throw Error(d.error||`Vote failed (${r.status})`);alert("Vote saved successfully!");await loadPolls();}catch(e){alert("Vote error: "+e.message);vote.disabled=false;vote.textContent="Submit Vote";}});}
+async function loadPolls(){pollList.replaceChildren();msg("Loading polls...");try{const r=await fetch(POLL_API,{headers:{Accept:"application/json"}});const d=await r.json();if(!r.ok||d.success===false)throw Error(d.error||`Server error ${r.status}`);const polls=Array.isArray(d.polls)?d.polls:[];if(!polls.length){msg("No active polls found. Please create and publish a poll in Admin.");return;}msg("");polls.forEach(drawPoll);}catch(e){console.error("Poll loading error:",e);msg("Poll loading failed: "+e.message);}}
+loadPosts();loadPolls();
+</script></body></html>
