@@ -484,15 +484,15 @@ console.log("DAILY POLLS FETCH:", {
 // ==========================================
 // FACEBOOK / WHATSAPP SHARE PREVIEW (DYNAMIC)
 // ==========================================
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 app.get('/share/news', async (req, res) => {
     try {
         const newsId = req.query.id;
-        
+
         let newsTitle = "ZIWAN YATTRA - News Article";
-        let newsImage = "https://ziwanyattra.com/icons/icon-512.png"; 
+        let newsImage = "https://ziwanyattra.com/icons/icon-512.png";
         let newsDesc = "Read the latest news and updates on ZIWAN YATTRA.";
 
         if (newsId) {
@@ -504,16 +504,36 @@ app.get('/share/news', async (req, res) => {
 
             if (newsData) {
                 newsTitle = newsData.title || newsTitle;
-                if (newsData.image_url) newsImage = newsData.image_url;
-                if (newsData.summary) newsDesc = newsData.summary;
+
+                if (newsData.image_url) {
+                    newsImage = newsData.image_url;
+                }
+
+                if (newsData.summary) {
+                    newsDesc = newsData.summary;
+                }
             }
         }
 
-        let html = fs.readFileSync(path.join(__dirname, 'article.html'), 'utf-8');
+        let html = fs.readFileSync(
+            path.join(process.cwd(), 'article.html'),
+            'utf-8'
+        );
 
-        html = html.replace('<!-- OG_IMAGE_TAG -->', `<meta property="og:image" content="${newsImage}" />`);
-        html = html.replace('<!-- OG_TITLE_TAG -->', `<meta property="og:title" content="${newsTitle}" />`);
-        html = html.replace('<!-- OG_DESC_TAG -->', `<meta property="og:description" content="${newsDesc}" />`);
+        html = html.replace(
+            '<!-- OG_IMAGE_TAG -->',
+            `<meta property="og:image" content="${newsImage}" />`
+        );
+
+        html = html.replace(
+            '<!-- OG_TITLE_TAG -->',
+            `<meta property="og:title" content="${newsTitle}" />`
+        );
+
+        html = html.replace(
+            '<!-- OG_DESC_TAG -->',
+            `<meta property="og:description" content="${newsDesc}" />`
+        );
 
         res.send(html);
     } catch (error) {
