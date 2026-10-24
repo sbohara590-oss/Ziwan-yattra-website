@@ -481,6 +481,46 @@ console.log("DAILY POLLS FETCH:", {
     res.status(500).json({ success: false, error: "Could not load polls." });
   }
 });
+// ==========================================
+// FACEBOOK / WHATSAPP SHARE PREVIEW (DYNAMIC)
+// ==========================================
+const fs = require('fs');
+const path = require('path');
+
+app.get('/share/news', async (req, res) => {
+    try {
+        const newsId = req.query.id;
+        
+        let newsTitle = "ZIWAN YATTRA - News Article";
+        let newsImage = "https://ziwanyattra.com/icons/icon-512.png"; 
+        let newsDesc = "Read the latest news and updates on ZIWAN YATTRA.";
+
+        if (newsId) {
+            const { data: newsData, error } = await supabase
+                .from('daily_posts')
+                .select('title, image_url, summary')
+                .eq('id', newsId)
+                .single();
+
+            if (newsData) {
+                newsTitle = newsData.title || newsTitle;
+                if (newsData.image_url) newsImage = newsData.image_url;
+                if (newsData.summary) newsDesc = newsData.summary;
+            }
+        }
+
+        let html = fs.readFileSync(path.join(__dirname, 'article.html'), 'utf-8');
+
+        html = html.replace('<!-- OG_IMAGE_TAG -->', `<meta property="og:image" content="${newsImage}" />`);
+        html = html.replace('<!-- OG_TITLE_TAG -->', `<meta property="og:title" content="${newsTitle}" />`);
+        html = html.replace('<!-- OG_DESC_TAG -->', `<meta property="og:description" content="${newsDesc}" />`);
+
+        res.send(html);
+    } catch (error) {
+        console.error("Share error:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
 // Admin: Create a poll
 app.post("/api/admin/daily-polls", requireAdmin, async (req, res) => {
   try {
