@@ -1,3 +1,5 @@
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 require("dotenv").config({
   path: require("path").join(__dirname, ".env")
 });
@@ -5,8 +7,7 @@ require("dotenv").config({
 const express = require("express");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
-const fs = require("fs");
-const path = require("path");
+
 const { createClient } = require("@supabase/supabase-js");
 const crypto = require("crypto");
 const app = express();
