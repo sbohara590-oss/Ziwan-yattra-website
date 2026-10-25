@@ -430,14 +430,14 @@ app.get("/sitemap.xml", async (req, res) => {
     if (error) throw error;
 
     const staticUrls = [
-      "https://ziwanyatra.com/",
-      "https://ziwanyatra.com/daily-updates.html",
-      "https://ziwanyatra.com/article.html",
-      "https://ziwanyatra.com/daily-tools.html",
-      "https://ziwanyatra.com/mobile-help.html",
-      "https://ziwanyatra.com/creator-services.html",
-      "https://ziwanyatra.com/ai-knowledge.html",
-      "https://ziwanyatra.com/privacy-policy.html"
+      "https://ziwanyattra.com/",
+      "https://ziwanyattra.com/daily-updates.html",
+      "https://ziwanyattra.com/article.html",
+      "https://ziwanyattra.com/daily-tools.html",
+      "https://ziwanyattra.com/mobile-help.html",
+      "https://ziwanyattra.com/creator-services.html",
+      "https://ziwanyattra.com/ai-knowledge.html",
+      "https://ziwanyattra.com/privacy-policy.html"
     ];
 
     const escapeXml = (value) =>
@@ -456,7 +456,7 @@ app.get("/sitemap.xml", async (req, res) => {
     const articleXml = (posts || [])
       .filter((post) => post.slug)
       .map((post) => {
-        const url = `https://ziwanyatra.com/article.html?slug=${encodeURIComponent(post.slug)}`;
+        const url = `https://ziwanyattra.com/article.html?slug=${encodeURIComponent(post.slug)}`;
         const date = post.updated_at || post.published_at || post.created_at;
         const lastmod = date && !Number.isNaN(Date.parse(date))
           ? `<lastmod>${new Date(date).toISOString().slice(0, 10)}</lastmod>`
