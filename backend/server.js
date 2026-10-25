@@ -15,7 +15,7 @@ const rateLimit = require("express-rate-limit");
 
 const { createClient } = require("@supabase/supabase-js");
 const crypto = require("crypto");
-const app = express();
+const app = express();app.use(express.static(path.join(__dirname, "public")));
 app.set('trust proxy', 1);
 const PORT = Number(process.env.PORT) || 3000;
 const enquiriesFile = path.join(__dirname, "enquiries.json");
