@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ZIWAN YATTRA Gaming Center — official gaming updates, match information and practical gaming guides.">
+<meta name="theme-color" content="#17152f">
+<title>Gaming Center | ZIWAN YATTRA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--text:#29213f;--muted:#77718a;--primary:#6546e8;--border:#e2d9f8;--header:#17152f;--yellow:#ffdf59;--yellowText:#3d2d00;--yellowMuted:#674b00;--soft:#f4f1ff}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:'Poppins',sans-serif;color:var(--text);background:var(--bg)}body{line-height:1.45}button,a{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.topbar{min-height:58px;background:var(--header);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px max(4%,calc((100% - 1120px)/2));}
+.home-link,.close-panel{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #ffffff45;background:#ffffff10;color:#fff;border-radius:9px;min-height:38px;padding:7px 11px;font-weight:600;font-size:13px}
+.brand{font-size:13px;font-weight:800;letter-spacing:.3px;text-align:center}.page{width:92%;max-width:1120px;margin:22px auto 32px}.page-title{font-size:clamp(22px,4vw,30px);margin:0;font-weight:900;letter-spacing:-.6px}.page-subtitle{margin:5px 0 18px;color:var(--muted);font-size:12px}.game-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.game-card{padding:0;overflow:hidden;text-align:left;border:1px solid var(--border);background:#fff;border-radius:13px;color:var(--text);box-shadow:0 3px 12px #30205b0a;transition:transform .16s,border-color .16s}.game-card:hover,.game-card:focus-visible{transform:translateY(-2px);border-color:var(--primary);outline:none}.game-art{height:clamp(95px,18vw,190px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:clamp(34px,6vw,58px);background:linear-gradient(135deg,#252043,#6546e8)}.game-card:nth-child(2) .game-art{background:linear-gradient(135deg,#183e48,#347b80)}.game-card:nth-child(3) .game-art{background:linear-gradient(135deg,#542b29,#db6c36)}.game-copy{padding:10px 11px 12px}.game-name{display:block;font-size:clamp(11px,1.5vw,15px);font-weight:800;line-height:1.3}.game-hint{display:block;color:var(--muted);font-size:10px;margin-top:4px}.clean-space{height:clamp(100px,24vh,230px)}
+/* Full-screen pinned-style panel */
+.update-panel{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;background:var(--yellow);color:var(--yellowText);overflow:hidden}.update-panel[hidden]{display:none!important}.panel-top{min-height:58px;background:var(--header);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px max(4%,calc((100% - 1000px)/2))}.panel-game{font-weight:800;font-size:13px;letter-spacing:.6px;text-align:center}.panel-main{width:100%;max-width:900px;margin:0 auto;padding:clamp(18px,4vw,34px);overflow:auto;overscroll-behavior:contain;flex:1}.pin-label{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.7px}.pin-title{font-size:clamp(22px,4vw,34px);line-height:1.2;margin:16px 0 10px;font-weight:900;overflow-wrap:anywhere}.update-summary{font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}.details-box{background:#fff4c2;border:1px solid #e8d27c;border-radius:12px;padding:15px;margin-top:20px;white-space:pre-wrap;overflow-wrap:anywhere}.details-heading{font-size:13px;font-weight:800;margin:0 0 8px}.meta{font-size:11px;color:var(--yellowMuted);margin-top:18px;display:flex;flex-wrap:wrap;gap:6px 14px}.source-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:#3d2d00;font-size:13px;font-weight:800;text-decoration:underline;text-underline-offset:3px}.social-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:24px;padding:14px 0;border-top:1px solid #d4b83e;border-bottom:1px solid #d4b83e}.social-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #c6a932;border-radius:9px;padding:9px 12px;background:#fff4c2;color:#3d2d00;font-size:12px;font-weight:700}.social-btn[aria-pressed="true"]{background:#3d2d00;color:#fff4c2;border-color:#3d2d00}.comments{margin-top:18px}.comments h2{font-size:15px;margin:0 0 10px}.comment-form{display:flex;gap:8px}.comment-form input{min-width:0;flex:1;border:1px solid #d4b83e;border-radius:9px;padding:10px;background:#fff9df;color:#3d2d00;font:inherit;font-size:12px}.comment-form button{border:0;border-radius:9px;padding:10px 13px;background:#3d2d00;color:#fff4c2;font-weight:700;font-size:12px}.comment-list{display:grid;gap:8px;margin-top:12px}.comment-item{background:#fff4c2;border:1px solid #e8d27c;border-radius:9px;padding:10px;font-size:12px;overflow-wrap:anywhere}.comment-note{font-size:10px;color:var(--yellowMuted);margin-top:8px}.empty-update{padding:18px;border-radius:12px;background:#fff4c2;color:#674b00;font-size:13px}.ad-slot-note{display:none}
+@media(max-width:560px){.topbar{padding:9px 4%}.brand{font-size:11px}.home-link,.close-panel{padding:7px 9px;font-size:12px}.page{margin-top:18px}.game-grid{gap:7px}.game-copy{padding:8px 7px 10px}.game-hint{font-size:9px}.clean-space{height:25vh}.panel-top{padding:9px 3%;gap:6px}.panel-main{padding:18px 5% 26px}.social-row{gap:6px}.social-btn{padding:9px 10px}.comment-form{align-items:stretch}.comment-form button{padding:9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="home-link" href="index.html" aria-label="Back to ZIWAN YATTRA Home"><span aria-hidden="true">⌂</span> Home</a>
+  <div class="brand">ZIWAN YATTRA · GAMING CENTER</div>
+  <span aria-hidden="true" style="width:70px"></span>
+</header>
+<main class="page" id="gamingHome">
+  <h1 class="page-title">Gaming Center</h1>
+  <p class="page-subtitle">Choose a game to view its latest update.</p>
+  <section class="game-grid" aria-label="Choose a game">
+    <button class="game-card" type="button" data-game="cricket" aria-haspopup="dialog">
+      <span class="game-art" aria-hidden="true">🏏</span><span class="game-copy"><span class="game-name">Cricket</span><span class="game-hint">Match information</span></span>
+    </button>
+    <button class="game-card" type="button" data-game="bgmi" aria-haspopup="dialog">
+      <span class="game-art" aria-hidden="true">🎮</span><span class="game-copy"><span class="game-name">BGMI / PUBG</span><span class="game-hint">Official game updates</span></span>
+    </button>
+    <button class="game-card" type="button" data-game="freefire" aria-haspopup="dialog">
+      <span class="game-art" aria-hidden="true">🔥</span><span class="game-copy"><span class="game-name">Free Fire</span><span class="game-hint">Events and updates</span></span>
+    </button>
+  </section>
+  <div class="clean-space" aria-hidden="true"></div>
+</main>
+<section class="update-panel" id="updatePanel" role="dialog" aria-modal="true" aria-labelledby="updateTitle" hidden>
+  <header class="panel-top">
+    <a class="home-link" href="index.html" aria-label="Go to Home">⌂ Home</a>
+    <div class="panel-game" id="panelGameName">CRICKET</div>
+    <button class="close-panel" id="closePanel" type="button" aria-label="Close update panel">× Close</button>
+  </header>
+  <article class="panel-main">
+    <div class="pin-label"><span aria-hidden="true">📌</span> PINNED UPDATE <span id="verificationBadge" hidden>· CONFIRMED</span></div>
+    <h1 class="pin-title" id="updateTitle">No confirmed update published yet</h1>
+    <div class="update-summary" id="updateSummary"></div>
+    <div class="empty-update" id="emptyUpdate">There is no confirmed update available for this game yet. Please check back later.</div>
+    <div class="details-box" id="updateDetails" hidden><p class="details-heading">Update details</p><div id="detailsText"></div></div>
+    <div class="meta" id="updateMeta" hidden><span id="publishedAt"></span><span id="sourceCheckedAt"></span></div>
+    <a class="source-link" id="sourceLink" href="#" target="_blank" rel="noopener noreferrer" hidden>Official Source ↗</a>
+    <div class="social-row" aria-label="Update actions">
+      <button class="social-btn" id="likeButton" type="button" aria-pressed="false">♡ Like <span id="likeCount">0</span></button>
+      <button class="social-btn" id="shareButton" type="button">↗ Share</button>
+      <button class="social-btn" id="commentJump" type="button">▢ Comment <span id="commentCount">0</span></button>
+    </div>
+    <section class="comments" id="commentsSection" aria-labelledby="commentsHeading">
+      <h2 id="commentsHeading">Comments</h2>
+      <form class="comment-form" id="commentForm"><input id="commentInput" maxlength="500" placeholder="Write a comment…" aria-label="Write a comment" autocomplete="off"><button type="submit">Post</button></form>
+      <div class="comment-list" id="commentList"></div>
+      <p class="comment-note">Preview only: comments and likes are stored in this browser for testing. A live multi-user site needs a secure backend and moderation.</p>
+    </section>
+    <!-- Ad integration placeholder: connect your approved ad-network script here after checking its policy. -->
+    <div class="ad-slot-note" aria-hidden="true"></div>
+  </article>
+</section>
+<script>
+// Prototype only. Connect these per-game records to the existing Admin Panel/API before publishing real updates.
+const gameInfo={
+  cricket:{name:'CRICKET',title:'No confirmed update published yet',summary:'',details:'',publishedAt:'',sourceCheckedAt:'',sourceUrl:'',confirmed:false},
+  bgmi:{name:'BGMI / PUBG',title:'No confirmed update published yet',summary:'',details:'',publishedAt:'',sourceCheckedAt:'',sourceUrl:'',confirmed:false},
+  freefire:{name:'FREE FIRE',title:'No confirmed update published yet',summary:'',details:'',publishedAt:'',sourceCheckedAt:'',sourceUrl:'',confirmed:false}
+};
+const panel=document.getElementById('updatePanel');
+const gameHome=document.getElementById('gamingHome');
+let activeGame=null;
+let previousFocus=null;
+function storageKey(game){return 'zy-gaming-social-v1-'+game;}
+function getSocial(game){try{return JSON.parse(localStorage.getItem(storageKey(game)))||{liked:false,likes:0,comments:[]};}catch{return {liked:false,likes:0,comments:[]};}}
+function saveSocial(game,data){try{localStorage.setItem(storageKey(game),JSON.stringify(data));}catch{}}
+function renderSocial(){const s=getSocial(activeGame);document.getElementById('likeButton').setAttribute('aria-pressed',String(s.liked));document.getElementById('likeButton').innerHTML=(s.liked?'♥ Unlike ':'♡ Like ')+`<span id="likeCount">${s.likes||0}</span>`;document.getElementById('commentCount').textContent=(s.comments||[]).length;const list=document.getElementById('commentList');list.replaceChildren();(s.comments||[]).forEach(item=>{const el=document.createElement('div');el.className='comment-item';el.textContent=item;list.appendChild(el);});}
+function openGame(game){if(!gameInfo[game])return;activeGame=game;previousFocus=document.activeElement;const info=gameInfo[game];document.getElementById('panelGameName').textContent=info.name;document.getElementById('updateTitle').textContent=info.title;document.getElementById('updateSummary').textContent=info.summary;const hasContent=Boolean(info.confirmed&&info.title&&info.sourceUrl);document.getElementById('emptyUpdate').hidden=hasContent;document.getElementById('verificationBadge').hidden=!hasContent;document.getElementById('updateDetails').hidden=!hasContent||!info.details;document.getElementById('detailsText').textContent=info.details||'';document.getElementById('updateMeta').hidden=!hasContent;document.getElementById('publishedAt').textContent=info.publishedAt?'Published: '+info.publishedAt:'';document.getElementById('sourceCheckedAt').textContent=info.sourceCheckedAt?'Source checked: '+info.sourceCheckedAt:'';const source=document.getElementById('sourceLink');source.hidden=!hasContent;source.href=hasContent?info.sourceUrl:'#';panel.hidden=false;document.body.style.overflow='hidden';renderSocial();document.getElementById('closePanel').focus();}
+function closeGame(){panel.hidden=true;document.body.style.overflow='';if(previousFocus&&typeof previousFocus.focus==='function')previousFocus.focus();activeGame=null;}
+document.querySelectorAll('[data-game]').forEach(btn=>btn.addEventListener('click',()=>openGame(btn.dataset.game)));
+document.getElementById('closePanel').addEventListener('click',closeGame);
+document.getElementById('likeButton').addEventListener('click',()=>{if(!activeGame)return;const s=getSocial(activeGame);if(s.liked){s.liked=false;s.likes=Math.max(0,(s.likes||0)-1);}else{s.liked=true;s.likes=(s.likes||0)+1;}saveSocial(activeGame,s);renderSocial();});
+document.getElementById('shareButton').addEventListener('click',async()=>{if(!activeGame)return;const url=new URL(window.location.href);url.hash=activeGame;const text=gameInfo[activeGame].title;try{if(navigator.share){await navigator.share({title:'ZIWAN YATTRA Gaming Center',text,url:url.href});}else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(url.href);alert('Link copied. You can share it now.');}else{window.prompt('Copy this link to share:',url.href);}}catch(err){if(err&&err.name!=='AbortError')alert('Share was not completed. You can try again.');}});
+document.getElementById('commentJump').addEventListener('click',()=>document.getElementById('commentInput').focus());
+document.getElementById('commentForm').addEventListener('submit',event=>{event.preventDefault();if(!activeGame)return;const input=document.getElementById('commentInput');const value=input.value.trim();if(!value)return;const s=getSocial(activeGame);s.comments=s.comments||[];s.comments.push(value);saveSocial(activeGame,s);input.value='';renderSocial();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!panel.hidden)closeGame();});
+// Optional URL hash support for shared links in this prototype.
+const requestedGame=window.location.hash.slice(1);if(gameInfo[requestedGame])openGame(requestedGame);
+</script>
+</body>
+</html>
