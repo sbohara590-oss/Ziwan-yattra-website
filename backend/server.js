@@ -506,36 +506,41 @@ app.get("/share/:slug", async (req, res) => {
       .maybeSingle();
 
     if (error) throw error;
+    if (!post) return res.status(404).send("Article not found.");
 
-    if (!post) {
-      return res.status(404).send("Article not found.");
-    }
-
-    const esc = (value) => String(value ?? "").replace(/[&<>"']/g, c => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    })[c]);
+    const esc = (value) =>
+      String(value ?? "").replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[c]);
 
     const title = String(post.title || "Latest News").trim();
     const description = String(
       post.description || post.content || "Read the latest news on ZIWAN YATTRA."
     ).replace(/\s+/g, " ").trim().slice(0, 300);
 
-    const articleUrl = "https://ziwanyattra.com/article.html?slug=" +
+    const articleUrl =
+      "https://ziwanyattra.com/article.html?slug=" +
+      encodeURIComponent(post.slug);
+
+    const shareUrl =
+      "https://ziwan-yattra-backend.onrender.com/share/" +
       encodeURIComponent(post.slug);
 
     let imageUrl = "https://ziwanyattra.com/icons/icon-512.png";
 
     if (post.image_url) {
       try {
-        const image = new URL(post.image_url, "https://ziwanyattra.com");
+        const image = new URL(post.image_url);
         if (image.protocol === "https:" || image.protocol === "http:") {
           imageUrl = image.href;
         }
-      } catch {}
+      } catch (e) {
+        console.error("Invalid article image URL:", e.message);
+      }
     }
 
     res.set("Cache-Control", "public, max-age=300");
@@ -551,16 +556,19 @@ app.get("/share/:slug", async (req, res) => {
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:image" content="${esc(imageUrl)}">
-<meta property="og:url" content="${esc(articleUrl)}">
+<meta property="og:image:secure_url" content="${esc(imageUrl)}">
+<meta property="og:image:alt" content="${esc(title)}">
+<meta property="og:url" content="${esc(shareUrl)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${esc(imageUrl)}">
-<meta http-equiv="refresh" content="1;url=${esc(articleUrl)}">
 </head>
 <body>
 <p>Opening <a href="${esc(articleUrl)}">${esc(title)}</a> on ZIWAN YATTRA...</p>
-<script>window.location.replace(${JSON.stringify(articleUrl)});</script>
+<script>
+window.location.replace(${JSON.stringify(articleUrl)});
+</script>
 </body>
 </html>`);
   } catch (error) {
