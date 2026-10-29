@@ -8,7 +8,6 @@
   <meta name="description" content="Read the latest news and updates on ZIWAN YATTRA.">
   <meta name="robots" content="index, follow">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <!-- The canonical URL and article metadata are updated for each article. -->
   <meta property="og:site_name" content="ZIWAN YATTRA">
   <meta property="og:title" content="ZIWAN YATTRA | Latest News">
   <meta property="og:description" content="Read the latest news and updates on ZIWAN YATTRA.">
@@ -42,7 +41,7 @@
     button.action-button{font:inherit;color:inherit;background:none;border:0;padding:4px 0;display:inline-flex;align-items:center;gap:5px;cursor:pointer}
     button.action-button:hover{color:var(--navy)}button.action-button:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:3px}
     button.action-button.liked{color:#d83b56}.action-icon{width:16px;height:16px;display:block;flex-shrink:0}
-    .action-status{font-size:12px;color:var(--muted);margin-top:5px;min-height:18px}
+    .action-status{font-size:12px;color:var(--muted);margin-top:5px;min-height:18px;overflow-wrap:anywhere}
     footer{padding:17px 18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center}
   </style>
 </head>
@@ -62,7 +61,6 @@
     function categoryName(value){const c=String(value||"").trim().toLowerCase();if(["gk","general knowledge","general_knowledge"].includes(c))return "General Knowledge";if(["gaming","sports","sport"].includes(c))return c==="gaming"?"Gaming":"Sports";return "News";}
     function formatDate(value){if(!value)return "";const d=new Date(value);return Number.isNaN(d.getTime())?"":d.toLocaleDateString("en-IN",{year:"numeric",month:"short",day:"numeric"});}
     function contentHtml(value){return escapeHtml(value||"").replace(/\r\n?/g,"\n").split(/\n{2,}/).map(part=>`<p>${part.replace(/\n/g,"<br>")}</p>`).join("");}
-
     function setMeta(attribute,key,value){let tag=document.head.querySelector(`meta[${attribute}="${key}"]`);if(!tag){tag=document.createElement("meta");tag.setAttribute(attribute,key);document.head.appendChild(tag);}tag.setAttribute("content",value);}
 
     function updateArticleSeo(post){
@@ -74,7 +72,7 @@
       if(post.slug)canonical.searchParams.set("slug",String(post.slug));else canonical.searchParams.set("id",String(post.id));
       const canonicalUrl=canonical.href;
       let imageUrl="https://ziwanyattra.com/icons/icon-512.png";
-      if(post.image_url){try{const candidate=new URL(String(post.image_url),location.origin);if(candidate.protocol==="https:"||candidate.protocol==="http:")imageUrl=candidate.href;}catch(error){console.warn("Invalid article image URL:",error);}}
+      if(post.image_url){try{const candidate=new URL(String(post.image_url),"https://ziwanyattra.com");if(candidate.protocol==="https:"||candidate.protocol==="http:")imageUrl=candidate.href;}catch(error){console.warn("Invalid article image URL:",error);}}
       document.title=pageTitle;
       setMeta("name","description",description);
       let canonicalTag=document.head.querySelector('link[rel="canonical"]');
@@ -82,7 +80,7 @@
       canonicalTag.href=canonicalUrl;
       setMeta("property","og:site_name","ZIWAN YATTRA");setMeta("property","og:title",pageTitle);setMeta("property","og:description",description);setMeta("property","og:url",canonicalUrl);setMeta("property","og:image",imageUrl);setMeta("property","og:type","article");
       setMeta("name","twitter:card","summary_large_image");setMeta("name","twitter:title",pageTitle);setMeta("name","twitter:description",description);setMeta("name","twitter:image",imageUrl);
-      const articleSchema={"@context":"https://schema.org","@type":"NewsArticle","mainEntityOfPage":{"@type":"WebPage","@id":canonicalUrl},headline:articleTitle,description,image:[imageUrl],publisher:{"@type":"Organization",name:"ZIWAN YATTRA",logo:{"@type":"ImageObject",url:"https://ziwanyatra.com/icons/icon-512.png"}},articleSection:String(post.category||"News")};
+      const articleSchema={"@context":"https://schema.org","@type":"NewsArticle","mainEntityOfPage":{"@type":"WebPage","@id":canonicalUrl},headline:articleTitle,description,image:[imageUrl],publisher:{"@type":"Organization",name:"ZIWAN YATTRA",logo:{"@type":"ImageObject",url:"https://ziwanyattra.com/icons/icon-512.png"}},articleSection:String(post.category||"News")};
       const published=post.published_at||post.created_at;const modified=post.updated_at||published;
       if(published&&!Number.isNaN(Date.parse(published)))articleSchema.datePublished=new Date(published).toISOString();
       if(modified&&!Number.isNaN(Date.parse(modified)))articleSchema.dateModified=new Date(modified).toISOString();
@@ -101,24 +99,64 @@
       let liked=getStoredLike(postId),likes=0,views=0,likeBusy=false;
       function renderCounts(){viewCount.textContent=views.toLocaleString("en-IN");likeCount.textContent=likes.toLocaleString("en-IN");likeButton.classList.toggle("liked",liked);likeButton.setAttribute("aria-pressed",String(liked));likeButton.setAttribute("aria-label",liked?"Unlike this article":"Like this article");}
       const sessionKey=`zy_viewed_${postId}`;let shouldRecordView=true;try{shouldRecordView=sessionStorage.getItem(sessionKey)!=="yes";}catch{}
-      try{if(shouldRecordView){const result=await apiJson(`${API_BASE}/api/daily-posts/${postId}/view`,{method:"POST",body:JSON.stringify({})});if(Number.isFinite(Number(result.views)))views=Number(result.views);try{sessionStorage.setItem(sessionKey,"yes");}catch{}}
+      try{
+        if(shouldRecordView){const result=await apiJson(`${API_BASE}/api/daily-posts/${postId}/view`,{method:"POST",body:JSON.stringify({})});if(Number.isFinite(Number(result.views)))views=Number(result.views);try{sessionStorage.setItem(sessionKey,"yes");}catch{}}
         const stats=await apiJson(`${API_BASE}/api/daily-posts/${postId}/stats`);if(Number.isFinite(Number(stats.views)))views=Number(stats.views);if(Number.isFinite(Number(stats.likes)))likes=Number(stats.likes);renderCounts();
       }catch(error){console.error("Article statistics error:",error);status.textContent="Views and likes are temporarily unavailable.";}
-      likeButton.addEventListener("click",async()=>{if(likeBusy)return;const voterToken=getVoterToken();if(!voterToken){status.textContent="Please enable site storage to like this article.";return;}likeBusy=true;likeButton.disabled=true;status.textContent="Updating like…";try{const result=await apiJson(`${API_BASE}/api/daily-posts/${postId}/like`,{method:"POST",body:JSON.stringify({voter_token:voterToken})});liked=Boolean(result.liked);likes=Number(result.likes)||0;setStoredLike(postId,liked);renderCounts();status.textContent=liked?"You liked this article.":"Like removed.";}catch(error){console.error("Like update error:",error);status.textContent=error.message||"Could not update like.";}finally{likeBusy=false;likeButton.disabled=false;}});
-      shareButton.addEventListener("click",async()=>{const shareData={title:post.title||"ZIWAN YATTRA",text:post.description||post.title||"Read this article on ZIWAN YATTRA",url:location.href};try{if(navigator.share)await navigator.share(shareData);else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(location.href);status.textContent="Article link copied.";}else status.textContent="Copy the article link from your browser address bar.";}catch(error){if(error.name!=="AbortError")status.textContent="Unable to share right now.";}});
+
+      likeButton.addEventListener("click",async()=>{
+        if(likeBusy)return;
+        const voterToken=getVoterToken();
+        if(!voterToken){status.textContent="Please enable site storage to like this article.";return;}
+        likeBusy=true;likeButton.disabled=true;status.textContent="Updating like…";
+        try{
+          const result=await apiJson(`${API_BASE}/api/daily-posts/${postId}/like`,{method:"POST",body:JSON.stringify({voter_token:voterToken})});
+          liked=Boolean(result.liked);likes=Number(result.likes)||0;setStoredLike(postId,liked);renderCounts();status.textContent=liked?"You liked this article.":"Like removed.";
+        }catch(error){console.error("Like update error:",error);status.textContent=error.message||"Could not update like.";}
+        finally{likeBusy=false;likeButton.disabled=false;}
+      });
+
+      shareButton.addEventListener("click",async()=>{
+        const articleUrl=new URL("/article.html","https://ziwanyattra.com");
+        if(post.slug)articleUrl.searchParams.set("slug",String(post.slug));
+        else articleUrl.searchParams.set("id",String(post.id));
+
+        // This route must be added to server.js before this sharing URL can work.
+        const shareUrl=post.slug
+          ? `${API_BASE}/share/${encodeURIComponent(post.slug)}`
+          : articleUrl.href;
+
+        const shareData={
+          title:post.title||"ZIWAN YATTRA",
+          text:post.description||post.title||"Read this article on ZIWAN YATTRA",
+          url:shareUrl
+        };
+
+        try{
+          if(navigator.share){await navigator.share(shareData);}
+          else if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(shareUrl);status.textContent="Article sharing link copied.";}
+          else{status.textContent="Copy this link: "+shareUrl;}
+        }catch(error){if(error.name!=="AbortError"){console.error("Share error:",error);status.textContent="Unable to share right now.";}}
+      });
     }
 
     async function loadArticle(){
       const params=new URLSearchParams(location.search),slug=params.get("slug"),id=params.get("id");
       if(!slug&&!id){target.innerHTML='<div class="state">This article could not be found.</div>';return;}
+
       try{
-        const response=await fetch(`${API_BASE}/api/daily-posts`,{headers:{Accept:"application/json"}});const result=await response.json();
+        const response=await fetch(`${API_BASE}/api/daily-posts`,{headers:{Accept:"application/json"}});
+        const result=await response.json();
         const posts=Array.isArray(result.posts)?result.posts:Array.isArray(result)?result:[];
         const post=posts.find(item=>String(item.status||"published").toLowerCase()==="published"&&(slug?String(item.slug||"")===slug:String(item.id)===id));
+
         if(!response.ok||!post){target.innerHTML='<div class="state">This article is unavailable or has not been published.</div>';return;}
+
         updateArticleSeo(post);
+
         const image=post.image_url?`<img class="hero" src="${escapeHtml(post.image_url)}" alt="${escapeHtml(post.title||"Article image")}" loading="eager" fetchpriority="high">`:"";
         const date=formatDate(post.published_at||post.created_at),summary=post.description||"";
+
         target.innerHTML=`
           <div class="meta"><span class="category">${escapeHtml(categoryName(post.category))}</span>${escapeHtml(date)}</div>
           <h1 class="title">${escapeHtml(post.title||"Untitled article")}</h1>
@@ -131,11 +169,14 @@
             <button class="action-button" id="share-button" type="button"><svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></svg><span>Share</span></button>
           </div>
           <div class="action-status" id="action-status" role="status" aria-live="polite"></div>`;
+
         await setupArticleActions(post);
       }catch(error){console.error("Article loading error:",error);target.innerHTML='<div class="state">We could not load this article right now. Please try again in a moment.</div>';}
     }
+
     loadArticle();
   </script>
+
   <script data-goatcounter="https://ziwanyattra.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
