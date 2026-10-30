@@ -1,263 +1,376 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2300f2fe'/%3E%3Cstop offset='50%25' stop-color='%239b5cff'/%3E%3Cstop offset='100%25' stop-color='%23ff0844'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='23' fill='%23080418'/%3E%3Ccircle cx='50' cy='50' r='42' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Ctext x='50' y='59' font-family='Arial,sans-serif' font-weight='900' font-size='39' fill='url(%23g)' text-anchor='middle'%3EZY%3C/text%3E%3C/svg%3E">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Creator services, starting prices and WhatsApp enquiries.">
-<meta name="theme-color" content="#6546e8">
-<title>Creator Services | ZIWAN YATTRA</title>
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ZIWAN YATTRA Creator Hub: social media growth guides, viral hooks, captions, status, shayari and creator services.">
+<meta name="theme-color" content="#f4c542"><title>Creator Services | ZIWAN YATTRA</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23080418'/%3E%3Ctext x='50' y='62' font-size='40' font-weight='bold' text-anchor='middle' fill='%23ffd84d'%3EZY%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f6ff;--card:#fff;--text:#18213a;--muted:#68738b;--primary:#6546e8;--border:#e3e7f3;--green:#128c52}
-*{box-sizing:border-box;scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;line-height:1.6;transition:background 0.3s,color 0.3s}
-body.dark{--bg:#0d111c;--card:#161b2e;--text:#f5f6ff;--muted:#a3aec7;--border:#2a324d}
-a{text-decoration:none;color:inherit}
-header{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:5;box-shadow:0 2px 10px rgba(0,0,0,0.02)}
-.navbar{max-width:1200px;margin:auto;padding:13px 4%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.logo{font-size:22px;font-weight:900;color:var(--primary);letter-spacing:-0.5px}.logo span{color:var(--text)}
-nav{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
-nav a{font-size:13px;font-weight:600;padding:8px 12px;color:var(--text);border-radius:8px;transition:0.3s}
-nav a:hover{background:var(--bg);color:var(--primary)}
-button,.btn{display:inline-block;padding:12px 18px;border:0;border-radius:12px;background:var(--primary);color:#fff;font-weight:600;cursor:pointer;font-size:15px;margin:4px 2px;transition:all 0.3s ease;font-family:'Poppins',sans-serif}
-button:hover,.btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(101,70,232,0.3)}
-.theme{background:var(--bg);color:var(--text);border:1px solid var(--border)}
-.theme:hover{box-shadow:none;background:var(--border)}
-.whatsapp{background:var(--green);color:#fff}
-.whatsapp:hover{box-shadow:0 6px 15px rgba(18,140,82,0.3)}
+:root{--bg:#f6f7fb;--card:#fff;--text:#172033;--muted:#68738b;--line:#e5e8f0;--yellow:#ffe99a;--purple:#6046d8;--green:#128c52}
+*{box-sizing:border-box;scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.6 Poppins,Arial,sans-serif}body.dark{--bg:#101522;--card:#191f30;--text:#f4f6fb;--muted:#a8b1c4;--line:#30384c}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid var(--line)}.nav{max-width:1150px;margin:auto;padding:10px 4%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px}.home{justify-self:start;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:30px;padding:8px 13px;font-weight:700;font-size:12px}.brand{text-align:center;color:var(--purple);font-weight:800;font-size:17px;line-height:1.2}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:1px}.theme{justify-self:end;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:30px;padding:8px 10px}
+main{max-width:1150px;margin:auto;padding:20px 4%}.intro{text-align:center;margin:8px 0 22px}.intro h1{font-size:clamp(24px,4vw,34px);margin:0;font-weight:800}.muted{color:var(--muted);font-size:12px;margin:4px 0}.section{margin:24px 0 34px;scroll-margin-top:80px}h2{font-size:20px;margin:0}.tools{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.tool{min-height:100px;border:1px solid #e8ce67;border-radius:15px;background:linear-gradient(145deg,#fff8dc,#ffe68a);color:#33290b;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:9px 5px}.tool:hover{transform:translateY(-2px)}.tool-entry,.cat-entry{min-width:0}.tool,.cat,.service-grid .card-head{touch-action:manipulation;-ms-touch-action:manipulation;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}.tool-entry.expanded,.cat-entry.expanded{grid-column:1/-1}.inside-guide .q{display:block;width:100%;margin:6px 0;white-space:normal;overflow-wrap:anywhere}.inside-guide .answer{width:100%;overflow-wrap:anywhere}.inside-texts .textcard{width:100%;overflow-wrap:anywhere}.tool-entry{min-width:0}.tool-entry>.tool{width:100%}.inside-guide{display:none;margin-top:8px;padding:11px;border:1px solid #e8ce67;border-radius:13px;background:#fff1b8;color:#33290b}.inside-guide.open{display:block}.inside-guide h3{font-size:13px;margin:0 0 7px}.inside-guide .q{display:block;width:100%;margin:6px 0}.inside-guide .answer{font-size:12px;line-height:1.55}.cat-entry{min-width:0}.cat-entry>.cat{width:100%;min-height:70px}.inside-texts{display:none;margin-top:8px;padding:9px;border:1px solid #e8ce67;border-radius:12px;background:#fff9e3;color:#33290b}.inside-texts.open{display:block}.inside-texts .textcard{background:#fff;margin:7px 0;padding:9px}.inside-texts .textcard p{font-size:12px}.inside-texts .copy{margin-top:5px}.tool strong{font-size:11px}.tool .ico{font-size:27px;height:34px;display:grid;place-items:center}.tool svg{width:30px;height:30px}
+.search{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;background:var(--card);color:var(--text);margin:12px 0}.yellow{background:#fff1b8;color:#352b0e;border:1px solid #e8ce67;border-radius:15px;padding:14px;margin-top:10px}body.dark .yellow{background:#453a18;color:#fff1bd}.yellow h3{margin:0 0 5px}.yellow p{margin:3px 0;font-size:12px}.questions{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}.q{border:1px solid #e7d58e;background:#fff;color:#33290b;text-align:left;border-radius:10px;padding:10px;font-size:12px;font-weight:650}.answer{display:none;background:#fff;color:#33290b;padding:12px;border-radius:10px;margin-top:10px}.answer.show{display:block}.answer button,.copy{border:0;background:#6046d8;color:#fff;border-radius:8px;padding:7px 10px;font-size:11px;font-weight:700}
+.library,.panel,.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}.langs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.lang{border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:20px;padding:7px 11px;font-size:11px}.lang.active{background:#33290b;color:#fff1b8}.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.cat{border:1px solid #e8ce67;border-radius:11px;background:linear-gradient(145deg,#fff8dc,#ffe68a);color:#33290b;padding:11px 8px;text-align:left;font-weight:700;font-size:11px}.cat small{display:block;font-weight:500;margin-top:3px}.texts{display:grid;gap:8px;margin-top:12px}.textcard{border:1px solid var(--line);background:var(--bg);border-radius:11px;padding:12px}.textcard p{margin:0 0 8px}.textcard small{color:var(--muted)}.load{text-align:center;margin-top:12px}.primary{border:0;background:var(--purple);color:white;padding:10px 15px;border-radius:10px;font-weight:700;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:15px}.card h3{margin:3px 0;font-size:16px}.card p{color:var(--muted);font-size:12px}.price{font-size:18px;color:var(--purple);font-weight:800}.whatsapp{width:100%;background:var(--green);color:white;border:0;border-radius:9px;padding:10px;font-weight:700}
+label{display:block;font-weight:700;margin:12px 0 5px;font-size:12px}.field{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text)}textarea.field{min-height:95px}.status{display:none;padding:12px;border-radius:10px;margin-top:12px}.status.show{display:block}.ok{background:#e2f8eb;color:#135c32}.err{background:#fff0df;color:#713d00}.notice{margin-top:15px;padding:12px;border-left:4px solid #e3a126;background:var(--bg);font-size:12px;color:var(--muted)}
+footer{text-align:center;background:var(--card);border-top:1px solid var(--line);padding:25px 5%;color:var(--muted);font-size:12px}footer a{color:var(--purple);margin:5px}
+@media(max-width:650px){.nav{padding:9px 3%}.brand{font-size:14px}.home{font-size:11px;padding:7px 10px}.theme{font-size:11px;padding:7px}.tools{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.tool{min-height:88px}.tool strong{font-size:10px}.questions{grid-template-columns:1fr}.cats{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.cats{grid-template-columns:repeat(4,1fr)}}
 
-/* Premium Hero Section */
-.hero{width:92%;max-width:1200px;margin:30px auto;padding:60px 40px;border-radius:30px;color:white;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);position:relative;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1)}
-.hero::before{content:"";position:absolute;top:-20%;left:-10%;width:50%;height:150%;background:radial-gradient(circle,rgba(0,242,254,0.15) 0%,transparent 60%)}
-.hero::after{content:"";position:absolute;bottom:-20%;right:-10%;width:50%;height:150%;background:radial-gradient(circle,rgba(255,8,68,0.15) 0%,transparent 60%)}
-.hero h1{font-size:clamp(32px,5vw,55px);line-height:1.1;margin:10px 0;font-weight:900;position:relative;z-index:1}
-.hero p{max-width:700px;color:#cbd5e1;font-size:16px;position:relative;z-index:1;margin-bottom:25px}
+/* Service cards: accessible one-tap accordion */
+.service-grid .service-card{padding:0;overflow:hidden;position:relative;transition:border-color .2s ease,box-shadow .2s ease}
+.service-grid .card-head{appearance:none;-webkit-appearance:none;width:100%;display:flex;align-items:center;gap:11px;padding:14px 15px;min-height:70px;border:0;border-radius:0;background:transparent;color:var(--text);text-align:left;cursor:pointer}
+.service-grid .card-head h3{margin:0;flex:1;font-size:14px;line-height:1.35;overflow-wrap:anywhere}
+.service-grid .card-icon{font-size:22px;width:38px;height:38px;border-radius:10px;background:linear-gradient(145deg,#fff8dc,#ffe68a);display:grid;place-items:center;flex-shrink:0}
+.service-grid .card-arrow{margin-left:auto;font-size:12px;color:var(--muted);transition:transform .25s ease}
+.service-grid .card-body{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 15px}
+.service-grid .service-card.open .card-body{max-height:260px;padding:0 15px 15px}
+.service-grid .service-card.open{border-color:#e8ce67;box-shadow:0 5px 18px rgba(96,70,216,.08)}
+.service-grid .service-card.open .card-arrow{transform:rotate(180deg);color:var(--purple)}
+.service-grid .card-head:focus-visible,.service-grid .whatsapp:focus-visible{outline:3px solid var(--purple);outline-offset:-3px}
+.service-grid .card-body p{margin:0 0 8px;color:var(--muted);font-size:12px}
+.service-grid .card-body .price{font-size:16px;margin:0 0 10px}
+.service-grid .badge{margin-left:auto;font-size:9px;font-weight:700;background:#ffe68a;color:#33290b;padding:2px 7px;border-radius:20px;white-space:nowrap}
+@media(max-width:600px){.service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.service-grid .card-head{padding:12px 10px;gap:8px;min-height:72px}.service-grid .card-icon{width:34px;height:34px;font-size:20px}.service-grid .card-head h3{font-size:13px}.service-grid .badge{display:none}}
 
-/* Floating Icon */
-.floating-icon{display:inline-block;font-size:45px;animation:floatIcon 2.5s ease-in-out infinite;position:relative;z-index:1}
-@keyframes floatIcon{0%{transform:translateY(0px) rotate(0deg)}50%{transform:translateY(-15px) rotate(10deg)}100%{transform:translateY(0px) rotate(0deg)}}
-
-.section{width:92%;max-width:1200px;margin:40px auto;scroll-margin-top:100px}
-h2{font-size:28px;margin:0 0 6px;font-weight:800;letter-spacing:-0.5px}.muted,.small{color:var(--muted)}
-
-/* Services Grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:22px}
-
-/* Premium Cards */
-.card,.panel{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;min-width:0;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.02)}
-.card:hover{transform:translateY(-8px);box-shadow:0 15px 30px rgba(101,70,232,0.1);border-color:var(--primary)}
-body.dark .card:hover{box-shadow:0 15px 30px rgba(0,0,0,0.3)}
-.card h3{margin:10px 0 5px;font-weight:800;font-size:18px;color:var(--text)}
-.card p{color:var(--muted);font-size:14px;margin-bottom:15px}
-.price{font-size:20px;color:var(--primary);font-weight:800;margin:10px 0}
-
-/* Form Inputs */
-label{display:block;font-weight:600;margin:12px 0 8px;font-size:14px}
-input,textarea,select{width:100%;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;transition:0.3s;font-size:14px}
-input:focus,textarea:focus,select:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px rgba(101,70,232,0.2)}
-textarea{min-height:100px;resize:vertical}
-
-/* Status Messages */
-.status{padding:15px;border-radius:12px;margin:15px 0;display:none;overflow-wrap:anywhere;font-weight:600;text-align:center;}
-.status.show{display:block}
-.status.ok{background:#e2f8eb;color:#135c32;border:1px solid #135c32}
-.status.err{background:#fff0df;color:#713d00;border:1px solid #713d00}
-
-.notice{padding:15px;border-left:4px solid #e3a126;background:var(--bg);border-radius:8px;font-size:14px;margin-top:20px}
-.backrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px; justify-content: space-between;}
-footer{text-align:center;margin-top:60px;padding:30px 5%;background:var(--card);border-top:1px solid var(--border);color:var(--muted);font-size:14px}
-footer a{color:var(--primary);margin:5px;font-weight:600}
-footer a:hover{text-decoration:underline}
-
-/* Mobile Fixes */
-@media(max-width:768px){
-    .navbar{padding:12px 4%;justify-content:center;text-align:center}
-    nav{width:100%;justify-content:center;margin-top:10px;gap:2px}
-    nav a{font-size:12px;padding:6px 8px}
-    .hero{padding:40px 20px;border-radius:20px;text-align:center}
-    .floating-icon{font-size:40px}
-    .section{margin:30px auto}
-    .backrow{flex-direction:column;align-items:stretch;gap:10px}
-    .backrow .btn{width:100%;text-align:center}
+/* Creator Hub usability polish */
+.tool-entry.expanded,.cat-entry.expanded{grid-column:1/-1;width:100%}
+.tool-entry>.inside-guide,.cat-entry>.inside-texts{width:100%;min-width:0}
+.inside-guide .questions-wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.inside-guide .q{width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere;text-align:left;line-height:1.45}
+.inside-guide .answer{width:100%;min-width:0;overflow-wrap:anywhere}
+.inside-guide .answer p{margin:8px 0 12px}
+.inside-guide .answer button{margin-top:5px}
+.tool,.cat,.service-card,.service-grid .card-head{touch-action:manipulation;-ms-touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.tool:focus-visible,.cat:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+.cat-entry.expanded .inside-texts{display:block}
+.inside-texts .textcard{width:100%;min-width:0;overflow-wrap:anywhere}
+.library-tools{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.library-tools button{flex:1;min-width:120px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,18px);opacity:0;pointer-events:none;z-index:99;background:#172033;color:#fff;padding:10px 16px;border-radius:999px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:.22s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.section-nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px auto 0;max-width:1200px;padding:0 4%}
+.section-nav a{background:var(--card);border:1px solid var(--line);padding:7px 12px;border-radius:999px;font-size:12px;font-weight:700}
+.section-nav a:active{transform:scale(.98)}
+.service-grid .service-card{touch-action:manipulation}
+@media(max-width:650px){
+ .inside-guide .questions-wrap{grid-template-columns:1fr}
+ .inside-guide .q{min-height:48px}
+ .section-nav{padding:0 4%}
 }
-</style>
-</head>
+
+
+/* One-tap compatibility for Android Chrome and mobile browsers */
+.tool,.cat,.service-grid .card-head,.service-grid [data-service-name]{
+  touch-action:manipulation;
+  -ms-touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.tool,.cat,.service-grid .card-head{
+  -webkit-user-select:none;
+  user-select:none;
+}
+
+</style></head>
 <body>
-<header><div class="navbar">
-<a class="logo" href="index.html">ZIWAN <span>YATTRA</span></a>
-<button class="theme" id="themeToggle" type="button">🌙 Dark Mode</button>
-<nav aria-label="Main navigation">
-<a href="index.html">🏠 Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Creator Services</a>
-</nav></div></header>
-
+<header><div class="nav"><a class="home" href="index.html">← Home</a><a class="brand" href="index.html">ZIWAN YATTRA<small>CREATOR SERVICES</small></a><button class="theme" id="themeToggle">🌙</button></div></header>
 <main>
-<section class="hero">
-    <div class="floating-icon">🎬</div>
-    <h1>Let's Build Something Good.</h1>
-    <p>Choose a service and send your requirements on WhatsApp. Prices are starting estimates; final price, delivery time and work scope must be confirmed before payment.</p>
-    <div class="backrow">
-        <a class="btn" style="background:#fff;color:#0f0c29; box-shadow:0 4px 15px rgba(255,255,255,0.2);" href="index.html">← Back to Home</a>
-    </div>
+<nav class="section-nav" aria-label="Creator page shortcuts"><a href="#growth">🚀 Growth Guides</a><a href="#library">✍️ Content Library</a><a href="#old-services">🛠️ Services</a><a href="#helpForm">💬 Enquiry</a></nav>
+<section class="intro"><h1>Creator Growth Center</h1><p class="muted">Social media growth, creator guides and ready-to-post content — all in one place.</p></section>
+<section class="section" id="growth"><h2>🚀 Creator Growth Center</h2><p class="muted">Choose a platform or topic to explore useful guides. Tap once to open the guide inside its card.</p><p class="small">Practical, organic growth tips — no fake followers, spam or guaranteed-viral claims.</p>
+<div class="tools" id="tools">
+<button class="tool" data-topic="facebook"><span class="ico"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#1877F2"/><path fill="#fff" d="M22 34V21h4l1-5h-5v-3c0-1 1-2 2-2h3V7h-4c-4 0-6 2-6 6v3h-4v5h4v13z"/></svg></span><strong>Facebook</strong></button>
+<button class="tool" data-topic="instagram"><span class="ico"><svg viewBox="0 0 40 40"><defs><linearGradient id="ig"><stop stop-color="#ffb000"/><stop offset=".5" stop-color="#ed287b"/><stop offset="1" stop-color="#7654d6"/></linearGradient></defs><rect x="2" y="2" width="36" height="36" rx="10" fill="url(#ig)"/><rect x="10" y="10" width="20" height="20" rx="6" fill="none" stroke="white" stroke-width="2.5"/><circle cx="20" cy="20" r="5" fill="none" stroke="white" stroke-width="2.5"/><circle cx="27" cy="13" r="2" fill="white"/></svg></span><strong>Instagram</strong></button>
+<button class="tool" data-topic="youtube"><span class="ico"><svg viewBox="0 0 40 40"><rect x="2" y="7" width="36" height="26" rx="8" fill="#f03"/><path d="M17 14l10 6-10 6z" fill="white"/></svg></span><strong>YouTube</strong></button>
+<button class="tool" data-topic="twitter"><span class="ico"><svg viewBox="0 0 40 40"><rect x="2" y="2" width="36" height="36" rx="8" fill="#111"/><path fill="white" d="M9 8h7l6 8 7-8h3l-9 11 9 13h-7l-7-9-8 9H7l10-12zm5 3 12 17h2L16 11z"/></svg></span><strong>X / Twitter</strong></button>
+<button class="tool" data-topic="followers"><span class="ico">📈</span><strong>Followers Growth</strong></button><button class="tool" data-topic="engagement"><span class="ico">❤️</span><strong>Engagement</strong></button><button class="tool" data-topic="reach"><span class="ico">👁️</span><strong>Reach & Views</strong></button><button class="tool" data-topic="hooks"><span class="ico">🔥</span><strong>Viral Hooks</strong></button><button class="tool" data-topic="voice"><span class="ico">🎙️</span><strong>Voice Scripts</strong></button><button class="tool" data-topic="reels"><span class="ico">🎬</span><strong>Reel Ideas</strong></button><button class="tool" data-topic="seo"><span class="ico">🔍</span><strong>SEO Titles</strong></button><button class="tool" data-topic="money"><span class="ico">💰</span><strong>Monetization</strong></button><button class="tool" data-topic="analytics"><span class="ico">📊</span><strong>Analytics</strong></button><button class="tool" data-topic="safety"><span class="ico">🛡️</span><strong>Account Safety</strong></button><button class="tool" data-topic="ideas"><span class="ico">✍️</span><strong>Post Ideas</strong></button>
+</div>
+<input class="search" id="guideSearch" placeholder="Search: Facebook followers kaise badhaye?">
+<label class="small" for="guideLang">Guide language (more translations are being added)</label><select class="field" id="guideLang"><option value="hinglish">Hinglish</option><option value="hi">हिंदी</option><option value="en">English</option><option value="ne">नेपाली</option></select>
+<p class="muted" id="guideHint">Tap any platform card. Its questions and answers will open inside that same card.</p>
 </section>
+<section class="section" id="library"><h2>✍️ Ready-to-Post Content Library</h2><p class="muted">Status, shayari, dialogues, captions and creator hooks.</p><div class="library"><b>Choose your language</b><div class="langs"><button class="lang" data-lang="hi">हिंदी</button><button class="lang" data-lang="en">English</button><button class="lang active" data-lang="hinglish">Hinglish</button><button class="lang" data-lang="ne">नेपाली</button></div><input class="search" id="textSearch" placeholder="Search status, shayari, dialogue, hook..."><div class="cats" id="cats"></div><div class="texts" id="texts" style="display:none"></div><p class="muted">Tap a category card to open its ready-to-post texts inside that card.</p><div class="library-tools"><button class="primary" id="loadMore" type="button">Load More</button><button class="theme" id="shareLibrary" type="button">Share Library ↗</button></div></div></section>
 
-<section class="section">
-    <h2>Our Services</h2>
-    <p class="muted">Select a service to prepare a WhatsApp enquiry.</p>
-    <div class="grid">
-        <div class="card"><h3>🖼️ Thumbnail Design</h3><p>Custom YouTube thumbnail design.</p><div class="price">₹99 onwards</div><button class="whatsapp" style="width:100%" onclick="orderService('Thumbnail Design','₹99 onwards')">Order on WhatsApp</button></div>
-        <div class="card"><h3>📣 Title & SEO</h3><p>Titles, descriptions, keywords and hashtags.</p><div class="price">Ask for price</div><button class="whatsapp" style="width:100%" onclick="orderService('Title & SEO','Ask for price')">Ask on WhatsApp</button></div>
-        <div class="card"><h3>🎬 Reels / Shorts Editing</h3><p>Short-form editing and captions.</p><div class="price">₹149 onwards</div><button class="whatsapp" style="width:100%" onclick="orderService('Reels / Shorts Editing','₹149 onwards')">Order on WhatsApp</button></div>
-        <div class="card"><h3>🎥 Video Editing</h3><p>Editing for YouTube and other platforms.</p><div class="price">₹299 onwards</div><button class="whatsapp" style="width:100%" onclick="orderService('Video Editing','₹299 onwards')">Order on WhatsApp</button></div>
-        <div class="card"><h3>📱 Social Media Setup</h3><p>Profile setup and basic branding guidance.</p><div class="price">₹499 onwards</div><button class="whatsapp" style="width:100%" onclick="orderService('Social Media Setup','₹499 onwards')">Order on WhatsApp</button></div>
-        <div class="card"><h3>📦 Monthly Creator Package</h3><p>Recurring support with agreed deliverables.</p><div class="price">₹1,499 onwards</div><button class="whatsapp" style="width:100%" onclick="orderService('Monthly Creator Package','₹1,499 onwards')">Ask on WhatsApp</button></div>
-        <div class="card"><h3>🌐 Website Making</h3><p>Business websites, portfolios and landing pages.</p><div class="price">Custom quote</div><button class="whatsapp" style="width:100%" onclick="orderService('Website Making','Custom quote')">Discuss Project</button></div>
-        <div class="card"><h3>📲 App Making</h3><p>App prototypes, UI design and development enquiries.</p><div class="price">Custom quote</div><button class="whatsapp" style="width:100%" onclick="orderService('App Making','Custom quote')">Discuss Project</button></div>
-        <div class="card"><h3>🎨 Logo & Graphic Design</h3><p>Logos, banners, posters and social media graphics.</p><div class="price">Ask for price</div><button class="whatsapp" style="width:100%" onclick="orderService('Logo & Graphic Design','Ask for price')">Ask on WhatsApp</button></div>
-    </div>
+<!-- Original service cards, enquiry form, WhatsApp actions and backend integration retained -->
+<section class="section" id="old-services"><h2>Our Services</h2><p class="muted">Select a service to prepare a WhatsApp enquiry.</p><div class="grid service-grid" id="serviceGrid">
+<article class="card service-card">
+  <button class="card-head" type="button" aria-expanded="false" aria-controls="service-body-0" data-service-toggle>
+    <span class="card-icon" aria-hidden="true">🖼️</span><h3>Thumbnail Design</h3><span class="badge">🔥 Popular</span><span class="card-arrow" aria-hidden="true">▾</span>
+  </button>
+  <div class="card-body" id="service-body-0"><p>Custom YouTube thumbnail design.</p><div class="price">₹99 onwards</div>
+    <button class="whatsapp" type="button" data-service-name="Thumbnail Design" data-service-price="₹99 onwards">Order on WhatsApp</button>
+  </div>
+</article>
+<article class="card service-card">
+  <button class="card-head" type="button" aria-expanded="false" aria-controls="service-body-1" data-service-toggle>
+    <span class="card-icon" aria-hidden="true">📣</span><h3>Title & SEO</h3><span class="card-arrow" aria-hidden="true">▾</span>
+  </button>
+  <div class="card-body" id="service-body-1"><p>Titles, descriptions, keywords and hashtags.</p><div class="price">Ask for price</div>
+    <button class="whatsapp" type="button" data-service-name="Title & SEO" data-service-price="Ask for price">Ask on WhatsApp</button>
+  </div>
+</article>
+<article class="card service-card">
+  <button class="card-head" type="button" aria-expanded="false" aria-controls="service-body-2" data-service-toggle>
+    <span class="card-icon" aria-hidden="true">🎬</span><h3>Reels / Shorts Editing</h3><span class="card-arrow" aria-hidden="true">▾</span>
+  </button>
+  <div class="card-body" id="service-body-2"><p>Short-form editing and captions.</p><div class="price">₹149 onwards</div>
+    <button class="whatsapp" type="button" data-service-name="Reels / Shorts Editing" data-service-price="₹149 onwards">Order on WhatsApp</button>
+  </div>
+</article>
+<article class="card service-card">
+  <button class="card-head" type="button" aria-expanded="false" aria-controls="service-body-3" data-service-toggle>
+    <span class="card-icon" aria-hidden="true">🎥</span><h3>Video Editing</h3><span class="card-arrow" aria-hidden="true">▾</span>
+  </button>
+  <div class="card-body" id="service-body-3"><p>Editing for YouTube and other platforms.</p><div class="price">₹299 onwards</div>
+    <button class="whatsapp" type="button" data-service-name="Video Editing" data-service-price="₹299 onwards">Order on WhatsApp</button>
+  </div>
+</article>
+<article class="card service-card">
+  <button class="card-head" type="button" aria-expanded="false" aria-controls="service-body-4" data-service-toggle>
+    <span class="card-icon" aria-hidden="true">📱</span><h3>Social Media Setup</h3><span class="card-arrow" aria-hidden="true">▾</span>
+  </button>
+  <div class="card-body" id="service-body-4"><p>Profile setup and basic branding guidance.</p><div class="price">₹499 onwards</div>
+    <button class="whatsapp" type="button" data-service-name="Social Media Setup" data-service-price="₹499 onwards">Order on WhatsApp</button>
+  </div>
+</article>
+<article class="card service-card">
+  <button class="card-head" type="button" aria-expanded="false" aria-controls="service-body-5" data-service-toggle>
+    <span class="card-icon" aria-hidden="true">📦</span><h3>Monthly Creator Package</h3><span class="card-arrow" aria-hidden="true">▾</span>
+  </button>
+  <div class="card-body" id="service-body-5"><p>Recurring support with agreed deliverables.</p><div class="price">₹1,499 onwards</div>
+    <button class="whatsapp" type="button" data-service-name="Monthly Creator Package" data-service-price="₹1,499 onwards">Ask on WhatsApp</button>
+  </div>
+</article>
+<article class="card service-card">
+  <button class="card-head" type="button" aria-expanded="false" aria-controls="service-body-6" data-service-toggle>
+    <span class="card-icon" aria-hidden="true">🌐</span><h3>Website Making</h3><span class="card-arrow" aria-hidden="true">▾</span>
+  </button>
+  <div class="card-body" id="service-body-6"><p>Business websites, portfolios and landing pages.</p><div class="price">Custom quote</div>
+    <button class="whatsapp" type="button" data-service-name="Website Making" data-service-price="Custom quote">Discuss Project</button>
+  </div>
+</article>
+<article class="card service-card">
+  <button class="card-head" type="button" aria-expanded="false" aria-controls="service-body-7" data-service-toggle>
+    <span class="card-icon" aria-hidden="true">📲</span><h3>App Making</h3><span class="card-arrow" aria-hidden="true">▾</span>
+  </button>
+  <div class="card-body" id="service-body-7"><p>App prototypes, UI design and development enquiries.</p><div class="price">Custom quote</div>
+    <button class="whatsapp" type="button" data-service-name="App Making" data-service-price="Custom quote">Discuss Project</button>
+  </div>
+</article>
+<article class="card service-card">
+  <button class="card-head" type="button" aria-expanded="false" aria-controls="service-body-8" data-service-toggle>
+    <span class="card-icon" aria-hidden="true">🎨</span><h3>Logo & Graphic Design</h3><span class="card-arrow" aria-hidden="true">▾</span>
+  </button>
+  <div class="card-body" id="service-body-8"><p>Logos, banners, posters and social media graphics.</p><div class="price">Ask for price</div>
+    <button class="whatsapp" type="button" data-service-name="Logo & Graphic Design" data-service-price="Ask for price">Ask on WhatsApp</button>
+  </div>
+</article>
+</div>
+<div class="panel" style="margin-top:25px"><h2>Share Your Requirements</h2><p class="muted">Submit to the existing backend to save the enquiry, or open WhatsApp. File selection does not upload a file.</p><form id="helpForm">
+<label for="category">Category</label><select class="field" id="category" required><option value="">Choose category</option><option>Daily Tools</option><option>Mobile Problems</option><option>AI Jankari</option><option>Thumbnail Design</option><option>Title & SEO</option><option>Reels / Shorts Editing</option><option>Video Editing</option><option>Social Media Setup</option><option>Monthly Creator Package</option><option>Website Making</option><option>App Making</option><option>Logo & Graphic Design</option><option>Other</option></select>
+<label for="helpType">Type of Help</label><select class="field" id="helpType" required><option value="">Choose an option</option><option>Free Guidance</option><option>Paid Service - Ask for Price</option></select>
+<label for="details">Problem or Requirements</label><textarea class="field" id="details" required maxlength="3000" placeholder="Describe your requirements..."></textarea>
+<label for="email">Email (optional)</label><input class="field" id="email" type="email" maxlength="254" placeholder="Your email, if you want to share it">
+<label for="attachment">Reference file (optional)</label><input class="field" id="attachment" type="file" accept="image/*,.pdf,.txt,.doc,.docx"><p class="muted">The selected file is not uploaded. Avoid sending sensitive documents.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px"><button class="whatsapp" id="submitBtn" type="submit" style="flex:1">Save Enquiry</button><button class="primary" type="button" style="flex:1">WhatsApp Instead</button></div></form><div id="formStatus" class="status" role="status" aria-live="polite"></div><div class="notice"><b>Payment:</b> No payment is collected by this form. Payment integration will be added only after secure backend setup.</div></div>
+<div style="margin-top:20px"><a class="primary" href="index.html">← Back to Home</a> <a class="primary" href="ai-knowledge.html">← AI Jankari</a></div>
+</section></main>
+<footer><b>ZIWAN YATTRA</b><p>Useful tools. Helpful guides. Digital growth.</p><a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a><p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p></footer>
 
-    <div class="panel" style="margin-top:40px; padding:30px;">
-        <h2>Share Your Requirements</h2>
-        <p class="muted">Submit to the local backend to save the enquiry, or open WhatsApp to send it yourself. File selection does not upload a file.</p>
-        
-        <form id="helpForm" style="margin-top:20px;">
-            <label for="category">Category</label>
-            <select id="category" required>
-                <option value="">Choose category</option>
-                <option>Daily Tools</option><option>Mobile Problems</option><option>AI Jankari</option>
-                <option>Thumbnail Design</option><option>Title & SEO</option><option>Reels / Shorts Editing</option>
-                <option>Video Editing</option><option>Social Media Setup</option><option>Monthly Creator Package</option>
-                <option>Website Making</option><option>App Making</option><option>Logo & Graphic Design</option><option>Other</option>
-            </select>
-
-            <label for="helpType">Type of Help</label>
-            <select id="helpType" required>
-                <option value="">Choose an option</option>
-                <option>Free Guidance</option>
-                <option>Paid Service - Ask for Price</option>
-            </select>
-
-            <label for="details">Problem or Requirements</label>
-            <textarea id="details" required maxlength="3000" placeholder="Describe your requirements..."></textarea>
-
-            <label for="email">Email (optional)</label>
-            <input id="email" type="email" maxlength="254" placeholder="Your email, if you want to share it">
-
-            <label for="attachment">Reference file (optional)</label>
-            <input id="attachment" type="file" accept="image/*,.pdf,.txt,.doc,.docx">
-            <p class="small" style="margin-top:5px;">The selected file is not uploaded. Avoid sending sensitive documents.</p>
-
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;">
-                <button class="whatsapp" id="submitBtn" type="submit" style="flex:1; padding:15px;">Save Enquiry</button>
-                <button type="button" onclick="sendFormToWhatsApp()" style="flex:1; background:var(--border); color:var(--text); padding:15px;">WhatsApp Instead</button>
-            </div>
-        </form>
-        
-        <div id="formStatus" class="status" role="status" aria-live="polite"></div>
-        <div class="notice"><strong>Payment:</strong> No payment is collected by this form. Payment integration will be added only after secure backend setup.</div>
-    </div>
-
-    <div class="backrow" style="margin-top:30px;">
-        <a class="btn" href="index.html" style="background:var(--bg); color:var(--text); border:1px solid var(--border);">← Back to Home</a>
-        <a class="btn" href="ai-knowledge.html" style="background:var(--primary);">← AI Jankari</a>
-    </div>
-</section>
-</main>
-
-<footer>
-    <strong>ZIWAN YATTRA</strong>
-    <p>Useful tools. Helpful guides. Digital growth.</p>
-    <div style="margin-bottom: 15px;">
-        <a href="index.html">Home</a><a href="daily-tools.html">Daily Tools</a><a href="mobile-help.html">Mobile Help</a><a href="ai-knowledge.html">AI Jankari</a><a href="creator-services.html">Services</a>
-    </div>
-    <p>© <span id="year"></span> ZIWAN YATTRA. All rights reserved.</p>
-</footer>
-
-<!-- Yahan se saara JavaScript shuru hota hai (Bina kisi change ke) -->
 <script>
-const WHATSAPP_NUMBER = "919148987607";
-const BACKEND_URL = "https://ziwan-yattra-backend.onrender.com"; 
+const WHATSAPP_NUMBER="919148987607",BACKEND_URL="https://ziwan-yattra-backend.onrender.com";
+document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("themeToggle").onclick=function(){document.body.classList.toggle("dark");this.textContent=document.body.classList.contains("dark")?"☀️":"🌙";};
 
-const themeToggle = document.getElementById("themeToggle");
-themeToggle.addEventListener("click", function() {
-    document.body.classList.toggle("dark");
-    this.textContent = document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+const guides={
+facebook:[["Facebook par followers kaise badhaye?","Clear niche aur profile bio rakhein. Original Reels aur useful posts consistently publish karein; comments ka genuine jawab dein. Fake followers na kharidein."],["Facebook par 5K followers kaise badhaye?","5K ka guaranteed shortcut nahi. Weekly content plan, strong opening, original posts aur insights se best-performing topics identify karein."],["Facebook page ki reach kaise badhaye?","Audience-relevant original content, clear opening aur timely replies use karein. Professional Dashboard ke insights check karein."],["Facebook post viral kaise kare?","Relatable idea, original media aur clear caption use karein. Viral hone ki guarantee nahi hoti."],["Facebook likes aur comments kaise badhaye?","Specific, easy-to-answer questions poochhein aur genuine replies dein. Engagement bait aur spam avoid karein."],["Facebook professional mode kaise use kare?","Profile settings mein availability check karein. Professional Dashboard se insights, audience aur monetization status dekhein."],["Facebook Reels views kaise badhaye?","Pehle seconds mein main moment dikhayein, vertical clear video banayein aur retention data se improve karein."],["Facebook monetization eligibility kaise check kare?","Professional Dashboard ya Meta Business Suite ke Monetization section mein current eligibility aur policy status dekhein."],["Facebook engagement kaise improve karein?","Useful posts, relevant questions aur genuine replies par focus karein. Shares aur watch time bhi track karein."],["Facebook page grow karne ke liye kya post karein?","Tutorials, short explainers, behind-the-scenes, FAQs aur audience ke common questions ka jawab post karein."]],
+instagram:[["Instagram par followers kaise badhaye?","Clear niche, useful bio, original Reels, carousels aur Stories publish karein. Audience ke comments aur DMs ka jawab dein."],["Instagram Reels views kaise badhaye?","First seconds mein hook, focused video, subtitles aur strong pacing rakhein. Retention insights dekhein."],["Instagram engagement kaise badhaye?","Stories polls, useful carousels aur natural caption questions use karein. Replies ka genuine jawab dein."],["Instagram bio kaise likhe?","Aap kaun hain, kis audience ki help karte hain aur kya value dete hain — ye short aur clear likhein."],["Instagram reach kam kyun hoti hai?","Insights, Account Status, recommendation eligibility aur recent content performance check karein."],["Instagram par viral Reel kaise banaye?","Relatable topic, original idea, clear hook aur satisfying ending banayein. Viral hone ki guarantee nahi."],["Instagram carousel kaise banaye?","First slide par clear promise, beech mein short steps aur last slide par useful summary rakhein."],["Instagram professional account kaise use kare?","Professional dashboard se insights, creator tools aur available monetization features dekhein."]],
+youtube:[["YouTube subscribers kaise badhaye?","Clear channel topic, useful videos, strong titles/thumbnails aur consistent publishing par focus karein."],["YouTube Shorts views kaise badhaye?","First second mein interesting moment, vertical framing, clear audio aur tight editing rakhein."],["YouTube watch time kaise badhaye?","Long intro hataayein, video structured rakhein aur related videos ko playlists/end screens se connect karein."],["YouTube title SEO kaise kare?","Main search phrase ko natural title mein rakhein aur video ka actual content accurately describe karein."],["YouTube thumbnail par clicks kaise badhe?","Readable text, clear subject, contrast aur honest visual promise use karein."],["YouTube monetization eligibility kaise check kare?","YouTube Studio ke Earn tab mein current eligibility aur policy status dekhein."]],
+twitter:[["X par followers kaise badhaye?","Ek clear topic par original posts karein, useful threads likhein aur relevant conversations mein thoughtful replies dein."],["X par engagement kaise badhaye?","Concise useful insights aur genuine questions post karein. Replies ka jawab dein; spammy tagging avoid karein."],["X post viral kaise kare?","Strong first line aur share-worthy insight use karein. Virality guaranteed nahi hoti."],["X profile kaise improve kare?","Recognizable photo, clear bio, relevant header aur pinned useful post rakhein."]],
+followers:[["Followers kaise badhaye?","Audience choose karein, original content publish karein, profile ko useful banayein aur real conversations karein."],["5K followers kaise complete karein?","Guaranteed time ya shortcut nahi. Weekly plan banayein aur analytics se seekhein."],["Fake followers ke nuksan kya hain?","Fake followers engagement data ko distort karte hain aur policy risk create kar sakte hain. Organic audience banayein."]],
+engagement:[["Likes aur comments kaise badhaye?","Useful content, specific questions aur timely replies par focus karein. Fake engagement avoid karein."],["Shares aur saves kaise badhaye?","Checklist, tutorial aur reference guides banayein jinhe log baad mein use karna chahein."]],
+reach:[["Post reach kaise badhaye?","Audience-relevant original content, strong opening aur consistent publishing test karein."],["Views kam kyun aa rahe hain?","Topic demand, opening, retention, consistency aur account status check karein."],["Watch time kaise improve karein?","Intro short rakhein, story ko clear steps mein divide karein aur har segment ko purposeful banayein."]],
+hooks:[["Viral hook kaise likhe?","Curiosity, problem ya result se shuru karein. Example: 'Aapki Reels par views nahi aa rahe? Ye 3 cheezein check karein.'"],["First 3 seconds mein kya bolein?","Viewer ki problem ya video ka result seedha batayein. Lambi greeting se shuru na karein."]],
+voice:[["Voice-over script kaise likhe?","Hook, central point, 2–3 supporting details aur clear ending rakhein. Bolkar padhne par natural lagna chahiye."],["30-second voice-over structure","0–3 sec hook, 3–20 sec main information, 20–27 sec takeaway, last 3 sec natural CTA."]],
+reels:[["Reel ideas kaise dhoonde?","Audience FAQs, daily problems, behind-the-scenes aur step-by-step demos se ideas nikalein."],["Short video engaging kaise banaye?","Ek video mein ek idea rakhein, clear framing use karein aur unnecessary pauses edit karein."]],
+seo:[["SEO title kaise likhe?","Main keyword natural rakhein, benefit clear karein aur misleading promise na karein."],["Keywords kaise choose kare?","Viewer ki actual search language aur platform search suggestions se relevant phrases choose karein."]],
+money:[["Social media monetization kaise mile?","Platform dashboard mein eligibility aur policy status check karein. Rules location aur account ke hisaab se badal sakte hain."],["Creator earning ke options kya hain?","Sponsorships, affiliate links, services aur digital products options ho sakte hain. Required disclosures follow karein."]],
+analytics:[["Social media insights kaise samjhein?","Reach, impressions, watch time, retention, shares, saves aur follower changes compare karein."],["Best posting time kaise pata karein?","Analytics mein audience activity dekhein aur alag time slots test karein."]],
+safety:[["Account secure kaise rakhein?","Unique password, two-factor authentication, recovery details aur login alerts use karein."],["Copyright strike se kaise bachein?","Apna ya properly licensed content use karein. Credit dena permission ka substitute nahi."]],
+ideas:[["Daily content ideas kaise nikale?","Audience FAQs, common mistakes, quick tutorials aur behind-the-scenes se ideas banayein."],["30-day content calendar kaise banaye?","Repeatable content pillars choose karein, weekly schedule banayein aur analytics se adjust karein."]]
+};
+const topicNames={facebook:"Facebook Growth Center",instagram:"Instagram Growth Center",youtube:"YouTube Growth Center",twitter:"X / Twitter Growth Center",followers:"Followers Growth",engagement:"Engagement Growth",reach:"Reach & Views",hooks:"Viral Hooks",voice:"Voice Scripts",reels:"Reel Ideas",seo:"SEO Titles",money:"Monetization",analytics:"Analytics",safety:"Account Safety",ideas:"Post Ideas"};
+let topic="facebook",openGuideEntry=null,guideLang="hinglish";
+function guideText(pair){
+ let q=pair[0],a=pair[1];
+ if(guideLang==="en") q=q.replaceAll("kaise badhaye","how to grow").replaceAll("par","on").replaceAll("kaise kare","how to").replaceAll("kaise likhe","how to write");
+ if(guideLang==="hi"){
+  const map={"Facebook par followers kaise badhaye?":"फेसबुक पर फॉलोअर्स कैसे बढ़ाएं?","Instagram par followers kaise badhaye?":"इंस्टाग्राम पर फॉलोअर्स कैसे बढ़ाएं?","YouTube subscribers kaise badhaye?":"यूट्यूब सब्सक्राइबर कैसे बढ़ाएं?"};
+  q=map[q]||q;
+ }
+ return [q,a];
+}
+function buildGuidePanel(entry,key){
+ const panel=entry.querySelector(".inside-guide");
+ panel.innerHTML="";
+ const title=document.createElement("h3");title.textContent="🔥 "+topicNames[key];panel.appendChild(title);
+ const list=guides[key]||guides.facebook;
+ const term=document.getElementById("guideSearch").value.toLowerCase();
+ const matches=list.filter(x=>(x[0]+" "+x[1]).toLowerCase().includes(term));
+ matches.forEach(pair=>{
+  const [q,a]=guideText(pair),btn=document.createElement("button");btn.className="q";btn.textContent=q;
+  btn.onclick=()=>{let old=panel.querySelector(".answer");if(old)old.remove();let ans=document.createElement("div");ans.className="answer show";let para=document.createElement("p");para.textContent=a;let copy=document.createElement("button");copy.textContent="Copy Guide";copy.onclick=()=>copyText(q+"\n\n"+a);ans.append(para,copy);panel.appendChild(ans);};
+  panel.appendChild(btn);
+ });
+ if(!matches.length){let no=document.createElement("p");no.textContent="No matching question found.";panel.appendChild(no);}
+}
+function openGuide(key,button){
+ const entry=button.closest(".tool-entry");
+ if(openGuideEntry&&openGuideEntry!==entry){openGuideEntry.querySelector(".inside-guide").classList.remove("open");openGuideEntry.classList.remove("expanded");}
+ const panel=entry.querySelector(".inside-guide");
+ if(openGuideEntry===entry&&panel.classList.contains("open")){panel.classList.remove("open");entry.classList.remove("expanded");openGuideEntry=null;return;}
+ openGuideEntry=entry;entry.classList.add("expanded");buildGuidePanel(entry,key);panel.classList.add("open");
+}
+document.querySelectorAll(".tool").forEach(btn=>{
+ const entry=document.createElement("div");entry.className="tool-entry";
+ btn.parentNode.insertBefore(entry,btn);entry.appendChild(btn);
+ const panel=document.createElement("div");panel.className="inside-guide";entry.appendChild(panel);
+ btn.type="button";btn.addEventListener("pointerup",e=>{e.stopPropagation();openGuide(btn.dataset.topic,btn);});btn.addEventListener("click",e=>{if(e.detail!==0)return;e.stopPropagation();openGuide(btn.dataset.topic,btn);});
+});
+document.getElementById("guideSearch").addEventListener("input",()=>{
+ if(openGuideEntry){const b=openGuideEntry.querySelector(".tool");buildGuidePanel(openGuideEntry,b.dataset.topic);}
+});
+document.getElementById("guideLang").addEventListener("change",e=>{
+ guideLang=e.target.value;
+ if(openGuideEntry){const b=openGuideEntry.querySelector(".tool");buildGuidePanel(openGuideEntry,b.dataset.topic);}
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
-
-function getFormData() {
-    return {
-        category: document.getElementById("category").value,
-        helpType: document.getElementById("helpType").value,
-        details: document.getElementById("details").value.trim(),
-        email: document.getElementById("email").value.trim()
-    };
+const data={
+funny:{hi:["मेरी किस्मत भी Wi-Fi जैसी है… जरूरत पर ही सिग्नल चला जाता है! 😂","हम शरीफ हैं, बस हमारी हरकतें थोड़ी मशहूर हैं। 😎"],en:["My plans are strong; my motivation is still loading. 😂","I'm not lazy, I'm on energy-saving mode. 😎"],hinglish:["Meri kismat bhi Wi-Fi jaisi hai… zaroorat par hi signal chala jata hai! 😂","Hum shareef hain, bas hamari harkatein famous hain. 😎"],ne:["आज काम गर्ने सोच थियो, तर अल्छीपनले जित्यो! 😂"]},
+love:{hi:["तुमसे बात हो जाए तो दिन खूबसूरत लगने लगता है। ❤️","कुछ रिश्ते शब्दों से नहीं, एहसासों से चलते हैं।"],en:["Some people make ordinary days feel special. ❤️","Some bonds are felt, not explained."],hinglish:["Tumse baat ho jaye toh din khoobsurat lagta hai. ❤️","Kuch rishte words se nahi, feelings se chalte hain."],ne:["तिमीसँग कुरा हुँदा दिन सुन्दर लाग्छ। ❤️"]},
+sad:{hi:["मुस्कुराना आदत है, इसका मतलब दर्द नहीं होता ऐसा नहीं। 💔","कुछ बातें दिल में ही रह जाती हैं।"],en:["A smile doesn't mean everything is easy. 💔","Some feelings are difficult to put into words."],hinglish:["Muskurana aadat hai, iska matlab dard nahi hota aisa nahi. 💔","Kuch baatein dil mein hi reh jaati hain."],ne:["मुस्कान हुनुको अर्थ पीडा छैन भन्ने होइन। 💔"]},
+attitude:{hi:["इज्जत दो, इज्जत लो… दूरी बनाए रखना भी हुनर है। 😎","अपनी पहचान खुद बनाओ, भीड़ का हिस्सा बनकर नहीं।"],en:["Respect is mutual; distance is sometimes wisdom. 😎","Build your own lane."],hinglish:["Izzat do, izzat lo… distance rakhna bhi skill hai. 😎","Apni pehchaan khud banao."],ne:["आफ्नो पहिचान आफैँ बनाऊ। 😎"]},
+hooks:{hi:["रुको! आपकी Reels पर views नहीं आ रहे? ये 3 बातें जांचिए।","यह छोटी गलती आपके वीडियो की शुरुआत कमजोर कर सकती है।"],en:["Stop scrolling—check these three things before your next Reel.","This opening mistake may lose viewers."],hinglish:["Ruko! Reels par views nahi aa rahe? Ye 3 cheezein check karo.","Ye opening mistake viewers ko rok nahi paati."],ne:["रोक्नुहोस्! तपाईंको रिलमा भ्यु कम छ भने यी कुरा जाँच्नुहोस्।"]},
+voice:{hi:["नमस्कार दोस्तों! आज एक आसान तरीका समझते हैं।","पहले समस्या समझिए, फिर उसका आसान समाधान देखते हैं।"],en:["Here's one practical tip you can try today.","Let's understand the problem, then the solution."],hinglish:["Namaskar dosto! Aaj ek easy tip batata hoon.","Pehle problem samajhte hain, phir solution dekhte hain."],ne:["नमस्कार साथीहरू! आज एउटा सजिलो उपाय सिकौँ।"]},
+motivation:{hi:["धीरे चलना गलत नहीं, रुक जाना मंजिल से दूर कर देता है। 💪"],en:["A small start is still progress. Keep going. 💪"],hinglish:["Dheere chalna galat nahi, ruk jaana manzil se door kar deta hai. 💪"],ne:["सानो सुरुवात पनि ठूलो लक्ष्यतर्फको पाइला हो।"]},
+friendship:{hi:["सच्चे दोस्त जिंदगी को यादगार बना देते हैं। 🤝"],en:["Good friends make ordinary moments memorable. 🤝"],hinglish:["Sacche dost zindagi ko yaadgaar bana dete hain. 🤝"],ne:["साँचो मित्रताले जीवन यादगार बनाउँछ।"]},
+festival:{hi:["आपके घर में खुशियां, सेहत और शांति बनी रहे। शुभकामनाएं! 🎉"],en:["Wishing you happiness, good health and peace! 🎉"],hinglish:["Aapke ghar khushiyan, sehat aur sukoon bana rahe. 🎉"],ne:["तपाईंको घरमा सुख, शान्ति र स्वास्थ्य रहोस्। 🎉"]},
+captions:{hi:["आज का छोटा कदम, कल की बड़ी कहानी। ✨"],en:["One small step today, a bigger story tomorrow. ✨"],hinglish:["Aaj ka chhota step, kal ki badi story. ✨"],ne:["आजको सानो कदम, भोलिको ठूलो कथा। ✨"]},
+youtube:{hi:["आज की वीडियो में जानिए पूरी जानकारी आसान भाषा में।"],en:["Get the full story in today's video."],hinglish:["Aaj ki video mein poori jaankari simple language mein."],ne:["आजको भिडियोमा सजिलो भाषामा जानकारी पाउनुहोस्।"]},
+dialogue:{hi:["बात कम, काम ऐसा कि पहचान खुद बन जाए। 😎"],en:["Less talk. Let your work introduce you. 😎"],hinglish:["Baat kam, kaam aisa ki pehchaan khud ban jaye. 😎"],ne:["कम बोल, कामले परिचय देओस्। 😎"]}
+};
+const cats=[["funny","😂 Funny Status & Comedy","500+"],["love","❤️ Love Shayari","500+"],["sad","💔 Sad Shayari","500+"],["attitude","😎 Attitude Dialogues","500+"],["hooks","🔥 Viral Hooks & Captions","500+"],["voice","🎙️ Voice-over Scripts","500+"],["motivation","💪 Motivation Quotes","500+"],["friendship","👬 Friendship & Family","500+"],["festival","🎉 Festival Wishes","500+"],["captions","📱 Social Media Captions","500+"],["youtube","▶️ YouTube Opening Lines","500+"],["dialogue","💬 Short Dialogues","500+"]];
+let cat="funny",lang="hinglish",limit=10,openCatEntry=null;
+function showToast(message){
+ let toast=document.getElementById("zyToast");
+ if(!toast){toast=document.createElement("div");toast.id="zyToast";toast.className="toast";toast.setAttribute("role","status");document.body.appendChild(toast);}
+ toast.textContent=message;toast.classList.add("show");
+ clearTimeout(window.zyToastTimer);window.zyToastTimer=setTimeout(()=>toast.classList.remove("show"),1800);
 }
-
-function showStatus(message, kind) {
-    const el = document.getElementById("formStatus");
-    el.textContent = message;
-    el.className = "status show " + kind;
+function copyText(t){
+ if(navigator.clipboard&&navigator.clipboard.writeText){
+  navigator.clipboard.writeText(t).then(()=>showToast("Copied to clipboard ✓")).catch(()=>oldCopy(t));
+ }else oldCopy(t);
 }
-
-function orderService(name, price) {
-    const message = "Hello ZIWAN YATTRA! I want to enquire about: " + name + ". Displayed price: " + price + ". Please confirm the final price, deliverables and delivery time.";
-    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener");
+function oldCopy(t){
+ let x=document.createElement("textarea");x.value=t;x.style.position="fixed";x.style.opacity="0";document.body.appendChild(x);x.select();
+ try{document.execCommand("copy");showToast("Copied to clipboard ✓");}catch(e){showToast("Copy not available in this browser");}
+ x.remove();
 }
-
-function sendFormToWhatsApp() {
-    const form = document.getElementById("helpForm");
-    if (!form.reportValidity()) return;
-    const d = getFormData();
-    let message = "Hello ZIWAN YATTRA!\nCategory: " + d.category + "\nType of help: " + d.helpType + "\nRequirements: " + d.details;
-    if (d.email) message += "\nEmail: " + d.email;
-    message += "\nPlease confirm next steps and any price before work begins.";
-    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener");
+function renderCatContents(entry,key){
+ const panel=entry.querySelector(".inside-texts");panel.innerHTML="";
+ const arr=(data[key]&&data[key][lang])||data.funny.hinglish;
+ const term=document.getElementById("textSearch").value.toLowerCase();
+ const matches=arr.filter(t=>t.toLowerCase().includes(term));
+ matches.slice(0,limit).forEach(t=>{
+  let d=document.createElement("div");d.className="textcard";
+  let p=document.createElement("p");p.textContent=t;
+  let b=document.createElement("button");b.className="copy";b.textContent="Copy Text";b.onclick=()=>copyText(t);
+  d.append(p,b);panel.appendChild(d);
+ });
+ if(!matches.length){let n=document.createElement("p");n.textContent="No matching text found.";panel.appendChild(n);}
 }
-
-document.getElementById("helpForm").addEventListener("submit", async function(e) {
-    e.preventDefault(); 
-    if (!this.reportValidity()) return; 
-    
-    const d = getFormData();
-    const btn = document.getElementById("submitBtn");
-    
-    btn.disabled = true; 
-    btn.textContent = "Submitting...";
-    showStatus("Please wait, saving to database...", "ok"); 
-
-    try {
-        const response = await fetch(BACKEND_URL + "/api/enquiries", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(d)
-        });
-        
-        const result = await response.json();
-        
-        if (!response.ok || !result.success) {
-            throw new Error(result.error || "Submission failed");
-        }
-        
-        showStatus("Enquiry saved successfully! We will contact you soon.", "ok");
-        this.reset(); 
-        
-    } catch(err) {
-        showStatus("Could not save to backend (" + err.message + "). You can use WhatsApp Instead.", "err");
-    } finally {
-        btn.disabled = false; 
-        btn.textContent = "Save Enquiry";
-    }
+function renderCats(){
+ let box=document.getElementById("cats");box.innerHTML="";
+ cats.forEach(c=>{
+  let entry=document.createElement("div");entry.className="cat-entry";
+  let b=document.createElement("button");b.className="cat";b.innerHTML=c[1]+"<small>"+c[2]+"</small>";
+  let panel=document.createElement("div");panel.className="inside-texts";
+  b.type="button";const activateCategory=e=>{e.stopPropagation();
+   if(openCatEntry&&openCatEntry!==entry){openCatEntry.querySelector(".inside-texts").classList.remove("open");openCatEntry.classList.remove("expanded");}
+   if(openCatEntry===entry&&panel.classList.contains("open")){panel.classList.remove("open");entry.classList.remove("expanded");openCatEntry=null;return;}
+   openCatEntry=entry;entry.classList.add("expanded");cat=c[0];limit=10;renderCatContents(entry,cat);panel.classList.add("open");
+  };
+  b.addEventListener("pointerup",activateCategory);
+  b.addEventListener("click",e=>{if(e.detail===0)activateCategory(e);});
+  entry.append(b,panel);box.appendChild(entry);
+ });
+}
+document.querySelectorAll(".lang").forEach(b=>b.onclick=()=>{
+ lang=b.dataset.lang;document.querySelectorAll(".lang").forEach(x=>x.classList.toggle("active",x===b));
+ if(openCatEntry){limit=10;renderCatContents(openCatEntry,cat);}
 });
+document.getElementById("textSearch").oninput=()=>{
+ if(openCatEntry){limit=10;renderCatContents(openCatEntry,cat);}
+};
+document.getElementById("loadMore").onclick=()=>{
+ if(openCatEntry){limit+=10;renderCatContents(openCatEntry,cat);showToast("Showing more items where available");}
+ else showToast("First open a content category");
+};
+renderCats();
+document.getElementById("shareLibrary").addEventListener("click",async()=>{
+ const shareData={title:"ZIWAN YATTRA Creator Library",text:"Explore creator guides, status, shayari and captions on ZIWAN YATTRA.",url:location.href};
+ if(navigator.share){try{await navigator.share(shareData);}catch(e){}}
+ else if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(location.href);showToast("Page link copied ✓");}
+ else showToast("Use your browser menu to share this page");
+});
+
+
+// Service accordion: pointerup activates immediately on the first tap.
+// Keyboard-generated click (detail === 0) remains supported.
+const serviceGrid=document.getElementById("serviceGrid");
+function activateService(event){
+ const waButton=event.target.closest("[data-service-name]");
+ if(waButton){
+  event.preventDefault();
+  orderService(waButton.dataset.serviceName,waButton.dataset.servicePrice);
+  return;
+ }
+ const toggle=event.target.closest("[data-service-toggle]");
+ if(!toggle)return;
+ const card=toggle.closest(".service-card");
+ const wasOpen=card.classList.contains("open");
+ serviceGrid.querySelectorAll(".service-card.open").forEach(function(openCard){
+  openCard.classList.remove("open");
+  const head=openCard.querySelector("[data-service-toggle]");
+  if(head)head.setAttribute("aria-expanded","false");
+ });
+ if(!wasOpen){
+  card.classList.add("open");
+  toggle.setAttribute("aria-expanded","true");
+ }else{
+  toggle.setAttribute("aria-expanded","false");
+ }
+}
+serviceGrid.addEventListener("pointerup",function(event){
+ if(event.pointerType==="touch" || event.pointerType==="pen" || event.pointerType==="mouse"){
+  activateService(event);
+ }
+});
+serviceGrid.addEventListener("click",function(event){
+ if(event.detail===0)activateService(event);
+});
+
+function orderService(name,price){let msg="Hello ZIWAN YATTRA! I want to enquire about: "+name+". Displayed price: "+price+". Please confirm final price, deliverables and delivery time.";window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg),"_blank","noopener")}
+function getFormData(){return{category:document.getElementById("category").value,helpType:document.getElementById("helpType").value,details:document.getElementById("details").value.trim(),email:document.getElementById("email").value.trim()}}
+function sendFormToWhatsApp(){let f=document.getElementById("helpForm");if(!f.reportValidity())return;let d=getFormData(),m="Hello ZIWAN YATTRA!\nCategory: "+d.category+"\nType of help: "+d.helpType+"\nRequirements: "+d.details;if(d.email)m+="\nEmail: "+d.email;window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(m),"_blank","noopener")}
+function status(m,k){let e=document.getElementById("formStatus");e.textContent=m;e.className="status show "+k}
+document.getElementById("helpForm").addEventListener("submit",async function(e){e.preventDefault();if(!this.reportValidity())return;let d=getFormData(),b=document.getElementById("submitBtn");b.disabled=true;b.textContent="Submitting...";status("Please wait, saving to database...","ok");try{let r=await fetch(BACKEND_URL+"/api/enquiries",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)}),j=await r.json();if(!r.ok||!j.success)throw Error(j.error||"Submission failed");status("Enquiry saved successfully! We will contact you soon.","ok");this.reset()}catch(err){status("Could not save to backend ("+err.message+"). You can use WhatsApp Instead.","err")}finally{b.disabled=false;b.textContent="Save Enquiry"}});
 </script>
-
-<!-- GoatCounter Tracking Code -->
-<script data-goatcounter="https://ziwanyattra.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-
-</body>
-</html>
+<!-- Adsterra Popunder is included on this page only. Confirm account settings and policy before publishing. -->
+<script data-cfasync="false" src="https://afders.org/1/f32774dbb031810847f46b1cf143202c"></script>
+<script data-goatcounter="https://ziwanyattra.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body></html>
