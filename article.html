@@ -123,7 +123,7 @@
 
         // This route must be added to server.js before this sharing URL can work.
         const shareUrl=post.slug
-          ? `${API_BASE}/share/${encodeURIComponent(post.slug)}`
+          ? `https://share.ziwanyattra.com/share/${encodeURIComponent(post.slug)}`
           : articleUrl.href;
 
         const shareData={
