@@ -1,3 +1,10 @@
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 require("dotenv").config({
   path: require("path").join(__dirname, ".env")
 });
@@ -5,11 +12,10 @@ require("dotenv").config({
 const express = require("express");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
-const fs = require("fs");
-const path = require("path");
+
 const { createClient } = require("@supabase/supabase-js");
 const crypto = require("crypto");
-const app = express();
+const app = express();app.use(express.static(path.join(__dirname, "public")));
 app.set('trust proxy', 1);
 const PORT = Number(process.env.PORT) || 3000;
 const enquiriesFile = path.join(__dirname, "enquiries.json");
@@ -412,13 +418,65 @@ app.get("/api/daily-posts", async (req, res) => {
   }
 });
 
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    error: "Route not found."
-  });
-});
+// ===== ZIWAN YATTRA DYNAMIC NEWS SITEMAP =====
+app.get("/sitemap.xml", async (req, res) => {
+  try {
+    const { data: posts, error } = await supabase
+      .from("daily_posts")
+      .select("slug, updated_at, published_at, created_at")
+      .eq("status", "published")
+      .order("created_at", { ascending: false });
 
+    if (error) throw error;
+
+    const staticUrls = [
+      "https://ziwanyattra.com/",
+      "https://ziwanyattra.com/daily-updates.html",
+      "https://ziwanyattra.com/article.html",
+      "https://ziwanyattra.com/daily-tools.html",
+      "https://ziwanyattra.com/mobile-help.html",
+      "https://ziwanyattra.com/creator-services.html",
+      "https://ziwanyattra.com/ai-knowledge.html",
+      "https://ziwanyattra.com/privacy-policy.html"
+    ];
+
+    const escapeXml = (value) =>
+      String(value).replace(/[<>&"']/g, (char) => ({
+        "<": "&lt;",
+        ">": "&gt;",
+        "&": "&amp;",
+        '"': "&quot;",
+        "'": "&apos;"
+      })[char]);
+
+    const staticXml = staticUrls.map((url) =>
+      `<url><loc>${escapeXml(url)}</loc></url>`
+    ).join("");
+
+    const articleXml = (posts || [])
+      .filter((post) => post.slug)
+      .map((post) => {
+        const url = `https://ziwanyattra.com/article.html?slug=${encodeURIComponent(post.slug)}`;
+        const date = post.updated_at || post.published_at || post.created_at;
+        const lastmod = date && !Number.isNaN(Date.parse(date))
+          ? `<lastmod>${new Date(date).toISOString().slice(0, 10)}</lastmod>`
+          : "";
+
+        return `<url><loc>${escapeXml(url)}</loc>${lastmod}</url>`;
+      }).join("");
+
+    res.type("application/xml").send(
+      `<?xml version="1.0" encoding="UTF-8"?>` +
+      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` +
+      staticXml + articleXml + `</urlset>`
+    );
+  } catch (error) {
+    console.error("Sitemap error:", error.message);
+    res.status(500).type("text/plain").send("Could not generate sitemap.");
+  }
+});
+// ===== END NEWS SITEMAP =====
+// ===== REQUEST ERROR HANDLER =====
 app.use((error, req, res, next) => {
   console.error("Request error:", error.message);
 
@@ -452,7 +510,11 @@ app.get("/api/daily-polls", async (req, res) => {
       .order("created_at", { ascending: false });
 
     if (error) throw error;
-
+console.log("DAILY POLLS FETCH:", {
+  error,
+  count: data?.length,
+  polls: data
+});
     const polls = await Promise.all((data || []).map(async (poll) => {
       const { data: votes, error: voteError } = await supabase
         .from("daily_poll_votes")
@@ -484,7 +546,118 @@ app.get("/api/daily-polls", async (req, res) => {
     res.status(500).json({ success: false, error: "Could not load polls." });
   }
 });
+// ==========================================
+// FACEBOOK / WHATSAPP SHARE PREVIEW (DYNAMIC)
+// ==========================================
+import fs from 'fs';
+import path from 'path';
 
+app.get('/share/news', async (req, res) => {
+    try {
+        const newsId = req.query.id;
+
+        let newsTitle = "ZIWAN YATTRA - News Article";
+        let newsImage = "https://ziwanyattra.com/icons/icon-512.png";
+        let newsDesc = "Read the latest news and updates on ZIWAN YATTRA.";
+
+        if (newsId) {
+            const { data: newsData, error } = await supabase
+                .from('daily_posts')
+                .select('title, image_url, summary')
+                .eq('id', newsId)
+                .single();
+
+            if (newsData) {
+                newsTitle = newsData.title || newsTitle;
+
+                if (newsData.image_url) {
+                    newsImage = newsData.image_url;
+                }
+
+                if (newsData.summary) {
+                    newsDesc = newsData.summary;
+                }
+            }
+        }
+
+        let html = fs.readFileSync(
+            path.join(process.cwd(), 'article.html'),
+            'utf-8'
+        );
+
+        html = html.replace(
+            '<!-- OG_IMAGE_TAG -->',
+            `<meta property="og:image" content="${newsImage}" />`
+        );
+
+        html = html.replace(
+            '<!-- OG_TITLE_TAG -->',
+            `<meta property="og:title" content="${newsTitle}" />`
+        );
+
+        html = html.replace(
+            '<!-- OG_DESC_TAG -->',
+            `<meta property="og:description" content="${newsDesc}" />`
+        );
+
+        res.send(html);
+    } catch (error) {
+        console.error("Share error:", error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+// Admin: Create a poll
+app.post("/api/admin/daily-polls", requireAdmin, async (req, res) => {
+  try {
+    const question = req.body?.question;
+    const options = req.body?.options;
+
+    if (
+      typeof question !== "string" ||
+      !question.trim() ||
+      !Array.isArray(options) ||
+      options.length < 2 ||
+      options.length > 10 ||
+      options.some(
+        (option) => typeof option !== "string" || !option.trim()
+      )
+    ) {
+      return res.status(400).json({
+        success: false,
+        error: "Question aur kam se kam 2 valid options zaroori hain."
+      });
+    }
+
+    const { data, error } = await adminSupabase
+      .from("daily_polls")
+      .insert([{
+        question: question.trim(),
+        options: options.map((option) => option.trim()),
+        status: "active"
+      }])
+      .select()
+      .single();
+
+    if (error) {
+      console.error("Create poll error:", error.message);
+      return res.status(500).json({
+        success: false,
+        error: "Poll save nahi hua."
+      });
+    }
+
+    return res.status(201).json({
+      success: true,
+      poll: data
+    });
+  } catch (error) {
+    console.error("Create poll error:", error.message);
+    return res.status(500).json({
+      success: false,
+      error: "Poll create karte waqt server error aaya."
+    });
+  }
+});
 // Public: Submit a vote
 app.post("/api/daily-polls/:id/vote", async (req, res) => {
   const pollId = req.params.id;
@@ -573,15 +746,15 @@ app.get("/api/daily-posts/:id/stats", async (req, res) => {
       });
     }
 
-    const { data: stats, error: statsError } = await supabase
+    const { data: stats, error: statsError } = await adminSupabase
       .from("daily_post_stats")
       .select("views, likes")
       .eq("post_id", postId)
       .maybeSingle();
 
     if (statsError) throw statsError;
-
-    const { count, error: likesError } = await supabase
+    console.log("ARTICLE STATS DEBUG:", { postId, stats, statsError });
+    const { count, error: likesError } = await adminSupabase
       .from("daily_post_likes")
       .select("*", { count: "exact", head: true })
       .eq("post_id", postId);
