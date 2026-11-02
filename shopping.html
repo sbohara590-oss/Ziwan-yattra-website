@@ -11,19 +11,16 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
 
-header{background:linear-gradient(120deg,#21164f,#5944c9 65%,#806df0);color:#fff;padding:17px 16px 19px}
-.top{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.brand{font-weight:900;letter-spacing:1.5px;font-size:clamp(20px,4vw,29px);color:white;text-decoration:none}
-.nav{display:flex;align-items:center;gap:17px;margin-left:auto}
-.nav a{color:#eeeaff;text-decoration:none;font-size:13px;font-weight:700}
-.header-actions{display:flex;align-items:center;gap:8px}
-.home,.back{display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;border:1px solid #ffffff70;padding:10px 13px;border-radius:12px;font-size:14px;font-weight:700;background:transparent;cursor:pointer}
-.back{background:#ffffff18}
-.hero{max-width:1120px;margin:19px auto 0}
-.hero h1{font-size:clamp(23px,4.5vw,34px);margin:0 0 7px}
-.hero p{margin:0;color:#e7e2ff;line-height:1.5;font-size:14px}
+header{position:sticky;top:0;z-index:30;background:#fff;color:var(--ink);padding:12px 16px;border-bottom:1px solid #e9ebf2;box-shadow:0 2px 10px #1018280a}
+.top{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:900;letter-spacing:1.1px;font-size:clamp(18px,4vw,25px);color:#26324a;text-decoration:none;white-space:nowrap}
+.nav{display:none}
+.header-actions{display:flex;align-items:center;gap:10px}
+.home,.back{display:inline-flex;align-items:center;justify-content:center;gap:7px;color:#344054;text-decoration:none;border:0;padding:8px;border-radius:50%;font-size:19px;font-weight:700;background:#f3f4f8;cursor:pointer;width:38px;height:38px}
+.back{display:none}
+.hero{display:none}
 
-main{max-width:1120px;margin:25px auto;padding:0 16px 48px}
+main{max-width:1120px;margin:15px auto;padding:0 16px 48px}
 .toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
 .toolbar h2{margin:0;font-size:21px}
 .count{color:var(--muted);font-size:13px}
@@ -65,30 +62,183 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px 30p
 .dialog .btn{display:block;margin-top:12px;padding:14px}
 .disclosure{font-size:11px;color:var(--muted);margin-top:16px}
 
-/* Diwali banner */
+/* ZIWAN YATTRA festive shopping hero */
 .diwali-wrap{max-width:1120px;margin:18px auto 0;padding:0 16px}
-.diwali-card{position:relative;overflow:hidden;text-align:center;border-radius:19px;padding:17px 12px 13px;background:radial-gradient(ellipse at 50% 0%,#7838c5 0%,#35165f 48%,#160d37 100%);border:1px solid #f7c95a;box-shadow:0 8px 24px #29104430,inset 0 0 22px #ef49ff25;color:#fff}
-.diwali-card:before,.diwali-card:after{content:"";position:absolute;left:-20%;width:140%;height:1px;background:linear-gradient(90deg,transparent,#ffd76b,#ff5ce1,#ffd76b,transparent);animation:lightSweep 4s linear infinite}
-.diwali-card:before{top:8px}
-.diwali-card:after{bottom:8px;animation-delay:2s}
-.diya{display:block;font-size:23px;animation:flame 1.2s ease-in-out infinite alternate}
-.festival-brand{font-size:clamp(19px,4vw,27px);font-weight:900;letter-spacing:2px;margin:4px 0 12px;text-shadow:0 2px 0 #8b36c5,0 0 13px #e6b4ff}
-.offer-line{display:flex;align-items:center;justify-content:center;gap:clamp(3px,1vw,8px);flex-wrap:nowrap;white-space:nowrap}
-.flip-letter{display:inline-grid;place-items:center;width:clamp(27px,7vw,47px);height:clamp(37px,9vw,54px);border-radius:9px;font-size:clamp(23px,6vw,37px);font-weight:900;color:#fff;text-shadow:0 2px 3px #0008;box-shadow:0 4px 0 #0005,inset 0 1px 5px #fff8;animation:flipIn 2.8s ease-in-out infinite}
-.c1{background:linear-gradient(#ff9d22,#e33b21)}
-.c2{background:linear-gradient(#27c5ff,#1258c8);animation-delay:.15s}
-.c3{background:linear-gradient(#ffd94a,#e88b08);animation-delay:.3s}
-.c4{background:linear-gradient(#ff55bd,#a51fd2);animation-delay:.45s}
-.c5{background:linear-gradient(#4de27b,#078c54);animation-delay:.6s}
-.dash{font-weight:900;color:#ffe28a;font-size:clamp(18px,4vw,27px)}
-.word-offers{font-size:clamp(15px,3.5vw,22px);font-weight:800}
-.tiny-spark{font-size:13px;letter-spacing:3px;color:#ffdf83;margin-top:10px;animation:sparkle 1.8s ease-in-out infinite alternate}
+.diwali-card{
+ position:relative;overflow:hidden;isolation:isolate;color:#fff;
+ border-radius:20px;padding:24px 14px 17px;text-align:center;
+ background:
+  radial-gradient(ellipse at 15% 35%,#a43c18 0%,transparent 40%),
+  radial-gradient(ellipse at 85% 15%,#7d247a 0%,transparent 43%),
+  linear-gradient(135deg,#541326,#9b2d22 48%,#35104f);
+ border:1px solid #ffd77b;box-shadow:0 9px 28px #6b174b30;
+}
+.diwali-card:before{
+ content:"";position:absolute;inset:-30%;z-index:-1;pointer-events:none;
+ background:linear-gradient(115deg,transparent 42%,#ffffff18 49%,transparent 56%);
+ animation:zyShine 6s linear infinite;
+}
+.zy-string{
+ position:absolute;left:-3%;top:-5px;width:106%;height:45px;
+ border-top:2px solid #ffd77b;border-radius:0 0 50% 50%;
+ display:flex;justify-content:space-around;align-items:flex-start;
+}
+.zy-string span{
+ width:8px;height:12px;margin-top:13px;border-radius:50%;
+ background:#ffe99a;box-shadow:0 0 8px 3px #ffe99a;
+ animation:zyGlow 1.3s ease-in-out infinite alternate;
+}
+.zy-string span:nth-child(3n){background:#ff8bd5;box-shadow:0 0 9px 3px #ff8bd5;animation-delay:.4s}
+.zy-string span:nth-child(2n){animation-delay:.8s}
+.zy-heading{position:relative;margin:13px 0 5px;font-family:Georgia,serif;font-style:italic;font-size:clamp(25px,5vw,39px);font-weight:700;color:#ffe9b5;text-shadow:0 2px 12px #ffb94d}
+.zy-brandline{font-size:clamp(18px,4vw,26px);font-weight:900;letter-spacing:2px;margin:5px 0 10px}
+.zy-offer{
+ display:flex;justify-content:center;align-items:center;gap:5px;flex-wrap:nowrap;
+ margin:8px auto 5px;
+}
+.zy-digit{
+ display:grid;place-items:center;width:clamp(30px,7.5vw,49px);height:clamp(42px,9vw,58px);
+ border-radius:10px;font-size:clamp(24px,6vw,39px);font-weight:900;
+ color:#fff;text-shadow:0 2px 3px #0006;box-shadow:0 4px 0 #0005,inset 0 2px 5px #ffffff70;
+ animation:zyFloat 2.6s ease-in-out infinite;
+}
+.zy-digit:nth-child(2){animation-delay:.2s}.zy-digit:nth-child(4){animation-delay:.4s}
+.zy-digit:nth-child(5){animation-delay:.6s}.zy-digit:nth-child(6){animation-delay:.8s}
+.zy-orange{background:linear-gradient(#ffb83f,#ed5623)}
+.zy-blue{background:linear-gradient(#39d7ff,#1764ce)}
+.zy-yellow{background:linear-gradient(#ffe66b,#ee9b13)}
+.zy-pink{background:linear-gradient(#ff78ce,#b12fc4)}
+.zy-green{background:linear-gradient(#65ed9b,#078d57)}
+.zy-to{font-size:clamp(17px,4vw,25px);font-weight:900;color:#ffe7a5}
+.zy-off{font-size:clamp(15px,3.5vw,22px);font-weight:900}
+.zy-caption{font-size:13px;color:#fff0d8;margin:9px 0 13px}
+.zy-categories{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:10px auto 15px}
+.zy-category{
+ display:flex;align-items:center;gap:5px;padding:7px 10px;border-radius:30px;
+ background:#ffffff19;border:1px solid #ffffff55;color:#fff8e9;
+ font-size:11px;font-weight:800;white-space:nowrap;
+}
+.zy-product-stage{
+ position:relative;display:flex;justify-content:center;align-items:center;
+ min-height:142px;margin:2px auto 0;max-width:460px;
+}
+.zy-mini-product{
+ position:absolute;width:31%;height:130px;padding:8px 7px 6px;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;
+ background:linear-gradient(145deg,#fff9e9,#f4d9c2);
+ border:1px solid #ffe1a2;border-radius:13px;
+ box-shadow:0 7px 16px #17051c55;color:#362044;
+}
+.zy-mini-product img{width:100%;height:88px;object-fit:contain}
+.zy-mini-product small{font-size:10px;font-weight:800;margin-top:3px}
+.zy-mini-left{left:8%;transform:rotate(-7deg) scale(.88);opacity:.95}
+.zy-mini-right{right:8%;transform:rotate(7deg) scale(.88);opacity:.95}
+.zy-mini-center{
+ z-index:2;width:35%;height:142px;position:relative;
+ background:linear-gradient(145deg,#fff,#fff0c9);
+ transform:translateY(-3px);
+}
+.zy-mini-center img{height:98px}
+.zy-spark{margin-top:10px;color:#ffe18b;letter-spacing:7px;animation:zySpark 1.5s infinite alternate}
+@keyframes zyGlow{from{opacity:.45;filter:brightness(.8)}to{opacity:1;filter:brightness(1.6)}}
+@keyframes zyFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes zyShine{0%{transform:translateX(-45%)}100%{transform:translateX(45%)}}
+@keyframes zySpark{from{opacity:.4}to{opacity:1;text-shadow:0 0 12px gold}}
+
+/* ZIWAN YATTRA app header and sharing */
+.app-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #ececf4;box-shadow:0 3px 12px #1d17400b;padding:10px 14px}
+.app-header .top{max-width:1120px;min-height:48px}
+.menu-button{width:38px;height:38px;border:0;border-radius:12px;background:#f4f1ff;color:#4f25b8;font-size:23px;cursor:pointer}
+.app-header .brand{display:flex;align-items:center;gap:7px;color:#35136f;font-size:clamp(17px,4vw,24px);line-height:1;font-weight:900;letter-spacing:.5px}
+.brand-mark{font-size:27px}
+.app-header .brand b{color:#7a27d7}
+.app-header .brand small{display:block;margin-top:4px;font-size:9px;letter-spacing:2px;color:#7a27d7}
+.app-header .header-actions{gap:8px}
+.icon-action{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #e8dcff;border-radius:50%;background:#fff;color:#4d1c9c;text-decoration:none;font-size:22px;box-shadow:0 2px 8px #42158b12;cursor:pointer}
+.cart-action{font-size:19px}
+.app-header .home{display:none}
+.service-strip{max-width:1120px;margin:12px auto 0;padding:10px 14px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;background:#fff;border:1px solid #eee8ff;border-radius:16px;box-shadow:0 3px 12px #35105b0b}
+.service-strip div{display:flex;align-items:center;justify-content:center;gap:6px;min-width:0;color:#4c3474;font-size:10px}
+.service-strip span{font-size:18px}
+.service-strip b{font-size:10px}
+.offer-category-row{margin-top:10px}
+.offer-tile{cursor:pointer;transition:transform .18s,box-shadow .18s}
+.offer-tile:active{transform:scale(.97)}
+.offer-tile:nth-child(1){background:linear-gradient(145deg,#fff0f5,#f8d8e8)}
+.offer-tile:nth-child(2){background:linear-gradient(145deg,#eee8ff,#dcd0ff)}
+.offer-tile:nth-child(3){background:linear-gradient(145deg,#e8f6ff,#d4eaff)}
+.offer-tile:nth-child(4){background:linear-gradient(145deg,#fff4df,#ffe4b8)}
+.product .visual{background:linear-gradient(145deg,#f5efff,#fff9f1)}
+.product .product-body{gap:2px}
+.product .actions{gap:7px}
+.product .btn-primary{background:linear-gradient(110deg,#7427d8,#4c16a8)}
+.product .btn-light{background:#f2eaff;color:#5420a7}
+@media(max-width:420px){
+ .app-header{padding:8px 9px}
+ .app-header .top{gap:7px}
+ .menu-button{width:34px;height:34px;font-size:20px}
+ .app-header .brand{font-size:16px;gap:4px}
+ .brand-mark{font-size:22px}
+ .icon-action{width:35px;height:35px;font-size:19px}
+ .app-header .header-actions{gap:5px}
+ .service-strip{padding:9px 5px}
+ .service-strip div{flex-direction:column;gap:2px}
+ .service-strip b{font-size:9px}
+}
+
+/* App-style shopping controls */
+.app-controls{max-width:1120px;margin:16px auto 8px;padding:0 16px}
+.search-wrap{display:flex;align-items:center;gap:10px;background:#f0f2f6;border:1px solid #e7e9ef;border-radius:14px;padding:11px 14px}
+.search-wrap input{border:0;outline:0;background:transparent;width:100%;font-size:14px;color:var(--ink)}
+.search-wrap button{border:0;background:transparent;color:#667085;font-size:22px;line-height:1;cursor:pointer}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0 7px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid #e5e7eb;background:#f1f3f7;color:#475467;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:700;white-space:nowrap}
+.chip.active{background:#eeeaff;color:#5140bd;border-color:#c9c0ff}
+.toolbar{margin-top:18px}
+.product{border-radius:16px;box-shadow:0 2px 9px #1018280a;transition:transform .2s,box-shadow .2s}
+.product:hover{transform:translateY(-2px);box-shadow:0 8px 24px #10182812}
+.visual{position:relative}
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;justify-content:space-around;align-items:center;background:#fff;border-top:1px solid #e8eaf0;padding:8px 8px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -3px 14px #1018280b}
+.bottom-item{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:54px;text-decoration:none;color:#7a8292;font-size:19px}
+.bottom-item small{font-size:10px;font-weight:700}
+.bottom-item.active{color:var(--brand)}
+body{padding-bottom:72px}
+.diwali-wrap{margin-top:8px}
+.diwali-card{position:relative;overflow:hidden;text-align:center;border-radius:18px;padding:22px 12px 16px;background:radial-gradient(ellipse at 50% 0%,#9c3a78 0%,#61204f 45%,#26103e 100%);border:1px solid #f5c86b;box-shadow:0 7px 20px #35104425;color:#fff}
+.diwali-card:before,.diwali-card:after{content:"";position:absolute;left:-20%;width:140%;height:1px;background:linear-gradient(90deg,transparent,#ffd76b,#ff78d0,#ffd76b,transparent);animation:lightSweep 4s linear infinite}
+.diwali-card:before{top:7px}.diwali-card:after{bottom:7px;animation-delay:2s}
+.zy-string{position:absolute;left:-3%;top:0;width:106%;height:32px;border-top:2px solid #ffd77b;border-radius:0 0 50% 50%;display:flex;justify-content:space-around}
+.zy-string span{width:8px;height:11px;margin-top:9px;border-radius:50%;background:#ffe99a;box-shadow:0 0 8px 3px #ffe99a;animation:zyGlow 1.3s infinite alternate}
+.zy-string span:nth-child(even){background:#ff8bd5;box-shadow:0 0 8px 3px #ff8bd5;animation-delay:.5s}
+.offer-topline{font-size:11px;font-weight:900;letter-spacing:2px;color:#ffe6a2;margin:13px 0 6px}
+.festival-brand{font-size:clamp(20px,4vw,27px);font-weight:900;letter-spacing:2px;margin:4px 0 5px;text-shadow:0 0 12px #ffcf77}
+.offer-headline{font-family:Georgia,serif;font-style:italic;font-size:clamp(20px,4.5vw,30px);font-weight:700;color:#ffe6b8;margin-bottom:9px}
+.offer-line{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:nowrap}
+.flip-letter{display:inline-grid;place-items:center;width:clamp(29px,7vw,44px);height:clamp(39px,9vw,52px);border-radius:9px;font-size:clamp(23px,5.5vw,34px);font-weight:900;color:#fff;text-shadow:0 2px 3px #0008;box-shadow:0 4px 0 #0005,inset 0 1px 5px #fff8;animation:zyFloat 2.4s ease-in-out infinite}
+.c1{background:linear-gradient(#ffad32,#e64a21)}.c2{background:linear-gradient(#2bcfff,#155ac8)}.c3{background:linear-gradient(#ffe15b,#e88e0b)}.c4{background:linear-gradient(#ff61c4,#a91fbd)}.c5{background:linear-gradient(#52e58a,#078b55)}
+.dash{font-weight:900;color:#ffe28a;font-size:clamp(16px,4vw,24px)}.word-offers{font-size:clamp(14px,3.5vw,20px);font-weight:900}
+.offer-caption{font-size:12px;color:#fff0d7;margin-top:9px}
+.offer-sparkles{font-size:13px;letter-spacing:4px;color:#ffdf83;margin-top:9px;animation:sparkle 1.8s ease-in-out infinite alternate}
+.offer-category-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 0}
+.offer-tile{min-width:0;border:1px solid #f2d8b0;border-radius:12px;background:linear-gradient(145deg,#fff8eb,#f6e3d0);padding:9px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;color:#49324b;box-shadow:0 3px 8px #27132b0c}
+.offer-emoji{font-size:22px}.offer-tile b{font-size:11px}.offer-tile small{font-size:9px;color:#866d7d}
+@keyframes zyGlow{from{opacity:.45;filter:brightness(.8)}to{opacity:1;filter:brightness(1.6)}}
+@keyframes zyFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@media(max-width:380px){.offer-category-row{gap:5px}.offer-tile{padding:8px 2px}.offer-tile b{font-size:10px}.offer-emoji{font-size:20px}}
+@media(min-width:761px){
+ .bottom-nav{display:none}
+ body{padding-bottom:0}
+ .app-controls{margin-top:20px}
+ .diwali-wrap,.service-strip,.app-controls,main{max-width:1120px}
+}
 
 @keyframes cardIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-@keyframes flipIn{0%,72%,100%{transform:rotateX(0)}80%{transform:rotateX(90deg) translateY(-2px)}88%{transform:rotateX(-8deg)}}
-@keyframes lightSweep{0%{transform:translateX(-18%);opacity:.3}50%{opacity:1}100%{transform:translateX(18%);opacity:.3}}
-@keyframes flame{from{transform:scale(.95) rotate(-3deg);filter:drop-shadow(0 0 3px #ffc64b)}to{transform:scale(1.08) rotate(3deg);filter:drop-shadow(0 0 10px #ff9f2d)}}
-@keyframes sparkle{from{opacity:.45}to{opacity:1;text-shadow:0 0 12px #ffd66b}}
+@keyframes zyGlow{from{opacity:.45;filter:brightness(.8)}to{opacity:1;filter:brightness(1.6)}}
+@keyframes zyDiya{from{transform:scale(.95)}to{transform:scale(1.1);filter:drop-shadow(0 0 9px orange)}}
+@keyframes zyBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes zyShine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes zySpark{from{opacity:.4}to{opacity:1;text-shadow:0 0 12px gold}}
 
 @media(max-width:760px){
  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -118,58 +268,217 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px 30p
 @media(min-width:761px) and (max-width:980px){
  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+@media(max-width:380px){
+ .diwali-card{padding:22px 8px 14px}
+ .zy-categories{gap:5px}
+ .zy-category{font-size:10px;padding:6px 8px}
+ .zy-product-stage{min-height:120px}
+ .zy-mini-product{height:112px}
+ .zy-mini-product img{height:75px}
+ .zy-mini-center{height:124px}
+ .zy-mini-center img{height:85px}
+ .zy-mini-product small{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .diwali-card *{animation:none!important}
+}
+
+/* Reference-matched festive shopping app layout */
+body{background:#f8f7fc}
+.app-header{padding:10px 14px;background:#fff}
+.app-header .top{max-width:1180px;min-height:50px}
+.app-header .brand{font-size:clamp(18px,4vw,27px);letter-spacing:.2px}
+.brand-mark{display:none}
+.menu-button{background:transparent;color:#241044;font-size:28px;width:34px}
+.icon-action{width:43px;height:43px;border:1.5px solid #e7dafa;color:#42118e;font-size:23px}
+#sharePageButton{font-size:0;position:relative}
+#sharePageButton:before{content:"";width:17px;height:17px;border:2px solid currentColor;border-radius:50%;position:absolute;left:10px;top:11px}
+#sharePageButton:after{content:"↗";font-size:23px;position:absolute;right:6px;top:3px}
+.app-controls{max-width:1180px;margin:10px auto 4px;padding:0 16px}
+.search-wrap{background:#fff;border:1.5px solid #b98be8;border-radius:999px;padding:12px 16px;box-shadow:0 3px 12px #6e35b20c}
+.search-wrap input{font-size:15px}
+.search-wrap button{display:none}
+.chips{gap:10px;padding:12px 0 8px}
+.chip{display:flex;align-items:center;gap:6px;padding:9px 15px;border:0;border-radius:999px;background:#f0e9fb;color:#48206f;font-size:13px}
+.chip span{font-size:17px}
+.chip.active{background:linear-gradient(135deg,#7b1ee5,#4c13b4);color:#fff;box-shadow:0 4px 12px #6321bb35}
+.diwali-wrap{max-width:1180px;margin:9px auto 0;padding:0 16px}
+.festival-creative{
+ min-height:250px;padding:24px 16px 17px;border:0;border-radius:23px;
+ background:
+  radial-gradient(circle at 5% 5%,#ffbd28 0 2px,transparent 5px),
+  radial-gradient(circle at 93% 12%,#ffd34d 0 3px,transparent 7px),
+  radial-gradient(ellipse at 10% 100%,#ff7a00 0%,transparent 42%),
+  radial-gradient(ellipse at 92% 0%,#ffb000 0%,transparent 38%),
+  linear-gradient(115deg,#8c0b83 0%,#d10c61 43%,#f04416 72%,#9d0d79 100%);
+ box-shadow:0 9px 24px #a51b662b;isolation:isolate;
+}
+.festival-creative:before{
+ content:"";position:absolute;inset:0;z-index:-1;opacity:.42;
+ background-image:radial-gradient(#fff 1px,transparent 1.8px),radial-gradient(#ffd85d 1px,transparent 2px);
+ background-size:34px 34px,53px 53px;background-position:0 0,17px 12px;
+ animation:zyTwinkle 4s linear infinite;
+}
+.festival-lights{position:absolute;left:0;right:0;top:0;height:34px;display:flex;justify-content:space-around;border-top:2px solid #ffe38a;border-radius:50% 50% 0 0}
+.festival-lights i{width:9px;height:12px;border-radius:50%;background:#fff2a5;box-shadow:0 0 9px 4px #ffd86a;margin-top:8px;animation:zyGlow 1.2s infinite alternate}
+.festival-lights i:nth-child(odd){background:#fff;box-shadow:0 0 10px 4px #ff8cf2;animation-delay:.4s}
+.festival-firework{position:absolute;color:#ffdc5c;font-size:42px;opacity:.7;text-shadow:0 0 15px #ffd75d;animation:zyFirework 2.5s ease-in-out infinite}
+.firework-one{left:5%;top:22%}.firework-two{right:8%;top:17%;font-size:32px;animation-delay:1s}
+.festival-diya{position:absolute;left:4%;bottom:15%;font-size:clamp(35px,7vw,58px);filter:drop-shadow(0 0 12px #ffce40);animation:zyFloat 2.2s infinite}
+.festival-gifts{position:absolute;right:4%;bottom:12%;display:flex;align-items:end;gap:2px;font-size:clamp(32px,7vw,55px);filter:drop-shadow(0 4px 7px #510044)}
+.festival-gifts span:last-child{font-size:clamp(38px,8vw,65px)}
+.offer-topline{position:relative;margin:12px auto 5px;color:#ffe7a3;font-size:clamp(10px,2.5vw,14px);font-weight:900;letter-spacing:2.5px;text-shadow:0 2px 5px #730044}
+.festival-brand{position:relative;color:#fff;font-size:clamp(22px,5vw,36px);font-weight:1000;letter-spacing:2px;text-shadow:0 3px 0 #8c1266,0 0 12px #fff8}
+.offer-headline{position:relative;display:table;margin:5px auto 8px;padding:3px 24px 6px;border-radius:999px;background:linear-gradient(180deg,#fff39a,#ffca32);color:#721044;font-family:Arial,sans-serif;font-style:italic;font-size:clamp(19px,4.5vw,30px);font-weight:1000;box-shadow:0 4px 0 #b74732}
+.offer-ribbon{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;width:max-content;max-width:100%;margin:8px auto;padding:4px 19px 8px;border-radius:999px;background:linear-gradient(180deg,#fa3154,#a90048);box-shadow:0 6px 0 #7b123c,0 8px 16px #56002f65;border:1px solid #ff9b78}
+.ribbon-up{font-size:clamp(13px,3vw,19px);font-weight:1000;color:#fff}
+.offer-ribbon strong{font-size:clamp(39px,10vw,67px);line-height:1;color:#ffeb66;text-shadow:0 3px 0 #c65b13,0 0 12px #fff6}
+.offer-ribbon b{font-size:clamp(18px,4vw,27px);color:#fff}
+.offer-caption{position:relative;color:#fff;font-size:clamp(12px,3vw,17px);font-weight:700;margin:12px auto 7px;text-shadow:0 2px 4px #710047}
+.festival-categories{position:relative;color:#fff3c8;font-size:clamp(9px,2.2vw,13px);font-weight:900;letter-spacing:1.1px;margin-top:8px}
+.festival-categories span{color:#ffe34e;padding:0 3px}
+.offer-disclaimer{position:relative;font-size:9px;color:#ffe9d7;margin-top:8px}
+.festival-dots{display:flex;justify-content:center;gap:8px;margin-top:9px}
+.festival-dots i{width:8px;height:8px;border-radius:50%;background:#ffffff88}
+.festival-dots i:first-child{background:#fff}
+.service-strip{max-width:1180px;margin:12px auto 0;padding:12px 8px;border-radius:20px;box-shadow:0 5px 15px #31105a10}
+.service-strip div{font-size:11px;gap:8px}
+.service-strip span{font-size:23px;color:#6721c4}
+.service-strip b{font-size:11px;color:#25213e}
+main{max-width:1180px;margin:17px auto;padding:0 16px 55px}
+.toolbar{margin:12px 0 13px}
+.toolbar h2{font-size:clamp(18px,4vw,25px);font-weight:900;display:flex;align-items:center;gap:8px}
+.deal-bolt{font-size:25px}
+.toolbar-right{display:flex;align-items:center;gap:12px}
+.view-all{font-size:13px;font-weight:900;color:#6920c1;text-decoration:none;white-space:nowrap}
+.count{font-size:12px}
+.grid.deal-rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:5px 2px 18px;scrollbar-width:none}
+.grid.deal-rail::-webkit-scrollbar{display:none}
+.grid.deal-rail .product{flex:0 0 min(78vw,285px);scroll-snap-align:center;border-radius:20px;border:1px solid #eee7f6;box-shadow:0 5px 18px #27104412}
+.grid.deal-rail .visual{height:180px;min-height:180px;aspect-ratio:auto;padding:12px;background:linear-gradient(145deg,#e8f9f4,#eaf2ff,#fff2db);position:relative}
+.grid.deal-rail .visual:after{content:"FEATURED PICK";position:absolute;left:10px;top:10px;background:#7b1edb;color:white;border-radius:6px;padding:5px 7px;font-size:9px;font-weight:900;letter-spacing:.5px}
+.grid.deal-rail .visual img{height:100%;object-fit:contain}
+.grid.deal-rail .product-body{padding:13px}
+.grid.deal-rail .product h3{font-size:16px;font-weight:900}
+.grid.deal-rail .meta{font-size:11px;min-height:42px}
+.grid.deal-rail .price-link{font-size:12px;color:#cf2439;margin-bottom:9px}
+.grid.deal-rail .actions{flex-direction:row}
+.grid.deal-rail .btn{border-radius:999px;padding:10px 9px;font-size:12px}
+.grid.deal-rail .btn-primary{background:linear-gradient(110deg,#7722d9,#4d0fb0)}
+.grid.deal-rail .coming-card{flex:0 0 min(78vw,285px);min-height:330px;border-radius:20px}
+.bottom-nav{z-index:60}
+@keyframes zyTwinkle{0%,100%{opacity:.25}50%{opacity:.65}}
+@keyframes zyFirework{0%,100%{transform:scale(.8) rotate(0);opacity:.45}50%{transform:scale(1.15) rotate(25deg);opacity:1}}
+@media(min-width:761px){
+ .grid.deal-rail .product{flex-basis:260px}
+ .festival-creative{min-height:290px}
+ .festival-diya{left:7%;font-size:65px}
+ .festival-gifts{right:7%;font-size:60px}
+}
+@media(max-width:390px){
+ .festival-creative{padding-left:8px;padding-right:8px;min-height:235px}
+ .festival-diya{left:2%;bottom:12%;font-size:32px}
+ .festival-gifts{right:2%;bottom:10%;font-size:29px}
+ .offer-disclaimer{font-size:8px}
+ .service-strip b{font-size:9px}
+ .toolbar-right{gap:7px}
+}
+@media(prefers-reduced-motion:reduce){
+ .festival-creative *, .festival-creative:before{animation:none!important}
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
+<header class="app-header">
  <div class="top">
-  <a class="brand" href="https://ziwanyattra.com/">ZIWAN YATTRA</a>
-
-  <nav class="nav" aria-label="Main navigation">
-   <a href="#products">Products</a>
-   <a href="#about">About</a>
-   <a href="#contact">Contact</a>
-  </nav>
-
+  <button class="menu-button" type="button" id="backButton" aria-label="Go back">☰</button>
+  <a class="brand" href="https://ziwanyattra.com/">
+   <span class="brand-mark">🛍️</span>
+   <span>ZIWAN <b>YATTRA</b><small>SHOPPING</small></span>
+  </a>
   <div class="header-actions">
-   <button class="back" type="button" id="backButton">← Back</button>
-   <a class="home" href="https://ziwanyattra.com/">⌂ Home</a>
+   <button class="icon-action" type="button" id="sharePageButton" aria-label="Share shopping page" title="Share">↗</button>
+   <a class="icon-action cart-action" href="#products" aria-label="Go to products" title="Shopping">🛒</a>
+   <a class="home" href="https://ziwanyattra.com/" aria-label="Home" title="Home">⌂</a>
   </div>
- </div>
-
- <div class="hero">
-  <h1>Smart picks. Better shopping.</h1>
-  <p>Explore selected 5G phones and check the latest price and availability on Amazon.</p>
  </div>
 </header>
 
-<section class="diwali-wrap" id="diwaliBanner">
- <div class="diwali-card">
-  <span class="diya">🪔</span>
-  <div class="festival-brand">ZIWAN YATTRA</div>
-  <div class="offer-line">
-   <span class="flip-letter c1">5</span>
-   <span class="flip-letter c2">%</span>
-   <span class="dash">–</span>
-   <span class="flip-letter c3">9</span>
-   <span class="flip-letter c4">0</span>
-   <span class="flip-letter c5">%</span>
-   <span class="word-offers">OFF</span>
-  </div>
-  <div style="font-size:11px;color:#f0e6ff;margin-top:7px">Offers vary by product. Check Amazon for current deals.</div>
-  <div class="tiny-spark">✦　✧　✦　✧　✦</div>
+<section class="app-controls">
+ <label class="search-wrap">
+  <span aria-hidden="true">🔍</span>
+  <input id="productSearch" type="search" placeholder="Search phones, brands, offers..." autocomplete="off">
+  <button id="clearSearch" type="button" aria-label="Clear search">×</button>
+ </label>
+ <div class="chips" id="categoryChips" aria-label="Product categories">
+  <button class="chip active" type="button" data-filter="All"><span>▦</span> All</button>
+  <button class="chip" type="button" data-filter="Phones"><span>📱</span> Phones</button>
+  <button class="chip" type="button" data-filter="Audio"><span>🎧</span> Audio</button>
+  <button class="chip" type="button" data-filter="Laptops"><span>💻</span> Laptops</button>
+  <button class="chip" type="button" data-filter="Gadgets"><span>⌚</span> Gadgets</button>
+  <button class="chip" type="button" data-filter="Home"><span>⌂</span> Home</button>
+  <button class="chip" type="button" data-filter="More"><span>✣</span> More</button>
  </div>
 </section>
 
+<section class="diwali-wrap" id="diwaliBanner">
+ <div class="diwali-card festival-creative">
+  <div class="festival-lights" aria-hidden="true">
+   <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+  <div class="festival-firework firework-one" aria-hidden="true">✺</div>
+  <div class="festival-firework firework-two" aria-hidden="true">✺</div>
+  <div class="festival-diya" aria-hidden="true">🪔</div>
+  <div class="festival-gifts" aria-hidden="true"><span>🎁</span><span>🛍️</span></div>
+  <div class="offer-topline">THE BIG FESTIVE SALE</div>
+  <div class="festival-brand">ZIWAN YATTRA</div>
+  <div class="offer-headline">Festival Offers</div>
+  <div class="offer-ribbon">
+   <span class="ribbon-up">UP TO</span>
+   <strong>90%</strong>
+   <b>OFF</b>
+  </div>
+  <div class="offer-caption">Celebrate more. Save on your favourite picks!</div>
+  <div class="festival-categories">MOBILES <span>•</span> ELECTRONICS <span>•</span> FASHION <span>•</span> TOOLS</div>
+  <div class="offer-disclaimer">Offers vary by product. Check Amazon for current prices and availability.</div>
+  <div class="festival-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+ </div>
+</section>
+
+<section class="service-strip" aria-label="Shopping highlights">
+ <div><span>🚚</span><b>Easy discovery</b></div>
+ <div><span>🛡️</span><b>Amazon checkout</b></div>
+ <div><span>🏷️</span><b>Deal highlights</b></div>
+ <div><span>↗</span><b>Share with friends</b></div>
+</section>
+
+
+
+
+
+
+
 <main id="products">
  <div class="toolbar">
-  <h2>Featured Products</h2>
-  <div class="count" id="productCount">Loading products…</div>
+  <h2><span class="deal-bolt">⚡</span> Festival Deals on Mobiles</h2>
+  <div class="toolbar-right">
+   <span class="count" id="productCount">Loading products…</span>
+   <a class="view-all" href="#products">View All →</a>
+  </div>
  </div>
- <section class="grid" id="productGrid" aria-label="Amazon products"></section>
+ <section class="grid deal-rail" id="productGrid" aria-label="Amazon product deals"></section>
 </main>
+
+<nav class="bottom-nav" aria-label="Bottom navigation">
+ <a href="https://ziwanyattra.com/" class="bottom-item"><span>⌂</span><small>Home</small></a>
+ <a href="#products" class="bottom-item active"><span>♧</span><small>Shop</small></a>
+ <a href="#diwaliBanner" class="bottom-item"><span>🏷</span><small>Offers</small></a>
+ <a href="#contact" class="bottom-item"><span>☎</span><small>Contact</small></a>
+ <a href="#about" class="bottom-item"><span>♙</span><small>About</small></a>
+</nav>
 
 <footer>
  <div id="about">
@@ -190,6 +499,9 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px 30p
   This page does not collect payment details. When you open an affiliate link, Amazon's own privacy and shopping terms apply.
  </div>
  <div class="footer-info">
+  Share this shopping page with friends: <button type="button" class="btn btn-light" onclick="document.getElementById('sharePageButton').click()">↗ Share ZIWAN YATTRA</button>
+ </div>
+ <div class="footer-info">
   As an Amazon Associate, ZIWAN YATTRA earns from qualifying purchases. Product prices and availability can change; check Amazon for the latest details.
  </div>
 </footer>
@@ -205,6 +517,29 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px 30p
 </div>
 
 <script>
+/* SHARE SHOPPING PAGE */
+const SHARE_URL = "https://ziwanyattra.com/shopping.html";
+const SHARE_TITLE = "ZIWAN YATTRA Shopping";
+const SHARE_TEXT = "Explore festival offers and selected products on ZIWAN YATTRA Shopping.";
+
+document.getElementById("sharePageButton").addEventListener("click", async function(){
+ const shareData = {title:SHARE_TITLE, text:SHARE_TEXT, url:SHARE_URL};
+ try{
+  if(navigator.share){
+   await navigator.share(shareData);
+  }else if(navigator.clipboard && window.isSecureContext){
+   await navigator.clipboard.writeText(SHARE_URL);
+   alert("Shopping page link copied. Share it with your friends!");
+  }else{
+   window.prompt("Copy and share this ZIWAN YATTRA Shopping link:", SHARE_URL);
+  }
+ }catch(error){
+  if(error && error.name !== "AbortError"){
+   window.prompt("Copy and share this ZIWAN YATTRA Shopping link:", SHARE_URL);
+  }
+ }
+});
+
 /* BACK BUTTON */
 const HOME_URL="https://ziwanyattra.com/";
 
@@ -220,24 +555,28 @@ document.getElementById("backButton").addEventListener("click",function(){
 const products=[
 {
  name:"REDMI Turbo 5 5G",
+ category:"Phones",
  note:"8GB + 256GB • Dimensity 8500 Ultra • 7540mAh battery • 100W HyperCharge",
  url:"https://www.amazon.in/MediaTek-Dimensity-7540mAh-Battery-HyperCharge/dp/B0H293SFTR?content-id=amzn1.sym.6e35d58e-d276-4d9c-918a-3d084949b530%3Aamzn1.sym.6e35d58e-d276-4d9c-918a-3d084949b530&crid=9UM6PK9C95XA&cv_ct_cx=iqooz11+lite&keywords=iqooz11+lite&pd_rd_i=B0H293SFTR&pd_rd_r=e1325331-3759-428d-89cb-3b228877ae9c&pd_rd_w=R7Pdg&pd_rd_wg=bKR3x&pf_rd_p=6e35d58e-d276-4d9c-918a-3d084949b530&pf_rd_r=92SKHEVWS5WFCSWPEB9A&qid=1793521578&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=IQOOZ11%2Caps%2C1135&sr=1-2-66673dcf-083f-43ba-b782-d4a436cc5cfb-spons&aref=cSLhhq7Aty&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1&linkCode=ll2&tag=ziwanyattra-21&linkId=95da609589346c146cf0fc19e111f13d&ref_=as_li_ss_tl",
  image:"https://cdn.viettablet.com/images/detailed/70/xiaomi-redmi-turbo-5.jpg"
 },
 {
  name:"OnePlus Nord 6",
+ category:"Phones",
  note:"8GB + 256GB • Snapdragon 8s Gen 4 • 9000mAh battery",
  url:"https://www.amazon.in/OnePlus-Snapdragon-Segments-Complete-Personalized/dp/B0GRBBPBGQ?pd_rd_w=WIEZx&content-id=amzn1.sym.d1406b44-aa69-47e4-9270-f613e12d52dc&pf_rd_p=d1406b44-aa69-47e4-9270-f613e12d52dc&pf_rd_r=HJGCV01VTHA5B42GT5V5&pd_rd_wg=oLF9J&pd_rd_r=75065c70-42c3-4b3e-8dec-fdd966f3df4d&pd_rd_i=B0GRBBPBGQ&psc=1&linkCode=ll2&tag=ziwanyattra-21&linkId=2256a5e9c401c245c25c836dd6a58f45&ref_=as_li_ss_tl",
  image:"https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/322987_0_QvVScBxFf.png?updatedAt=1777881474895"
 },
 {
  name:"Samsung Galaxy S25 Ultra 5G",
+ category:"Phones",
  note:"12GB + 256GB • 200MP camera • 5000mAh battery • S Pen",
  url:"https://www.amazon.in/dp/B0DSKNKCYX?psc=1&pd_rd_i=B0DSKNKCYX&pd_rd_w=vubZs&content-id=amzn1.sym.9a67d0ba-b3d8-41ee-8e29-a3d839054b56&pf_rd_p=9a67d0ba-b3d8-41ee-8e29-a3d839054b56&pf_rd_r=HJGCV01VTHA5B42GT5V5&pd_rd_wg=oLF9J&pd_rd_r=75065c70-42c3-4b3e-8dec-fdd966f3df4d&aref=njAVNlLzIx&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWwy&linkCode=ll2&tag=ziwanyattra-21&linkId=1b646de252de38bd2b5bcd05b6b484e1&ref_=as_li_ss_tl",
  image:"https://m.media-amazon.com/images/I/71AlmDfE-WL._SX679_.jpg"
 },
 {
  name:"Motorola G57 Power 5G",
+ category:"Phones",
  note:"8GB + 128GB • Snapdragon 6s Gen 4 • 7000mAh battery • Amazon search link",
  url:"https://www.amazon.in/s?k=motorola+g57+power+5g&crid=3705LKGLNNH5U&sprefix=motorola+G%2Caps%2C356&linkCode=ll2&tag=ziwanyattra-21&linkId=e7835870e3333e311c4b1ff8a6793a86&ref_=as_li_ss_tl",
  image:"https://p2-ofp.static.pub/fes/cms/2025/11/04/j3s7wzoaexnib9mtnke7g2oau68wfx739178.png"
@@ -270,83 +609,87 @@ function openProduct(p){
  modal.classList.add("show");
 }
 
+let activeFilter="All";
+let searchTerm="";
+
+function productMatches(p){
+ const category=(p.category || "Phones").toLowerCase();
+ const matchesCategory=activeFilter==="All" ||
+  (activeFilter==="Phones" && category==="phones") ||
+  (activeFilter==="Electronics" && ["phones","audio","electronics"].includes(category)) ||
+  category===activeFilter.toLowerCase();
+ const haystack=(p.name+" "+(p.note||"")+" "+category).toLowerCase();
+ return matchesCategory && haystack.includes(searchTerm);
+}
+
 function renderProducts(){
  grid.innerHTML="";
  let shown=0;
 
- products.forEach(p=>{
+ products.filter(productMatches).forEach(p=>{
   const link=safeUrl(p.url);
   if(!link)return;
   shown++;
 
   const card=document.createElement("article");
   card.className="product";
-
   const visual=document.createElement("div");
   visual.className="visual";
 
   if(p.image){
    const img=document.createElement("img");
-   img.src=p.image;
-   img.alt=p.name;
-   img.loading="lazy";
-   img.onerror=()=>{
-    img.remove();
-    visual.innerHTML=phoneIcon();
-   };
+   img.src=p.image;img.alt=p.name;img.loading="lazy";
+   img.onerror=()=>{img.remove();visual.innerHTML=phoneIcon();};
    visual.appendChild(img);
-  }else{
-   visual.innerHTML=phoneIcon();
-  }
+  }else{visual.innerHTML=phoneIcon();}
 
   const body=document.createElement("div");
   body.className="product-body";
-
-  const title=document.createElement("h3");
-  title.textContent=p.name;
-
-  const note=document.createElement("div");
-  note.className="meta";
-  note.textContent=p.note || "Available on Amazon";
-
-  const price=document.createElement("div");
-  price.className="price-link";
-  price.textContent="Check price on Amazon ↗";
-
-  const actions=document.createElement("div");
-  actions.className="actions";
-
-  const details=document.createElement("button");
-  details.className="btn btn-light";
-  details.type="button";
-  details.textContent="Details";
+  const title=document.createElement("h3");title.textContent=p.name;
+  const note=document.createElement("div");note.className="meta";note.textContent=p.note||"Available on Amazon";
+  const price=document.createElement("div");price.className="price-link";price.textContent="Check price on Amazon ↗";
+  const actions=document.createElement("div");actions.className="actions";
+  const details=document.createElement("button");details.className="btn btn-light";details.type="button";details.textContent="Details";
   details.addEventListener("click",()=>openProduct(p));
-
-  const buy=document.createElement("a");
-  buy.className="btn btn-primary";
-  buy.href=link;
-  buy.target="_blank";
-  buy.rel="sponsored nofollow noopener";
-  buy.textContent="Check price";
-
-  actions.append(details,buy);
-  body.append(title,note,price,actions);
-  card.append(visual,body);
-  grid.appendChild(card);
+  const buy=document.createElement("a");buy.className="btn btn-primary";buy.href=link;buy.target="_blank";buy.rel="sponsored nofollow noopener";buy.textContent="Check price";
+  actions.append(details,buy);body.append(title,note,price,actions);card.append(visual,body);grid.appendChild(card);
  });
 
  if(shown===0){
-  grid.innerHTML='<div class="empty-state"><strong>No products available right now.</strong><br>Please check again soon.</div>';
+  grid.innerHTML='<div class="empty-state"><strong>No matching products yet.</strong><br>Try another category or search term.</div>';
  }else{
   const coming=document.createElement("article");
   coming.className="coming-card";
   coming.innerHTML='<div class="coming-icon">✨</div><h3>More Products Coming Soon</h3><p>We are preparing more product choices for you. Keep visiting ZIWAN YATTRA for new additions.</p><span class="coming-label">COMING SOON</span>';
   grid.appendChild(coming);
  }
-
  document.getElementById("productCount").textContent=shown+(shown===1?" product":" products");
 }
 
+function setFilter(filter){
+ activeFilter=filter;
+ document.querySelectorAll(".chip").forEach(chip=>chip.classList.toggle("active",chip.dataset.filter===filter));
+ renderProducts();
+}
+
+document.querySelectorAll(".chip").forEach(chip=>{
+ chip.addEventListener("click",()=>setFilter(chip.dataset.filter));
+});
+document.querySelectorAll(".offer-tile").forEach(tile=>{
+ tile.addEventListener("click",()=>{
+  const filter=tile.dataset.filter;
+  setFilter(filter);
+  document.getElementById("products").scrollIntoView({behavior:"smooth"});
+ });
+});
+const searchInput=document.getElementById("productSearch");
+searchInput.addEventListener("input",()=>{
+ searchTerm=searchInput.value.trim().toLowerCase();
+ renderProducts();
+});
+document.getElementById("clearSearch").addEventListener("click",()=>{
+ searchInput.value="";searchTerm="";renderProducts();searchInput.focus();
+});
 function closeModal(){
  modal.classList.remove("show");
 }
