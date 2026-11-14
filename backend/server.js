@@ -51,6 +51,24 @@ if (!adminSecretKey) {
 }
 
 const adminSupabase = createClient(supabaseUrl, adminSecretKey);
+// ===== FIREBASE PUSH NOTIFICATIONS =====
+const firebaseAdmin = require("firebase-admin");
+
+const serviceAccountPath =
+  process.env.FIREBASE_SERVICE_ACCOUNT_PATH ||
+  "/etc/secrets/firebase-service-account.json";
+
+const serviceAccount = JSON.parse(
+  fs.readFileSync(serviceAccountPath, "utf8")
+);
+
+if (!firebaseAdmin.apps.length) {
+  firebaseAdmin.initializeApp({
+    credential: firebaseAdmin.credential.cert(serviceAccount)
+  });
+}
+
+const firebaseMessaging = firebaseAdmin.messaging();
 app.disable("x-powered-by");
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: "10kb" }));
@@ -106,6 +124,33 @@ app.get("/api/health", (req, res) => {
     success: true,
     message: "ZIWAN YATTRA backend is running."
   });
+});
+// Save browser push subscription
+app.post("/api/push/subscribe", async (req, res) => {
+  const token = req.body?.token;
+
+  if (typeof token !== "string" || token.length < 50 || token.length > 4096) {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid notification token."
+    });
+  }
+
+  try {
+    const { error } = await adminSupabase
+      .from("push_subscriptions")
+      .upsert({ token }, { onConflict: "token" });
+
+    if (error) throw error;
+
+    return res.json({ success: true });
+  } catch (error) {
+    console.error("Push subscription error:", error.message);
+    return res.status(500).json({
+      success: false,
+      error: "Could not save notification subscription."
+    });
+  }
 });
 
 app.post("/api/enquiries", async (req, res) => {
@@ -374,6 +419,63 @@ app.post("/api/admin/posts", requireAdmin, async (req, res) => {
           : "Could not save the post. Check server logs and database settings."
       });
     }
+    // ===== SEND PUSH NOTIFICATION AFTER PUBLISH =====
+if (status === "published") {
+  try {
+    const { data: subscribers, error: tokenError } =
+      await adminSupabase
+        .from("push_subscriptions")
+        .select("token");
+
+    if (tokenError) throw tokenError;
+
+    const tokens = (subscribers || [])
+      .map(item => item.token)
+      .filter(Boolean);
+
+    for (let i = 0; i < tokens.length; i += 500) {
+      const batch = tokens.slice(i, i + 500);
+
+      const result = await firebaseMessaging.sendEachForMulticast({
+        tokens: batch,
+        notification: {
+          title: "ZIWAN YATTRA",
+          body: title.trim()
+        },
+        data: {
+          title: "ZIWAN YATTRA",
+          body: title.trim(),
+          url: `https://ziwanyattra.com/article.html?slug=${slug}`
+        }
+      });
+
+      const invalidTokens = [];
+
+      result.responses.forEach((response, index) => {
+        if (
+          !response.success &&
+          [
+            "messaging/registration-token-not-registered",
+            "messaging/invalid-registration-token"
+          ].includes(response.error?.code)
+        ) {
+          invalidTokens.push(batch[index]);
+        }
+      });
+
+      if (invalidTokens.length) {
+        await adminSupabase
+          .from("push_subscriptions")
+          .delete()
+          .in("token", invalidTokens);
+      }
+    }
+
+    console.log("ZIWAN YATTRA push notification completed.");
+  } catch (pushError) {
+    console.error("Push notification error:", pushError.message);
+  }
+}
 
     return res.status(201).json({
       success: true,
