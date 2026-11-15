@@ -491,32 +491,57 @@ if (status === "published") {
   }
 });
 
-// Daily Updates: fetch published posts
+// Daily Updates: fetch published posts with view counts
 app.get("/api/daily-posts", async (req, res) => {
   try {
-    const { data, error } = await supabase
+    const { data: posts, error: postsError } = await supabase
       .from("daily_posts")
       .select("*")
       .eq("status", "published")
       .order("created_at", { ascending: false });
 
-    if (error) {
-      console.error("Daily posts fetch error:", error.message);
-      return res.status(500).json({
-        success: false,
-        error: "Could not load daily posts."
-      });
+    if (postsError) throw postsError;
+
+    const postRows = posts || [];
+    const postIds = postRows
+      .map(post => post.id)
+      .filter(id => id !== null && id !== undefined);
+
+    let statsRows = [];
+
+    if (postIds.length > 0) {
+      const { data: stats, error: statsError } = await adminSupabase
+        .from("daily_post_stats")
+        .select("post_id, views")
+        .in("post_id", postIds);
+
+      if (statsError) throw statsError;
+      statsRows = stats || [];
     }
+
+    const viewsByPostId = new Map(
+      statsRows.map(row => [
+        String(row.post_id),
+        Number(row.views) || 0
+      ])
+    );
+
+    const updatedPosts = postRows.map(post => ({
+      ...post,
+      views: viewsByPostId.get(String(post.id)) || 0
+    }));
 
     return res.json({
       success: true,
-      posts: data || []
+      posts: updatedPosts
     });
+
   } catch (error) {
-    console.error("Daily posts server error:", error.message);
+    console.error("Daily posts fetch error:", error.message);
+
     return res.status(500).json({
       success: false,
-      error: "Server error while loading posts."
+      error: "Could not load daily posts."
     });
   }
 });
