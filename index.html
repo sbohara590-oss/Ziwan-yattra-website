@@ -714,6 +714,52 @@ body{overflow-x:hidden}
   .daily-feature-card{transition:none}
 }
 
+  
+/* ZIWAN YATTRA Mobile Bottom Navigation */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 82px;
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 110;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 5px calc(10px + env(safe-area-inset-bottom));
+    background: #321078;
+    box-shadow: 0 -4px 18px rgba(0,0,0,.15);
+  }
+
+  .mobile-bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    min-width: 55px;
+  }
+
+  .mobile-bottom-nav a span:first-child {
+    font-size: 22px;
+  }
+
+  .mobile-bottom-nav a.active {
+    color: #ffdf35;
+  }
+}
+  
 </style>
 </head>
 
@@ -892,6 +938,36 @@ body{overflow-x:hidden}
     </a>
   </section>
 </main>
+  
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="active">
+    <span>⌂</span>
+    <span>Home</span>
+  </a>
+
+  <a href="daily-tools.html">
+    <span>▦</span>
+    <span>Tools</span>
+  </a>
+
+  <a href="ai-knowledge.html">
+    <span>✧</span>
+    <span>AI</span>
+  </a>
+
+  <a href="https://youtube.com/@ziwanyattra05"
+     target="_blank" rel="noopener noreferrer">
+    <span>▶</span>
+    <span>YouTube</span>
+  </a>
+
+  <a href="#categorySearch"
+     onclick="document.getElementById('categorySearch').focus()">
+    <span>⌕</span>
+    <span>Search</span>
+  </a>
+</nav>
+  
 <div class="site-toast" id="siteToast" role="status" aria-live="polite"></div>
 
 <!-- Adsterra Banner 320x50 - original integration retained -->
