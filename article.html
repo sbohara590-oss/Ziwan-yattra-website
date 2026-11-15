@@ -42,6 +42,10 @@
     button.action-button:hover{color:var(--navy)}button.action-button:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:3px}
     button.action-button.liked{color:#d83b56}.action-icon{width:16px;height:16px;display:block;flex-shrink:0}
     .action-status{font-size:12px;color:var(--muted);margin-top:5px;min-height:18px;overflow-wrap:anywhere}
+    .preferred-source-box{margin-top:20px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#f8fafc}
+    .preferred-source-title{margin:0 0 6px;color:var(--ink);font-size:16px;font-weight:800}
+    .preferred-source-description{margin:0 0 12px;color:var(--muted);font-size:13px;line-height:1.5}
+    .preferred-source-link{display:inline-block;margin-top:12px;color:var(--navy);font-size:13px;font-weight:750;text-decoration:underline}
     footer{padding:17px 18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center}
   </style>
 </head>
@@ -85,6 +89,16 @@
       if(published&&!Number.isNaN(Date.parse(published)))articleSchema.datePublished=new Date(published).toISOString();
       if(modified&&!Number.isNaN(Date.parse(modified)))articleSchema.dateModified=new Date(modified).toISOString();
       let schemaTag=document.getElementById("article-schema");if(!schemaTag){schemaTag=document.createElement("script");schemaTag.id="article-schema";schemaTag.type="application/ld+json";document.head.appendChild(schemaTag);}schemaTag.textContent=JSON.stringify(articleSchema);
+    }
+
+    function loadPreferredSourceButton(){
+      if(document.querySelector("script[data-zy-preferred-source]"))return;
+      const script=document.createElement("script");
+      script.async=true;
+      script.src="https://news.google.com/swg/js/v1/publisher.js";
+      script.dataset.zyPreferredSource="true";
+      script.onerror=()=>console.warn("Google Preferred Sources button script could not load. The direct link remains available.");
+      document.head.appendChild(script);
     }
 
     function getVoterToken(){const key="zy_article_voter_token";try{let token=localStorage.getItem(key);if(!token){token=Array.from(crypto.getRandomValues(new Uint8Array(24)),b=>b.toString(16).padStart(2,"0")).join("");localStorage.setItem(key,token);}return token;}catch{return "";}}
@@ -168,8 +182,15 @@
             <button class="action-button" id="like-button" type="button" aria-pressed="false"><svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 10v10H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h3Zm0 0 5-7a3 3 0 0 1 2 3l-1 4h5a2 2 0 0 1 2 2l-1 6a2 2 0 0 1-2 2H7"/></svg><span>Like</span><span id="like-count">0</span></button>
             <button class="action-button" id="share-button" type="button"><svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></svg><span>Share</span></button>
           </div>
-          <div class="action-status" id="action-status" role="status" aria-live="polite"></div>`;
+          <div class="action-status" id="action-status" role="status" aria-live="polite"></div>
+          <section class="preferred-source-box" aria-label="Google Preferred Sources">
+            <h2 class="preferred-source-title">Follow ZIWAN YATTRA on Google</h2>
+            <p class="preferred-source-description">Add ZIWAN YATTRA to your Google Preferred Sources to help find our latest updates.</p>
+            <div google-add-preferred-source-btn></div>
+            <a class="preferred-source-link" href="https://www.google.com/preferences/source?q=ziwanyattra.com" target="_blank" rel="noopener noreferrer">Open Google Source Preferences</a>
+          </section>`;
 
+        loadPreferredSourceButton();
         await setupArticleActions(post);
       }catch(error){console.error("Article loading error:",error);target.innerHTML='<div class="state">We could not load this article right now. Please try again in a moment.</div>';}
     }
