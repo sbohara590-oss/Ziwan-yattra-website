@@ -490,6 +490,7 @@ if (status === "published") {
     });
   }
 });
+
 // Daily Updates: fetch published posts
 app.get("/api/daily-posts", async (req, res) => {
   try {
