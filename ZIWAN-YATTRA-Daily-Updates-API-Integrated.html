@@ -1,0 +1,1984 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173b78">
+<meta name="description" content="Latest news, trending stories, sports and daily updates from ZIWAN YATTRA.">
+<title>ZIWAN YATTRA | Daily Updates</title>
+
+<style>
+:root {
+  --navy: #173b78;
+  --navy-dark: #102d5e;
+  --blue: #2459a9;
+  --orange: #f28c28;
+  --saffron: #e87522;
+  --ink: #172033;
+  --muted: #667085;
+  --line: #e5eaf1;
+  --soft: #f4f6fa;
+  --card: #ffffff;
+  --danger: #d92d20;
+  --success: #16845b;
+  --shadow: 0 8px 26px rgba(24, 43, 77, .08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--soft);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.shell {
+  width: min(100%, 960px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding-bottom: 82px;
+  background: var(--card);
+  box-shadow: 0 0 28px rgba(24, 43, 77, .06);
+}
+
+/* -------------------------------------------------------
+   HEADER AND BRAND
+------------------------------------------------------- */
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding: 14px 16px 10px;
+  text-align: center;
+  background: rgba(255, 255, 255, .97);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+}
+
+.header-main {
+  position: relative;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-link {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.brand-block {
+  min-width: 0;
+  padding: 0 82px;
+}
+
+.brand {
+  color: var(--navy);
+  font-size: 21px;
+  font-weight: 950;
+  letter-spacing: .045em;
+  line-height: 1.2;
+}
+
+.subbrand {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.top-actions {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.top-action {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--navy);
+  font-size: 21px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 2px 7px rgba(16, 45, 94, .04);
+}
+
+.top-action:active {
+  transform: scale(.96);
+}
+
+.top-action[aria-pressed="true"] {
+  background: #edf3ff;
+  border-color: #b9cbed;
+}
+
+/* -------------------------------------------------------
+   ONE-LINE HORIZONTAL FEED NAVIGATION
+------------------------------------------------------- */
+
+.feed-tabs-wrap {
+  position: relative;
+  margin-top: 13px;
+}
+
+.feed-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 1px 8px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+
+.feed-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.feed-tab {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 10px 17px;
+  border: 1px solid #e4e7ec;
+  border-radius: 28px;
+  background: #fff;
+  color: #344054;
+  font-size: 13px;
+  font-weight: 850;
+  white-space: nowrap;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+
+.feed-tab.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+  box-shadow: 0 4px 11px rgba(23, 59, 120, .18);
+}
+
+.feed-tab[data-feed="popular"].active {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+.feed-tab[data-feed="national"].active {
+  background: #d96b22;
+  border-color: #d96b22;
+}
+
+.feed-tab:focus-visible,
+.top-action:focus-visible,
+.sort-button:focus-visible,
+.save-update:focus-visible {
+  outline: 3px solid rgba(36, 89, 169, .3);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------
+   SEARCH
+------------------------------------------------------- */
+
+.search-wrap {
+  padding: 15px 16px 0;
+}
+
+.search-wrap.search-hidden {
+  display: none;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search {
+  width: 100%;
+  min-height: 52px;
+  padding: 13px 15px;
+  border: 1px solid #e1e5ec;
+  border-radius: 15px;
+  outline: none;
+  background: #fff;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.search:focus {
+  border-color: #8aa9d8;
+  box-shadow: 0 0 0 3px rgba(36, 89, 169, .09);
+}
+
+.search-hint {
+  margin: 6px 2px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* -------------------------------------------------------
+   MAIN FEED AND BREAKING TICKER
+------------------------------------------------------- */
+
+.feed {
+  padding: 16px 16px 26px;
+}
+
+.breaking-ticker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  margin-bottom: 23px;
+  padding: 11px 13px;
+  border: 1px solid #ffd9d4;
+  border-radius: 16px;
+  background: #fff4f2;
+  overflow: hidden;
+}
+
+.breaking-label {
+  flex: 0 0 auto;
+  padding: 6px 9px;
+  border-radius: 7px;
+  background: var(--danger);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 950;
+  letter-spacing: .04em;
+}
+
+.breaking-text {
+  min-width: 0;
+  overflow: hidden;
+  color: #922018;
+  font-size: 13px;
+  font-weight: 850;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* -------------------------------------------------------
+   LATEST / TRENDING SORT BUTTONS
+------------------------------------------------------- */
+
+.news-tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: -5px 0 22px;
+}
+
+.sort-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 9px;
+}
+
+.sort-button {
+  min-height: 43px;
+  padding: 9px 18px;
+  border: 1px solid #e3e7ee;
+  border-radius: 26px;
+  background: #fff;
+  color: #344054;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.sort-button.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+.sort-button[data-sort="trending"].active {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+/* -------------------------------------------------------
+   SECTION HEADINGS
+------------------------------------------------------- */
+
+.section-block {
+  margin: 0 0 25px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 13px;
+}
+
+.section-heading h1,
+.section-heading h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 950;
+  letter-spacing: -.025em;
+}
+
+.count,
+.section-note {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------
+   CATCH UP QUICK STORY CARDS
+------------------------------------------------------- */
+
+.catchup-section {
+  margin: 0 0 23px;
+  padding: 0 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.catchup-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 2px 0 9px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.catchup-row::-webkit-scrollbar {
+  display: none;
+}
+
+.catchup-card {
+  position: relative;
+  flex: 0 0 154px;
+  height: 218px;
+  overflow: hidden;
+  border: 1px solid #e8ebf1;
+  border-radius: 19px;
+  background: #e9edf4;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 13px rgba(16, 45, 94, .10);
+  scroll-snap-align: start;
+}
+
+.catchup-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 110px;
+  background: #eef2f7;
+  color: #667085;
+  font-size: 13px;
+}
+
+.catchup-card::after {
+  position: absolute;
+  inset: 32% 0 0;
+  background: linear-gradient(transparent, rgba(10, 18, 32, .88));
+  content: "";
+}
+
+.catchup-title {
+  position: absolute;
+  z-index: 1;
+  right: 10px;
+  bottom: 12px;
+  left: 10px;
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.32;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.catchup-tag {
+  position: absolute;
+  z-index: 2;
+  top: 9px;
+  left: 9px;
+  max-width: calc(100% - 18px);
+  padding: 5px 7px;
+  border-radius: 7px;
+  background: rgba(23, 59, 120, .94);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+/* -------------------------------------------------------
+   TOP STORIES LARGE CARDS
+------------------------------------------------------- */
+
+.top-stories-section {
+  margin: 0 0 27px;
+}
+
+.top-stories-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 2px 0 10px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.top-stories-row::-webkit-scrollbar {
+  display: none;
+}
+
+.top-story-card {
+  flex: 0 0 min(86%, 390px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow);
+  scroll-snap-align: start;
+}
+
+.top-story-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.top-story-image {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #eef2f7;
+}
+
+.top-story-body {
+  padding: 14px 15px 13px;
+}
+
+.top-story-body h3 {
+  margin: 8px 0;
+  font-size: 19px;
+  font-weight: 950;
+  line-height: 1.28;
+  letter-spacing: -.02em;
+}
+
+.top-story-body p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: #596579;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.story-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #edf3ff;
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 950;
+}
+
+/* -------------------------------------------------------
+   MORE UPDATES LIST
+------------------------------------------------------- */
+
+.more-section {
+  margin: 0;
+  padding: 0 16px 26px;
+}
+
+.post-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 13px;
+}
+
+.post-card {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr);
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 3px 13px rgba(16, 45, 94, .045);
+}
+
+.post-link-image {
+  display: block;
+  min-width: 0;
+}
+
+.post-card-image {
+  display: block;
+  width: 116px;
+  height: 100%;
+  min-height: 130px;
+  object-fit: cover;
+  background: #eef2f7;
+}
+
+.post-card-body {
+  min-width: 0;
+  padding: 11px 12px;
+}
+
+.post-card h3 {
+  margin: 7px 0 6px;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.32;
+}
+
+.post-card h3 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.post-card .excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: #596579;
+  font-size: 12px;
+  line-height: 1.45;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* -------------------------------------------------------
+   SAVE / BOOKMARK BUTTON
+------------------------------------------------------- */
+
+.save-update {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 9px;
+  padding: 6px 10px;
+  border: 1px solid #d9e2f1;
+  border-radius: 9px;
+  background: #f7f9fd;
+  color: var(--navy);
+  font-size: 11px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.save-update.is-saved {
+  border-color: #f5d5a7;
+  background: #fff7e9;
+  color: #a65a08;
+}
+
+/* -------------------------------------------------------
+   ADSTERRA NATIVE AD SLOT
+------------------------------------------------------- */
+
+.adsterra-native-slot {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
+  min-height: 90px;
+  margin: 13px 0;
+  padding: 10px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fff;
+}
+
+.ad-label {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  text-align: center;
+}
+
+/* -------------------------------------------------------
+   LOADING, EMPTY AND ERROR STATES
+------------------------------------------------------- */
+
+.empty,
+.notice {
+  width: 100%;
+  padding: 24px 15px;
+  border: 1px dashed #ccd5e3;
+  border-radius: 15px;
+  color: var(--muted);
+  background: #fff;
+  font-size: 13px;
+  text-align: center;
+}
+
+.notice {
+  margin: 12px 0;
+  text-align: left;
+}
+
+.notice strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.retry-button {
+  margin-top: 11px;
+  padding: 8px 13px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--navy);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------
+   FOOTER AND FIXED BOTTOM NAVIGATION
+------------------------------------------------------- */
+
+.footer {
+  padding: 18px 16px 22px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.footer a {
+  color: var(--navy);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.bottom-nav {
+  position: fixed;
+  z-index: 50;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: min(100%, 960px);
+  margin: 0 auto;
+  padding: 9px 8px calc(9px + env(safe-area-inset-bottom));
+  background: var(--navy);
+  box-shadow: 0 -5px 20px rgba(16, 45, 94, .16);
+}
+
+.bottom-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 48px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.bottom-nav a span:first-child {
+  font-size: 21px;
+  line-height: 1.15;
+}
+
+.bottom-nav a:active {
+  opacity: .75;
+}
+
+/* -------------------------------------------------------
+   TABLET / DESKTOP
+------------------------------------------------------- */
+
+@media (min-width: 620px) {
+  .top {
+    padding: 17px 24px 12px;
+  }
+
+  .feed,
+  .search-wrap {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .more-section {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .catchup-card {
+    flex-basis: 178px;
+    height: 238px;
+  }
+
+  .top-story-card {
+    flex-basis: 410px;
+  }
+
+  .top-story-image {
+    height: 220px;
+  }
+
+  .post-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .post-card {
+    grid-template-columns: 108px minmax(0, 1fr);
+  }
+
+  .post-card-image {
+    width: 108px;
+  }
+}
+
+/* -------------------------------------------------------
+   SMALL PHONE
+------------------------------------------------------- */
+
+@media (max-width: 390px) {
+  .top {
+    padding: 11px 12px 8px;
+  }
+
+  .home-link {
+    font-size: 11px;
+  }
+
+  .brand-block {
+    padding-right: 74px;
+    padding-left: 68px;
+  }
+
+  .brand {
+    font-size: 17px;
+  }
+
+  .subbrand {
+    font-size: 11px;
+  }
+
+  .top-action {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .top-actions {
+    gap: 5px;
+  }
+
+  .feed-tab {
+    min-height: 42px;
+    padding: 9px 13px;
+    font-size: 12px;
+  }
+
+  .feed {
+    padding-right: 13px;
+    padding-left: 13px;
+  }
+
+  .search-wrap {
+    padding-right: 13px;
+    padding-left: 13px;
+  }
+
+  .catchup-card {
+    flex-basis: 145px;
+    height: 204px;
+  }
+
+  .top-story-card {
+    flex-basis: 88%;
+  }
+
+  .top-story-image {
+    height: 175px;
+  }
+
+  .post-card {
+    grid-template-columns: 96px minmax(0, 1fr);
+  }
+
+  .post-card-image {
+    width: 96px;
+    min-height: 120px;
+  }
+
+  .post-card-body {
+    padding: 9px 10px;
+  }
+
+  .post-card h3 {
+    font-size: 14px;
+  }
+
+  .more-section {
+    padding-right: 13px;
+    padding-left: 13px;
+  }
+}
+
+/* -------------------------------------------------------
+   ACCESSIBILITY AND REDUCED MOTION
+------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="shell">
+
+  <header class="top">
+    <div class="header-main">
+      <a class="home-link" href="/index.html">← Home</a>
+
+      <div class="brand-block">
+        <div class="brand">ZIWAN YATTRA</div>
+        <div class="subbrand">Daily Updates</div>
+      </div>
+
+      <div class="top-actions" aria-label="Quick actions">
+        <button
+          class="top-action"
+          id="topSearchBtn"
+          type="button"
+          aria-label="Show search"
+          title="Search"
+        >⌕</button>
+
+        <button
+          class="top-action"
+          id="bookmarkBtn"
+          type="button"
+          aria-label="Show saved stories"
+          title="Saved stories"
+          aria-pressed="false"
+        >♧</button>
+      </div>
+    </div>
+
+    <div class="feed-tabs-wrap">
+      <nav class="feed-tabs" aria-label="News sections">
+        <button class="feed-tab active" data-feed="latest" type="button">Latest</button>
+        <button class="feed-tab" data-feed="foryou" type="button">For You</button>
+        <button class="feed-tab" data-feed="following" type="button">Following</button>
+        <button class="feed-tab" data-feed="popular" type="button">Popular</button>
+        <button class="feed-tab" data-feed="national" type="button">National</button>
+        <button class="feed-tab" data-feed="international" type="button">International</button>
+        <button class="feed-tab" data-feed="local" type="button">Local</button>
+        <button class="feed-tab" data-feed="sports" type="button">Sports</button>
+        <button class="feed-tab" data-feed="entertainment" type="button">Entertainment</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="search-wrap search-hidden" id="searchWrap">
+    <div class="search-box">
+      <input
+        class="search"
+        id="searchInput"
+        type="search"
+        placeholder="Search news, sports and updates..."
+        aria-label="Search updates"
+      >
+    </div>
+    <p class="search-hint">Search headlines, descriptions and categories.</p>
+  </div>
+
+  <section class="feed" id="postsArea" aria-live="polite">
+
+    <div class="breaking-ticker" id="breakingTicker">
+      <span class="breaking-label">BREAKING</span>
+      <a class="breaking-text" id="breakingText" href="#">
+        Latest updates from ZIWAN YATTRA
+      </a>
+    </div>
+
+    <div class="news-tools" id="newsTools">
+      <div class="sort-tabs" aria-label="Sort news">
+        <button
+          class="sort-button active"
+          data-sort="latest"
+          type="button"
+          aria-pressed="true"
+        >Latest</button>
+
+        <button
+          class="sort-button"
+          data-sort="trending"
+          type="button"
+          aria-pressed="false"
+        >🔥 Trending</button>
+      </div>
+    </div>
+
+    <section class="catchup-section section-block" aria-labelledby="catchupHeading">
+      <div class="section-heading">
+        <h2 id="catchupHeading">Catch Up</h2>
+        <span class="section-note">Quick updates</span>
+      </div>
+
+      <div class="catchup-row" id="catchUpRow">
+        <div class="empty">Loading stories...</div>
+      </div>
+    </section>
+
+    <section class="top-stories-section section-block" aria-labelledby="feedHeading">
+      <div class="section-heading">
+        <h1 id="feedHeading">Top Stories</h1>
+        <span class="count" id="postCount">Loading...</span>
+      </div>
+
+      <div class="top-stories-row" id="featuredNews">
+        <div class="empty">Loading top stories...</div>
+      </div>
+    </section>
+
+  </section>
+
+  <section class="more-section" id="moreSection" aria-labelledby="listHeading">
+    <div class="section-heading">
+      <h2 id="listHeading">More Updates</h2>
+    </div>
+
+    <div class="post-list" id="postList">
+      <div class="empty">Loading updates...</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <a href="/index.html">Home</a>
+    ·
+    <a href="/privacy-policy.html">Privacy Policy</a>
+
+    <div style="margin-top: 5px">
+      © <span id="year"></span> ZIWAN YATTRA
+    </div>
+  </footer>
+
+</main>
+
+<nav class="bottom-nav" aria-label="Main mobile navigation">
+  <a href="/index.html" aria-label="Home">
+    <span>⌂</span>
+    <span>Home</span>
+  </a>
+
+  <a href="daily-tools.html" aria-label="Tools">
+    <span>▦</span>
+    <span>Tools</span>
+  </a>
+
+  <a href="ai-knowledge.html" aria-label="AI">
+    <span>✧</span>
+    <span>AI</span>
+  </a>
+
+  <a
+    href="https://youtube.com/@ziwanyattra05"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="YouTube"
+  >
+    <span>▶</span>
+    <span>YouTube</span>
+  </a>
+</nav>
+
+<script>
+"use strict";
+
+/* -------------------------------------------------------
+   API CONFIGURATION
+------------------------------------------------------- */
+
+const API_BASE =
+  location.hostname === "localhost" ||
+  location.hostname === "127.0.0.1"
+    ? "http://localhost:3000"
+    : "https://ziwan-yatra-backend.onrender.com";
+
+const POSTS_ENDPOINT = `${API_BASE}/api/daily-posts`;
+
+const AD_CONTAINER_ID =
+  "container-5fe4e1a50fc2bcd4765c02ecd8c32268";
+
+const AD_SCRIPT_URL =
+  "https://bicea.org/21/5fe4e1a50fc2bcd4765c02ecd8c32268";
+
+/* -------------------------------------------------------
+   APP STATE
+------------------------------------------------------- */
+
+const state = {
+  posts: [],
+  feed: "latest",
+  sort: "latest",
+  savedOnly: false,
+  loading: false,
+  adLoaded: false
+};
+
+/* -------------------------------------------------------
+   DOM REFERENCES
+------------------------------------------------------- */
+
+const el = {
+  search: document.getElementById("searchInput"),
+  searchWrap: document.getElementById("searchWrap"),
+  searchButton: document.getElementById("topSearchBtn"),
+  bookmarkButton: document.getElementById("bookmarkBtn"),
+  featured: document.getElementById("featuredNews"),
+  catchup: document.getElementById("catchUpRow"),
+  list: document.getElementById("postList"),
+  count: document.getElementById("postCount"),
+  heading: document.getElementById("feedHeading"),
+  listHeading: document.getElementById("listHeading"),
+  more: document.getElementById("moreSection"),
+  posts: document.getElementById("postsArea"),
+  ticker: document.getElementById("breakingTicker"),
+  tickerText: document.getElementById("breakingText")
+};
+
+/* -------------------------------------------------------
+   BASIC HELPERS
+------------------------------------------------------- */
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, character => {
+    const entities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    };
+
+    return entities[character];
+  });
+}
+
+function safeURL(value) {
+  if (!value) {
+    return "";
+  }
+
+  try {
+    const parsed = new URL(String(value).trim(), location.origin);
+
+    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+      return parsed.href;
+    }
+  } catch (error) {
+    return "";
+  }
+
+  return "";
+}
+
+function normalizeText(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function getCategory(post) {
+  const raw = normalizeText(post.category);
+
+  if (
+    raw === "sports" ||
+    raw === "sport" ||
+    raw === "gaming" ||
+    raw === "sports / gaming" ||
+    raw === "sports/gaming"
+  ) {
+    return "Sports / Gaming";
+  }
+
+  if (
+    raw === "international" ||
+    raw === "world" ||
+    raw === "world news"
+  ) {
+    return "International";
+  }
+
+  if (
+    raw === "local" ||
+    raw === "local news"
+  ) {
+    return "Local";
+  }
+
+  if (
+    raw === "entertainment" ||
+    raw === "entertainment news"
+  ) {
+    return "Entertainment";
+  }
+
+  if (
+    raw === "national" ||
+    raw === "india" ||
+    raw === "national news"
+  ) {
+    return "National";
+  }
+
+  return "News";
+}
+
+function getPostDate(post) {
+  const value = post.published_at || post.created_at || 0;
+  const timestamp = new Date(value).getTime();
+
+  return Number.isFinite(timestamp) ? timestamp : 0;
+}
+
+function formatDate(value) {
+  if (!value) {
+    return "Recent";
+  }
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) {
+    return "Recent";
+  }
+
+  return date.toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  });
+}
+
+function getViews(post) {
+  return Number(
+    post.views ??
+    post.view_count ??
+    post.stats?.views ??
+    0
+  );
+}
+
+function getPostId(post) {
+  return String(post.id ?? post.slug ?? "");
+}
+
+function isPublished(post) {
+  return normalizeText(post.status || "published") === "published";
+}
+
+/* -------------------------------------------------------
+   ARTICLE LINKS AND IMAGES
+------------------------------------------------------- */
+
+function articleURL(post) {
+  const raw =
+    post.article_url ||
+    post.url ||
+    post.link;
+
+  const valid = safeURL(raw);
+
+  if (valid) {
+    return valid;
+  }
+
+  if (post.slug) {
+    return "/article.html?slug=" + encodeURIComponent(post.slug);
+  }
+
+  return "/article.html?id=" +
+    encodeURIComponent(post.id ?? "");
+}
+
+function imageHTML(post, className) {
+  const raw =
+    post.image_url ||
+    post.image ||
+    "";
+
+  const imageURL = safeURL(raw);
+
+  if (!imageURL) {
+    return `
+      <div class="${className} image-placeholder">
+        ZIWAN YATTRA
+      </div>
+    `;
+  }
+
+  return `
+    <img
+      class="${className}"
+      src="${escapeHTML(imageURL)}"
+      alt="${escapeHTML(post.title || "News image")}"
+      loading="lazy"
+      decoding="async"
+    >
+  `;
+}
+
+/* -------------------------------------------------------
+   SAVED STORIES
+------------------------------------------------------- */
+
+function getSavedIDs() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem("zy_saved_updates") || "[]"
+    );
+
+    return Array.isArray(saved) ? saved.map(String) : [];
+  } catch (error) {
+    return [];
+  }
+}
+
+function isSaved(post) {
+  const id = getPostId(post);
+
+  return id !== "" && getSavedIDs().includes(id);
+}
+
+function toggleSaved(id) {
+  if (!id) {
+    return false;
+  }
+
+  const saved = getSavedIDs();
+  const alreadySaved = saved.includes(id);
+
+  const updated = alreadySaved
+    ? saved.filter(item => item !== id)
+    : [...saved, id];
+
+  try {
+    localStorage.setItem(
+      "zy_saved_updates",
+      JSON.stringify(updated)
+    );
+  } catch (error) {
+    console.warn("Could not save this story:", error);
+  }
+
+  return !alreadySaved;
+}
+
+function saveButton(post) {
+  const id = getPostId(post);
+  const saved = isSaved(post);
+
+  return `
+    <button
+      class="save-update ${saved ? "is-saved" : ""}"
+      type="button"
+      data-save-id="${escapeHTML(id)}"
+      aria-pressed="${saved}"
+    >
+      ${saved ? "★ Saved" : "☆ Save"}
+    </button>
+  `;
+}
+
+/* -------------------------------------------------------
+   STORY CARD TEMPLATES
+------------------------------------------------------- */
+
+function catchupCard(post) {
+  const url = articleURL(post);
+  const title = escapeHTML(post.title || "Untitled update");
+  const category = escapeHTML(getCategory(post));
+
+  return `
+    <a
+      class="catchup-card"
+      href="${escapeHTML(url)}"
+      aria-label="${title}"
+    >
+      ${imageHTML(post, "catchup-image")}
+
+      <span class="catchup-tag">
+        ${category}
+      </span>
+
+      <span class="catchup-title">
+        ${title}
+      </span>
+    </a>
+  `;
+}
+
+function topStoryCard(post) {
+  const url = articleURL(post);
+  const title = escapeHTML(post.title || "Untitled update");
+  const description = escapeHTML(
+    post.description ||
+    post.excerpt ||
+    "Open this story to read the full update."
+  );
+
+  const category = escapeHTML(getCategory(post));
+  const date = escapeHTML(
+    formatDate(post.published_at || post.created_at)
+  );
+
+  return `
+    <article class="top-story-card">
+
+      <a
+        class="top-story-link"
+        href="${escapeHTML(url)}"
+      >
+        ${imageHTML(post, "top-story-image")}
+
+        <div class="top-story-body">
+
+          <div class="story-meta">
+            <span class="category-pill">${category}</span>
+            <span>${date}</span>
+          </div>
+
+          <h3>${title}</h3>
+
+          <p>${description}</p>
+
+          <span class="read-more">
+            Read Full Story →
+          </span>
+
+        </div>
+      </a>
+
+      ${saveButton(post)}
+
+    </article>
+  `;
+}
+
+function updateCard(post) {
+  const url = articleURL(post);
+  const title = escapeHTML(post.title || "Untitled update");
+  const description = escapeHTML(
+    post.description ||
+    post.excerpt ||
+    "Open this update to read more."
+  );
+
+  const category = escapeHTML(getCategory(post));
+  const date = escapeHTML(
+    formatDate(post.published_at || post.created_at)
+  );
+
+  return `
+    <article class="post-card">
+
+      <a
+        class="post-link-image"
+        href="${escapeHTML(url)}"
+        aria-label="${title}"
+      >
+        ${imageHTML(post, "post-card-image")}
+      </a>
+
+      <div class="post-card-body">
+
+        <div class="story-meta">
+          <span class="category-pill">${category}</span>
+          <span>${date}</span>
+        </div>
+
+        <h3>
+          <a href="${escapeHTML(url)}">${title}</a>
+        </h3>
+
+        <p class="excerpt">${description}</p>
+
+        ${saveButton(post)}
+
+      </div>
+
+    </article>
+  `;
+}
+
+/* -------------------------------------------------------
+   FEED FILTERING
+------------------------------------------------------- */
+
+function matchesFeed(post) {
+  const category = getCategory(post);
+  const raw = normalizeText(post.category);
+  const tags = Array.isArray(post.tags)
+    ? post.tags.map(normalizeText)
+    : [];
+
+  const text = [
+    post.title,
+    post.description,
+    post.excerpt,
+    post.content,
+    post.category,
+    ...tags
+  ].map(normalizeText).join(" ");
+
+  switch (state.feed) {
+    case "following":
+      return getSavedIDs().includes(getPostId(post));
+
+    case "popular":
+      return true;
+
+    case "national":
+      return category === "National" ||
+        raw.includes("national") ||
+        text.includes("india");
+
+    case "international":
+      return category === "International" ||
+        raw.includes("international") ||
+        raw === "world";
+
+    case "local":
+      return category === "Local" ||
+        raw.includes("local");
+
+    case "sports":
+      return category === "Sports / Gaming";
+
+    case "entertainment":
+      return category === "Entertainment";
+
+    case "foryou":
+      return true;
+
+    case "latest":
+    default:
+      return true;
+  }
+}
+
+function getVisiblePosts() {
+  const query = normalizeText(el.search.value);
+
+  let posts = state.posts.filter(post => {
+    if (!isPublished(post)) {
+      return false;
+    }
+
+    if (!matchesFeed(post)) {
+      return false;
+    }
+
+    if (state.savedOnly && !getSavedIDs().includes(getPostId(post))) {
+      return false;
+    }
+
+    const searchable = [
+      post.title,
+      post.description,
+      post.excerpt,
+      post.content,
+      post.category,
+      ...(Array.isArray(post.tags) ? post.tags : [])
+    ].map(normalizeText).join(" ");
+
+    return searchable.includes(query);
+  });
+
+  posts.sort((first, second) => {
+    if (state.sort === "trending" || state.feed === "popular") {
+      return (
+        getViews(second) - getViews(first) ||
+        getPostDate(second) - getPostDate(first)
+      );
+    }
+
+    return getPostDate(second) - getPostDate(first);
+  });
+
+  return posts;
+}
+
+/* -------------------------------------------------------
+   FEED HEADINGS AND ACTIVE BUTTONS
+------------------------------------------------------- */
+
+function updateHeadings(posts) {
+  const headingMap = {
+    latest: "Top Stories",
+    foryou: "For You",
+    following: "Saved Stories",
+    popular: "Popular Stories",
+    national: "National News",
+    international: "International News",
+    local: "Local News",
+    sports: "Sports & Gaming",
+    entertainment: "Entertainment"
+  };
+
+  el.heading.textContent =
+    headingMap[state.feed] || "Top Stories";
+
+  el.listHeading.textContent =
+    state.feed === "sports"
+      ? "More Sports Updates"
+      : "More Updates";
+
+  el.count.textContent =
+    `${posts.length} ${posts.length === 1 ? "story" : "stories"}`;
+
+  document.querySelectorAll(".feed-tab").forEach(button => {
+    const active = button.dataset.feed === state.feed;
+
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+
+  document.querySelectorAll(".sort-button").forEach(button => {
+    const active = button.dataset.sort === state.sort;
+
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+
+  el.bookmarkButton.setAttribute(
+    "aria-pressed",
+    String(state.savedOnly)
+  );
+}
+
+/* -------------------------------------------------------
+   BREAKING NEWS TICKER
+------------------------------------------------------- */
+
+function updateTicker(posts) {
+  if (!posts.length) {
+    el.ticker.hidden = true;
+    return;
+  }
+
+  const first = posts[0];
+
+  el.ticker.hidden = false;
+  el.tickerText.textContent =
+    first.title || "Latest updates from ZIWAN YATTRA";
+
+  el.tickerText.href = articleURL(first);
+}
+
+/* -------------------------------------------------------
+   ADSTERRA NATIVE AD
+------------------------------------------------------- */
+
+function loadAdsterra() {
+  const container = document.getElementById(AD_CONTAINER_ID);
+
+  if (!container || container.dataset.loaded === "true") {
+    return;
+  }
+
+  // The feed can re-render after search, sorting or bookmarking.
+  // Mark this particular slot, not the whole page, so a newly-created
+  // slot can receive the existing Adsterra loader again.
+  container.dataset.loaded = "true";
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.setAttribute("data-cfasync", "false");
+  script.src = AD_SCRIPT_URL;
+
+  container.appendChild(script);
+}
+
+function createAdSlot() {
+  return `
+    <div
+      class="adsterra-native-slot"
+      aria-label="Advertisement"
+    >
+      <div class="ad-label">Advertisement</div>
+      <div id="${AD_CONTAINER_ID}"></div>
+    </div>
+  `;
+}
+
+/* -------------------------------------------------------
+   MAIN RENDER
+------------------------------------------------------- */
+
+function render() {
+  const posts = getVisiblePosts();
+
+  updateHeadings(posts);
+  updateTicker(posts);
+
+  const catchupPosts = posts.slice(0, 8);
+
+  el.catchup.innerHTML = catchupPosts.length
+    ? catchupPosts.map(catchupCard).join("")
+    : '<div class="empty">No quick updates available yet.</div>';
+
+  const topPosts = posts.slice(0, 5);
+
+  el.featured.innerHTML = topPosts.length
+    ? topPosts.map(topStoryCard).join("")
+    : '<div class="empty">No stories available in this section yet.</div>';
+
+  const remainingPosts = posts.slice(5);
+  const output = [];
+
+  remainingPosts.forEach((post, index) => {
+    output.push(updateCard(post));
+
+    if (index === 2 && remainingPosts.length > 3) {
+      output.push(createAdSlot());
+    }
+  });
+
+  el.list.innerHTML = output.length
+    ? output.join("")
+    : '<div class="empty">More updates will appear here.</div>';
+
+  el.more.hidden = posts.length <= 5;
+
+  loadAdsterra();
+}
+
+/* -------------------------------------------------------
+   API RESPONSE NORMALIZATION
+------------------------------------------------------- */
+
+function extractPosts(data) {
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+  if (Array.isArray(data.posts)) {
+    return data.posts;
+  }
+
+  if (Array.isArray(data.data)) {
+    return data.data;
+  }
+
+  if (Array.isArray(data.data?.posts)) {
+    return data.data.posts;
+  }
+
+  return null;
+}
+
+/* -------------------------------------------------------
+   ERROR DISPLAY
+------------------------------------------------------- */
+
+function showLoadError(error) {
+  console.error("Daily Updates loading error:", error);
+
+  el.count.textContent = "";
+  el.catchup.innerHTML = `
+    <div class="empty">
+      Stories could not be loaded.
+    </div>
+  `;
+
+  el.featured.innerHTML = `
+    <div class="empty">
+      News could not be loaded right now.
+    </div>
+  `;
+
+  const isLocalFile =
+    location.protocol === "file:" ||
+    location.protocol === "content:";
+
+  const message = isLocalFile
+    ? "You opened this HTML directly from Downloads. Browser security can block the website API in this mode. Open the page through your live website or a local web server to test news loading."
+    : "The news server did not respond. Please check your internet connection and try again.";
+
+  el.list.innerHTML = `
+    <div class="notice" role="alert">
+      <strong>Updates temporarily unavailable</strong>
+      ${escapeHTML(message)}
+      <br>
+      <button class="retry-button" id="retryPosts" type="button">
+        Try Again
+      </button>
+    </div>
+  `;
+
+  const retry = document.getElementById("retryPosts");
+
+  if (retry) {
+    retry.addEventListener("click", loadPosts);
+  }
+
+  el.more.hidden = false;
+}
+
+/* -------------------------------------------------------
+   LOAD NEWS POSTS
+------------------------------------------------------- */
+
+async function loadPosts() {
+  if (state.loading) {
+    return;
+  }
+
+  state.loading = true;
+
+  el.catchup.innerHTML =
+    '<div class="empty">Loading stories...</div>';
+
+  el.featured.innerHTML =
+    '<div class="empty">Loading top stories...</div>';
+
+  el.list.innerHTML =
+    '<div class="empty">Loading updates...</div>';
+
+  try {
+    const response = await fetch(POSTS_ENDPOINT, {
+      method: "GET",
+      headers: {
+        "Accept": "application/json"
+      },
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `News server returned ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+
+    if (data.success === false) {
+      throw new Error(
+        data.error || "The news service returned an error."
+      );
+    }
+
+    const posts = extractPosts(data);
+
+    if (!posts) {
+      throw new Error(
+        "The news API response did not contain a posts list."
+      );
+    }
+
+    state.posts = posts;
+    state.loading = false;
+
+    render();
+  } catch (error) {
+    state.loading = false;
+    showLoadError(error);
+  }
+}
+
+/* -------------------------------------------------------
+   FEED BUTTON EVENTS
+------------------------------------------------------- */
+
+document.querySelectorAll(".feed-tab").forEach(button => {
+  button.addEventListener("click", () => {
+    state.feed = button.dataset.feed;
+    state.savedOnly = state.feed === "following";
+
+    if (state.feed !== "popular") {
+      state.sort = "latest";
+    }
+
+    render();
+  });
+});
+
+/* -------------------------------------------------------
+   LATEST / TRENDING BUTTON EVENTS
+------------------------------------------------------- */
+
+document.querySelectorAll(".sort-button").forEach(button => {
+  button.addEventListener("click", () => {
+    state.sort = button.dataset.sort;
+    render();
+  });
+});
+
+/* -------------------------------------------------------
+   SEARCH BUTTON AND INPUT
+------------------------------------------------------- */
+
+el.searchButton.addEventListener("click", () => {
+  const willOpen = el.searchWrap.classList.contains("search-hidden");
+
+  el.searchWrap.classList.toggle("search-hidden");
+
+  if (willOpen) {
+    el.search.focus();
+  } else {
+    el.search.value = "";
+    render();
+  }
+});
+
+el.search.addEventListener("input", () => {
+  render();
+});
+
+/* -------------------------------------------------------
+   BOOKMARK BUTTON
+------------------------------------------------------- */
+
+el.bookmarkButton.addEventListener("click", () => {
+  state.savedOnly = !state.savedOnly;
+  state.feed = state.savedOnly ? "following" : "latest";
+  state.sort = "latest";
+
+  render();
+});
+
+/* -------------------------------------------------------
+   SAVE / UNSAVE STORY CLICK HANDLER
+------------------------------------------------------- */
+
+document.addEventListener("click", event => {
+  const button = event.target.closest("[data-save-id]");
+
+  if (!button) {
+    return;
+  }
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  const id = button.dataset.saveId;
+
+  if (!id) {
+    return;
+  }
+
+  const saved = toggleSaved(id);
+
+  button.textContent = saved ? "★ Saved" : "☆ Save";
+  button.classList.toggle("is-saved", saved);
+  button.setAttribute("aria-pressed", String(saved));
+
+  if (state.savedOnly) {
+    render();
+  }
+});
+
+/* -------------------------------------------------------
+   START APPLICATION
+------------------------------------------------------- */
+
+loadPosts();
+
+</script>
+</body>
+</html>
