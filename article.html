@@ -67,30 +67,119 @@
     function contentHtml(value){return escapeHtml(value||"").replace(/\r\n?/g,"\n").split(/\n{2,}/).map(part=>`<p>${part.replace(/\n/g,"<br>")}</p>`).join("");}
     function setMeta(attribute,key,value){let tag=document.head.querySelector(`meta[${attribute}="${key}"]`);if(!tag){tag=document.createElement("meta");tag.setAttribute(attribute,key);document.head.appendChild(tag);}tag.setAttribute("content",value);}
 
-    function updateArticleSeo(post){
-      const articleTitle=String(post.title||"Latest News").trim();
-      const pageTitle=`${articleTitle} | ZIWAN YATTRA`;
-      const rawDescription=String(post.description||post.content||"Read the latest news and updates on ZIWAN YATTRA.").replace(/\s+/g," ").trim();
-      const description=rawDescription.slice(0,300);
-      const canonical=new URL("/article.html","https://ziwanyattra.com");
-      if(post.slug)canonical.searchParams.set("slug",String(post.slug));else canonical.searchParams.set("id",String(post.id));
-      const canonicalUrl=canonical.href;
-      let imageUrl="https://ziwanyattra.com/icons/icon-512.png";
-      if(post.image_url){try{const candidate=new URL(String(post.image_url),"https://ziwanyattra.com");if(candidate.protocol==="https:"||candidate.protocol==="http:")imageUrl=candidate.href;}catch(error){console.warn("Invalid article image URL:",error);}}
-      document.title=pageTitle;
-      setMeta("name","description",description);
-      let canonicalTag=document.head.querySelector('link[rel="canonical"]');
-      if(!canonicalTag){canonicalTag=document.createElement("link");canonicalTag.rel="canonical";document.head.appendChild(canonicalTag);}
-      canonicalTag.href=canonicalUrl;
-      setMeta("property","og:site_name","ZIWAN YATTRA");setMeta("property","og:title",pageTitle);setMeta("property","og:description",description);setMeta("property","og:url",canonicalUrl);setMeta("property","og:image",imageUrl);setMeta("property","og:type","article");
-      setMeta("name","twitter:card","summary_large_image");setMeta("name","twitter:title",pageTitle);setMeta("name","twitter:description",description);setMeta("name","twitter:image",imageUrl);
-      const articleSchema={"@context":"https://schema.org","@type":"NewsArticle","mainEntityOfPage":{"@type":"WebPage","@id":canonicalUrl},headline:articleTitle,description,image:[imageUrl],publisher:{"@type":"Organization",name:"ZIWAN YATTRA",logo:{"@type":"ImageObject",url:"https://ziwanyattra.com/icons/icon-512.png"}},articleSection:String(post.category||"News")};
-      const published=post.published_at||post.created_at;const modified=post.updated_at||published;
-      if(published&&!Number.isNaN(Date.parse(published)))articleSchema.datePublished=new Date(published).toISOString();
-      if(modified&&!Number.isNaN(Date.parse(modified)))articleSchema.dateModified=new Date(modified).toISOString();
-      let schemaTag=document.getElementById("article-schema");if(!schemaTag){schemaTag=document.createElement("script");schemaTag.id="article-schema";schemaTag.type="application/ld+json";document.head.appendChild(schemaTag);}schemaTag.textContent=JSON.stringify(articleSchema);
-    }
+    
+function updateArticleSeo(post){
+  const articleTitle=String(post.title||"Latest News").trim();
 
+  // SEO title
+  const seoTitle=String(post.seo_title||articleTitle).trim();
+  const pageTitle=seoTitle.toLowerCase().includes("ziwan yattra")
+    ?seoTitle
+    :`${seoTitle} | ZIWAN YATTRA`;
+
+  // SEO description
+  const rawDescription=String(
+    post.meta_description||
+    post.description||
+    post.content||
+    "Read the latest news and updates on ZIWAN YATTRA."
+  ).replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim();
+
+  const description=rawDescription.slice(0,160);
+
+  // Canonical URL
+  const canonical=new URL("/article.html","https://ziwanyattra.com");
+  if(post.slug){
+    canonical.searchParams.set("slug",String(post.slug));
+  }else if(post.id){
+    canonical.searchParams.set("id",String(post.id));
+  }
+  const canonicalUrl=canonical.href;
+
+  // Article image
+  let imageUrl="https://ziwanyattra.com/icons/icon-512.png";
+  if(post.image_url){
+    try{
+      const candidate=new URL(String(post.image_url),"https://ziwanyattra.com");
+      if(candidate.protocol==="https:"||candidate.protocol==="http:"){
+        imageUrl=candidate.href;
+      }
+    }catch(error){
+      console.warn("Invalid article image URL:",error);
+    }
+  }
+
+  // Browser title and description
+  document.title=pageTitle;
+  setMeta("name","description",description);
+
+  // Canonical tag
+  let canonicalTag=document.head.querySelector('link[rel="canonical"]');
+  if(!canonicalTag){
+    canonicalTag=document.createElement("link");
+    canonicalTag.rel="canonical";
+    document.head.appendChild(canonicalTag);
+  }
+  canonicalTag.href=canonicalUrl;
+
+  // Open Graph
+  setMeta("property","og:site_name","ZIWAN YATTRA");
+  setMeta("property","og:title",pageTitle);
+  setMeta("property","og:description",description);
+  setMeta("property","og:url",canonicalUrl);
+  setMeta("property","og:image",imageUrl);
+  setMeta("property","og:type","article");
+
+  // Twitter
+  setMeta("name","twitter:card","summary_large_image");
+  setMeta("name","twitter:title",pageTitle);
+  setMeta("name","twitter:description",description);
+  setMeta("name","twitter:image",imageUrl);
+
+  // NewsArticle schema
+  const articleSchema={
+    "@context":"https://schema.org",
+    "@type":"NewsArticle",
+    "mainEntityOfPage":{
+      "@type":"WebPage",
+      "@id":canonicalUrl
+    },
+    "headline":articleTitle,
+    "description":description,
+    "image":[imageUrl],
+    "publisher":{
+      "@type":"Organization",
+      "name":"ZIWAN YATTRA",
+      "logo":{
+        "@type":"ImageObject",
+        "url":"https://ziwanyattra.com/icons/icon-512.png"
+      }
+    },
+    "articleSection":String(post.category||"News")
+  };
+
+  const published=post.published_at||post.created_at;
+  const modified=post.updated_at||published;
+
+  if(published&&!Number.isNaN(Date.parse(published))){
+    articleSchema.datePublished=new Date(published).toISOString();
+  }
+
+  if(modified&&!Number.isNaN(Date.parse(modified))){
+    articleSchema.dateModified=new Date(modified).toISOString();
+  }
+
+  let schemaTag=document.getElementById("article-schema");
+  if(!schemaTag){
+    schemaTag=document.createElement("script");
+    schemaTag.id="article-schema";
+    schemaTag.type="application/ld+json";
+    document.head.appendChild(schemaTag);
+  }
+
+  schemaTag.textContent=JSON.stringify(articleSchema);
+}
+    
     function loadPreferredSourceButton(){
       if(document.querySelector("script[data-zy-preferred-source]"))return;
       const script=document.createElement("script");
