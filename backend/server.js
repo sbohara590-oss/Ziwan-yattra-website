@@ -564,7 +564,7 @@ app.get("/sitemap.xml", async (req, res) => {
       "https://ziwanyattra.com/mobile-help.html",
       "https://ziwanyattra.com/creator-services.html",
       "https://ziwanyattra.com/ai-knowledge.html",
-      "https://ziwanyattra.com/privacy-policy.html"
+      "https://ziwanyattra.com/privacy-policy.html",
       "https://ziwanyattra.com/technician.html",
       "https://ziwanyattra.com/gaming.html",
       "https://ziwanyattra.com/education.html",
