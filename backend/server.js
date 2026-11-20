@@ -660,10 +660,11 @@ app.get("/share/:slug", async (req, res) => {
       "https://ziwanyattra.com/article.html?slug=" +
       encodeURIComponent(post.slug);
 
+    
     const shareUrl =
-      "https://ziwan-yattra-backend.onrender.com/share/" +
+      "https://share.ziwanyattra.com/share/" +
       encodeURIComponent(post.slug);
-
+    
     let imageUrl = "https://ziwanyattra.com/icons/icon-512.png";
 
     if (post.image_url) {
