@@ -565,6 +565,13 @@ app.get("/sitemap.xml", async (req, res) => {
       "https://ziwanyattra.com/creator-services.html",
       "https://ziwanyattra.com/ai-knowledge.html",
       "https://ziwanyattra.com/privacy-policy.html"
+      "https://ziwanyattra.com/technician.html",
+      "https://ziwanyattra.com/gaming.html",
+      "https://ziwanyattra.com/education.html",
+      "https://ziwanyattra.com/government-services.html",
+      "https://ziwanyattra.com/shopping.html",
+      "https://ziwanyattra.com/ziwan-yattra-rewards-promo-1.html",
+      "https://ziwanyattra.com/ZIWAN-YATTRA-Computer-Tech-Book-Language-Fix.html"
     ];
 
     const escapeXml = (value) =>
