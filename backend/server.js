@@ -610,6 +610,13 @@ app.get("/sitemap.xml", async (req, res) => {
   }
 });
 // ===== END NEWS SITEMAP =====
+// ===== META CRAWLER ROBOTS.TXT =====
+app.get("/robots.txt", (req, res) => {
+  res.status(200).type("text/plain").send(
+    "User-agent: *\nAllow: /\n"
+  );
+});
+// ===== END ROBOTS.TXT =====
 // ===== REQUEST ERROR HANDLER =====
 app.use((error, req, res, next) => {
   console.error("Request error:", error.message);
