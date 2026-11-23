@@ -655,7 +655,9 @@ app.use((error, req, res, next) => {
 });
 
 app.get("/share/:slug", async (req, res) => {
-  const slug = String(req.params.slug || "").trim();
+  const slug = String(req.params.slug || "")
+  .replace(/[\u200B-\u200D\u2060\uFEFF]/g, "")
+  .trim();
 
   if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(slug)) {
     return res.status(400).send("Invalid article link.");
