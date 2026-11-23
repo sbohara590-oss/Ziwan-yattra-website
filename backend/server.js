@@ -23,15 +23,19 @@ app.use((req, res, next) => {
     path: req.originalUrl,
     method: req.method,
     userAgent: req.headers["user-agent"],
-    ip: req.ip
+cfRay: req.headers["cf-ray"] || null,
+rndrId: req.headers["rndr-id"] || null,
+ip: req.ip
   });
 
   res.on("finish", () => {
-    console.log("RESPONSE CHECK:", {
-      path: req.originalUrl,
-      status: res.statusCode
-    });
+  console.log("RESPONSE CHECK:", {
+    path: req.originalUrl,
+    status: res.statusCode,
+    cfRay: req.headers["cf-ray"] || null,
+    rndrId: req.headers["rndr-id"] || null
   });
+});
 
   next();
 });
