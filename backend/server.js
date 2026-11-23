@@ -18,6 +18,23 @@ const rateLimit = require("express-rate-limit");
 const { createClient } = require("@supabase/supabase-js");
 const crypto = require("crypto");
 const app = express();app.use(express.static(path.join(__dirname, "public")));
+app.use((req, res, next) => {
+  console.log("REQUEST CHECK:", {
+    path: req.originalUrl,
+    method: req.method,
+    userAgent: req.headers["user-agent"],
+    ip: req.ip
+  });
+
+  res.on("finish", () => {
+    console.log("RESPONSE CHECK:", {
+      path: req.originalUrl,
+      status: res.statusCode
+    });
+  });
+
+  next();
+});
 app.set('trust proxy', 1);
 const PORT = Number(process.env.PORT) || 3000;
 const enquiriesFile = path.join(__dirname, "enquiries.json");
