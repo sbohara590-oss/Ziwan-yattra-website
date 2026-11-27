@@ -1059,6 +1059,84 @@ body.dark .mobile-bottom-nav a.active{color:var(--primary)!important}
 </aside>
 
 
+<!-- ZIWAN YATTRA ONLINE / OFFLINE STATUS -->
+<style>
+#zyNetworkStatus {
+  position: fixed;
+  top: 82px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-12px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 17px;
+  border-radius: 30px;
+  color: #fff;
+  font: 600 13px Arial, sans-serif;
+  box-shadow: 0 4px 18px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s, transform .25s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+#zyNetworkStatus.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+#zyNetworkStatus.online { background: #168747; }
+#zyNetworkStatus.offline { background: #d93636; }
+#zyNetworkStatus .zy-net-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+</style>
+
+<div id="zyNetworkStatus" role="status" aria-live="polite">
+  <span class="zy-net-dot"></span>
+  <span id="zyNetworkText">ONLINE</span>
+</div>
+
+<script>
+(() => {
+  const box = document.getElementById("zyNetworkStatus");
+  const label = document.getElementById("zyNetworkText");
+  if (!box || !label) return;
+
+  let hideTimer;
+
+  function showOnline() {
+    clearTimeout(hideTimer);
+    box.className = "online show";
+    label.textContent = "ONLINE";
+
+    hideTimer = setTimeout(() => {
+      box.classList.remove("show");
+    }, 1200);
+  }
+
+  function showOffline() {
+    clearTimeout(hideTimer);
+    box.className = "offline show";
+    label.textContent = "OFFLINE";
+  }
+
+  if (navigator.onLine) {
+    showOnline();
+  } else {
+    showOffline();
+  }
+
+  window.addEventListener("online", showOnline);
+  window.addEventListener("offline", showOffline);
+})();
+</script>
+<!-- END NETWORK STATUS -->
+
 <main class="page-wrap">
 
   <div class="datetime-strip" aria-label="Current date and time">
